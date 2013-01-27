@@ -23,7 +23,7 @@ import com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog;
 
 public class MainActivity extends BaseActivity {
 
-	private AppsLoader pmUtils;
+	private AppsLoader mAppLoader;
 
 	private ListView mListView;
 
@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
 		setContentView(R.layout.activity_main);
 
 		mAppFilter = new AppsFilter();
-		pmUtils = new AppsLoader(getApplicationContext());
+		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.listView_enabled_apps);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
 
 		createReloadAsyncTask().execute();
 	}
-	
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -62,6 +62,7 @@ public class MainActivity extends BaseActivity {
 		mAdapter = null;
 		mAppFilter.setOriginalAppList(null);
 		mAppFilter = null;
+		mAppLoader = null;
 		mCommonUtil = null;
 	}
 
@@ -245,7 +246,7 @@ public class MainActivity extends BaseActivity {
 			protected Void doInBackground(Void... params) {
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
-					activity.pmUtils.load();
+					activity.mAppLoader.load();
 				}
 				return null;
 			}
@@ -255,7 +256,8 @@ public class MainActivity extends BaseActivity {
 				super.onPostExecute(result);
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
-					activity.mAppFilter.setOriginalAppList(activity.pmUtils.getAppsList());
+					activity.mAppFilter.setOriginalAppList(activity.mAppFilter.sort(activity.mAppLoader
+							.getAppsList()));
 					activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(new AppFilterCondition() {
 						@Override
 						public boolean valid(AppStatus appStatus) {

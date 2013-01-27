@@ -42997,7 +42997,7 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [java/util/Comparator]
 
-Constant Pool (count = 40):
+Constant Pool (count = 43):
   + Class [com/nagopy/disabledapps/a]
   + Class [com/nagopy/disabledapps/c]
   + Class [java/lang/Object]
@@ -43009,12 +43009,14 @@ Constant Pool (count = 40):
   + Methodref [com/nagopy/disabledapps/c.a (Lcom/nagopy/disabledapps/a;Lcom/nagopy/disabledapps/a;)I]
   + Methodref [java/lang/Object.<init> ()V]
   + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
+  + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
   + NameAndType [<init> ()V]
   + NameAndType [a ()Ljava/lang/String;]
   + NameAndType [a (Lcom/nagopy/disabledapps/a;Lcom/nagopy/disabledapps/a;)I]
   + NameAndType [a Lcom/nagopy/disabledapps/b;]
   + NameAndType [b ()Ljava/lang/String;]
   + NameAndType [compareTo (Ljava/lang/String;)I]
+  + NameAndType [compareToIgnoreCase (Ljava/lang/String;)I]
   + Utf8 [()Ljava/lang/String;]
   + Utf8 [()V]
   + Utf8 [(Lcom/nagopy/disabledapps/a;Lcom/nagopy/disabledapps/a;)I]
@@ -43034,6 +43036,7 @@ Constant Pool (count = 40):
   + Utf8 [com/nagopy/disabledapps/c]
   + Utf8 [compare]
   + Utf8 [compareTo]
+  + Utf8 [compareToIgnoreCase]
   + Utf8 [java/lang/Object]
   + Utf8 [java/lang/String]
   + Utf8 [java/util/Comparator]
@@ -43094,8 +43097,8 @@ Methods (count = 3):
       [36] astore v7
       [38] aload v6
       [40] aload v7
-      [42] invokevirtual #11
-        + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
+      [42] invokevirtual #12
+        + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
       [45] istore v5
       [47] iload v5
       [49] ireturn
@@ -46004,7 +46007,7 @@ Methods (count = 5):
         + Methodref [e/d.<init> (Landroid/content/Context;)V]
       [18] areturn
       [19] iload_1 v1
-      [20] bipush 15
+      [20] bipush 14
       [22] ificmplt +12 (target=34)
       [25] new #12
         + Class [e/c]
@@ -46176,7 +46179,7 @@ Constant Pool (count = 107):
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [I]
-  + Utf8 [JudgeDisablable_ICS_MR1.java]
+  + Utf8 [JudgeDisablable_ICS.java]
   + Utf8 [Landroid/content/pm/PackageInfo;]
   + Utf8 [Landroid/content/pm/PackageManager;]
   + Utf8 [LineNumberTable]
@@ -46444,7 +46447,7 @@ Methods (count = 3):
 
 Class file attributes (count = 1):
   + Source file attribute:
-    + Utf8 [JudgeDisablable_ICS_MR1.java]
+    + Utf8 [JudgeDisablable_ICS.java]
 
 _____________________________________________________________________
 + Program class: e/d

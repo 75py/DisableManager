@@ -16,11 +16,10 @@ public class AppsFilter {
 	}
 
 	/**
-	 * すべてのアプリを登録しておく<br>
-	 * 並び替えもしちゃうよ
-	 * @param original
+	 * ソートする<br>
+	 * 大文字小文字は区別しない
 	 */
-	public void setOriginalAppList(ArrayList<AppStatus> original) {
+	public ArrayList<AppStatus> sort(ArrayList<AppStatus> list) {
 		Comparator<AppStatus> comparator = new Comparator<AppStatus>() {
 			@Override
 			public int compare(AppStatus obj0, AppStatus obj1) {
@@ -37,8 +36,17 @@ public class AppsFilter {
 				return ret;
 			}
 		};
-		Collections.sort(original, comparator);
+		Collections.sort(list, comparator);
 
+		return list;
+	}
+
+	/**
+	 * すべてのアプリを登録しておく<br>
+	 * ソートする場合は {@link #sort(ArrayList)}
+	 * @param original
+	 */
+	public void setOriginalAppList(ArrayList<AppStatus> original) {
 		this.originalAppList = original;
 	}
 

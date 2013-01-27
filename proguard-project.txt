@@ -19,10 +19,8 @@
 #   public *;
 #}
 
-#===test
 -dontskipnonpubliclibraryclasses
--optimizationpasses 5
+-optimizationpasses 3
 -flattenpackagehierarchy
 -keepattributes SourceFile,LineNumberTable
 -printmapping map.txt
-#===/test
