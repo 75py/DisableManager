@@ -999,7 +999,7 @@ com.nagopy.disabledapps.util.JudgeDisablable -> e.a:
     55:64:com.nagopy.disabledapps.util.JudgeDisablable getInstance(android.content.Context) -> a
 com.nagopy.disabledapps.util.JudgeDisablable$1 -> e.b:
     67:67:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
-com.nagopy.disabledapps.util.JudgeDisablable_ICS_MR1 -> e.c:
+com.nagopy.disabledapps.util.JudgeDisablable_ICS -> e.c:
     android.content.pm.PackageManager mPm -> b
     android.content.pm.PackageInfo mPackageInfo -> c
     27:35:boolean isDisablable(android.content.pm.ApplicationInfo) -> a

@@ -10,13 +10,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 
-public class JudgeDisablable_ICS_MR1 extends JudgeDisablable {
+public class JudgeDisablable_ICS extends JudgeDisablable {
 
 	private static final boolean SUPPORT_DISABLE_APPS = true;
 	private PackageManager mPm;
 	private PackageInfo mPackageInfo;
 
-	public JudgeDisablable_ICS_MR1(Context context) {
+	public JudgeDisablable_ICS(Context context) {
 		super(context);
 		mPm = context.getPackageManager();
 	}

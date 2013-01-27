@@ -49,16 +49,16 @@ public abstract class JudgeDisablable extends BaseObject {
 	/**
 	 * 無効化できるかどうかを判定するクラスのオブジェクトを作る
 	 * @param context
-	 * @return 4.2以上、4.0.4以上、それ未満で別々のオブジェクトを返す
+	 * @return 4.2以上、4.0.以上、それ未満で別々のオブジェクトを返す
 	 */
 	public static JudgeDisablable getInstance(Context context) {
 		int version = Build.VERSION.SDK_INT;
 		if (version >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 			// 4.2以上
 			return new JudgeDisablable_JB_MR1(context);
-		} else if (version >= Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1) {
+		} else if (version >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			// 4.0.4以上
-			return new JudgeDisablable_ICS_MR1(context);
+			return new JudgeDisablable_ICS(context);
 		} else {
 			// 4.0.4未満の場合は、常にfalseを返すようにする
 			return new JudgeDisablable(context) {
