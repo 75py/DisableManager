@@ -32,7 +32,7 @@ public class AppsFilter {
 				if ((ret = label0.compareTo(label1)) == 0) {
 					String pkgName0 = ((AppStatus) obj0).getPackageName();
 					String pkgName1 = ((AppStatus) obj1).getPackageName();
-					ret = pkgName0.compareTo(pkgName1);
+					ret = pkgName0.compareToIgnoreCase(pkgName1);
 				}
 				return ret;
 			}
