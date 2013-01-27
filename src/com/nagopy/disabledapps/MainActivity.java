@@ -53,6 +53,17 @@ public class MainActivity extends BaseActivity {
 
 		createReloadAsyncTask().execute();
 	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mListView.setAdapter(null);
+		mListView = null;
+		mAdapter = null;
+		mAppFilter.setOriginalAppList(null);
+		mAppFilter = null;
+		mCommonUtil = null;
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -68,34 +79,48 @@ public class MainActivity extends BaseActivity {
 	private void updateAppList(AppFilterCondition condition) {
 		mAdapter.updateAppList(mAppFilter.execute(condition));
 		mAdapter.notifyDataSetChanged();
+		mListView.setSelection(0);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_filter_enable_system:
+		case R.id.menu_filter_disablable_and_enabled_apps:
 			updateAppList(new AppFilterCondition() {
 				@Override
 				public boolean valid(AppStatus appStatus) {
-					return appStatus.isEnabled() && appStatus.isSystem();
+					// システムで、無効化可能で、まだ有効なアプリ
+					return appStatus.isSystem() && appStatus.canDisable() && appStatus.isEnabled();
 				}
 			});
 			setTitle(item.getTitle());
 			break;
-		case R.id.menu_filter_enable_user:
+		case R.id.menu_filter_disabled:
 			updateAppList(new AppFilterCondition() {
 				@Override
 				public boolean valid(AppStatus appStatus) {
-					return appStatus.isEnabled() && !appStatus.isSystem();
-				}
-			});
-			setTitle(item.getTitle());
-			break;
-		case R.id.menu_filter_disable:
-			updateAppList(new AppFilterCondition() {
-				@Override
-				public boolean valid(AppStatus appStatus) {
+					// 無効化済み
 					return !appStatus.isEnabled();
+				}
+			});
+			setTitle(item.getTitle());
+			break;
+		case R.id.menu_filter_undisablable_system:
+			updateAppList(new AppFilterCondition() {
+				@Override
+				public boolean valid(AppStatus appStatus) {
+					// 無効化できないシステムアプリ
+					return appStatus.isSystem() && !appStatus.canDisable();
+				}
+			});
+			setTitle(item.getTitle());
+			break;
+		case R.id.menu_filter_user_apps:
+			updateAppList(new AppFilterCondition() {
+				@Override
+				public boolean valid(AppStatus appStatus) {
+					// 通常のアプリ
+					return !appStatus.isSystem();
 				}
 			});
 			setTitle(item.getTitle());
@@ -237,8 +262,14 @@ public class MainActivity extends BaseActivity {
 							return !appStatus.isEnabled();
 						}
 					}));
-					activity.mListView.setAdapter(activity.mAdapter);
-					activity.setTitle(R.string.menu_filter_disable);
+					// activity.mListView.setAdapter(activity.mAdapter);
+					if (activity.mListView.getAdapter() == null) {
+						activity.mListView.setAdapter(activity.mAdapter);
+					} else {
+						activity.mAdapter.notifyDataSetChanged();
+						activity.mListView.setSelection(0);
+					}
+					activity.setTitle(R.string.menu_filter_disabled);
 				}
 			}
 		};

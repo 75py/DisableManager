@@ -21,22 +21,29 @@
         </menu>
     </item>
     <item
-        android:icon="@android:drawable/ic_menu_more"
+        android:icon="@android:drawable/ic_menu_agenda"
         android:showAsAction="ifRoom"
-        android:title="other">
+        android:title="filter">
         <menu>
             <item
-                android:id="@+id/menu_filter_disable"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="@string/menu_filter_disable"/>
+                android:id="@+id/menu_filter_disabled"
+                android:title="@string/menu_filter_disabled"/>
             <item
-                android:id="@+id/menu_filter_enable_system"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="@string/menu_filter_enable_system"/>
+                android:id="@+id/menu_filter_disablable_and_enabled_apps"
+                android:title="@string/menu_filter_disablable_and_enabled_apps"/>
             <item
-                android:id="@+id/menu_filter_enable_user"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="@string/menu_filter_enable_user"/>
+                android:id="@+id/menu_filter_undisablable_system"
+                android:title="@string/menu_filter_undisablable_system"/>
+            <item
+                android:id="@+id/menu_filter_user_apps"
+                android:title="@string/menu_filter_user_apps"/>
+        </menu>
+    </item>
+    <item
+        android:icon="@android:drawable/ic_menu_more"
+        android:showAsAction="ifRoom"
+        android:title="others">
+        <menu>
             <item
                 android:id="@+id/menu_reload"
                 android:icon="@*android:drawable/ic_menu_refresh"

@@ -6,9 +6,10 @@
     <string name="menu_share_label">Label</string>
     <string name="menu_share_package">Package name</string>
     <string name="menu_share_label_and_package">Label and Package name</string>
-    <string name="menu_filter_disable">Disabled apps</string>
-    <string name="menu_filter_enable_system">Enabled apps (System)</string>
-    <string name="menu_filter_enable_user">Enabled apps (User)</string>
+    <string name="menu_filter_disabled">Disabled apps</string>
+    <string name="menu_filter_disablable_and_enabled_apps">Enabled and Disablable apps</string>
+    <string name="menu_filter_undisablable_system">Undisablable system apps</string>
+    <string name="menu_filter_user_apps">User apps</string>
     <string name="menu_reload">Reload</string>
 
 </resources>

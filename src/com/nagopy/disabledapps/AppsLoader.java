@@ -8,6 +8,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
+import com.nagopy.disabledapps.util.JudgeDisablable;
 import com.nagopy.lib.base.BaseObject;
 import com.nagopy.lib.image.ImageUtils;
 
@@ -31,12 +32,16 @@ public class AppsLoader extends BaseObject {
 		List<ApplicationInfo> applicationInfo = packageManager
 				.getInstalledApplications(PackageManager.GET_META_DATA);
 		int iconSize = ImageUtils.getIconSize(getContext());
+
+		JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
+
 		for (ApplicationInfo info : applicationInfo) {
 			Drawable icon = info.loadIcon(packageManager);
 			icon.setBounds(0, 0, iconSize, iconSize);
 
 			AppStatus appStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
-					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0, icon);
+					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+					judgeDisablable.isDisablable(info), icon);
 
 			appsList.add(appStatus);
 		}
