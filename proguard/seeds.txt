@@ -66,9 +66,10 @@ com.nagopy.disabledapps.R$id: int lib_csg_textview
 com.nagopy.disabledapps.R$id: int listView_enabled_apps
 com.nagopy.disabledapps.R$id: int list_textview_label
 com.nagopy.disabledapps.R$id: int list_textview_package_name
-com.nagopy.disabledapps.R$id: int menu_filter_disable
-com.nagopy.disabledapps.R$id: int menu_filter_enable_system
-com.nagopy.disabledapps.R$id: int menu_filter_enable_user
+com.nagopy.disabledapps.R$id: int menu_filter_disablable_and_enabled_apps
+com.nagopy.disabledapps.R$id: int menu_filter_disabled
+com.nagopy.disabledapps.R$id: int menu_filter_undisablable_system
+com.nagopy.disabledapps.R$id: int menu_filter_user_apps
 com.nagopy.disabledapps.R$id: int menu_reload
 com.nagopy.disabledapps.R$id: int menu_share_label
 com.nagopy.disabledapps.R$id: int menu_share_label_and_package
@@ -81,9 +82,10 @@ com.nagopy.disabledapps.R$layout: int support_library_custom_seekbar_group
 com.nagopy.disabledapps.R$layout: int support_library_fod_list_row
 com.nagopy.disabledapps.R$menu: int activity_main
 com.nagopy.disabledapps.R$string: int app_name
-com.nagopy.disabledapps.R$string: int menu_filter_disable
-com.nagopy.disabledapps.R$string: int menu_filter_enable_system
-com.nagopy.disabledapps.R$string: int menu_filter_enable_user
+com.nagopy.disabledapps.R$string: int menu_filter_disablable_and_enabled_apps
+com.nagopy.disabledapps.R$string: int menu_filter_disabled
+com.nagopy.disabledapps.R$string: int menu_filter_undisablable_system
+com.nagopy.disabledapps.R$string: int menu_filter_user_apps
 com.nagopy.disabledapps.R$string: int menu_reload
 com.nagopy.disabledapps.R$string: int menu_share
 com.nagopy.disabledapps.R$string: int menu_share_label

@@ -679,6 +679,8 @@ com.nagopy.disabledapps.R$menu
 com.nagopy.disabledapps.R$string
 com.nagopy.disabledapps.R$style
 com.nagopy.disabledapps.R$styleable
+com.nagopy.disabledapps.util.JudgeDisablable_ICS_MR1:
+    private static final boolean SUPPORT_DISABLE_APPS
 com.nagopy.lib.R
 com.nagopy.lib.R$attr
 com.nagopy.lib.R$color
@@ -697,8 +699,6 @@ com.nagopy.lib.base.BaseActivity:
     51:51:public android.content.SharedPreferences getSP()
     56:57:public void showToast(java.lang.Object)
 com.nagopy.lib.base.BaseListActivity
-com.nagopy.lib.base.BaseObject:
-    16:17:public void log(java.lang.Object)
 com.nagopy.lib.base.BasePreferenceActivity
 com.nagopy.lib.base.BaseService
 com.nagopy.lib.base.DebugInterface
@@ -740,7 +740,6 @@ com.nagopy.lib.util.CommonUtil:
     32:32:public java.lang.String getStringFromResources(int)
     41:41:public int getIntFromResources(int)
     50:50:public boolean getBooleanFromResources(int)
-    58:59:public void log(java.lang.Object)
     67:90:public java.lang.String objectToString(java.lang.Object)
     98:98:public android.content.SharedPreferences getSP()
     105:106:public void showToast(java.lang.Object)
