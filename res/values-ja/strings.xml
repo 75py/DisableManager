@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">無効化アプリ一覧</string>
+    <string name="menu_share">共有</string>
+    <string name="menu_share_label">アプリ名</string>
+    <string name="menu_share_package">パッケージ名</string>
+    <string name="menu_share_label_and_package">アプリ名とパッケージ名</string>
+    <string name="menu_filter_disable">無効化済みアプリ</string>
+    <string name="menu_filter_enable_system">有効なアプリ（システム）</string>
+    <string name="menu_filter_enable_user">有効なアプリ（ユーザー）</string>
+    <string name="menu_reload">アプリ情報を更新する</string>
+
+</resources>

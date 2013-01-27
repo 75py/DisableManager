@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Disabled Apps List</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_share_label">Label</string>
+    <string name="menu_share_package">Package name</string>
+    <string name="menu_share_label_and_package">Label and Package name</string>
+    <string name="menu_filter_disable">Disabled apps</string>
+    <string name="menu_filter_enable_system">Enabled apps (System)</string>
+    <string name="menu_filter_enable_user">Enabled apps (User)</string>
+    <string name="menu_reload">Reload</string>
+
+</resources>

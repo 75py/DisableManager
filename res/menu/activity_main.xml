@@ -1,0 +1,49 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+
+    <item
+        android:icon="@android:drawable/ic_menu_share"
+        android:showAsAction="ifRoom|withText"
+        android:title="@string/menu_share">
+        <menu>
+            <item
+                android:id="@+id/menu_share_label"
+                android:showAsAction="withText"
+                android:title="@string/menu_share_label"/>
+            <item
+                android:id="@+id/menu_share_package"
+                android:showAsAction="withText"
+                android:title="@string/menu_share_package"/>
+            <item
+                android:id="@+id/menu_share_label_and_package"
+                android:showAsAction="withText"
+                android:title="@string/menu_share_label_and_package"/>
+        </menu>
+    </item>
+    <item
+        android:icon="@android:drawable/ic_menu_more"
+        android:showAsAction="ifRoom"
+        android:title="other">
+        <menu>
+            <item
+                android:id="@+id/menu_filter_disable"
+                android:icon="@android:drawable/ic_menu_agenda"
+                android:title="@string/menu_filter_disable"/>
+            <item
+                android:id="@+id/menu_filter_enable_system"
+                android:icon="@android:drawable/ic_menu_agenda"
+                android:title="@string/menu_filter_enable_system"/>
+            <item
+                android:id="@+id/menu_filter_enable_user"
+                android:icon="@android:drawable/ic_menu_agenda"
+                android:title="@string/menu_filter_enable_user"/>
+            <item
+                android:id="@+id/menu_reload"
+                android:icon="@*android:drawable/ic_menu_refresh"
+                android:showAsAction="never"
+                android:title="@string/menu_reload"
+                tools:ignore="PrivateResource"/>
+        </menu>
+    </item>
+
+</menu>
