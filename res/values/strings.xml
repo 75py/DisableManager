@@ -11,5 +11,8 @@
     <string name="menu_filter_undisablable_system">Undisablable system apps</string>
     <string name="menu_filter_user_apps">User apps</string>
     <string name="menu_reload">Reload</string>
+    
+    <!-- empty -->
+    <string name="message_empty_list">Empty.</string>
 
 </resources>

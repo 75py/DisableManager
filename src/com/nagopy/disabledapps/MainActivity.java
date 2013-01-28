@@ -27,6 +27,8 @@ public class MainActivity extends BaseActivity {
 
 	private ListView mListView;
 
+	private TextView mEmptyView;
+
 	private AppsFilter mAppFilter;
 
 	private AppsListAdapter mAdapter;
@@ -42,6 +44,8 @@ public class MainActivity extends BaseActivity {
 		lastAppFilterCondition = AppsFilter.DISABLED;
 		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.listView_enabled_apps);
+		mEmptyView = (TextView) findViewById(R.id.listView_empty);
+
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> adapter, View view, int position, long arg3) {
@@ -61,11 +65,18 @@ public class MainActivity extends BaseActivity {
 	protected void onDestroy() {
 		super.onDestroy();
 		mListView.setAdapter(null);
+		mEmptyView = null;
 		mListView = null;
+
+		mAdapter.updateAppList(null);
 		mAdapter = null;
+
 		mAppFilter.deallocate();
 		mAppFilter = null;
+
+		mAppLoader.deallocate();
 		mAppLoader = null;
+
 		mCommonUtil = null;
 	}
 
@@ -80,8 +91,10 @@ public class MainActivity extends BaseActivity {
 	 * @param condition
 	 *           表示するアプリを選ぶ条件<br>
 	 *           負の数を渡すと前回と同じフィルタを使う
+	 * @param title
+	 *           ヘッダーのテキストを指定。nullなら変更しない
 	 */
-	private void updateAppList(int key) {
+	private void updateAppList(int key, CharSequence title) {
 		if (key < 0) {
 			key = lastAppFilterCondition;
 		} else {
@@ -90,26 +103,31 @@ public class MainActivity extends BaseActivity {
 		mAdapter.updateAppList(mAppFilter.execute(key));
 		mAdapter.notifyDataSetChanged();
 		mListView.setSelection(0);
+
+		boolean isEmpty = mAdapter.getCount() < 1;
+		mEmptyView.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+		mListView.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
+
+		if (title != null) {
+			setTitle(title);
+
+		}
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_filter_disablable_and_enabled_apps:
-			updateAppList(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM);
-			setTitle(item.getTitle());
+			updateAppList(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM, item.getTitle());
 			break;
 		case R.id.menu_filter_disabled:
-			updateAppList(AppsFilter.DISABLED);
-			setTitle(item.getTitle());
+			updateAppList(AppsFilter.DISABLED, item.getTitle());
 			break;
 		case R.id.menu_filter_undisablable_system:
-			updateAppList(AppsFilter.UNDISABLABLE_SYSTEM);
-			setTitle(item.getTitle());
+			updateAppList(AppsFilter.UNDISABLABLE_SYSTEM, item.getTitle());
 			break;
 		case R.id.menu_filter_user_apps:
-			updateAppList(AppsFilter.USER_APPS);
-			setTitle(item.getTitle());
+			updateAppList(AppsFilter.USER_APPS, item.getTitle());
 			break;
 		case R.id.menu_share_label:
 			StringBuffer sb = new StringBuffer();
@@ -247,9 +265,12 @@ public class MainActivity extends BaseActivity {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(AppsFilter.DISABLED));
 						activity.mListView.setAdapter(activity.mAdapter);
-						activity.setTitle(R.string.menu_filter_disabled);
+						if (activity.mAdapter.getCount() < 1) {
+							activity.mEmptyView.setVisibility(View.VISIBLE);
+							activity.mListView.setVisibility(View.GONE);
+						}
 					} else {
-						activity.updateAppList(-1);
+						activity.updateAppList(-1, null);
 					}
 				}
 			}

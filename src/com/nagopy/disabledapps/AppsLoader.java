@@ -54,4 +54,9 @@ public class AppsLoader extends BaseObject {
 	public ArrayList<AppStatus> getAppsList() {
 		return appsList;
 	}
+
+	public void deallocate() {
+		appsList.clear();
+		appsList = null;
+	}
 }

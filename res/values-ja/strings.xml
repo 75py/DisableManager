@@ -6,10 +6,13 @@
     <string name="menu_share_label">アプリ名</string>
     <string name="menu_share_package">パッケージ名</string>
     <string name="menu_share_label_and_package">アプリ名とパッケージ名</string>
-    <string name="menu_filter_disabled">無効化済み</string>
-    <string name="menu_filter_disablable_and_enabled_apps">無効化可能／有効</string>
-    <string name="menu_filter_undisablable_system">無効化不可／システム</string>
+    <string name="menu_filter_disabled">無効化済みのアプリ</string>
+    <string name="menu_filter_disablable_and_enabled_apps">無効化可能、有効なシステムアプリ</string>
+    <string name="menu_filter_undisablable_system">無効化不可のシステムアプリ</string>
     <string name="menu_filter_user_apps">通常アプリ</string>
     <string name="menu_reload">アプリ情報を更新する</string>
+
+    <!-- empty -->
+    <string name="message_empty_list">該当するアプリはありません。</string>
 
 </resources>
