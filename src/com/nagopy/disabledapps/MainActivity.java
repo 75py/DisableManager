@@ -31,6 +31,8 @@ public class MainActivity extends BaseActivity {
 
 	private AppsListAdapter mAdapter;
 
+	private AppFilterCondition lastAppFilterCondition;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class MainActivity extends BaseActivity {
 		mAppFilter = null;
 		mAppLoader = null;
 		mCommonUtil = null;
+		lastAppFilterCondition = null;
 	}
 
 	@Override
@@ -75,9 +78,15 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 表示するアプリを更新する
 	 * @param condition
-	 *           表示するアプリを選ぶ条件
+	 *           表示するアプリを選ぶ条件<br>
+	 *           nullを渡すと前回と同じフィルタを使う
 	 */
 	private void updateAppList(AppFilterCondition condition) {
+		if (condition == null) {
+			condition = lastAppFilterCondition;
+		} else {
+			lastAppFilterCondition = condition;
+		}
 		mAdapter.updateAppList(mAppFilter.execute(condition));
 		mAdapter.notifyDataSetChanged();
 		mListView.setSelection(0);
@@ -258,20 +267,24 @@ public class MainActivity extends BaseActivity {
 				if (activity != null) {
 					activity.mAppFilter.setOriginalAppList(activity.mAppFilter.sort(activity.mAppLoader
 							.getAppsList()));
-					activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(new AppFilterCondition() {
-						@Override
-						public boolean valid(AppStatus appStatus) {
-							return !appStatus.isEnabled();
-						}
-					}));
+					if (activity.mAdapter == null) {
+						// 初回なら
+						activity.mAdapter = new AppsListAdapter(
+								activity.mAppFilter.execute(new AppFilterCondition() {
+									@Override
+									public boolean valid(AppStatus appStatus) {
+										return !appStatus.isEnabled();
+									}
+								}));
+					} else {
+					}
 					// activity.mListView.setAdapter(activity.mAdapter);
 					if (activity.mListView.getAdapter() == null) {
 						activity.mListView.setAdapter(activity.mAdapter);
+						activity.setTitle(R.string.menu_filter_disabled);
 					} else {
-						activity.mAdapter.notifyDataSetChanged();
-						activity.mListView.setSelection(0);
+						activity.updateAppList(null);
 					}
-					activity.setTitle(R.string.menu_filter_disabled);
 				}
 			}
 		};
