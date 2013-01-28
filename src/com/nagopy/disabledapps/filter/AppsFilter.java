@@ -1,8 +1,12 @@
-package com.nagopy.disabledapps;
+package com.nagopy.disabledapps.filter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
+import android.util.SparseArray;
+
+import com.nagopy.disabledapps.AppStatus;
 
 /**
  * アプリ一覧を、条件を指定してフィルタリングするクラス
@@ -11,8 +15,62 @@ public class AppsFilter {
 
 	private ArrayList<AppStatus> originalAppList;
 
+	private SparseArray<AppFilterCondition> conditions;
+
+	/**
+	 * 無効化済み
+	 */
+	public static final int DISABLED = 0x01;
+
+	/**
+	 * 無効化可能だがまだ有効なシステムアプリ
+	 */
+	public static final int DISABLABLE_AND_ENABLED_SYSTEM = 0x02;
+
+	/**
+	 * 無効化できないシステムアプリ
+	 */
+	public static final int UNDISABLABLE_SYSTEM = 0x04;
+
+	/**
+	 * ユーザーアプリ
+	 */
+	public static final int USER_APPS = 0x08;
+
 	public AppsFilter() {
 		originalAppList = new ArrayList<AppStatus>();
+		conditions = new SparseArray<AppsFilter.AppFilterCondition>();
+		conditions.put(DISABLED, new AppFilterCondition() {
+			@Override
+			public boolean valid(AppStatus appStatus) {
+				// 無効化済み
+				return !appStatus.isEnabled();
+			}
+		});
+
+		conditions.put(DISABLABLE_AND_ENABLED_SYSTEM, new AppFilterCondition() {
+			@Override
+			public boolean valid(AppStatus appStatus) {
+				// システムで、無効化可能で、まだ有効なアプリ
+				return appStatus.isSystem() && appStatus.canDisable() && appStatus.isEnabled();
+			}
+		});
+
+		conditions.put(UNDISABLABLE_SYSTEM, new AppFilterCondition() {
+			@Override
+			public boolean valid(AppStatus appStatus) {
+				// 無効化できないシステムアプリ
+				return appStatus.isSystem() && !appStatus.canDisable();
+			}
+		});
+
+		conditions.put(USER_APPS, new AppFilterCondition() {
+			@Override
+			public boolean valid(AppStatus appStatus) {
+				// 通常のアプリ
+				return !appStatus.isSystem();
+			}
+		});
 	}
 
 	/**
@@ -52,11 +110,11 @@ public class AppsFilter {
 
 	/**
 	 * フィルターを実行して、結果を返す
-	 * @param condition
-	 *           条件。無名クラスでおｋ
+	 * @param key
 	 * @return フィルター結果
 	 */
-	public ArrayList<AppStatus> execute(AppFilterCondition condition) {
+	public ArrayList<AppStatus> execute(int key) {
+		AppFilterCondition condition = conditions.get(key);
 		ArrayList<AppStatus> filtered = new ArrayList<AppStatus>();
 		for (AppStatus appStatus : originalAppList) {
 			if (condition.valid(appStatus)) {
@@ -64,6 +122,16 @@ public class AppsFilter {
 			}
 		}
 		return filtered;
+	}
+
+	/**
+	 * 保存しているコレクションのクリア
+	 */
+	public void deallocate() {
+		originalAppList.clear();
+		originalAppList = null;
+		conditions.clear();
+		conditions = null;
 	}
 
 	/**

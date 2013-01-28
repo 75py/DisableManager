@@ -17,7 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nagopy.disabledapps.AppsFilter.AppFilterCondition;
+import com.nagopy.disabledapps.filter.AppsFilter;
 import com.nagopy.lib.base.BaseActivity;
 import com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog;
 
@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
 
 	private AppsListAdapter mAdapter;
 
-	private AppFilterCondition lastAppFilterCondition;
+	private int lastAppFilterCondition;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class MainActivity extends BaseActivity {
 		setContentView(R.layout.activity_main);
 
 		mAppFilter = new AppsFilter();
+		lastAppFilterCondition = AppsFilter.DISABLED;
 		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.listView_enabled_apps);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -62,11 +63,10 @@ public class MainActivity extends BaseActivity {
 		mListView.setAdapter(null);
 		mListView = null;
 		mAdapter = null;
-		mAppFilter.setOriginalAppList(null);
+		mAppFilter.deallocate();
 		mAppFilter = null;
 		mAppLoader = null;
 		mCommonUtil = null;
-		lastAppFilterCondition = null;
 	}
 
 	@Override
@@ -79,15 +79,15 @@ public class MainActivity extends BaseActivity {
 	 * 表示するアプリを更新する
 	 * @param condition
 	 *           表示するアプリを選ぶ条件<br>
-	 *           nullを渡すと前回と同じフィルタを使う
+	 *           負の数を渡すと前回と同じフィルタを使う
 	 */
-	private void updateAppList(AppFilterCondition condition) {
-		if (condition == null) {
-			condition = lastAppFilterCondition;
+	private void updateAppList(int key) {
+		if (key < 0) {
+			key = lastAppFilterCondition;
 		} else {
-			lastAppFilterCondition = condition;
+			lastAppFilterCondition = key;
 		}
-		mAdapter.updateAppList(mAppFilter.execute(condition));
+		mAdapter.updateAppList(mAppFilter.execute(key));
 		mAdapter.notifyDataSetChanged();
 		mListView.setSelection(0);
 	}
@@ -96,43 +96,19 @@ public class MainActivity extends BaseActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_filter_disablable_and_enabled_apps:
-			updateAppList(new AppFilterCondition() {
-				@Override
-				public boolean valid(AppStatus appStatus) {
-					// システムで、無効化可能で、まだ有効なアプリ
-					return appStatus.isSystem() && appStatus.canDisable() && appStatus.isEnabled();
-				}
-			});
+			updateAppList(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM);
 			setTitle(item.getTitle());
 			break;
 		case R.id.menu_filter_disabled:
-			updateAppList(new AppFilterCondition() {
-				@Override
-				public boolean valid(AppStatus appStatus) {
-					// 無効化済み
-					return !appStatus.isEnabled();
-				}
-			});
+			updateAppList(AppsFilter.DISABLED);
 			setTitle(item.getTitle());
 			break;
 		case R.id.menu_filter_undisablable_system:
-			updateAppList(new AppFilterCondition() {
-				@Override
-				public boolean valid(AppStatus appStatus) {
-					// 無効化できないシステムアプリ
-					return appStatus.isSystem() && !appStatus.canDisable();
-				}
-			});
+			updateAppList(AppsFilter.UNDISABLABLE_SYSTEM);
 			setTitle(item.getTitle());
 			break;
 		case R.id.menu_filter_user_apps:
-			updateAppList(new AppFilterCondition() {
-				@Override
-				public boolean valid(AppStatus appStatus) {
-					// 通常のアプリ
-					return !appStatus.isSystem();
-				}
-			});
+			updateAppList(AppsFilter.USER_APPS);
 			setTitle(item.getTitle());
 			break;
 		case R.id.menu_share_label:
@@ -269,21 +245,11 @@ public class MainActivity extends BaseActivity {
 							.getAppsList()));
 					if (activity.mAdapter == null) {
 						// 初回なら
-						activity.mAdapter = new AppsListAdapter(
-								activity.mAppFilter.execute(new AppFilterCondition() {
-									@Override
-									public boolean valid(AppStatus appStatus) {
-										return !appStatus.isEnabled();
-									}
-								}));
-					} else {
-					}
-					// activity.mListView.setAdapter(activity.mAdapter);
-					if (activity.mListView.getAdapter() == null) {
+						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(AppsFilter.DISABLED));
 						activity.mListView.setAdapter(activity.mAdapter);
 						activity.setTitle(R.string.menu_filter_disabled);
 					} else {
-						activity.updateAppList(null);
+						activity.updateAppList(-1);
 					}
 				}
 			}
