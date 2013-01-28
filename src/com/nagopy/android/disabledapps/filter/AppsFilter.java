@@ -1,4 +1,4 @@
-package com.nagopy.disabledapps.filter;
+package com.nagopy.android.disabledapps.filter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,7 +6,7 @@ import java.util.Comparator;
 
 import android.util.SparseArray;
 
-import com.nagopy.disabledapps.AppStatus;
+import com.nagopy.android.disabledapps.AppStatus;
 
 /**
  * アプリ一覧を、条件を指定してフィルタリングするクラス

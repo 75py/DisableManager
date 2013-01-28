@@ -666,24 +666,24 @@ android.support.v4.widget.SearchViewCompatHoneycomb$OnQueryTextListenerCompatBri
 android.support.v4.widget.SimpleCursorAdapter
 android.support.v4.widget.SimpleCursorAdapter$CursorToStringConverter
 android.support.v4.widget.SimpleCursorAdapter$ViewBinder
-com.nagopy.disabledapps.BuildConfig
-com.nagopy.disabledapps.R
-com.nagopy.disabledapps.R$attr
-com.nagopy.disabledapps.R$color
-com.nagopy.disabledapps.R$dimen
-com.nagopy.disabledapps.R$drawable
-com.nagopy.disabledapps.R$id
-com.nagopy.disabledapps.R$layout
-com.nagopy.disabledapps.R$menu
-com.nagopy.disabledapps.R$string
-com.nagopy.disabledapps.R$style
-com.nagopy.disabledapps.R$styleable
-com.nagopy.disabledapps.filter.AppsFilter:
+com.nagopy.android.disabledapps.BuildConfig
+com.nagopy.android.disabledapps.R
+com.nagopy.android.disabledapps.R$attr
+com.nagopy.android.disabledapps.R$color
+com.nagopy.android.disabledapps.R$dimen
+com.nagopy.android.disabledapps.R$drawable
+com.nagopy.android.disabledapps.R$id
+com.nagopy.android.disabledapps.R$layout
+com.nagopy.android.disabledapps.R$menu
+com.nagopy.android.disabledapps.R$string
+com.nagopy.android.disabledapps.R$style
+com.nagopy.android.disabledapps.R$styleable
+com.nagopy.android.disabledapps.filter.AppsFilter:
     public static final int DISABLED
     public static final int DISABLABLE_AND_ENABLED_SYSTEM
     public static final int UNDISABLABLE_SYSTEM
     public static final int USER_APPS
-com.nagopy.disabledapps.util.JudgeDisablable_ICS:
+com.nagopy.android.disabledapps.util.JudgeDisablable_ICS:
     private static final boolean SUPPORT_DISABLE_APPS
 com.nagopy.lib.R
 com.nagopy.lib.R$attr

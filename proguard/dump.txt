@@ -42539,7 +42539,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x21
-    = public class com.nagopy.disabledapps.a extends java.lang.Object
+    = public class com.nagopy.android.disabledapps.a extends java.lang.Object
 
 Interfaces (count = 0):
 
@@ -42809,7 +42809,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x21
-    = public class com.nagopy.disabledapps.b extends g.b
+    = public class com.nagopy.android.disabledapps.b extends g.b
 
 Interfaces (count = 0):
 
@@ -43157,7 +43157,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x21
-    = public class com.nagopy.disabledapps.MainActivity extends g.a
+    = public class com.nagopy.android.disabledapps.MainActivity extends g.a
 
 Interfaces (count = 0):
 
@@ -43434,7 +43434,7 @@ Constant Pool (count = 263):
 Fields (count = 7):
   + Field:        o Lcom/nagopy/disabledapps/b;
     Access flags: 0x2
-      = private com.nagopy.disabledapps.b o
+      = private com.nagopy.android.disabledapps.b o
   + Field:        p Landroid/widget/ListView;
     Access flags: 0x2
       = private android.widget.ListView p
@@ -43446,7 +43446,7 @@ Fields (count = 7):
       = private e.a r
   + Field:        s Lcom/nagopy/disabledapps/e;
     Access flags: 0x2
-      = private com.nagopy.disabledapps.e s
+      = private com.nagopy.android.disabledapps.e s
   + Field:        t I
     Access flags: 0x2
       = private int t
@@ -44105,7 +44105,7 @@ Methods (count = 17):
         [30] -> line 310
   + Method:       a(Lcom/nagopy/disabledapps/MainActivity;)Ljava/util/HashMap;
     Access flags: 0x1008
-      = static synthetic java.util.HashMap a(com.nagopy.disabledapps.MainActivity)
+      = static synthetic java.util.HashMap a(com.nagopy.android.disabledapps.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
@@ -44118,7 +44118,7 @@ Methods (count = 17):
         [0] -> line 44
   + Method:       b(Lcom/nagopy/disabledapps/MainActivity;)Lcom/nagopy/disabledapps/b;
     Access flags: 0x1008
-      = static synthetic com.nagopy.disabledapps.b b(com.nagopy.disabledapps.MainActivity)
+      = static synthetic com.nagopy.android.disabledapps.b b(com.nagopy.android.disabledapps.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
@@ -44131,7 +44131,7 @@ Methods (count = 17):
         [0] -> line 32
   + Method:       a(Lcom/nagopy/disabledapps/MainActivity;Ljava/util/HashMap;)V
     Access flags: 0x1008
-      = static synthetic void a(com.nagopy.disabledapps.MainActivity,java.util.HashMap)
+      = static synthetic void a(com.nagopy.android.disabledapps.MainActivity,java.util.HashMap)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
@@ -44145,7 +44145,7 @@ Methods (count = 17):
         [0] -> line 44
   + Method:       c(Lcom/nagopy/disabledapps/MainActivity;)Le/a;
     Access flags: 0x1008
-      = static synthetic e.a c(com.nagopy.disabledapps.MainActivity)
+      = static synthetic e.a c(com.nagopy.android.disabledapps.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
@@ -44158,7 +44158,7 @@ Methods (count = 17):
         [0] -> line 38
   + Method:       d(Lcom/nagopy/disabledapps/MainActivity;)Lcom/nagopy/disabledapps/e;
     Access flags: 0x1008
-      = static synthetic com.nagopy.disabledapps.e d(com.nagopy.disabledapps.MainActivity)
+      = static synthetic com.nagopy.android.disabledapps.e d(com.nagopy.android.disabledapps.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
@@ -44171,7 +44171,7 @@ Methods (count = 17):
         [0] -> line 40
   + Method:       a(Lcom/nagopy/disabledapps/MainActivity;Lcom/nagopy/disabledapps/e;)V
     Access flags: 0x1008
-      = static synthetic void a(com.nagopy.disabledapps.MainActivity,com.nagopy.disabledapps.e)
+      = static synthetic void a(com.nagopy.android.disabledapps.MainActivity,com.nagopy.android.disabledapps.e)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
@@ -44185,7 +44185,7 @@ Methods (count = 17):
         [0] -> line 40
   + Method:       e(Lcom/nagopy/disabledapps/MainActivity;)Landroid/widget/ListView;
     Access flags: 0x1008
-      = static synthetic android.widget.ListView e(com.nagopy.disabledapps.MainActivity)
+      = static synthetic android.widget.ListView e(com.nagopy.android.disabledapps.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
@@ -44198,7 +44198,7 @@ Methods (count = 17):
         [0] -> line 34
   + Method:       f(Lcom/nagopy/disabledapps/MainActivity;)Landroid/widget/TextView;
     Access flags: 0x1008
-      = static synthetic android.widget.TextView f(com.nagopy.disabledapps.MainActivity)
+      = static synthetic android.widget.TextView f(com.nagopy.android.disabledapps.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
@@ -44211,7 +44211,7 @@ Methods (count = 17):
         [0] -> line 36
   + Method:       a(Lcom/nagopy/disabledapps/MainActivity;ILjava/lang/CharSequence;)V
     Access flags: 0x1008
-      = static synthetic void a(com.nagopy.disabledapps.MainActivity,int,java.lang.CharSequence)
+      = static synthetic void a(com.nagopy.android.disabledapps.MainActivity,int,java.lang.CharSequence)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 7, locals = 3, stack = 3):
       [0] aload_0 v0
@@ -44235,7 +44235,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x20
-    = class com.nagopy.disabledapps.c extends java.lang.Object
+    = class com.nagopy.android.disabledapps.c extends java.lang.Object
 
 Interfaces (count = 1):
   + Class [android/widget/AdapterView$OnItemClickListener]
@@ -44316,12 +44316,12 @@ Constant Pool (count = 72):
 Fields (count = 1):
   + Field:        a Lcom/nagopy/disabledapps/MainActivity;
     Access flags: 0x1010
-      = final synthetic com.nagopy.disabledapps.MainActivity a
+      = final synthetic com.nagopy.android.disabledapps.MainActivity a
 
 Methods (count = 2):
   - Method:       <init>(Lcom/nagopy/disabledapps/MainActivity;)V
     Access flags: 0x0
-      = c(com.nagopy.disabledapps.MainActivity)
+      = c(com.nagopy.android.disabledapps.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
@@ -44405,7 +44405,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x20
-    = class com.nagopy.disabledapps.d extends h.a
+    = class com.nagopy.android.disabledapps.d extends h.a
 
 Interfaces (count = 0):
 
@@ -44531,12 +44531,12 @@ Constant Pool (count = 118):
 Fields (count = 1):
   + Field:        a Lcom/nagopy/disabledapps/MainActivity;
     Access flags: 0x1010
-      = final synthetic com.nagopy.disabledapps.MainActivity a
+      = final synthetic com.nagopy.android.disabledapps.MainActivity a
 
 Methods (count = 4):
   - Method:       <init>(Lcom/nagopy/disabledapps/MainActivity;Landroid/support/v4/app/o;Landroid/app/Activity;)V
     Access flags: 0x0
-      = d(com.nagopy.disabledapps.MainActivity,android.support.v4.app.o,android.app.Activity)
+      = d(com.nagopy.android.disabledapps.MainActivity,android.support.v4.app.o,android.app.Activity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 12, locals = 4, stack = 3):
       [0] aload_0 v0
@@ -44745,7 +44745,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x20
-    = class com.nagopy.disabledapps.e extends android.widget.BaseAdapter
+    = class com.nagopy.android.disabledapps.e extends android.widget.BaseAdapter
 
 Interfaces (count = 0):
 
@@ -44863,12 +44863,12 @@ Fields (count = 2):
       = private java.util.ArrayList b
   + Field:        a Lcom/nagopy/disabledapps/MainActivity;
     Access flags: 0x1010
-      = final synthetic com.nagopy.disabledapps.MainActivity a
+      = final synthetic com.nagopy.android.disabledapps.MainActivity a
 
 Methods (count = 7):
   - Method:       <init>(Lcom/nagopy/disabledapps/MainActivity;Ljava/util/ArrayList;)V
     Access flags: 0x1
-      = public e(com.nagopy.disabledapps.MainActivity,java.util.ArrayList)
+      = public e(com.nagopy.android.disabledapps.MainActivity,java.util.ArrayList)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 15, locals = 3, stack = 2):
       [0] aload_0 v0
@@ -45101,7 +45101,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x20
-    = class com.nagopy.disabledapps.f extends java.lang.Object
+    = class com.nagopy.android.disabledapps.f extends java.lang.Object
 
 Interfaces (count = 0):
 
@@ -45148,7 +45148,7 @@ Methods (count = 2):
         [0] -> line 250
   - Method:       <init>(Lcom/nagopy/disabledapps/f;)V
     Access flags: 0x1000
-      = synthetic f(com.nagopy.disabledapps.f)
+      = synthetic f(com.nagopy.android.disabledapps.f)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 2, stack = 1):
       [0] aload_0 v0
@@ -45563,7 +45563,7 @@ Methods (count = 2):
         [5] -> line 43
   + Method:       a(Lcom/nagopy/disabledapps/a;)Z
     Access flags: 0x1
-      = public boolean a(com.nagopy.disabledapps.a)
+      = public boolean a(com.nagopy.android.disabledapps.a)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 13, locals = 2, stack = 1):
       [0] aload_1 v1
@@ -45658,7 +45658,7 @@ Methods (count = 2):
         [5] -> line 51
   + Method:       a(Lcom/nagopy/disabledapps/a;)Z
     Access flags: 0x1
-      = public boolean a(com.nagopy.disabledapps.a)
+      = public boolean a(com.nagopy.android.disabledapps.a)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 25, locals = 2, stack = 1):
       [0] aload_1 v1
@@ -45757,7 +45757,7 @@ Methods (count = 2):
         [5] -> line 59
   + Method:       a(Lcom/nagopy/disabledapps/a;)Z
     Access flags: 0x1
-      = public boolean a(com.nagopy.disabledapps.a)
+      = public boolean a(com.nagopy.android.disabledapps.a)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 18, locals = 2, stack = 1):
       [0] aload_1 v1
@@ -45849,7 +45849,7 @@ Methods (count = 2):
         [5] -> line 67
   + Method:       a(Lcom/nagopy/disabledapps/a;)Z
     Access flags: 0x1
-      = public boolean a(com.nagopy.disabledapps.a)
+      = public boolean a(com.nagopy.android.disabledapps.a)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 13, locals = 2, stack = 1):
       [0] aload_1 v1
@@ -45953,7 +45953,7 @@ Methods (count = 3):
         [5] -> line 81
   + Method:       a(Lcom/nagopy/disabledapps/a;Lcom/nagopy/disabledapps/a;)I
     Access flags: 0x1
-      = public int a(com.nagopy.disabledapps.a,com.nagopy.disabledapps.a)
+      = public int a(com.nagopy.android.disabledapps.a,com.nagopy.android.disabledapps.a)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 50, locals = 8, stack = 2):
       [0] aload_1 v1
@@ -46050,7 +46050,7 @@ Fields (count = 0):
 Methods (count = 1):
   + Method:       a(Lcom/nagopy/disabledapps/a;)Z
     Access flags: 0x401
-      = public abstract boolean a(com.nagopy.disabledapps.a)
+      = public abstract boolean a(com.nagopy.android.disabledapps.a)
 
 Class file attributes (count = 1):
   + Source file attribute:

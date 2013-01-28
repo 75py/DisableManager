@@ -1,4 +1,4 @@
-package com.nagopy.disabledapps;
+package com.nagopy.android.disabledapps;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +21,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nagopy.disabledapps.filter.AppsFilter;
+import com.nagopy.android.disabledapps.R;
+import com.nagopy.android.disabledapps.filter.AppsFilter;
 import com.nagopy.lib.base.BaseActivity;
 import com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog;
 

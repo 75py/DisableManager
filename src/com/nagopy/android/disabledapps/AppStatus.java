@@ -1,4 +1,4 @@
-package com.nagopy.disabledapps;
+package com.nagopy.android.disabledapps;
 
 public class AppStatus {
 	private String label, packageName;
