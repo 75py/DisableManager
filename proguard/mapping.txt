@@ -80,6 +80,7 @@ android.support.v4.app.DialogFragment -> android.support.v4.app.e:
     155:156:void dismiss() -> a
     169:192:void dismissInternal(boolean) -> a
     199:199:int getTheme() -> b
+    212:214:void setCancelable(boolean) -> b
     253:259:void onAttach(android.app.Activity) -> a
     263:270:void onDetach() -> c
     274:286:void onCreate(android.os.Bundle) -> a
@@ -148,7 +149,7 @@ android.support.v4.app.Fragment -> android.support.v4.app.Fragment:
     570:573:android.content.res.Resources getResources() -> j
     620:620:android.support.v4.app.FragmentManager getFragmentManager() -> k
     664:664:boolean isDetached() -> l
-    724:724:void onHiddenChanged(boolean) -> b
+    724:724:void onHiddenChanged(boolean) -> c
     867:867:void onActivityResult(int,int,android.content.Intent) -> a
     875:875:android.view.LayoutInflater getLayoutInflater(android.os.Bundle) -> b
     921:922:void onInflate(android.app.Activity,android.util.AttributeSet,android.os.Bundle) -> a
@@ -913,112 +914,117 @@ android.support.v4.widget.EdgeEffectCompatIcs -> d.e:
 com.nagopy.disabledapps.AppStatus -> com.nagopy.disabledapps.a:
     java.lang.String label -> a
     java.lang.String packageName -> b
-    android.graphics.drawable.Drawable icon -> c
-    boolean enabled -> d
-    boolean system -> e
-    boolean canDisable -> f
-    21:21:java.lang.String getLabel() -> a
-    25:25:java.lang.String getPackageName() -> b
-    29:29:boolean isEnabled() -> c
-    33:33:boolean isSystem() -> d
-    37:37:boolean canDisable() -> e
-    41:41:android.graphics.drawable.Drawable getIcon() -> f
-    46:46:java.lang.String toString() -> toString
-com.nagopy.disabledapps.AppsFilter -> com.nagopy.disabledapps.b:
-    java.util.ArrayList originalAppList -> a
-    23:41:java.util.ArrayList sort(java.util.ArrayList) -> a
-    50:51:void setOriginalAppList(java.util.ArrayList) -> b
-    60:66:java.util.ArrayList execute(com.nagopy.disabledapps.AppsFilter$AppFilterCondition) -> a
-com.nagopy.disabledapps.AppsFilter$1 -> com.nagopy.disabledapps.c:
-    com.nagopy.disabledapps.AppsFilter this$0 -> a
-    26:36:int compare(com.nagopy.disabledapps.AppStatus,com.nagopy.disabledapps.AppStatus) -> a
-    1:1:int compare(java.lang.Object,java.lang.Object) -> compare
-com.nagopy.disabledapps.AppsFilter$AppFilterCondition -> com.nagopy.disabledapps.d:
-    boolean valid(com.nagopy.disabledapps.AppStatus) -> a
-com.nagopy.disabledapps.AppsLoader -> com.nagopy.disabledapps.e:
+    boolean enabled -> c
+    boolean system -> d
+    boolean canDisable -> e
+    18:18:java.lang.String getLabel() -> a
+    22:22:java.lang.String getPackageName() -> b
+    26:26:boolean isEnabled() -> c
+    30:30:boolean isSystem() -> d
+    34:34:boolean canDisable() -> e
+    39:39:java.lang.String toString() -> toString
+com.nagopy.disabledapps.AppsLoader -> com.nagopy.disabledapps.b:
     java.util.ArrayList appsList -> b
-    28:48:void load() -> a
-    55:55:java.util.ArrayList getAppsList() -> b
+    29:53:java.util.HashMap load() -> a
+    61:61:java.util.ArrayList getAppsList() -> b
+    65:67:void deallocate() -> c
 com.nagopy.disabledapps.MainActivity -> com.nagopy.disabledapps.MainActivity:
     com.nagopy.disabledapps.AppsLoader mAppLoader -> o
     android.widget.ListView mListView -> p
-    com.nagopy.disabledapps.AppsFilter mAppFilter -> q
-    com.nagopy.disabledapps.MainActivity$AppsListAdapter mAdapter -> r
-    36:55:void onCreate(android.os.Bundle) -> onCreate
-    59:67:void onDestroy() -> onDestroy
-    71:72:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
-    81:84:void updateAppList(com.nagopy.disabledapps.AppsFilter$AppFilterCondition) -> a
-    88:163:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    233:233:com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog createReloadAsyncTask() -> f
-    286:290:void sendShareIntent(java.lang.String) -> b
-    26:26:com.nagopy.disabledapps.AppsLoader access$0(com.nagopy.disabledapps.MainActivity) -> a
-    30:30:com.nagopy.disabledapps.AppsFilter access$1(com.nagopy.disabledapps.MainActivity) -> b
-    32:32:void access$2(com.nagopy.disabledapps.MainActivity,com.nagopy.disabledapps.MainActivity$AppsListAdapter) -> a
-    28:28:android.widget.ListView access$3(com.nagopy.disabledapps.MainActivity) -> c
-    32:32:com.nagopy.disabledapps.MainActivity$AppsListAdapter access$4(com.nagopy.disabledapps.MainActivity) -> d
-com.nagopy.disabledapps.MainActivity$1 -> com.nagopy.disabledapps.f:
+    android.widget.TextView mEmptyView -> q
+    com.nagopy.disabledapps.filter.AppsFilter mAppFilter -> r
+    com.nagopy.disabledapps.MainActivity$AppsListAdapter mAdapter -> s
+    int lastAppFilterCondition -> t
+    java.util.HashMap mIconCacheHashMap -> u
+    48:71:void onCreate(android.os.Bundle) -> onCreate
+    76:99:void onDestroy() -> onDestroy
+    103:104:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    116:133:void updateAppList(int,java.lang.CharSequence) -> a
+    137:184:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    256:256:com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog createReloadAsyncTask() -> f
+    306:310:void sendShareIntent(java.lang.String) -> b
+    44:44:java.util.HashMap access$0(com.nagopy.disabledapps.MainActivity) -> a
+    32:32:com.nagopy.disabledapps.AppsLoader access$1(com.nagopy.disabledapps.MainActivity) -> b
+    44:44:void access$2(com.nagopy.disabledapps.MainActivity,java.util.HashMap) -> a
+    38:38:com.nagopy.disabledapps.filter.AppsFilter access$3(com.nagopy.disabledapps.MainActivity) -> c
+    40:40:com.nagopy.disabledapps.MainActivity$AppsListAdapter access$4(com.nagopy.disabledapps.MainActivity) -> d
+    40:40:void access$5(com.nagopy.disabledapps.MainActivity,com.nagopy.disabledapps.MainActivity$AppsListAdapter) -> a
+    34:34:android.widget.ListView access$6(com.nagopy.disabledapps.MainActivity) -> e
+    36:36:android.widget.TextView access$7(com.nagopy.disabledapps.MainActivity) -> f
+    115:115:void access$8(com.nagopy.disabledapps.MainActivity,int,java.lang.CharSequence) -> a
+com.nagopy.disabledapps.MainActivity$1 -> com.nagopy.disabledapps.c:
     com.nagopy.disabledapps.MainActivity this$0 -> a
-    45:51:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-com.nagopy.disabledapps.MainActivity$2 -> com.nagopy.disabledapps.g:
+    61:67:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.nagopy.disabledapps.MainActivity$2 -> com.nagopy.disabledapps.d:
     com.nagopy.disabledapps.MainActivity this$0 -> a
-    94:94:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
-com.nagopy.disabledapps.MainActivity$3 -> com.nagopy.disabledapps.h:
-    com.nagopy.disabledapps.MainActivity this$0 -> a
-    104:104:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
-com.nagopy.disabledapps.MainActivity$4 -> com.nagopy.disabledapps.i:
-    com.nagopy.disabledapps.MainActivity this$0 -> a
-    114:114:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
-com.nagopy.disabledapps.MainActivity$5 -> com.nagopy.disabledapps.j:
-    com.nagopy.disabledapps.MainActivity this$0 -> a
-    124:124:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
-com.nagopy.disabledapps.MainActivity$6 -> com.nagopy.disabledapps.k:
-    com.nagopy.disabledapps.MainActivity this$0 -> a
-    237:243:void onPreExecute() -> onPreExecute
-    247:251:java.lang.Void doInBackground(java.lang.Void[]) -> a
-    256:276:void onPostExecute(java.lang.Void) -> a
-com.nagopy.disabledapps.MainActivity$6$1 -> com.nagopy.disabledapps.l:
-    com.nagopy.disabledapps.MainActivity$6 this$1 -> a
-    264:264:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
-com.nagopy.disabledapps.MainActivity$AppsListAdapter -> com.nagopy.disabledapps.m:
+    260:266:void onPreExecute() -> onPreExecute
+    270:274:java.lang.Void doInBackground(java.lang.Void[]) -> a
+    279:296:void onPostExecute(java.lang.Void) -> a
+com.nagopy.disabledapps.MainActivity$AppsListAdapter -> com.nagopy.disabledapps.e:
     java.util.ArrayList appsList -> b
     com.nagopy.disabledapps.MainActivity this$0 -> a
-    178:178:java.util.ArrayList getAppList() -> a
-    185:186:void updateAppList(java.util.ArrayList) -> a
-    190:190:int getCount() -> getCount
-    195:195:java.lang.Object getItem(int) -> getItem
-    200:200:long getItemId(int) -> getItemId
-    206:222:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-com.nagopy.disabledapps.MainActivity$ViewHolder -> com.nagopy.disabledapps.n:
+    199:199:java.util.ArrayList getAppList() -> a
+    206:207:void updateAppList(java.util.ArrayList) -> a
+    211:211:int getCount() -> getCount
+    216:216:java.lang.Object getItem(int) -> getItem
+    221:221:long getItemId(int) -> getItemId
+    227:245:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.nagopy.disabledapps.MainActivity$ViewHolder -> com.nagopy.disabledapps.f:
     android.widget.TextView labelTextView -> a
     android.widget.TextView pkgNameTextView -> b
-com.nagopy.disabledapps.util.JudgeDisablable -> e.a:
+com.nagopy.disabledapps.filter.AppsFilter -> e.a:
+    java.util.ArrayList originalAppList -> a
+    android.util.SparseArray conditions -> b
+    81:99:java.util.ArrayList sort(java.util.ArrayList) -> a
+    108:109:void setOriginalAppList(java.util.ArrayList) -> b
+    117:124:java.util.ArrayList execute(int) -> a
+    131:135:void deallocate() -> a
+com.nagopy.disabledapps.filter.AppsFilter$1 -> e.b:
+    com.nagopy.disabledapps.filter.AppsFilter this$0 -> a
+    47:47:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
+com.nagopy.disabledapps.filter.AppsFilter$2 -> e.c:
+    com.nagopy.disabledapps.filter.AppsFilter this$0 -> a
+    55:55:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
+com.nagopy.disabledapps.filter.AppsFilter$3 -> e.d:
+    com.nagopy.disabledapps.filter.AppsFilter this$0 -> a
+    63:63:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
+com.nagopy.disabledapps.filter.AppsFilter$4 -> e.e:
+    com.nagopy.disabledapps.filter.AppsFilter this$0 -> a
+    71:71:boolean valid(com.nagopy.disabledapps.AppStatus) -> a
+com.nagopy.disabledapps.filter.AppsFilter$5 -> e.f:
+    com.nagopy.disabledapps.filter.AppsFilter this$0 -> a
+    84:94:int compare(com.nagopy.disabledapps.AppStatus,com.nagopy.disabledapps.AppStatus) -> a
+    1:1:int compare(java.lang.Object,java.lang.Object) -> compare
+com.nagopy.disabledapps.filter.AppsFilter$AppFilterCondition -> e.g:
+    boolean valid(com.nagopy.disabledapps.AppStatus) -> a
+com.nagopy.disabledapps.util.JudgeDisablable -> f.a:
     android.app.admin.DevicePolicyManager mDevicePolicyManager -> b
     java.lang.reflect.Method method_packageHasActiveAdmins -> c
     boolean isDisablable(android.content.pm.ApplicationInfo) -> a
     37:40:boolean packageHasActiveAdmins(java.lang.String) -> a
     46:47:void log(java.lang.Object) -> a
     55:64:com.nagopy.disabledapps.util.JudgeDisablable getInstance(android.content.Context) -> a
-com.nagopy.disabledapps.util.JudgeDisablable$1 -> e.b:
+com.nagopy.disabledapps.util.JudgeDisablable$1 -> f.b:
     67:67:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
-com.nagopy.disabledapps.util.JudgeDisablable_ICS -> e.c:
+com.nagopy.disabledapps.util.JudgeDisablable_ICS -> f.c:
     android.content.pm.PackageManager mPm -> b
     android.content.pm.PackageInfo mPackageInfo -> c
     27:35:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
     40:90:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
-com.nagopy.disabledapps.util.JudgeDisablable_JB_MR1 -> e.d:
+com.nagopy.disabledapps.util.JudgeDisablable_JB_MR1 -> f.d:
     25:29:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
     34:35:void log(java.lang.Object) -> a
     39:83:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
     87:111:boolean handleDisableable(android.widget.Button,java.lang.String,boolean) -> a
     116:130:boolean isThisASystemPackage(java.lang.String) -> b
-com.nagopy.lib.base.BaseActivity -> f.a:
+com.nagopy.lib.base.BaseActivity -> g.a:
     com.nagopy.lib.util.CommonUtil mCommonUtil -> n
     26:28:void onCreate(android.os.Bundle) -> onCreate
-com.nagopy.lib.base.BaseObject -> f.b:
+com.nagopy.lib.base.BaseObject -> g.b:
     com.nagopy.lib.util.CommonUtil mCommonUtil -> a
     16:17:void log(java.lang.Object) -> a
-    20:20:android.content.Context getContext() -> c
-com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog -> g.a:
+    20:20:android.content.Context getContext() -> d
+com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog -> h.a:
     android.support.v4.app.FragmentManager mFragmentManager -> a
     com.nagopy.lib.fragment.dialog.ProgressDialogFragment mProgressDialogFragment -> c
     java.lang.ref.WeakReference mWeakReferenceActivityReference -> b
@@ -1028,15 +1034,15 @@ com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog -> g.a:
     43:43:android.app.Activity getActivity() -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.nagopy.lib.fragment.dialog.ProgressDialogFragment -> g.b:
-    21:24:android.app.Dialog onCreateDialog(android.os.Bundle) -> c
-    34:43:java.lang.String getProgressDialogMessage() -> B
-com.nagopy.lib.image.ImageUtils -> h.a:
+com.nagopy.lib.fragment.dialog.ProgressDialogFragment -> h.b:
+    21:25:android.app.Dialog onCreateDialog(android.os.Bundle) -> c
+    35:44:java.lang.String getProgressDialogMessage() -> B
+com.nagopy.lib.image.ImageUtils -> i.a:
     145:148:int getIconSize(android.content.Context) -> a
-com.nagopy.lib.image.ImageUtils$IconSizeGetterOverApi11 -> h.b:
+com.nagopy.lib.image.ImageUtils$IconSizeGetterOverApi11 -> i.b:
     android.app.ActivityManager mActivityManager -> a
     161:161:int getLauncherLargeIconSize() -> a
-com.nagopy.lib.util.CommonUtil -> i.a:
+com.nagopy.lib.util.CommonUtil -> j.a:
     android.content.Context mContext -> a
     23:23:android.content.Context getContext() -> a
     58:59:void log(java.lang.Object) -> a

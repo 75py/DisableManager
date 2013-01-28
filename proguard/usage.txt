@@ -56,7 +56,6 @@ android.support.v4.app.DialogFragment:
     140:145:public int show(android.support.v4.app.FragmentTransaction,java.lang.String)
     165:166:public void dismissAllowingStateLoss()
     195:195:public android.app.Dialog getDialog()
-    212:214:public void setCancelable(boolean)
     220:220:public boolean isCancelable()
     241:242:public void setShowsDialog(boolean)
     248:248:public boolean getShowsDialog()
@@ -679,6 +678,11 @@ com.nagopy.disabledapps.R$menu
 com.nagopy.disabledapps.R$string
 com.nagopy.disabledapps.R$style
 com.nagopy.disabledapps.R$styleable
+com.nagopy.disabledapps.filter.AppsFilter:
+    public static final int DISABLED
+    public static final int DISABLABLE_AND_ENABLED_SYSTEM
+    public static final int UNDISABLABLE_SYSTEM
+    public static final int USER_APPS
 com.nagopy.disabledapps.util.JudgeDisablable_ICS:
     private static final boolean SUPPORT_DISABLE_APPS
 com.nagopy.lib.R
@@ -706,7 +710,7 @@ com.nagopy.lib.base.UtilInterface
 com.nagopy.lib.fragment.dialog.ProgressDialogFragment:
     private static final java.lang.String KEY_PROGRESS_DIALOG_MESSAGE
     private static final java.lang.String DEFAULT_PROGRESS_DIALOG_MESSAGE
-    28:31:public void setProgressDialogMessage(java.lang.String)
+    29:32:public void setProgressDialogMessage(java.lang.String)
 com.nagopy.lib.fragment.filechooser.FileOpenDialog
 com.nagopy.lib.fragment.filechooser.FileOpenDialog$1
 com.nagopy.lib.fragment.filechooser.FileOpenDialog$2

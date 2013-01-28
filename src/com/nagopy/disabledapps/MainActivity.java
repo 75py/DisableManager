@@ -1,10 +1,14 @@
 package com.nagopy.disabledapps;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.Menu;
@@ -35,12 +39,15 @@ public class MainActivity extends BaseActivity {
 
 	private int lastAppFilterCondition;
 
+	private HashMap<String, Drawable> mIconCacheHashMap;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
 		mAppFilter = new AppsFilter();
+		mIconCacheHashMap = new HashMap<String, Drawable>();
 		lastAppFilterCondition = AppsFilter.DISABLED;
 		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.listView_enabled_apps);
@@ -61,12 +68,15 @@ public class MainActivity extends BaseActivity {
 		createReloadAsyncTask().execute();
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		mListView.setAdapter(null);
-		mEmptyView = null;
+		mListView.setOnItemClickListener(null);
 		mListView = null;
+
+		mEmptyView = null;
 
 		mAdapter.updateAppList(null);
 		mAdapter = null;
@@ -78,6 +88,15 @@ public class MainActivity extends BaseActivity {
 		mAppLoader = null;
 
 		mCommonUtil = null;
+
+		// Set<String> keyset = mIconCacheHashMap.keySet();
+		// for (Iterator<String> iterator = keyset.iterator(); iterator.hasNext();) {
+		// String packageName = (String) iterator.next();
+		// Drawable icon = mIconCacheHashMap.get(packageName);
+		// }
+		mIconCacheHashMap.clear();
+		mIconCacheHashMap = null;
+		mIconCacheHashMap = new HashMap<String, Drawable>();
 	}
 
 	@Override
@@ -220,7 +239,10 @@ public class MainActivity extends BaseActivity {
 			if (appStatus != null) {
 				holder.labelTextView.setText(appStatus.getLabel());
 				holder.pkgNameTextView.setText(appStatus.getPackageName());
-				holder.labelTextView.setCompoundDrawables(appStatus.getIcon(), null, null, null);
+				// holder.labelTextView.setCompoundDrawables(appStatus.getIcon(), null, null, null);
+				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
+				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
+				icon.setCallback(null);
 			}
 			return convertView;
 		}
@@ -249,7 +271,7 @@ public class MainActivity extends BaseActivity {
 			protected Void doInBackground(Void... params) {
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
-					activity.mAppLoader.load();
+					activity.mIconCacheHashMap = activity.mAppLoader.load();
 				}
 				return null;
 			}

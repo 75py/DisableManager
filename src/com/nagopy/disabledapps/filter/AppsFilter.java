@@ -128,9 +128,7 @@ public class AppsFilter {
 	 * 保存しているコレクションのクリア
 	 */
 	public void deallocate() {
-		originalAppList.clear();
 		originalAppList = null;
-		conditions.clear();
 		conditions = null;
 	}
 

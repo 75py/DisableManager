@@ -1,6 +1,7 @@
 package com.nagopy.disabledapps;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import android.content.Context;
@@ -23,8 +24,9 @@ public class AppsLoader extends BaseObject {
 	/**
 	 * アプリ一覧を読み込む<br>
 	 * ちょっと時間かかるかも
+	 * @return アイコンのキャッシュ
 	 */
-	public void load() {
+	public HashMap<String, Drawable> load() {
 		appsList.clear();
 
 		PackageManager packageManager = getContext().getPackageManager();
@@ -35,16 +37,21 @@ public class AppsLoader extends BaseObject {
 
 		JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
 
+		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
+
 		for (ApplicationInfo info : applicationInfo) {
 			Drawable icon = info.loadIcon(packageManager);
 			icon.setBounds(0, 0, iconSize, iconSize);
 
 			AppStatus appStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
 					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
-					judgeDisablable.isDisablable(info), icon);
+					judgeDisablable.isDisablable(info));
 
 			appsList.add(appStatus);
+			iconCache.put(info.packageName, icon);
 		}
+
+		return iconCache;
 	}
 
 	/**
@@ -56,7 +63,6 @@ public class AppsLoader extends BaseObject {
 	}
 
 	public void deallocate() {
-		appsList.clear();
 		appsList = null;
 	}
 }
