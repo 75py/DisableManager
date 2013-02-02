@@ -924,7 +924,7 @@ com.nagopy.android.disabledapps.AppStatus -> com.nagopy.android.disabledapps.a:
     33:33:boolean canDisable() -> e
     38:38:java.lang.String toString() -> toString
 com.nagopy.android.disabledapps.AppsLoader -> com.nagopy.android.disabledapps.b:
-    java.util.ArrayList appsList -> b
+    java.util.ArrayList appsList -> a
     30:54:java.util.HashMap load() -> a
     62:62:java.util.ArrayList getAppsList() -> b
     66:67:void deallocate() -> c
@@ -998,30 +998,28 @@ com.nagopy.android.disabledapps.filter.AppsFilter$5 -> e.f:
 com.nagopy.android.disabledapps.filter.AppsFilter$AppFilterCondition -> e.g:
     boolean valid(com.nagopy.android.disabledapps.AppStatus) -> a
 com.nagopy.android.disabledapps.util.JudgeDisablable -> f.a:
-    android.app.admin.DevicePolicyManager mDevicePolicyManager -> b
-    java.lang.reflect.Method method_packageHasActiveAdmins -> c
+    android.app.admin.DevicePolicyManager mDevicePolicyManager -> d
+    java.lang.reflect.Method method_packageHasActiveAdmins -> e
+    android.content.pm.PackageManager mPackageManager -> a
+    android.content.pm.PackageInfo mPackageInfo -> b
     boolean isDisablable(android.content.pm.ApplicationInfo) -> a
-    37:40:boolean packageHasActiveAdmins(java.lang.String) -> a
-    46:47:void log(java.lang.Object) -> a
-    55:64:com.nagopy.android.disabledapps.util.JudgeDisablable getInstance(android.content.Context) -> a
+    44:47:boolean packageHasActiveAdmins(java.lang.String) -> a
+    53:61:boolean isThisASystemPackage() -> a
+    71:80:com.nagopy.android.disabledapps.util.JudgeDisablable getInstance(android.content.Context) -> a
 com.nagopy.android.disabledapps.util.JudgeDisablable$1 -> f.b:
-    67:67:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
+    83:83:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
 com.nagopy.android.disabledapps.util.JudgeDisablable_ICS -> f.c:
-    android.content.pm.PackageManager mPm -> b
-    android.content.pm.PackageInfo mPackageInfo -> c
-    27:35:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
-    40:90:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
+    21:28:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
+    32:50:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
 com.nagopy.android.disabledapps.util.JudgeDisablable_JB_MR1 -> f.d:
-    25:29:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
-    34:35:void log(java.lang.Object) -> a
-    39:83:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
-    87:111:boolean handleDisableable(android.widget.Button,java.lang.String,boolean) -> a
-    116:130:boolean isThisASystemPackage(java.lang.String) -> b
+    23:38:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
+    42:57:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
+    61:74:boolean handleDisableable(android.widget.Button,java.lang.String,boolean) -> a
 com.nagopy.lib.base.BaseActivity -> g.a:
     com.nagopy.lib.util.CommonUtil mCommonUtil -> n
     26:28:void onCreate(android.os.Bundle) -> onCreate
 com.nagopy.lib.base.BaseObject -> g.b:
-    com.nagopy.lib.util.CommonUtil mCommonUtil -> a
+    com.nagopy.lib.util.CommonUtil mCommonUtil -> c
     16:17:void log(java.lang.Object) -> a
     20:20:android.content.Context getContext() -> d
 com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog -> h.a:

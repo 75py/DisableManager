@@ -683,8 +683,6 @@ com.nagopy.android.disabledapps.filter.AppsFilter:
     public static final int DISABLABLE_AND_ENABLED_SYSTEM
     public static final int UNDISABLABLE_SYSTEM
     public static final int USER_APPS
-com.nagopy.android.disabledapps.util.JudgeDisablable_ICS:
-    private static final boolean SUPPORT_DISABLE_APPS
 com.nagopy.lib.R
 com.nagopy.lib.R$attr
 com.nagopy.lib.R$color

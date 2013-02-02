@@ -2,18 +2,24 @@ package com.nagopy.android.disabledapps.util;
 
 import java.lang.reflect.Method;
 
-import com.nagopy.lib.base.BaseObject;
-
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
-import android.util.Log;
+
+import com.nagopy.lib.base.BaseObject;
 
 public abstract class JudgeDisablable extends BaseObject {
 
 	private DevicePolicyManager mDevicePolicyManager;
 	private Method method_packageHasActiveAdmins;
+
+	protected PackageManager mPackageManager;
+
+	protected PackageInfo mPackageInfo;
 
 	/**
 	 * そのアプリが無効化できるものかどうかを判定する
@@ -22,6 +28,7 @@ public abstract class JudgeDisablable extends BaseObject {
 
 	protected JudgeDisablable(Context context) {
 		super(context);
+		mPackageManager = context.getPackageManager();
 		mDevicePolicyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
 		try {
 			method_packageHasActiveAdmins = mDevicePolicyManager.getClass().getMethod("packageHasActiveAdmins",
@@ -41,9 +48,15 @@ public abstract class JudgeDisablable extends BaseObject {
 		}
 	}
 
-	@Override
-	public void log(Object object) {
-		Log.d("debug", object.toString());
+	protected boolean isThisASystemPackage() {
+		try {
+			PackageInfo sys = mPackageManager.getPackageInfo("android", PackageManager.GET_SIGNATURES);
+
+			return (mPackageInfo != null && mPackageInfo.signatures != null && sys.signatures[0]
+					.equals(mPackageInfo.signatures[0]));
+		} catch (NameNotFoundException e) {
+			return false;
+		}
 	}
 
 	/**
