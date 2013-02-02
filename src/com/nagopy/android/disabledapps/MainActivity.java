@@ -257,25 +257,35 @@ public class MainActivity extends BaseActivity {
 		}
 
 		StringBuffer sb = new StringBuffer();
+		String lineBreak = System.getProperty("line.separator");
 		switch (id) {
 		case R.id.menu_share_label:
 			for (AppStatus appStatus : appsList) {
 				sb.append(appStatus.getLabel());
-				sb.append("\n");
+				// String comment = appStatus.getComment();
+				// if (comment != null) {
+				// sb.append("（");
+				// sb.append(comment);
+				// sb.append("）");
+				// }
+				sb.append(lineBreak);
+				// sb.append(String.format("%1$s（%2$s）%3$s", appStatus.getLabel(),
+				// appStatus.getComment(), lineBreak));
 			}
 			break;
 		case R.id.menu_share_package:
 			for (AppStatus appStatus : appsList) {
 				sb.append(appStatus.getPackageName());
-				sb.append("\n");
+				sb.append(lineBreak);
 			}
 			break;
 		case R.id.menu_share_label_and_package:
 			for (AppStatus appStatus : appsList) {
 				sb.append(appStatus.getLabel());
-				sb.append("\n");
+				sb.append(lineBreak);
 				sb.append(appStatus.getPackageName());
-				sb.append("\n\n");
+				sb.append(lineBreak);
+				sb.append(lineBreak);
 			}
 			break;
 		default:
