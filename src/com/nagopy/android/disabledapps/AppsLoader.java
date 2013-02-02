@@ -9,6 +9,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
+import com.nagopy.android.disabledapps.util.CommentsUtils;
 import com.nagopy.android.disabledapps.util.JudgeDisablable;
 import com.nagopy.lib.base.BaseObject;
 import com.nagopy.lib.image.ImageUtils;
@@ -47,8 +48,8 @@ public class AppsLoader extends BaseObject {
 		int iconSize = ImageUtils.getIconSize(getContext());
 
 		JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
-
 		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
+		CommentsUtils commentsUtils = new CommentsUtils(getContext());
 
 		for (ApplicationInfo info : applicationInfo) {
 			Drawable icon = info.loadIcon(packageManager);
@@ -57,6 +58,8 @@ public class AppsLoader extends BaseObject {
 			AppStatus appStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
 					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
 					judgeDisablable.isDisablable(info));
+			appStatus.setComment(commentsUtils.restoreComment(info.packageName));
+			log(appStatus.getComment());
 
 			appsList.add(appStatus);
 			iconCache.put(info.packageName, icon);

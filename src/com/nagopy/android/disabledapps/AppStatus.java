@@ -31,6 +31,11 @@ public class AppStatus {
 	private boolean canDisable;
 
 	/**
+	 * コメント
+	 */
+	private String comment;
+
+	/**
 	 * コンストラクタ
 	 * @param label
 	 *           ラベル名
@@ -90,5 +95,22 @@ public class AppStatus {
 	public String toString() {
 		return getLabel() + ":" + getPackageName() + ", enabled:" + isEnabled() + ", system:" + isSystem()
 				+ ", canDisable:" + canDisable();
+	}
+
+	/**
+	 * @return コメントを取得する<br>
+	 *         コメントがない場合はnull
+	 */
+	public String getComment() {
+		return comment;
+	}
+
+	/**
+	 * コメントを設定
+	 * @param comment
+	 *           追加するコメント
+	 */
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 }
