@@ -238,6 +238,7 @@ public class MainActivity extends BaseActivity {
 		Intent intent = new Intent(Intent.ACTION_SEND);
 		intent.setType("text/plain");
 		intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
+		intent.putExtra(Intent.EXTRA_SUBJECT, getTitle());
 		startActivity(intent);
 	}
 
