@@ -13,16 +13,27 @@ import com.nagopy.android.disabledapps.util.JudgeDisablable;
 import com.nagopy.lib.base.BaseObject;
 import com.nagopy.lib.image.ImageUtils;
 
+/**
+ * アプリ名などを読みこみ、アプリ一覧を取得するクラス。
+ */
 public class AppsLoader extends BaseObject {
+	/**
+	 * アプリ一覧を保存しておくためのフィールド。
+	 */
 	private ArrayList<AppStatus> appsList;
 
+	/**
+	 * コンストラクタ
+	 * @param context
+	 *           　アプリケーションのコンテキスト
+	 */
 	public AppsLoader(Context context) {
 		super(context);
 		appsList = new ArrayList<AppStatus>();
 	}
 
 	/**
-	 * アプリ一覧を読み込む<br>
+	 * アプリ一覧を読み込む。<br>
 	 * ちょっと時間かかるかも
 	 * @return アイコンのキャッシュ
 	 */
@@ -55,13 +66,16 @@ public class AppsLoader extends BaseObject {
 	}
 
 	/**
-	 * アプリ一覧（未編集）を取得する
-	 * @return
+	 * アプリ一覧（未編集）を取得する。
+	 * @return アプリ情報一覧のリストを返す
 	 */
 	public ArrayList<AppStatus> getAppsList() {
 		return appsList;
 	}
 
+	/**
+	 * リストをnullに
+	 */
 	public void deallocate() {
 		appsList = null;
 	}

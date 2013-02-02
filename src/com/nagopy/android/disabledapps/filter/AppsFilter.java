@@ -13,8 +13,14 @@ import com.nagopy.android.disabledapps.AppStatus;
  */
 public class AppsFilter {
 
+	/**
+	 * 編集前のオリジナルを保持するリスト
+	 */
 	private ArrayList<AppStatus> originalAppList;
 
+	/**
+	 * 条件群を保持するSparseArray
+	 */
 	private SparseArray<AppFilterCondition> conditions;
 
 	/**
@@ -37,12 +43,16 @@ public class AppsFilter {
 	 */
 	public static final int USER_APPS = 0x08;
 
+	/**
+	 * コンストラクタ<br>
+	 * リストの初期化などを行う
+	 */
 	public AppsFilter() {
 		originalAppList = new ArrayList<AppStatus>();
-		conditions = new SparseArray<AppsFilter.AppFilterCondition>();
+		conditions = new SparseArray<AppFilterCondition>();
 		conditions.put(DISABLED, new AppFilterCondition() {
 			@Override
-			public boolean valid(AppStatus appStatus) {
+			public boolean valid(final AppStatus appStatus) {
 				// 無効化済み
 				return !appStatus.isEnabled();
 			}
@@ -50,7 +60,7 @@ public class AppsFilter {
 
 		conditions.put(DISABLABLE_AND_ENABLED_SYSTEM, new AppFilterCondition() {
 			@Override
-			public boolean valid(AppStatus appStatus) {
+			public boolean valid(final AppStatus appStatus) {
 				// システムで、無効化可能で、まだ有効なアプリ
 				return appStatus.isSystem() && appStatus.canDisable() && appStatus.isEnabled();
 			}
@@ -58,7 +68,7 @@ public class AppsFilter {
 
 		conditions.put(UNDISABLABLE_SYSTEM, new AppFilterCondition() {
 			@Override
-			public boolean valid(AppStatus appStatus) {
+			public boolean valid(final AppStatus appStatus) {
 				// 無効化できないシステムアプリ
 				return appStatus.isSystem() && !appStatus.canDisable();
 			}
@@ -66,7 +76,7 @@ public class AppsFilter {
 
 		conditions.put(USER_APPS, new AppFilterCondition() {
 			@Override
-			public boolean valid(AppStatus appStatus) {
+			public boolean valid(final AppStatus appStatus) {
 				// 通常のアプリ
 				return !appStatus.isSystem();
 			}
@@ -76,17 +86,19 @@ public class AppsFilter {
 	/**
 	 * ソートする<br>
 	 * 大文字小文字は区別しない
+	 * @param list ソートしたいリスト
+	 * @return ソート後のリスト
 	 */
 	public ArrayList<AppStatus> sort(ArrayList<AppStatus> list) {
 		Comparator<AppStatus> comparator = new Comparator<AppStatus>() {
 			@Override
-			public int compare(AppStatus obj0, AppStatus obj1) {
+			public int compare(final AppStatus obj0, final AppStatus obj1) {
 				String label0 = ((AppStatus) obj0).getLabel();
 				String label1 = ((AppStatus) obj1).getLabel();
-				int ret = 0;
 
+				int ret = label0.compareToIgnoreCase(label1);
 				// ラベルで並び替え、同じラベルがあったらパッケージ名で
-				if ((ret = label0.compareToIgnoreCase(label1)) == 0) {
+				if (ret == 0) {
 					String pkgName0 = ((AppStatus) obj0).getPackageName();
 					String pkgName1 = ((AppStatus) obj1).getPackageName();
 					ret = pkgName0.compareToIgnoreCase(pkgName1);
@@ -94,6 +106,7 @@ public class AppsFilter {
 				return ret;
 			}
 		};
+
 		Collections.sort(list, comparator);
 
 		return list;
@@ -103,6 +116,7 @@ public class AppsFilter {
 	 * すべてのアプリを登録しておく<br>
 	 * ソートする場合は {@link #sort(ArrayList)}
 	 * @param original
+	 *           登録するリスト
 	 */
 	public void setOriginalAppList(ArrayList<AppStatus> original) {
 		this.originalAppList = original;
@@ -111,6 +125,7 @@ public class AppsFilter {
 	/**
 	 * フィルターを実行して、結果を返す
 	 * @param key
+	 *           実行するフィルタのキー
 	 * @return フィルター結果
 	 */
 	public ArrayList<AppStatus> execute(int key) {
@@ -131,19 +146,4 @@ public class AppsFilter {
 		originalAppList = null;
 		conditions = null;
 	}
-
-	/**
-	 * フィルターかける条件を指定するためのインターフェース<br>
-	 * 無名クラスで適宜作ってね
-	 */
-	public static interface AppFilterCondition {
-
-		/**
-		 * @param appStatus
-		 *           判定するアプリのステータス
-		 * @return フィルターの条件に適していればtrue
-		 */
-		public boolean valid(AppStatus appStatus);
-	}
-
 }

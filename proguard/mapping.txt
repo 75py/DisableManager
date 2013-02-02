@@ -1008,10 +1008,10 @@ com.nagopy.android.disabledapps.util.JudgeDisablable -> f.a:
     71:80:com.nagopy.android.disabledapps.util.JudgeDisablable getInstance(android.content.Context) -> a
 com.nagopy.android.disabledapps.util.JudgeDisablable$1 -> f.b:
     83:83:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
-com.nagopy.android.disabledapps.util.JudgeDisablable_ICS -> f.c:
+com.nagopy.android.disabledapps.util.JudgeDisablableICS -> f.c:
     21:28:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
     32:50:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
-com.nagopy.android.disabledapps.util.JudgeDisablable_JB_MR1 -> f.d:
+com.nagopy.android.disabledapps.util.JudgeDisablableJBmr1 -> f.d:
     23:38:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
     42:57:boolean initUninstallButtons(int,java.lang.String,boolean) -> a
     61:74:boolean handleDisableable(android.widget.Button,java.lang.String,boolean) -> a
