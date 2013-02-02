@@ -86,7 +86,7 @@ public class AppsFilter {
 				int ret = 0;
 
 				// ラベルで並び替え、同じラベルがあったらパッケージ名で
-				if ((ret = label0.compareTo(label1)) == 0) {
+				if ((ret = label0.compareToIgnoreCase(label1)) == 0) {
 					String pkgName0 = ((AppStatus) obj0).getPackageName();
 					String pkgName1 = ((AppStatus) obj1).getPackageName();
 					ret = pkgName0.compareToIgnoreCase(pkgName1);
