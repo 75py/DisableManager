@@ -42832,7 +42832,7 @@ Constant Pool (count = 127):
   + Fieldref [android/content/pm/ApplicationInfo.enabled Z]
   + Fieldref [android/content/pm/ApplicationInfo.flags I]
   + Fieldref [android/content/pm/ApplicationInfo.packageName Ljava/lang/String;]
-  + Fieldref [com/nagopy/android/disabledapps/b.b Ljava/util/ArrayList;]
+  + Fieldref [com/nagopy/android/disabledapps/b.a Ljava/util/ArrayList;]
   + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
   + Methodref [android/content/pm/ApplicationInfo.loadIcon (Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;]
   + Methodref [android/content/pm/ApplicationInfo.loadLabel (Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;]
@@ -42859,8 +42859,8 @@ Constant Pool (count = 127):
   + NameAndType [a (Landroid/content/Context;)I]
   + NameAndType [a (Landroid/content/Context;)Lf/a;]
   + NameAndType [a (Landroid/content/pm/ApplicationInfo;)Z]
+  + NameAndType [a Ljava/util/ArrayList;]
   + NameAndType [add (Ljava/lang/Object;)Z]
-  + NameAndType [b Ljava/util/ArrayList;]
   + NameAndType [clear ()V]
   + NameAndType [d ()Landroid/content/Context;]
   + NameAndType [enabled Z]
@@ -42942,9 +42942,9 @@ Constant Pool (count = 127):
   + Utf8 [toString]
 
 Fields (count = 1):
-  + Field:        b Ljava/util/ArrayList;
+  + Field:        a Ljava/util/ArrayList;
     Access flags: 0x2
-      = private java.util.ArrayList b
+      = private java.util.ArrayList a
 
 Methods (count = 4):
   - Method:       <init>(Landroid/content/Context;)V
@@ -42963,7 +42963,7 @@ Methods (count = 4):
       [10] invokespecial #31
         + Methodref [java/util/ArrayList.<init> ()V]
       [13] putfield #19
-        + Fieldref [com/nagopy/android/disabledapps/b.b Ljava/util/ArrayList;]
+        + Fieldref [com/nagopy/android/disabledapps/b.a Ljava/util/ArrayList;]
       [16] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
@@ -42978,7 +42978,7 @@ Methods (count = 4):
     + Code attribute instructions (code length = 177, locals = 10, stack = 8):
       [0] aload_0 v0
       [1] getfield #19
-        + Fieldref [com/nagopy/android/disabledapps/b.b Ljava/util/ArrayList;]
+        + Fieldref [com/nagopy/android/disabledapps/b.a Ljava/util/ArrayList;]
       [4] invokevirtual #33
         + Methodref [java/util/ArrayList.clear ()V]
       [7] aload_0 v0
@@ -43066,7 +43066,7 @@ Methods (count = 4):
       [139] astore v9
       [141] aload_0 v0
       [142] getfield #19
-        + Fieldref [com/nagopy/android/disabledapps/b.b Ljava/util/ArrayList;]
+        + Fieldref [com/nagopy/android/disabledapps/b.a Ljava/util/ArrayList;]
       [145] aload v9
       [147] invokevirtual #32
         + Methodref [java/util/ArrayList.add (Ljava/lang/Object;)Z]
@@ -43119,7 +43119,7 @@ Methods (count = 4):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
       [1] getfield #19
-        + Fieldref [com/nagopy/android/disabledapps/b.b Ljava/util/ArrayList;]
+        + Fieldref [com/nagopy/android/disabledapps/b.a Ljava/util/ArrayList;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
@@ -43133,7 +43133,7 @@ Methods (count = 4):
       [0] aload_0 v0
       [1] aconst_null
       [2] putfield #19
-        + Fieldref [com/nagopy/android/disabledapps/b.b Ljava/util/ArrayList;]
+        + Fieldref [com/nagopy/android/disabledapps/b.a Ljava/util/ArrayList;]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
@@ -45887,7 +45887,7 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [java/util/Comparator]
 
-Constant Pool (count = 43):
+Constant Pool (count = 40):
   + Class [com/nagopy/android/disabledapps/a]
   + Class [e/f]
   + Class [java/lang/Object]
@@ -45898,14 +45898,12 @@ Constant Pool (count = 43):
   + Methodref [com/nagopy/android/disabledapps/a.b ()Ljava/lang/String;]
   + Methodref [e/f.a (Lcom/nagopy/android/disabledapps/a;Lcom/nagopy/android/disabledapps/a;)I]
   + Methodref [java/lang/Object.<init> ()V]
-  + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
   + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
   + NameAndType [<init> ()V]
   + NameAndType [a ()Ljava/lang/String;]
   + NameAndType [a (Lcom/nagopy/android/disabledapps/a;Lcom/nagopy/android/disabledapps/a;)I]
   + NameAndType [a Le/a;]
   + NameAndType [b ()Ljava/lang/String;]
-  + NameAndType [compareTo (Ljava/lang/String;)I]
   + NameAndType [compareToIgnoreCase (Ljava/lang/String;)I]
   + Utf8 [()Ljava/lang/String;]
   + Utf8 [()V]
@@ -45924,7 +45922,6 @@ Constant Pool (count = 43):
   + Utf8 [b]
   + Utf8 [com/nagopy/android/disabledapps/a]
   + Utf8 [compare]
-  + Utf8 [compareTo]
   + Utf8 [compareToIgnoreCase]
   + Utf8 [e/f]
   + Utf8 [java/lang/Object]
@@ -45973,7 +45970,7 @@ Methods (count = 3):
       [14] aload_3 v3
       [15] aload v4
       [17] invokevirtual #11
-        + Methodref [java/lang/String.compareTo (Ljava/lang/String;)I]
+        + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
       [20] dup
       [21] istore v5
       [23] ifne +24 (target=47)
@@ -45987,7 +45984,7 @@ Methods (count = 3):
       [36] astore v7
       [38] aload v6
       [40] aload v7
-      [42] invokevirtual #12
+      [42] invokevirtual #11
         + Methodref [java/lang/String.compareToIgnoreCase (Ljava/lang/String;)I]
       [45] istore v5
       [47] iload v5
@@ -46070,16 +46067,19 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 106):
+Constant Pool (count = 131):
   + String [Exception]
   + String [NoSuchMethodException]
-  + String [debug]
+  + String [android]
   + String [device_policy]
   + String [packageHasActiveAdmins]
   + Class [android/app/admin/DevicePolicyManager]
   + Class [android/content/Context]
+  + Class [android/content/pm/PackageInfo]
+  + Class [android/content/pm/PackageManager]
+  + Class [android/content/pm/PackageManager$NameNotFoundException]
+  + Class [android/content/pm/Signature]
   + Class [android/os/Build$VERSION]
-  + Class [android/util/Log]
   + Class [f/a]
   + Class [f/b]
   + Class [f/c]
@@ -46092,71 +46092,90 @@ Constant Pool (count = 106):
   + Class [java/lang/Object]
   + Class [java/lang/String]
   + Class [java/lang/reflect/Method]
+  + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
   + Fieldref [android/os/Build$VERSION.SDK_INT I]
-  + Fieldref [f/a.b Landroid/app/admin/DevicePolicyManager;]
-  + Fieldref [f/a.c Ljava/lang/reflect/Method;]
+  + Fieldref [f/a.a Landroid/content/pm/PackageManager;]
+  + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+  + Fieldref [f/a.d Landroid/app/admin/DevicePolicyManager;]
+  + Fieldref [f/a.e Ljava/lang/reflect/Method;]
+  + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
   + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
-  + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
+  + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
+  + Methodref [android/content/pm/Signature.equals (Ljava/lang/Object;)Z]
   + Methodref [f/a.a (Ljava/lang/Object;)V]
   + Methodref [f/b.<init> (Landroid/content/Context;)V]
   + Methodref [f/c.<init> (Landroid/content/Context;)V]
   + Methodref [f/d.<init> (Landroid/content/Context;)V]
   + Methodref [g/b.<init> (Landroid/content/Context;)V]
   + Methodref [java/lang/Boolean.booleanValue ()Z]
+  + Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
   + Methodref [java/lang/Class.getMethod (Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;]
   + Methodref [java/lang/NoSuchMethodException.printStackTrace ()V]
   + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
-  + Methodref [java/lang/Object.toString ()Ljava/lang/String;]
   + Methodref [java/lang/reflect/Method.invoke (Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;]
   + NameAndType [<init> (Landroid/content/Context;)V]
   + NameAndType [SDK_INT I]
   + NameAndType [a (Ljava/lang/Object;)V]
-  + NameAndType [b Landroid/app/admin/DevicePolicyManager;]
+  + NameAndType [a Landroid/content/pm/PackageManager;]
+  + NameAndType [b Landroid/content/pm/PackageInfo;]
   + NameAndType [booleanValue ()Z]
-  + NameAndType [c Ljava/lang/reflect/Method;]
-  + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
+  + NameAndType [d Landroid/app/admin/DevicePolicyManager;]
+  + NameAndType [e Ljava/lang/reflect/Method;]
+  + NameAndType [equals (Ljava/lang/Object;)Z]
   + NameAndType [getClass ()Ljava/lang/Class;]
   + NameAndType [getMethod (Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;]
+  + NameAndType [getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
+  + NameAndType [getPackageManager ()Landroid/content/pm/PackageManager;]
   + NameAndType [getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
   + NameAndType [invoke (Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;]
   + NameAndType [printStackTrace ()V]
-  + NameAndType [toString ()Ljava/lang/String;]
+  + NameAndType [signatures [Landroid/content/pm/Signature;]
+  + NameAndType [valueOf (Z)Ljava/lang/Boolean;]
+  + Utf8 [()Landroid/content/pm/PackageManager;]
   + Utf8 [()Ljava/lang/Class;]
-  + Utf8 [()Ljava/lang/String;]
   + Utf8 [()V]
   + Utf8 [()Z]
   + Utf8 [(Landroid/content/Context;)Lf/a;]
   + Utf8 [(Landroid/content/Context;)V]
   + Utf8 [(Landroid/content/pm/ApplicationInfo;)Z]
   + Utf8 [(Ljava/lang/Object;)V]
+  + Utf8 [(Ljava/lang/Object;)Z]
   + Utf8 [(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;]
   + Utf8 [(Ljava/lang/String;)Ljava/lang/Object;]
   + Utf8 [(Ljava/lang/String;)Z]
-  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
+  + Utf8 [(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
   + Utf8 [(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;]
+  + Utf8 [(Z)Ljava/lang/Boolean;]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [Exception]
   + Utf8 [I]
   + Utf8 [JudgeDisablable.java]
   + Utf8 [Landroid/app/admin/DevicePolicyManager;]
+  + Utf8 [Landroid/content/pm/PackageInfo;]
+  + Utf8 [Landroid/content/pm/PackageManager;]
   + Utf8 [LineNumberTable]
   + Utf8 [Ljava/lang/reflect/Method;]
   + Utf8 [NoSuchMethodException]
   + Utf8 [SDK_INT]
   + Utf8 [SourceFile]
   + Utf8 [StackMapTable]
+  + Utf8 [[Landroid/content/pm/Signature;]
   + Utf8 [a]
+  + Utf8 [android]
   + Utf8 [android/app/admin/DevicePolicyManager]
   + Utf8 [android/content/Context]
+  + Utf8 [android/content/pm/PackageInfo]
+  + Utf8 [android/content/pm/PackageManager]
+  + Utf8 [android/content/pm/PackageManager$NameNotFoundException]
+  + Utf8 [android/content/pm/Signature]
   + Utf8 [android/os/Build$VERSION]
-  + Utf8 [android/util/Log]
   + Utf8 [b]
   + Utf8 [booleanValue]
-  + Utf8 [c]
   + Utf8 [d]
-  + Utf8 [debug]
   + Utf8 [device_policy]
+  + Utf8 [e]
+  + Utf8 [equals]
   + Utf8 [f/a]
   + Utf8 [f/b]
   + Utf8 [f/c]
@@ -46164,6 +46183,8 @@ Constant Pool (count = 106):
   + Utf8 [g/b]
   + Utf8 [getClass]
   + Utf8 [getMethod]
+  + Utf8 [getPackageInfo]
+  + Utf8 [getPackageManager]
   + Utf8 [getSystemService]
   + Utf8 [invoke]
   + Utf8 [java/lang/Boolean]
@@ -46175,15 +46196,22 @@ Constant Pool (count = 106):
   + Utf8 [java/lang/reflect/Method]
   + Utf8 [packageHasActiveAdmins]
   + Utf8 [printStackTrace]
-  + Utf8 [toString]
+  + Utf8 [signatures]
+  + Utf8 [valueOf]
 
-Fields (count = 2):
-  + Field:        b Landroid/app/admin/DevicePolicyManager;
+Fields (count = 4):
+  + Field:        d Landroid/app/admin/DevicePolicyManager;
     Access flags: 0x2
-      = private android.app.admin.DevicePolicyManager b
-  + Field:        c Ljava/lang/reflect/Method;
+      = private android.app.admin.DevicePolicyManager d
+  + Field:        e Ljava/lang/reflect/Method;
     Access flags: 0x2
-      = private java.lang.reflect.Method c
+      = private java.lang.reflect.Method e
+  + Field:        a Landroid/content/pm/PackageManager;
+    Access flags: 0x4
+      = protected android.content.pm.PackageManager a
+  + Field:        b Landroid/content/pm/PackageInfo;
+    Access flags: 0x4
+      = protected android.content.pm.PackageInfo b
 
 Methods (count = 5):
   + Method:       a(Landroid/content/pm/ApplicationInfo;)Z
@@ -46193,99 +46221,106 @@ Methods (count = 5):
     Access flags: 0x4
       = protected a(android.content.Context)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 58, locals = 3, stack = 7):
+    + Code attribute instructions (code length = 66, locals = 3, stack = 7):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #31
+      [2] invokespecial #39
         + Methodref [g/b.<init> (Landroid/content/Context;)V]
       [5] aload_0 v0
       [6] aload_1 v1
-      [7] ldc #4
+      [7] invokevirtual #31
+        + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
+      [10] putfield #27
+        + Fieldref [f/a.a Landroid/content/pm/PackageManager;]
+      [13] aload_0 v0
+      [14] aload_1 v1
+      [15] ldc #4
         + String [device_policy]
-      [9] invokevirtual #25
+      [17] invokevirtual #32
         + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
-      [12] checkcast #6
+      [20] checkcast #6
         + Class [android/app/admin/DevicePolicyManager]
-      [15] putfield #23
-        + Fieldref [f/a.b Landroid/app/admin/DevicePolicyManager;]
-      [18] aload_0 v0
-      [19] aload_0 v0
-      [20] getfield #23
-        + Fieldref [f/a.b Landroid/app/admin/DevicePolicyManager;]
-      [23] invokevirtual #35
+      [23] putfield #29
+        + Fieldref [f/a.d Landroid/app/admin/DevicePolicyManager;]
+      [26] aload_0 v0
+      [27] aload_0 v0
+      [28] getfield #29
+        + Fieldref [f/a.d Landroid/app/admin/DevicePolicyManager;]
+      [31] invokevirtual #44
         + Methodref [java/lang/Object.getClass ()Ljava/lang/Class;]
-      [26] ldc #5
+      [34] ldc #5
         + String [packageHasActiveAdmins]
-      [28] iconst_1
-      [29] anewarray #16
+      [36] iconst_1
+      [37] anewarray #19
         + Class [java/lang/Class]
-      [32] dup
-      [33] iconst_0
-      [34] ldc #20
+      [40] dup
+      [41] iconst_0
+      [42] ldc #23
         + Class [java/lang/String]
-      [36] aastore
-      [37] invokevirtual #33
+      [44] aastore
+      [45] invokevirtual #42
         + Methodref [java/lang/Class.getMethod (Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;]
-      [40] putfield #24
-        + Fieldref [f/a.c Ljava/lang/reflect/Method;]
-      [43] goto +14 (target=57)
-      [46] astore_2 v2
-      [47] aload_2 v2
-      [48] invokevirtual #34
+      [48] putfield #30
+        + Fieldref [f/a.e Ljava/lang/reflect/Method;]
+      [51] goto +14 (target=65)
+      [54] astore_2 v2
+      [55] aload_2 v2
+      [56] invokevirtual #43
         + Methodref [java/lang/NoSuchMethodException.printStackTrace ()V]
-      [51] aload_0 v0
-      [52] ldc #2
+      [59] aload_0 v0
+      [60] ldc #2
         + String [NoSuchMethodException]
-      [54] invokevirtual #27
+      [62] invokevirtual #35
         + Methodref [f/a.a (Ljava/lang/Object;)V]
-      [57] return
+      [65] return
       Code attribute exceptions (count = 1):
-      - ExceptionInfo (18 -> 43: 46):
+      - ExceptionInfo (26 -> 51: 54):
       + Class [java/lang/NoSuchMethodException]
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 9)
-        [0] -> line 24
-        [5] -> line 25
-        [18] -> line 27
-        [34] -> line 28
-        [37] -> line 27
-        [46] -> line 29
-        [47] -> line 30
-        [51] -> line 31
-        [57] -> line 33
+      + Line number table attribute (count = 10)
+        [0] -> line 30
+        [5] -> line 31
+        [13] -> line 32
+        [26] -> line 34
+        [42] -> line 35
+        [45] -> line 34
+        [54] -> line 36
+        [55] -> line 37
+        [59] -> line 38
+        [65] -> line 40
       + Stack map table attribute (count = 2):
-        - [46] Var: [a:f/a][a:android/content/Context], Stack: [a:java/lang/NoSuchMethodException]
-        - [57] Var: ..., Stack: (empty)
+        - [54] Var: [a:f/a][a:android/content/Context], Stack: [a:java/lang/NoSuchMethodException]
+        - [65] Var: ..., Stack: (empty)
   + Method:       a(Ljava/lang/String;)Z
     Access flags: 0x4
       = protected boolean a(java.lang.String)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 35, locals = 3, stack = 6):
       [0] aload_0 v0
-      [1] getfield #24
-        + Fieldref [f/a.c Ljava/lang/reflect/Method;]
+      [1] getfield #30
+        + Fieldref [f/a.e Ljava/lang/reflect/Method;]
       [4] aload_0 v0
-      [5] getfield #23
-        + Fieldref [f/a.b Landroid/app/admin/DevicePolicyManager;]
+      [5] getfield #29
+        + Fieldref [f/a.d Landroid/app/admin/DevicePolicyManager;]
       [8] iconst_1
-      [9] anewarray #19
+      [9] anewarray #22
         + Class [java/lang/Object]
       [12] dup
       [13] iconst_0
       [14] aload_1 v1
       [15] aastore
-      [16] invokevirtual #37
+      [16] invokevirtual #45
         + Methodref [java/lang/reflect/Method.invoke (Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;]
-      [19] checkcast #15
+      [19] checkcast #18
         + Class [java/lang/Boolean]
-      [22] invokevirtual #32
+      [22] invokevirtual #40
         + Methodref [java/lang/Boolean.booleanValue ()Z]
       [25] ireturn
       [26] astore_2 v2
       [27] aload_0 v0
       [28] ldc #1
         + String [Exception]
-      [30] invokevirtual #27
+      [30] invokevirtual #35
         + Methodref [f/a.a (Ljava/lang/Object;)V]
       [33] iconst_0
       [34] ireturn
@@ -46294,75 +46329,169 @@ Methods (count = 5):
       + Class [java/lang/Exception]
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 4)
-        [0] -> line 37
-        [26] -> line 38
-        [27] -> line 39
-        [33] -> line 40
+        [0] -> line 44
+        [26] -> line 45
+        [27] -> line 46
+        [33] -> line 47
       + Stack map table attribute (count = 1):
         - [26] Var: ..., Stack: [a:java/lang/Exception]
-  + Method:       a(Ljava/lang/Object;)V
-    Access flags: 0x1
-      = public void a(java.lang.Object)
+  + Method:       a()Z
+    Access flags: 0x4
+      = protected boolean a()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 11, locals = 2, stack = 2):
-      [0] ldc #3
-        + String [debug]
-      [2] aload_1 v1
-      [3] invokevirtual #36
-        + Methodref [java/lang/Object.toString ()Ljava/lang/String;]
-      [6] invokestatic #26
-        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
-      [9] pop
-      [10] return
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 2)
-        [0] -> line 46
-        [10] -> line 47
+    + Code attribute instructions (code length = 126, locals = 2, stack = 4):
+      [0] aload_0 v0
+      [1] getfield #27
+        + Fieldref [f/a.a Landroid/content/pm/PackageManager;]
+      [4] ldc #3
+        + String [android]
+      [6] bipush 64
+      [8] invokevirtual #33
+        + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
+      [11] astore_1 v1
+      [12] aload_0 v0
+      [13] aload_0 v0
+      [14] getfield #28
+        + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+      [17] ifnull +38 (target=55)
+      [20] aload_0 v0
+      [21] getfield #28
+        + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+      [24] getfield #25
+        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
+      [27] ifnull +28 (target=55)
+      [30] aload_1 v1
+      [31] getfield #25
+        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
+      [34] iconst_0
+      [35] aaload
+      [36] aload_0 v0
+      [37] getfield #28
+        + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+      [40] getfield #25
+        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
+      [43] iconst_0
+      [44] aaload
+      [45] invokevirtual #34
+        + Methodref [android/content/pm/Signature.equals (Ljava/lang/Object;)Z]
+      [48] ifeq +7 (target=55)
+      [51] iconst_1
+      [52] goto +4 (target=56)
+      [55] iconst_0
+      [56] invokestatic #41
+        + Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
+      [59] invokevirtual #35
+        + Methodref [f/a.a (Ljava/lang/Object;)V]
+      [62] aload_0 v0
+      [63] aload_0 v0
+      [64] getfield #28
+        + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+      [67] ifnull +7 (target=74)
+      [70] iconst_1
+      [71] goto +4 (target=75)
+      [74] iconst_0
+      [75] invokestatic #41
+        + Methodref [java/lang/Boolean.valueOf (Z)Ljava/lang/Boolean;]
+      [78] invokevirtual #35
+        + Methodref [f/a.a (Ljava/lang/Object;)V]
+      [81] aload_0 v0
+      [82] getfield #28
+        + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+      [85] ifnull +36 (target=121)
+      [88] aload_0 v0
+      [89] getfield #28
+        + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+      [92] getfield #25
+        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
+      [95] ifnull +26 (target=121)
+      [98] aload_1 v1
+      [99] getfield #25
+        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
+      [102] iconst_0
+      [103] aaload
+      [104] aload_0 v0
+      [105] getfield #28
+        + Fieldref [f/a.b Landroid/content/pm/PackageInfo;]
+      [108] getfield #25
+        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
+      [111] iconst_0
+      [112] aaload
+      [113] invokevirtual #34
+        + Methodref [android/content/pm/Signature.equals (Ljava/lang/Object;)Z]
+      [116] ifeq +5 (target=121)
+      [119] iconst_1
+      [120] ireturn
+      [121] iconst_0
+      [122] ireturn
+      [123] astore_1 v1
+      [124] iconst_0
+      [125] ireturn
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (0 -> 122: 123):
+      + Class [android/content/pm/PackageManager$NameNotFoundException]
+      Code attribute attributes (attribute count = 2):
+      + Line number table attribute (count = 10)
+        [0] -> line 53
+        [12] -> line 55
+        [36] -> line 56
+        [59] -> line 55
+        [62] -> line 57
+        [81] -> line 58
+        [104] -> line 59
+        [122] -> line 58
+        [123] -> line 60
+        [124] -> line 61
+      + Stack map table attribute (count = 6):
+        - [55] Var: [a:f/a][a:android/content/pm/PackageInfo], Stack: [a:f/a]
+        - [56] Var: [a:f/a][a:android/content/pm/PackageInfo], Stack: [a:f/a][i]
+        - [74] Var: ..., Stack: [a:f/a]
+        - [75] Var: [a:f/a][a:android/content/pm/PackageInfo], Stack: [a:f/a][i]
+        - [121] Var: ..., Stack: (empty)
+        - [123] Var: [a:f/a], Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
   + Method:       a(Landroid/content/Context;)Lf/a;
     Access flags: 0x9
       = public static f.a a(android.content.Context)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 43, locals = 2, stack = 3):
-      [0] getstatic #22
+      [0] getstatic #26
         + Fieldref [android/os/Build$VERSION.SDK_INT I]
       [3] istore_1 v1
       [4] iload_1 v1
       [5] bipush 17
       [7] ificmplt +12 (target=19)
-      [10] new #13
+      [10] new #16
         + Class [f/d]
       [13] dup
       [14] aload_0 v0
-      [15] invokespecial #30
+      [15] invokespecial #38
         + Methodref [f/d.<init> (Landroid/content/Context;)V]
       [18] areturn
       [19] iload_1 v1
       [20] bipush 14
       [22] ificmplt +12 (target=34)
-      [25] new #12
+      [25] new #15
         + Class [f/c]
       [28] dup
       [29] aload_0 v0
-      [30] invokespecial #29
+      [30] invokespecial #37
         + Methodref [f/c.<init> (Landroid/content/Context;)V]
       [33] areturn
-      [34] new #11
+      [34] new #14
         + Class [f/b]
       [37] dup
       [38] aload_0 v0
-      [39] invokespecial #28
+      [39] invokespecial #36
         + Methodref [f/b.<init> (Landroid/content/Context;)V]
       [42] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 6)
-        [0] -> line 55
-        [4] -> line 56
-        [10] -> line 58
-        [19] -> line 59
-        [25] -> line 61
-        [34] -> line 64
+        [0] -> line 71
+        [4] -> line 72
+        [10] -> line 74
+        [19] -> line 75
+        [25] -> line 77
+        [34] -> line 80
       + Stack map table attribute (count = 2):
         - [19] Var: ...[i], Stack: (empty)
         - [34] Var: ..., Stack: (empty)
@@ -46413,7 +46542,7 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 64
+        [0] -> line 80
         [5] -> line 1
   + Method:       a(Landroid/content/pm/ApplicationInfo;)Z
     Access flags: 0x1
@@ -46425,7 +46554,7 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 67
+        [0] -> line 83
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -46441,68 +46570,55 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 108):
-  + String [android]
+Constant Pool (count = 84):
   + String [android.intent.action.MAIN]
   + String [android.intent.category.HOME]
-  + Class [android/content/Context]
   + Class [android/content/Intent]
   + Class [android/content/pm/ApplicationInfo]
-  + Class [android/content/pm/PackageInfo]
   + Class [android/content/pm/PackageManager]
   + Class [android/content/pm/PackageManager$NameNotFoundException]
-  + Class [android/content/pm/Signature]
   + Class [f/a]
   + Class [f/c]
-  + Class [java/lang/String]
   + Class [java/util/List]
   + Fieldref [android/content/pm/ApplicationInfo.enabled Z]
   + Fieldref [android/content/pm/ApplicationInfo.flags I]
   + Fieldref [android/content/pm/ApplicationInfo.packageName Ljava/lang/String;]
-  + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
-  + Fieldref [f/c.b Landroid/content/pm/PackageManager;]
-  + Fieldref [f/c.c Landroid/content/pm/PackageInfo;]
-  + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
+  + Fieldref [f/c.a Landroid/content/pm/PackageManager;]
+  + Fieldref [f/c.b Landroid/content/pm/PackageInfo;]
   + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
   + Methodref [android/content/Intent.addCategory (Ljava/lang/String;)Landroid/content/Intent;]
   + Methodref [android/content/Intent.setPackage (Ljava/lang/String;)Landroid/content/Intent;]
   + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
   + Methodref [android/content/pm/PackageManager.queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
   + Methodref [android/content/pm/PackageManager$NameNotFoundException.printStackTrace ()V]
-  + Methodref [android/content/pm/Signature.equals (Ljava/lang/Object;)Z]
   + Methodref [f/a.<init> (Landroid/content/Context;)V]
+  + Methodref [f/c.a ()Z]
   + Methodref [f/c.a (ILjava/lang/String;Z)Z]
   + Methodref [f/c.a (Ljava/lang/String;)Z]
-  + Methodref [f/c.d ()Landroid/content/Context;]
   + InterfaceMethodref [java/util/List.size ()I]
   + NameAndType [<init> (Landroid/content/Context;)V]
   + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a ()Z]
   + NameAndType [a (ILjava/lang/String;Z)Z]
   + NameAndType [a (Ljava/lang/String;)Z]
+  + NameAndType [a Landroid/content/pm/PackageManager;]
   + NameAndType [addCategory (Ljava/lang/String;)Landroid/content/Intent;]
-  + NameAndType [b Landroid/content/pm/PackageManager;]
-  + NameAndType [c Landroid/content/pm/PackageInfo;]
-  + NameAndType [d ()Landroid/content/Context;]
+  + NameAndType [b Landroid/content/pm/PackageInfo;]
   + NameAndType [enabled Z]
-  + NameAndType [equals (Ljava/lang/Object;)Z]
   + NameAndType [flags I]
   + NameAndType [getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-  + NameAndType [getPackageManager ()Landroid/content/pm/PackageManager;]
   + NameAndType [packageName Ljava/lang/String;]
   + NameAndType [printStackTrace ()V]
   + NameAndType [queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
   + NameAndType [setPackage (Ljava/lang/String;)Landroid/content/Intent;]
-  + NameAndType [signatures [Landroid/content/pm/Signature;]
   + NameAndType [size ()I]
   + Utf8 [()I]
-  + Utf8 [()Landroid/content/Context;]
-  + Utf8 [()Landroid/content/pm/PackageManager;]
   + Utf8 [()V]
+  + Utf8 [()Z]
   + Utf8 [(ILjava/lang/String;Z)Z]
   + Utf8 [(Landroid/content/Context;)V]
   + Utf8 [(Landroid/content/Intent;I)Ljava/util/List;]
   + Utf8 [(Landroid/content/pm/ApplicationInfo;)Z]
-  + Utf8 [(Ljava/lang/Object;)Z]
   + Utf8 [(Ljava/lang/String;)Landroid/content/Intent;]
   + Utf8 [(Ljava/lang/String;)V]
   + Utf8 [(Ljava/lang/String;)Z]
@@ -46518,264 +46634,172 @@ Constant Pool (count = 108):
   + Utf8 [SourceFile]
   + Utf8 [StackMapTable]
   + Utf8 [Z]
-  + Utf8 [[Landroid/content/pm/Signature;]
   + Utf8 [a]
   + Utf8 [addCategory]
-  + Utf8 [android]
   + Utf8 [android.intent.action.MAIN]
   + Utf8 [android.intent.category.HOME]
-  + Utf8 [android/content/Context]
   + Utf8 [android/content/Intent]
   + Utf8 [android/content/pm/ApplicationInfo]
-  + Utf8 [android/content/pm/PackageInfo]
   + Utf8 [android/content/pm/PackageManager]
   + Utf8 [android/content/pm/PackageManager$NameNotFoundException]
-  + Utf8 [android/content/pm/Signature]
   + Utf8 [b]
-  + Utf8 [c]
-  + Utf8 [d]
   + Utf8 [enabled]
-  + Utf8 [equals]
   + Utf8 [f/a]
   + Utf8 [f/c]
   + Utf8 [flags]
   + Utf8 [getPackageInfo]
-  + Utf8 [getPackageManager]
-  + Utf8 [java/lang/String]
   + Utf8 [java/util/List]
   + Utf8 [packageName]
   + Utf8 [printStackTrace]
   + Utf8 [queryIntentActivities]
   + Utf8 [setPackage]
-  + Utf8 [signatures]
   + Utf8 [size]
 
-Fields (count = 2):
-  + Field:        b Landroid/content/pm/PackageManager;
-    Access flags: 0x2
-      = private android.content.pm.PackageManager b
-  + Field:        c Landroid/content/pm/PackageInfo;
-    Access flags: 0x2
-      = private android.content.pm.PackageInfo c
+Fields (count = 0):
 
 Methods (count = 3):
   - Method:       <init>(Landroid/content/Context;)V
     Access flags: 0x1
       = public c(android.content.Context)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 14, locals = 2, stack = 2):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #29
+      [2] invokespecial #21
         + Methodref [f/a.<init> (Landroid/content/Context;)V]
-      [5] aload_0 v0
-      [6] aload_1 v1
-      [7] invokevirtual #21
-        + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
-      [10] putfield #19
-        + Fieldref [f/c.b Landroid/content/pm/PackageManager;]
-      [13] return
+      [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 3)
-        [0] -> line 20
-        [5] -> line 21
-        [13] -> line 22
+      + Line number table attribute (count = 2)
+        [0] -> line 15
+        [5] -> line 16
   + Method:       a(Landroid/content/pm/ApplicationInfo;)Z
     Access flags: 0x1
       = public boolean a(android.content.pm.ApplicationInfo)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 46, locals = 3, stack = 4):
+    + Code attribute instructions (code length = 43, locals = 3, stack = 4):
       [0] aload_0 v0
       [1] aload_0 v0
-      [2] invokevirtual #32
-        + Methodref [f/c.d ()Landroid/content/Context;]
-      [5] invokevirtual #21
-        + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
-      [8] aload_1 v1
-      [9] getfield #17
+      [2] getfield #13
+        + Fieldref [f/c.a Landroid/content/pm/PackageManager;]
+      [5] aload_1 v1
+      [6] getfield #12
         + Fieldref [android/content/pm/ApplicationInfo.packageName Ljava/lang/String;]
-      [12] sipush 8768
-      [15] invokevirtual #25
+      [9] sipush 8768
+      [12] invokevirtual #18
         + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-      [18] putfield #20
-        + Fieldref [f/c.c Landroid/content/pm/PackageInfo;]
-      [21] goto +8 (target=29)
-      [24] astore_2 v2
-      [25] aload_2 v2
-      [26] invokevirtual #27
+      [15] putfield #14
+        + Fieldref [f/c.b Landroid/content/pm/PackageInfo;]
+      [18] goto +8 (target=26)
+      [21] astore_2 v2
+      [22] aload_2 v2
+      [23] invokevirtual #20
         + Methodref [android/content/pm/PackageManager$NameNotFoundException.printStackTrace ()V]
-      [29] aload_0 v0
-      [30] aload_1 v1
-      [31] getfield #16
+      [26] aload_0 v0
+      [27] aload_1 v1
+      [28] getfield #11
         + Fieldref [android/content/pm/ApplicationInfo.flags I]
-      [34] aload_1 v1
-      [35] getfield #17
+      [31] aload_1 v1
+      [32] getfield #12
         + Fieldref [android/content/pm/ApplicationInfo.packageName Ljava/lang/String;]
-      [38] aload_1 v1
-      [39] getfield #15
+      [35] aload_1 v1
+      [36] getfield #10
         + Fieldref [android/content/pm/ApplicationInfo.enabled Z]
-      [42] invokespecial #30
+      [39] invokespecial #23
         + Methodref [f/c.a (ILjava/lang/String;Z)Z]
-      [45] ireturn
+      [42] ireturn
       Code attribute exceptions (count = 1):
-      - ExceptionInfo (0 -> 21: 24):
+      - ExceptionInfo (0 -> 18: 21):
       + Class [android/content/pm/PackageManager$NameNotFoundException]
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 7)
-        [0] -> line 27
-        [8] -> line 28
-        [12] -> line 29
-        [15] -> line 27
-        [24] -> line 31
-        [25] -> line 32
-        [29] -> line 35
+      + Line number table attribute (count = 6)
+        [0] -> line 21
+        [9] -> line 22
+        [12] -> line 21
+        [21] -> line 24
+        [22] -> line 25
+        [26] -> line 28
       + Stack map table attribute (count = 2):
-        - [24] Var: ..., Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
-        - [29] Var: ..., Stack: (empty)
+        - [21] Var: ..., Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
+        - [26] Var: ..., Stack: (empty)
   + Method:       a(ILjava/lang/String;Z)Z
     Access flags: 0x2
       = private boolean a(int,java.lang.String,boolean)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 164, locals = 8, stack = 3):
-      [0] iconst_0
+    + Code attribute instructions (code length = 86, locals = 7, stack = 3):
+      [0] iconst_1
       [1] istore v4
       [3] iload_1 v1
       [4] iconst_1
       [5] iand
-      [6] ifeq +141 (target=147)
-      [9] iconst_0
-      [10] istore v4
-      [12] aload_0 v0
-      [13] getfield #19
-        + Fieldref [f/c.b Landroid/content/pm/PackageManager;]
-      [16] ldc #1
-        + String [android]
-      [18] bipush 64
-      [20] invokevirtual #25
-        + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-      [23] astore v5
-      [25] new #5
+      [6] ifeq +66 (target=72)
+      [9] new #3
         + Class [android/content/Intent]
-      [28] dup
-      [29] ldc #2
+      [12] dup
+      [13] ldc #1
         + String [android.intent.action.MAIN]
-      [31] invokespecial #22
+      [15] invokespecial #15
         + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
-      [34] astore v6
-      [36] aload v6
-      [38] ldc #3
+      [18] astore v5
+      [20] aload v5
+      [22] ldc #2
         + String [android.intent.category.HOME]
-      [40] invokevirtual #23
+      [24] invokevirtual #16
         + Methodref [android/content/Intent.addCategory (Ljava/lang/String;)Landroid/content/Intent;]
-      [43] pop
-      [44] aload v6
-      [46] aload_2 v2
-      [47] invokevirtual #24
+      [27] pop
+      [28] aload v5
+      [30] aload_2 v2
+      [31] invokevirtual #17
         + Methodref [android/content/Intent.setPackage (Ljava/lang/String;)Landroid/content/Intent;]
-      [50] pop
-      [51] aload_0 v0
-      [52] getfield #19
-        + Fieldref [f/c.b Landroid/content/pm/PackageManager;]
-      [55] aload v6
-      [57] iconst_0
-      [58] invokevirtual #26
+      [34] pop
+      [35] aload_0 v0
+      [36] getfield #13
+        + Fieldref [f/c.a Landroid/content/pm/PackageManager;]
+      [39] aload v5
+      [41] iconst_0
+      [42] invokevirtual #19
         + Methodref [android/content/pm/PackageManager.queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
-      [61] astore v7
-      [63] aload v7
-      [65] ifnull +13 (target=78)
-      [68] aload v7
-      [70] invokeinterface #33
+      [45] astore v6
+      [47] aload v6
+      [49] ifnull +13 (target=62)
+      [52] aload v6
+      [54] invokeinterface #25
         + InterfaceMethodref [java/util/List.size ()I]
-      [75] ifgt +42 (target=117)
-      [78] aload_0 v0
-      [79] getfield #20
-        + Fieldref [f/c.c Landroid/content/pm/PackageInfo;]
-      [82] ifnull +41 (target=123)
-      [85] aload_0 v0
-      [86] getfield #20
-        + Fieldref [f/c.c Landroid/content/pm/PackageInfo;]
-      [89] getfield #18
-        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
-      [92] ifnull +31 (target=123)
-      [95] aload v5
-      [97] getfield #18
-        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
-      [100] iconst_0
-      [101] aaload
-      [102] aload_0 v0
-      [103] getfield #20
-        + Fieldref [f/c.c Landroid/content/pm/PackageInfo;]
-      [106] getfield #18
-        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
-      [109] iconst_0
-      [110] aaload
-      [111] invokevirtual #28
-        + Methodref [android/content/pm/Signature.equals (Ljava/lang/Object;)Z]
-      [114] ifeq +9 (target=123)
-      [117] iconst_0
-      [118] istore v4
-      [120] goto +30 (target=150)
-      [123] iload_3 v3
-      [124] ifeq +9 (target=133)
-      [127] iconst_1
-      [128] istore v4
-      [130] goto +20 (target=150)
-      [133] iconst_1
-      [134] istore v4
-      [136] goto +14 (target=150)
-      [139] astore v5
-      [141] iconst_0
-      [142] istore v4
-      [144] goto +6 (target=150)
-      [147] iconst_1
-      [148] istore v4
-      [150] aload_0 v0
-      [151] aload_2 v2
-      [152] invokevirtual #31
+      [59] ifgt +10 (target=69)
+      [62] aload_0 v0
+      [63] invokevirtual #22
+        + Methodref [f/c.a ()Z]
+      [66] ifeq +6 (target=72)
+      [69] iconst_0
+      [70] istore v4
+      [72] aload_0 v0
+      [73] aload_2 v2
+      [74] invokevirtual #24
         + Methodref [f/c.a (Ljava/lang/String;)Z]
-      [155] ifeq +6 (target=161)
-      [158] iconst_0
-      [159] istore v4
-      [161] iload v4
-      [163] ireturn
-      Code attribute exceptions (count = 1):
-      - ExceptionInfo (12 -> 136: 139):
-      + Class [android/content/pm/PackageManager$NameNotFoundException]
+      [77] ifeq +6 (target=83)
+      [80] iconst_0
+      [81] istore v4
+      [83] iload v4
+      [85] ireturn
+      Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 21)
-        [0] -> line 40
-        [3] -> line 44
-        [9] -> line 45
-        [12] -> line 51
-        [25] -> line 52
-        [36] -> line 53
-        [44] -> line 54
-        [51] -> line 55
-        [63] -> line 56
-        [78] -> line 57
-        [102] -> line 58
-        [117] -> line 61
-        [123] -> line 62
-        [127] -> line 64
-        [133] -> line 67
-        [139] -> line 69
-        [141] -> line 71
-        [147] -> line 76
-        [150] -> line 81
-        [158] -> line 82
-        [161] -> line 90
-      + Stack map table attribute (count = 10):
-        - [78] Var: [a:f/c][i][a:java/lang/String][i][i][a:android/content/pm/PackageInfo][a:android/content/Intent][a:java/util/List], Stack: 
-        - [117] Var: ..., Stack: (empty)
-        - [123] Var: ..., Stack: (empty)
-        - [133] Var: ..., Stack: (empty)
-        - [136] Var: ..., Stack: (empty)
-        - [139] Var: [a:f/c][i][a:java/lang/String][i][i], Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
-        - [144] Var: ..., Stack: (empty)
-        - [147] Var: ..., Stack: (empty)
-        - [150] Var: ..., Stack: (empty)
-        - [161] Var: ..., Stack: (empty)
+      + Line number table attribute (count = 11)
+        [0] -> line 32
+        [3] -> line 34
+        [9] -> line 35
+        [20] -> line 36
+        [28] -> line 37
+        [35] -> line 38
+        [47] -> line 39
+        [69] -> line 40
+        [72] -> line 46
+        [80] -> line 47
+        [83] -> line 50
+      + Stack map table attribute (count = 4):
+        - [62] Var: ...[i][a:android/content/Intent][a:java/util/List], Stack: (empty)
+        - [69] Var: ..., Stack: (empty)
+        - [72] Var: -2, Stack: (empty)
+        - [83] Var: ..., Stack: (empty)
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -46791,35 +46815,30 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 141):
+Constant Pool (count = 121):
   + Integer [17]
   + Integer [8388608]
-  + String [android]
   + String [android.intent.action.MAIN]
   + String [android.intent.category.HOME]
-  + String [debug]
   + String [user]
+  + String [ÇµÇÂÇ⁄Å[ÇÒ]
   + Class [android/content/Context]
   + Class [android/content/Intent]
   + Class [android/content/pm/ApplicationInfo]
   + Class [android/content/pm/PackageInfo]
   + Class [android/content/pm/PackageManager]
   + Class [android/content/pm/PackageManager$NameNotFoundException]
-  + Class [android/content/pm/Signature]
   + Class [android/os/UserManager]
-  + Class [android/util/Log]
   + Class [f/a]
   + Class [f/d]
-  + Class [java/lang/Object]
-  + Class [java/lang/String]
   + Class [java/util/List]
   + Fieldref [android/content/pm/ApplicationInfo.enabled Z]
   + Fieldref [android/content/pm/ApplicationInfo.flags I]
   + Fieldref [android/content/pm/ApplicationInfo.packageName Ljava/lang/String;]
   + Fieldref [android/content/pm/PackageInfo.applicationInfo Landroid/content/pm/ApplicationInfo;]
   + Fieldref [android/content/pm/PackageInfo.packageName Ljava/lang/String;]
-  + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
-  + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
+  + Fieldref [f/d.a Landroid/content/pm/PackageManager;]
+  + Fieldref [f/d.b Landroid/content/pm/PackageInfo;]
   + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
   + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
   + Methodref [android/content/Intent.addCategory (Ljava/lang/String;)Landroid/content/Intent;]
@@ -46827,75 +46846,68 @@ Constant Pool (count = 141):
   + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
   + Methodref [android/content/pm/PackageManager.queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
   + Methodref [android/content/pm/PackageManager$NameNotFoundException.printStackTrace ()V]
-  + Methodref [android/content/pm/Signature.equals (Ljava/lang/Object;)Z]
   + Methodref [android/os/UserManager.getUserCount ()I]
-  + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
   + Methodref [f/a.<init> (Landroid/content/Context;)V]
+  + Methodref [f/d.a ()Z]
   + Methodref [f/d.a (ILjava/lang/String;Z)Z]
   + Methodref [f/d.a (Landroid/widget/Button;Ljava/lang/String;Z)Z]
+  + Methodref [f/d.a (Ljava/lang/Object;)V]
   + Methodref [f/d.a (Ljava/lang/String;)Z]
-  + Methodref [f/d.b (Ljava/lang/String;)Z]
   + Methodref [f/d.d ()Landroid/content/Context;]
-  + Methodref [java/lang/Object.toString ()Ljava/lang/String;]
   + InterfaceMethodref [java/util/List.size ()I]
   + NameAndType [<init> (Landroid/content/Context;)V]
   + NameAndType [<init> (Ljava/lang/String;)V]
+  + NameAndType [a ()Z]
   + NameAndType [a (ILjava/lang/String;Z)Z]
   + NameAndType [a (Landroid/widget/Button;Ljava/lang/String;Z)Z]
+  + NameAndType [a (Ljava/lang/Object;)V]
   + NameAndType [a (Ljava/lang/String;)Z]
+  + NameAndType [a Landroid/content/pm/PackageManager;]
   + NameAndType [addCategory (Ljava/lang/String;)Landroid/content/Intent;]
   + NameAndType [applicationInfo Landroid/content/pm/ApplicationInfo;]
-  + NameAndType [b (Ljava/lang/String;)Z]
+  + NameAndType [b Landroid/content/pm/PackageInfo;]
   + NameAndType [d ()Landroid/content/Context;]
-  + NameAndType [d (Ljava/lang/String;Ljava/lang/String;)I]
   + NameAndType [enabled Z]
-  + NameAndType [equals (Ljava/lang/Object;)Z]
   + NameAndType [flags I]
   + NameAndType [getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-  + NameAndType [getPackageManager ()Landroid/content/pm/PackageManager;]
   + NameAndType [getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
   + NameAndType [getUserCount ()I]
   + NameAndType [packageName Ljava/lang/String;]
   + NameAndType [printStackTrace ()V]
   + NameAndType [queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
   + NameAndType [setPackage (Ljava/lang/String;)Landroid/content/Intent;]
-  + NameAndType [signatures [Landroid/content/pm/Signature;]
   + NameAndType [size ()I]
-  + NameAndType [toString ()Ljava/lang/String;]
   + Utf8 [()I]
   + Utf8 [()Landroid/content/Context;]
-  + Utf8 [()Landroid/content/pm/PackageManager;]
-  + Utf8 [()Ljava/lang/String;]
   + Utf8 [()V]
+  + Utf8 [()Z]
   + Utf8 [(ILjava/lang/String;Z)Z]
   + Utf8 [(Landroid/content/Context;)V]
   + Utf8 [(Landroid/content/Intent;I)Ljava/util/List;]
   + Utf8 [(Landroid/content/pm/ApplicationInfo;)Z]
   + Utf8 [(Landroid/widget/Button;Ljava/lang/String;Z)Z]
   + Utf8 [(Ljava/lang/Object;)V]
-  + Utf8 [(Ljava/lang/Object;)Z]
   + Utf8 [(Ljava/lang/String;)Landroid/content/Intent;]
   + Utf8 [(Ljava/lang/String;)Ljava/lang/Object;]
   + Utf8 [(Ljava/lang/String;)V]
   + Utf8 [(Ljava/lang/String;)Z]
   + Utf8 [(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-  + Utf8 [(Ljava/lang/String;Ljava/lang/String;)I]
   + Utf8 [<init>]
   + Utf8 [Code]
   + Utf8 [I]
   + Utf8 [JudgeDisablable_JB_MR1.java]
   + Utf8 [Landroid/annotation/TargetApi;]
   + Utf8 [Landroid/content/pm/ApplicationInfo;]
+  + Utf8 [Landroid/content/pm/PackageInfo;]
+  + Utf8 [Landroid/content/pm/PackageManager;]
   + Utf8 [LineNumberTable]
   + Utf8 [Ljava/lang/String;]
   + Utf8 [RuntimeInvisibleAnnotations]
   + Utf8 [SourceFile]
   + Utf8 [StackMapTable]
   + Utf8 [Z]
-  + Utf8 [[Landroid/content/pm/Signature;]
   + Utf8 [a]
   + Utf8 [addCategory]
-  + Utf8 [android]
   + Utf8 [android.intent.action.MAIN]
   + Utf8 [android.intent.category.HOME]
   + Utf8 [android/content/Context]
@@ -46904,38 +46916,30 @@ Constant Pool (count = 141):
   + Utf8 [android/content/pm/PackageInfo]
   + Utf8 [android/content/pm/PackageManager]
   + Utf8 [android/content/pm/PackageManager$NameNotFoundException]
-  + Utf8 [android/content/pm/Signature]
   + Utf8 [android/os/UserManager]
-  + Utf8 [android/util/Log]
   + Utf8 [applicationInfo]
   + Utf8 [b]
   + Utf8 [d]
-  + Utf8 [debug]
   + Utf8 [enabled]
-  + Utf8 [equals]
   + Utf8 [f/a]
   + Utf8 [f/d]
   + Utf8 [flags]
   + Utf8 [getPackageInfo]
-  + Utf8 [getPackageManager]
   + Utf8 [getSystemService]
   + Utf8 [getUserCount]
-  + Utf8 [java/lang/Object]
-  + Utf8 [java/lang/String]
   + Utf8 [java/util/List]
   + Utf8 [packageName]
   + Utf8 [printStackTrace]
   + Utf8 [queryIntentActivities]
   + Utf8 [setPackage]
-  + Utf8 [signatures]
   + Utf8 [size]
-  + Utf8 [toString]
   + Utf8 [user]
   + Utf8 [value]
+  + Utf8 [ÇµÇÂÇ⁄Å[ÇÒ]
 
 Fields (count = 0):
 
-Methods (count = 6):
+Methods (count = 4):
   - Method:       <init>(Landroid/content/Context;)V
     Access flags: 0x1
       = public d(android.content.Context)
@@ -46943,21 +46947,21 @@ Methods (count = 6):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #39
+      [2] invokespecial #32
         + Methodref [f/a.<init> (Landroid/content/Context;)V]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 21
-        [5] -> line 22
+        [0] -> line 19
+        [5] -> line 20
   + Method:       a(Landroid/content/pm/ApplicationInfo;)Z
     Access flags: 0x1
       = public boolean a(android.content.pm.ApplicationInfo)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 28, locals = 2, stack = 4):
+    + Code attribute instructions (code length = 62, locals = 3, stack = 4):
       [0] aload_1 v1
-      [1] getfield #23
+      [1] getfield #18
         + Fieldref [android/content/pm/ApplicationInfo.flags I]
       [4] iconst_1
       [5] iand
@@ -46965,305 +46969,201 @@ Methods (count = 6):
       [9] iconst_0
       [10] ireturn
       [11] aload_0 v0
-      [12] aload_1 v1
-      [13] getfield #23
-        + Fieldref [android/content/pm/ApplicationInfo.flags I]
+      [12] aload_0 v0
+      [13] getfield #22
+        + Fieldref [f/d.a Landroid/content/pm/PackageManager;]
       [16] aload_1 v1
-      [17] getfield #24
+      [17] getfield #19
         + Fieldref [android/content/pm/ApplicationInfo.packageName Ljava/lang/String;]
-      [20] aload_1 v1
-      [21] getfield #22
+      [20] sipush 8768
+      [23] invokevirtual #28
+        + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
+      [26] putfield #23
+        + Fieldref [f/d.b Landroid/content/pm/PackageInfo;]
+      [29] goto +10 (target=39)
+      [32] astore_2 v2
+      [33] aload_2 v2
+      [34] invokevirtual #30
+        + Methodref [android/content/pm/PackageManager$NameNotFoundException.printStackTrace ()V]
+      [37] iconst_0
+      [38] ireturn
+      [39] aload_0 v0
+      [40] ldc #6
+        + String [ÇµÇÂÇ⁄Å[ÇÒ]
+      [42] invokevirtual #36
+        + Methodref [f/d.a (Ljava/lang/Object;)V]
+      [45] aload_0 v0
+      [46] aload_1 v1
+      [47] getfield #18
+        + Fieldref [android/content/pm/ApplicationInfo.flags I]
+      [50] aload_1 v1
+      [51] getfield #19
+        + Fieldref [android/content/pm/ApplicationInfo.packageName Ljava/lang/String;]
+      [54] aload_1 v1
+      [55] getfield #17
         + Fieldref [android/content/pm/ApplicationInfo.enabled Z]
-      [24] invokespecial #40
+      [58] invokespecial #34
         + Methodref [f/d.a (ILjava/lang/String;Z)Z]
-      [27] ireturn
-      Code attribute exceptions (count = 0):
+      [61] ireturn
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (11 -> 29: 32):
+      + Class [android/content/pm/PackageManager$NameNotFoundException]
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 3)
-        [0] -> line 25
-        [9] -> line 27
-        [11] -> line 29
-      + Stack map table attribute (count = 1):
+      + Line number table attribute (count = 10)
+        [0] -> line 23
+        [9] -> line 25
+        [11] -> line 28
+        [20] -> line 29
+        [23] -> line 28
+        [32] -> line 31
+        [33] -> line 32
+        [37] -> line 34
+        [39] -> line 37
+        [45] -> line 38
+      + Stack map table attribute (count = 3):
         - [11] Var: ..., Stack: (empty)
-  + Method:       a(Ljava/lang/Object;)V
-    Access flags: 0x1
-      = public void a(java.lang.Object)
-    Class member attributes (count = 1):
-    + Code attribute instructions (code length = 11, locals = 2, stack = 2):
-      [0] ldc #6
-        + String [debug]
-      [2] aload_1 v1
-      [3] invokevirtual #45
-        + Methodref [java/lang/Object.toString ()Ljava/lang/String;]
-      [6] invokestatic #38
-        + Methodref [android/util/Log.d (Ljava/lang/String;Ljava/lang/String;)I]
-      [9] pop
-      [10] return
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 2)
-        [0] -> line 34
-        [10] -> line 35
+        - [32] Var: ..., Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
+        - [39] Var: ..., Stack: (empty)
   + Method:       a(ILjava/lang/String;Z)Z
     Access flags: 0x2
       = private boolean a(int,java.lang.String,boolean)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 108, locals = 7, stack = 4):
+    + Code attribute instructions (code length = 83, locals = 6, stack = 4):
       [0] iconst_1
       [1] istore v4
-      [3] aconst_null
-      [4] astore v5
-      [6] aload_0 v0
-      [7] invokevirtual #44
+      [3] aload_0 v0
+      [4] invokevirtual #38
         + Methodref [f/d.d ()Landroid/content/Context;]
-      [10] invokevirtual #28
-        + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
-      [13] aload_2 v2
-      [14] sipush 8768
-      [17] invokevirtual #33
-        + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-      [20] astore v5
-      [22] goto +10 (target=32)
-      [25] astore v6
-      [27] aload v6
-      [29] invokevirtual #35
-        + Methodref [android/content/pm/PackageManager$NameNotFoundException.printStackTrace ()V]
-      [32] aload_0 v0
-      [33] invokevirtual #44
-        + Methodref [f/d.d ()Landroid/content/Context;]
-      [36] ldc #7
+      [7] ldc #5
         + String [user]
-      [38] invokevirtual #29
+      [9] invokevirtual #24
         + Methodref [android/content/Context.getSystemService (Ljava/lang/String;)Ljava/lang/Object;]
-      [41] checkcast #15
+      [12] checkcast #13
         + Class [android/os/UserManager]
-      [44] astore v6
-      [46] iload_1 v1
-      [47] iconst_1
-      [48] iand
-      [49] ifeq +15 (target=64)
-      [52] aload_0 v0
-      [53] aconst_null
-      [54] aload_2 v2
-      [55] iload_3 v3
-      [56] invokespecial #41
+      [15] astore v5
+      [17] iload_1 v1
+      [18] iconst_1
+      [19] iand
+      [20] ifeq +15 (target=35)
+      [23] aload_0 v0
+      [24] aconst_null
+      [25] aload_2 v2
+      [26] iload_3 v3
+      [27] invokespecial #35
         + Methodref [f/d.a (Landroid/widget/Button;Ljava/lang/String;Z)Z]
-      [59] istore v4
-      [61] goto +29 (target=90)
-      [64] aload v5
-      [66] getfield #25
+      [30] istore v4
+      [32] goto +31 (target=63)
+      [35] aload_0 v0
+      [36] getfield #23
+        + Fieldref [f/d.b Landroid/content/pm/PackageInfo;]
+      [39] getfield #20
         + Fieldref [android/content/pm/PackageInfo.applicationInfo Landroid/content/pm/ApplicationInfo;]
-      [69] getfield #23
+      [42] getfield #18
         + Fieldref [android/content/pm/ApplicationInfo.flags I]
-      [72] ldc #2
+      [45] ldc #2
         + Integer [8388608]
-      [74] iand
-      [75] ifne +15 (target=90)
-      [78] aload v6
-      [80] invokevirtual #37
+      [47] iand
+      [48] ifne +15 (target=63)
+      [51] aload v5
+      [53] invokevirtual #31
         + Methodref [android/os/UserManager.getUserCount ()I]
-      [83] iconst_2
-      [84] ificmplt +6 (target=90)
-      [87] iconst_0
-      [88] istore v4
-      [90] aload_0 v0
-      [91] aload v5
-      [93] getfield #26
+      [56] iconst_2
+      [57] ificmplt +6 (target=63)
+      [60] iconst_0
+      [61] istore v4
+      [63] aload_0 v0
+      [64] aload_0 v0
+      [65] getfield #23
+        + Fieldref [f/d.b Landroid/content/pm/PackageInfo;]
+      [68] getfield #21
         + Fieldref [android/content/pm/PackageInfo.packageName Ljava/lang/String;]
-      [96] invokevirtual #42
+      [71] invokevirtual #37
         + Methodref [f/d.a (Ljava/lang/String;)Z]
-      [99] ifeq +6 (target=105)
-      [102] iconst_0
-      [103] istore v4
-      [105] iload v4
-      [107] ireturn
-      Code attribute exceptions (count = 1):
-      - ExceptionInfo (6 -> 22: 25):
-      + Class [android/content/pm/PackageManager$NameNotFoundException]
-      Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 17)
-        [0] -> line 39
-        [3] -> line 41
-        [6] -> line 43
-        [13] -> line 44
-        [14] -> line 45
-        [17] -> line 43
-        [25] -> line 47
-        [27] -> line 48
-        [32] -> line 50
-        [46] -> line 61
-        [52] -> line 62
-        [64] -> line 63
-        [78] -> line 64
-        [87] -> line 68
-        [90] -> line 75
-        [102] -> line 76
-        [105] -> line 83
-      + Stack map table attribute (count = 5):
-        - [25] Var: [a:f/d][i][a:java/lang/String][i][i][a:android/content/pm/PackageInfo], Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
-        - [32] Var: ..., Stack: (empty)
-        - [64] Var: ...[a:android/os/UserManager], Stack: (empty)
-        - [90] Var: ..., Stack: (empty)
-        - [105] Var: ..., Stack: (empty)
-  + Method:       a(Landroid/widget/Button;Ljava/lang/String;Z)Z
-    Access flags: 0x2
-      = private boolean a(android.widget.Button,java.lang.String,boolean)
-    Class member attributes (count = 1):
-    + Code attribute instructions (code length = 83, locals = 7, stack = 3):
-      [0] iconst_0
-      [1] istore v4
-      [3] new #9
-        + Class [android/content/Intent]
-      [6] dup
-      [7] ldc #4
-        + String [android.intent.action.MAIN]
-      [9] invokespecial #30
-        + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
-      [12] astore v5
-      [14] aload v5
-      [16] ldc #5
-        + String [android.intent.category.HOME]
-      [18] invokevirtual #31
-        + Methodref [android/content/Intent.addCategory (Ljava/lang/String;)Landroid/content/Intent;]
-      [21] pop
-      [22] aload v5
-      [24] aload_2 v2
-      [25] invokevirtual #32
-        + Methodref [android/content/Intent.setPackage (Ljava/lang/String;)Landroid/content/Intent;]
-      [28] pop
-      [29] aload_0 v0
-      [30] invokevirtual #44
-        + Methodref [f/d.d ()Landroid/content/Context;]
-      [33] invokevirtual #28
-        + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
-      [36] aload v5
-      [38] iconst_0
-      [39] invokevirtual #34
-        + Methodref [android/content/pm/PackageManager.queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
-      [42] astore v6
-      [44] aload v6
-      [46] ifnull +13 (target=59)
-      [49] aload v6
-      [51] invokeinterface #46
-        + InterfaceMethodref [java/util/List.size ()I]
-      [56] ifgt +24 (target=80)
-      [59] aload_0 v0
-      [60] aload_2 v2
-      [61] invokespecial #43
-        + Methodref [f/d.b (Ljava/lang/String;)Z]
-      [64] ifne +16 (target=80)
-      [67] iload_3 v3
-      [68] ifeq +9 (target=77)
-      [71] iconst_1
-      [72] istore v4
-      [74] goto +6 (target=80)
-      [77] iconst_1
+      [74] ifeq +6 (target=80)
+      [77] iconst_0
       [78] istore v4
       [80] iload v4
       [82] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 10)
-        [0] -> line 87
-        [3] -> line 94
-        [14] -> line 95
-        [22] -> line 96
-        [29] -> line 97
-        [44] -> line 98
-        [67] -> line 101
-        [71] -> line 103
-        [77] -> line 106
-        [80] -> line 111
+        [0] -> line 42
+        [3] -> line 43
+        [17] -> line 44
+        [23] -> line 45
+        [35] -> line 46
+        [51] -> line 47
+        [60] -> line 48
+        [63] -> line 53
+        [77] -> line 54
+        [80] -> line 57
       + Stack map table attribute (count = 3):
-        - [59] Var: ...[i][a:android/content/Intent][a:java/util/List], Stack: (empty)
-        - [77] Var: ..., Stack: (empty)
+        - [35] Var: ...[i][a:android/os/UserManager], Stack: (empty)
+        - [63] Var: ..., Stack: (empty)
         - [80] Var: ..., Stack: (empty)
-  + Method:       b(Ljava/lang/String;)Z
+  + Method:       a(Landroid/widget/Button;Ljava/lang/String;Z)Z
     Access flags: 0x2
-      = private boolean b(java.lang.String)
+      = private boolean a(android.widget.Button,java.lang.String,boolean)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 78, locals = 5, stack = 3):
-      [0] aload_0 v0
-      [1] invokevirtual #44
-        + Methodref [f/d.d ()Landroid/content/Context;]
-      [4] invokevirtual #28
-        + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
+    + Code attribute instructions (code length = 69, locals = 7, stack = 3):
+      [0] iconst_1
+      [1] istore v4
+      [3] new #8
+        + Class [android/content/Intent]
+      [6] dup
       [7] ldc #3
-        + String [android]
-      [9] bipush 64
-      [11] invokevirtual #33
-        + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-      [14] astore_2 v2
-      [15] aconst_null
-      [16] astore_3 v3
-      [17] aload_0 v0
-      [18] invokevirtual #44
-        + Methodref [f/d.d ()Landroid/content/Context;]
-      [21] invokevirtual #28
-        + Methodref [android/content/Context.getPackageManager ()Landroid/content/pm/PackageManager;]
-      [24] aload_1 v1
-      [25] sipush 8768
-      [28] invokevirtual #33
-        + Methodref [android/content/pm/PackageManager.getPackageInfo (Ljava/lang/String;I)Landroid/content/pm/PackageInfo;]
-      [31] astore_3 v3
-      [32] goto +10 (target=42)
-      [35] astore v4
-      [37] aload v4
-      [39] invokevirtual #35
-        + Methodref [android/content/pm/PackageManager$NameNotFoundException.printStackTrace ()V]
-      [42] aload_3 v3
-      [43] ifnull +30 (target=73)
-      [46] aload_3 v3
-      [47] getfield #27
-        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
-      [50] ifnull +23 (target=73)
-      [53] aload_2 v2
-      [54] getfield #27
-        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
-      [57] iconst_0
-      [58] aaload
-      [59] aload_3 v3
-      [60] getfield #27
-        + Fieldref [android/content/pm/PackageInfo.signatures [Landroid/content/pm/Signature;]
+        + String [android.intent.action.MAIN]
+      [9] invokespecial #25
+        + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
+      [12] astore v5
+      [14] aload v5
+      [16] ldc #4
+        + String [android.intent.category.HOME]
+      [18] invokevirtual #26
+        + Methodref [android/content/Intent.addCategory (Ljava/lang/String;)Landroid/content/Intent;]
+      [21] pop
+      [22] aload v5
+      [24] aload_2 v2
+      [25] invokevirtual #27
+        + Methodref [android/content/Intent.setPackage (Ljava/lang/String;)Landroid/content/Intent;]
+      [28] pop
+      [29] aload_0 v0
+      [30] getfield #22
+        + Fieldref [f/d.a Landroid/content/pm/PackageManager;]
+      [33] aload v5
+      [35] iconst_0
+      [36] invokevirtual #29
+        + Methodref [android/content/pm/PackageManager.queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
+      [39] astore v6
+      [41] aload v6
+      [43] ifnull +13 (target=56)
+      [46] aload v6
+      [48] invokeinterface #39
+        + InterfaceMethodref [java/util/List.size ()I]
+      [53] ifgt +10 (target=63)
+      [56] aload_0 v0
+      [57] invokevirtual #33
+        + Methodref [f/d.a ()Z]
+      [60] ifeq +6 (target=66)
       [63] iconst_0
-      [64] aaload
-      [65] invokevirtual #36
-        + Methodref [android/content/pm/Signature.equals (Ljava/lang/Object;)Z]
-      [68] ifeq +5 (target=73)
-      [71] iconst_1
-      [72] ireturn
-      [73] iconst_0
-      [74] ireturn
-      [75] astore_2 v2
-      [76] iconst_0
-      [77] ireturn
-      Code attribute exceptions (count = 2):
-      - ExceptionInfo (17 -> 32: 35):
-      + Class [android/content/pm/PackageManager$NameNotFoundException]
-      - ExceptionInfo (0 -> 74: 75):
-      + Class [android/content/pm/PackageManager$NameNotFoundException]
+      [64] istore v4
+      [66] iload v4
+      [68] ireturn
+      Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 15)
-        [0] -> line 116
-        [9] -> line 117
-        [11] -> line 116
-        [15] -> line 118
-        [17] -> line 120
-        [24] -> line 121
-        [25] -> line 122
-        [28] -> line 120
-        [35] -> line 124
-        [37] -> line 125
-        [42] -> line 127
-        [59] -> line 128
-        [74] -> line 127
-        [75] -> line 129
-        [76] -> line 130
-      + Stack map table attribute (count = 4):
-        - [35] Var: [a:f/d][a:java/lang/String][a:android/content/pm/PackageInfo][a:android/content/pm/PackageInfo], Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
-        - [42] Var: ..., Stack: (empty)
-        - [73] Var: ..., Stack: (empty)
-        - [75] Var: [a:f/d][a:java/lang/String], Stack: [a:android/content/pm/PackageManager$NameNotFoundException]
+      + Line number table attribute (count = 8)
+        [0] -> line 61
+        [3] -> line 62
+        [14] -> line 63
+        [22] -> line 64
+        [29] -> line 65
+        [41] -> line 66
+        [63] -> line 67
+        [66] -> line 74
+      + Stack map table attribute (count = 3):
+        - [56] Var: ...[i][a:android/content/Intent][a:java/util/List], Stack: (empty)
+        - [63] Var: ..., Stack: (empty)
+        - [66] Var: ..., Stack: (empty)
 
 Class file attributes (count = 2):
   + Runtime invisible annotations attribute:
@@ -47375,11 +47275,11 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 29):
+Constant Pool (count = 30):
   + Class [g/b]
   + Class [j/a]
   + Class [java/lang/Object]
-  + Fieldref [g/b.a Lj/a;]
+  + Fieldref [g/b.c Lj/a;]
   + Methodref [j/a.<init> (Landroid/content/Context;)V]
   + Methodref [j/a.a ()Landroid/content/Context;]
   + Methodref [j/a.a (Ljava/lang/Object;)V]
@@ -47388,7 +47288,7 @@ Constant Pool (count = 29):
   + NameAndType [<init> (Landroid/content/Context;)V]
   + NameAndType [a ()Landroid/content/Context;]
   + NameAndType [a (Ljava/lang/Object;)V]
-  + NameAndType [a Lj/a;]
+  + NameAndType [c Lj/a;]
   + Utf8 [()Landroid/content/Context;]
   + Utf8 [()V]
   + Utf8 [(Landroid/content/Context;)V]
@@ -47400,15 +47300,16 @@ Constant Pool (count = 29):
   + Utf8 [Lj/a;]
   + Utf8 [SourceFile]
   + Utf8 [a]
+  + Utf8 [c]
   + Utf8 [d]
   + Utf8 [g/b]
   + Utf8 [j/a]
   + Utf8 [java/lang/Object]
 
 Fields (count = 1):
-  + Field:        a Lj/a;
+  + Field:        c Lj/a;
     Access flags: 0x4
-      = protected j.a a
+      = protected j.a c
 
 Methods (count = 3):
   - Method:       <init>(Landroid/content/Context;)V
@@ -47427,7 +47328,7 @@ Methods (count = 3):
       [10] invokespecial #5
         + Methodref [j/a.<init> (Landroid/content/Context;)V]
       [13] putfield #4
-        + Fieldref [g/b.a Lj/a;]
+        + Fieldref [g/b.c Lj/a;]
       [16] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
@@ -47442,7 +47343,7 @@ Methods (count = 3):
     + Code attribute instructions (code length = 9, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] getfield #4
-        + Fieldref [g/b.a Lj/a;]
+        + Fieldref [g/b.c Lj/a;]
       [4] aload_1 v1
       [5] invokevirtual #7
         + Methodref [j/a.a (Ljava/lang/Object;)V]
@@ -47459,7 +47360,7 @@ Methods (count = 3):
     + Code attribute instructions (code length = 8, locals = 1, stack = 1):
       [0] aload_0 v0
       [1] getfield #4
-        + Fieldref [g/b.a Lj/a;]
+        + Fieldref [g/b.c Lj/a;]
       [4] invokevirtual #6
         + Methodref [j/a.a ()Landroid/content/Context;]
       [7] areturn
