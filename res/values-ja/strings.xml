@@ -18,4 +18,8 @@
     <!-- share message -->
     <string name="message_share_no_app">共有するアプリがありません。</string>
 
+    <!-- comment -->
+    <string name="comment_dialog_title">コメントを編集</string>
+    <string name="comment_dialog_edittext_hint">ここにコメントを入力してください。</string>
+
 </resources>

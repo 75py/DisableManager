@@ -59,7 +59,6 @@ public class AppsLoader extends BaseObject {
 					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
 					judgeDisablable.isDisablable(info));
 			appStatus.setComment(commentsUtils.restoreComment(info.packageName));
-			log(appStatus.getComment());
 
 			appsList.add(appStatus);
 			iconCache.put(info.packageName, icon);

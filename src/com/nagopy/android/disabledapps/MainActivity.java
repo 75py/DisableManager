@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -17,11 +18,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.nagopy.android.disabledapps.filter.AppsFilter;
+import com.nagopy.android.disabledapps.util.CommentsUtils;
+import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog;
+import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.lib.base.BaseActivity;
 import com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog;
 
@@ -67,6 +72,16 @@ public class MainActivity extends BaseActivity {
 	 */
 	private HashMap<String, Drawable> mIconCacheHashMap;
 
+	/**
+	 * コメントを編集するダイアログ
+	 */
+	private CommentEditDialog mCommentEditDialog;
+
+	/**
+	 * コメントを編集するためのクラス
+	 */
+	private CommentsUtils mCommentsUtils;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -91,6 +106,33 @@ public class MainActivity extends BaseActivity {
 			}
 		});
 
+		mCommentsUtils = new CommentsUtils(getApplicationContext());
+		mCommentEditDialog = new CommentEditDialog();
+		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long arg3) {
+				final String packageName = ((TextView) view.findViewById(R.id.list_textview_package_name))
+						.getText().toString();
+				String label = ((TextView) view.findViewById(R.id.list_textview_label)).getText().toString();
+				mCommentEditDialog.setLabel(label);
+				mCommentEditDialog.setDefaultValue(mCommentsUtils.restoreComment(packageName));
+				mCommentEditDialog.setListener(new CommentEditDialogListener() {
+					private static final long serialVersionUID = 1L;
+
+					@Override
+					public void onPositiveButtonClicked(DialogInterface dialog, String text) {
+						mCommentsUtils.saveComment(packageName, text);
+					}
+
+					@Override
+					public void onNegativeButtonClicked(DialogInterface dialog) {}
+				});
+				mCommentEditDialog.show(getSupportFragmentManager(), "CommentEditDialog");
+
+				return false;
+			}
+		});
+
 		createReloadAsyncTask().execute();
 	}
 
@@ -100,6 +142,7 @@ public class MainActivity extends BaseActivity {
 		super.onDestroy();
 		mListView.setAdapter(null);
 		mListView.setOnItemClickListener(null);
+		mListView.setOnItemLongClickListener(null);
 		mListView = null;
 
 		mEmptyView = null;
@@ -112,6 +155,10 @@ public class MainActivity extends BaseActivity {
 
 		mAppLoader.deallocate();
 		mAppLoader = null;
+
+		mCommentEditDialog.setListener(null);
+		mCommentEditDialog = null;
+		mCommentsUtils = null;
 
 		mCommonUtil = null;
 
