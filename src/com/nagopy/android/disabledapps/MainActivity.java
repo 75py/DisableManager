@@ -346,6 +346,7 @@ public class MainActivity extends BaseActivity {
 				convertView = View.inflate(getApplicationContext(), R.layout.app_list_row, null);
 				holder = new ViewHolder();
 				holder.labelTextView = (TextView) convertView.findViewById(R.id.list_textview_label);
+				holder.commentTextView = (TextView) convertView.findViewById(R.id.list_textview_comment);
 				holder.pkgNameTextView = (TextView) convertView.findViewById(R.id.list_textview_package_name);
 				convertView.setTag(R.string.app_name, holder);
 			} else {
@@ -356,10 +357,17 @@ public class MainActivity extends BaseActivity {
 			if (appStatus != null) {
 				holder.labelTextView.setText(appStatus.getLabel());
 				holder.pkgNameTextView.setText(appStatus.getPackageName());
-				// holder.labelTextView.setCompoundDrawables(appStatus.getIcon(), null, null, null);
 				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
 				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
 				icon.setCallback(null);
+
+				String comment = appStatus.getComment();
+				if (comment != null) {
+					holder.commentTextView.setText(comment);
+					holder.commentTextView.setVisibility(View.VISIBLE);
+				} else {
+					holder.commentTextView.setVisibility(View.GONE);
+				}
 			}
 			return convertView;
 		}
@@ -374,6 +382,11 @@ public class MainActivity extends BaseActivity {
 		 * ラベルを表示するテキストビュー
 		 */
 		TextView labelTextView; // CHECKSTYLE IGNORE THIS LINE
+
+		/**
+		 * コメントを表示するテキストビュー
+		 */
+		TextView commentTextView; // CHECKSTYLE IGNORE THIS LINE
 
 		/**
 		 * パッケージ名を表示するテキストビュー

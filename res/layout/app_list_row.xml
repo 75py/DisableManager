@@ -9,9 +9,17 @@
         android:id="@+id/list_textview_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:drawablePadding="1dp"
+        android:gravity="center_vertical"
         android:textAppearance="@android:style/TextAppearance.Large" />
+
+    <TextView
+        android:id="@+id/list_textview_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textAppearance="@android:style/TextAppearance.Medium"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/list_textview_package_name"
