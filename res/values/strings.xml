@@ -14,5 +14,8 @@
 
     <!-- empty -->
     <string name="message_empty_list">Empty.</string>
+    
+    <!-- share message -->
+    <string name="message_share_no_app">There is no app to share.</string>
 
 </resources>

@@ -177,33 +177,13 @@ public class MainActivity extends BaseActivity {
 			updateAppList(AppsFilter.USER_APPS, item.getTitle());
 			return true;
 		case R.id.menu_share_label:
-			StringBuffer sb = new StringBuffer();
-			for (AppStatus appStatus : mAdapter.getAppList()) {
-				sb.append(appStatus.getLabel());
-				sb.append("\n");
-			}
-
-			sendShareIntent(sb.toString());
+			sendShareIntent(item.getItemId());
 			return true;
 		case R.id.menu_share_package:
-			StringBuffer sb1 = new StringBuffer();
-			for (AppStatus appStatus : mAdapter.getAppList()) {
-				sb1.append(appStatus.getPackageName());
-				sb1.append("\n");
-			}
-
-			sendShareIntent(sb1.toString());
+			sendShareIntent(item.getItemId());
 			return true;
 		case R.id.menu_share_label_and_package:
-			StringBuffer sb11 = new StringBuffer();
-			for (AppStatus appStatus : mAdapter.getAppList()) {
-				sb11.append(appStatus.getLabel());
-				sb11.append("\n");
-				sb11.append(appStatus.getPackageName());
-				sb11.append("\n\n");
-			}
-
-			sendShareIntent(sb11.toString());
+			sendShareIntent(item.getItemId());
 			return true;
 
 		case R.id.menu_reload:
@@ -213,6 +193,52 @@ public class MainActivity extends BaseActivity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	/**
+	 * アプリ一覧をメーラーなどに共有<br>
+	 * 共有するアプリがない場合はトーストを表示して終了する
+	 * @param id
+	 *           メニューのID<br>
+	 *           これによって共有項目を分ける
+	 */
+	private void sendShareIntent(int id) {
+		ArrayList<AppStatus> appsList = mAdapter.getAppList();
+		if (appsList == null || appsList.isEmpty()) {
+			showToast(getString(R.string.message_share_no_app));
+			return;
+		}
+
+		StringBuffer sb = new StringBuffer();
+		switch (id) {
+		case R.id.menu_share_label:
+			for (AppStatus appStatus : appsList) {
+				sb.append(appStatus.getLabel());
+				sb.append("\n");
+			}
+			break;
+		case R.id.menu_share_package:
+			for (AppStatus appStatus : appsList) {
+				sb.append(appStatus.getPackageName());
+				sb.append("\n");
+			}
+			break;
+		case R.id.menu_share_label_and_package:
+			for (AppStatus appStatus : appsList) {
+				sb.append(appStatus.getLabel());
+				sb.append("\n");
+				sb.append(appStatus.getPackageName());
+				sb.append("\n\n");
+			}
+			break;
+		default:
+			break;
+		}
+
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("text/plain");
+		intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
+		startActivity(intent);
 	}
 
 	/**
@@ -355,15 +381,4 @@ public class MainActivity extends BaseActivity {
 		};
 	}
 
-	/**
-	 * テキストをメーラーなどに共有
-	 * @param text
-	 *           共有したい文字列
-	 */
-	private void sendShareIntent(String text) {
-		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType("text/plain");
-		intent.putExtra(Intent.EXTRA_TEXT, text);
-		startActivity(intent);
-	}
 }

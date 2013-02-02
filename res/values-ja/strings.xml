@@ -15,4 +15,7 @@
     <!-- empty -->
     <string name="message_empty_list">該当するアプリはありません。</string>
 
+    <!-- share message -->
+    <string name="message_share_no_app">共有するアプリがありません。</string>
+
 </resources>

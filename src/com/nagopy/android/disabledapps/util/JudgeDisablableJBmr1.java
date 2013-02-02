@@ -32,12 +32,7 @@ class JudgeDisablableJBmr1 extends JudgeDisablable {
 		super(context);
 	}
 
-	/**
-	 * そのアプリが無効化できるものかどうかを判定する
-	 * @param applicationInfo
-	 *           ApplicationInfoを渡す
-	 * @return 無効化できるならtrue、そうでなければfalseを返す。
-	 */
+	@Override
 	public boolean isDisablable(ApplicationInfo applicationInfo) {
 		if (!((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0)) {
 			// システムアプリじゃない場合
