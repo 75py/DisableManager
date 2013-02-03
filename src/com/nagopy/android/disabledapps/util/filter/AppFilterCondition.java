@@ -1,6 +1,6 @@
-package com.nagopy.android.disabledapps.filter;
+package com.nagopy.android.disabledapps.util.filter;
 
-import com.nagopy.android.disabledapps.AppStatus;
+import com.nagopy.android.disabledapps.util.AppStatus;
 
 /**
  * フィルターかける条件を指定するためのインターフェース<br>

@@ -1,4 +1,4 @@
-package com.nagopy.android.disabledapps;
+package com.nagopy.android.disabledapps.util;
 
 /**
  * アプリの情報を保持するクラス

@@ -678,7 +678,7 @@ com.nagopy.android.disabledapps.R$menu
 com.nagopy.android.disabledapps.R$string
 com.nagopy.android.disabledapps.R$style
 com.nagopy.android.disabledapps.R$styleable
-com.nagopy.android.disabledapps.filter.AppsFilter:
+com.nagopy.android.disabledapps.util.filter.AppsFilter:
     public static final int DISABLED
     public static final int DISABLABLE_AND_ENABLED_SYSTEM
     public static final int UNDISABLABLE_SYSTEM

@@ -1,4 +1,4 @@
-package com.nagopy.android.disabledapps;
+package com.nagopy.android.disabledapps.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
-import com.nagopy.android.disabledapps.util.JudgeDisablable;
 import com.nagopy.lib.base.BaseObject;
 import com.nagopy.lib.image.ImageUtils;
 

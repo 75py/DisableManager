@@ -932,7 +932,7 @@ com.nagopy.android.disabledapps.MainActivity -> com.nagopy.android.disabledapps.
     com.nagopy.android.disabledapps.AppsLoader mAppLoader -> o
     android.widget.ListView mListView -> p
     android.widget.TextView mEmptyView -> q
-    com.nagopy.android.disabledapps.filter.AppsFilter mAppFilter -> r
+    com.nagopy.android.disabledapps.util.filter.AppsFilter mAppFilter -> r
     com.nagopy.android.disabledapps.MainActivity$AppsListAdapter mAdapter -> s
     int lastAppFilterCondition -> t
     java.util.HashMap mIconCacheHashMap -> u
@@ -946,7 +946,7 @@ com.nagopy.android.disabledapps.MainActivity -> com.nagopy.android.disabledapps.
     43:43:java.util.HashMap access$0(com.nagopy.android.disabledapps.MainActivity) -> a
     31:31:com.nagopy.android.disabledapps.AppsLoader access$1(com.nagopy.android.disabledapps.MainActivity) -> b
     43:43:void access$2(com.nagopy.android.disabledapps.MainActivity,java.util.HashMap) -> a
-    37:37:com.nagopy.android.disabledapps.filter.AppsFilter access$3(com.nagopy.android.disabledapps.MainActivity) -> c
+    37:37:com.nagopy.android.disabledapps.util.filter.AppsFilter access$3(com.nagopy.android.disabledapps.MainActivity) -> c
     39:39:com.nagopy.android.disabledapps.MainActivity$AppsListAdapter access$4(com.nagopy.android.disabledapps.MainActivity) -> d
     39:39:void access$5(com.nagopy.android.disabledapps.MainActivity,com.nagopy.android.disabledapps.MainActivity$AppsListAdapter) -> a
     33:33:android.widget.ListView access$6(com.nagopy.android.disabledapps.MainActivity) -> e
@@ -972,30 +972,30 @@ com.nagopy.android.disabledapps.MainActivity$AppsListAdapter -> com.nagopy.andro
 com.nagopy.android.disabledapps.MainActivity$ViewHolder -> com.nagopy.android.disabledapps.f:
     android.widget.TextView labelTextView -> a
     android.widget.TextView pkgNameTextView -> b
-com.nagopy.android.disabledapps.filter.AppsFilter -> e.a:
+com.nagopy.android.disabledapps.util.filter.AppsFilter -> e.a:
     java.util.ArrayList originalAppList -> a
     android.util.SparseArray conditions -> b
     81:99:java.util.ArrayList sort(java.util.ArrayList) -> a
     108:109:void setOriginalAppList(java.util.ArrayList) -> b
     117:124:java.util.ArrayList execute(int) -> a
     131:133:void deallocate() -> a
-com.nagopy.android.disabledapps.filter.AppsFilter$1 -> e.b:
-    com.nagopy.android.disabledapps.filter.AppsFilter this$0 -> a
+com.nagopy.android.disabledapps.util.filter.AppsFilter$1 -> e.b:
+    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
     47:47:boolean valid(com.nagopy.android.disabledapps.AppStatus) -> a
-com.nagopy.android.disabledapps.filter.AppsFilter$2 -> e.c:
-    com.nagopy.android.disabledapps.filter.AppsFilter this$0 -> a
+com.nagopy.android.disabledapps.util.filter.AppsFilter$2 -> e.c:
+    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
     55:55:boolean valid(com.nagopy.android.disabledapps.AppStatus) -> a
-com.nagopy.android.disabledapps.filter.AppsFilter$3 -> e.d:
-    com.nagopy.android.disabledapps.filter.AppsFilter this$0 -> a
+com.nagopy.android.disabledapps.util.filter.AppsFilter$3 -> e.d:
+    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
     63:63:boolean valid(com.nagopy.android.disabledapps.AppStatus) -> a
-com.nagopy.android.disabledapps.filter.AppsFilter$4 -> e.e:
-    com.nagopy.android.disabledapps.filter.AppsFilter this$0 -> a
+com.nagopy.android.disabledapps.util.filter.AppsFilter$4 -> e.e:
+    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
     71:71:boolean valid(com.nagopy.android.disabledapps.AppStatus) -> a
-com.nagopy.android.disabledapps.filter.AppsFilter$5 -> e.f:
-    com.nagopy.android.disabledapps.filter.AppsFilter this$0 -> a
+com.nagopy.android.disabledapps.util.filter.AppsFilter$5 -> e.f:
+    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
     84:94:int compare(com.nagopy.android.disabledapps.AppStatus,com.nagopy.android.disabledapps.AppStatus) -> a
     1:1:int compare(java.lang.Object,java.lang.Object) -> compare
-com.nagopy.android.disabledapps.filter.AppsFilter$AppFilterCondition -> e.g:
+com.nagopy.android.disabledapps.util.filter.AppsFilter$AppFilterCondition -> e.g:
     boolean valid(com.nagopy.android.disabledapps.AppStatus) -> a
 com.nagopy.android.disabledapps.util.JudgeDisablable -> f.a:
     android.app.admin.DevicePolicyManager mDevicePolicyManager -> d
