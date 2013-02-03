@@ -241,6 +241,11 @@ public class MainActivity extends BaseActivity {
 			createReloadAsyncTask().execute();
 			return true;
 
+		case R.id.menu_preference:
+			Intent intent = new Intent(getApplicationContext(), AppPreferenceActivity.class);
+			startActivity(intent);
+			return true;
+
 		default:
 			return super.onOptionsItemSelected(item);
 		}

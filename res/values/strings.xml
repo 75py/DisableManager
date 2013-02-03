@@ -11,14 +11,32 @@
     <string name="menu_filter_undisablable_system">Undisablable system apps</string>
     <string name="menu_filter_user_apps">User apps</string>
     <string name="menu_reload">Reload</string>
+    <string name="menu_preference">Preference</string>
 
     <!-- empty -->
     <string name="message_empty_list">Empty.</string>
-    
+
     <!-- share message -->
     <string name="message_share_no_app">There is no app to share.</string>
 
     <!-- comment -->
     <string name="comment_dialog_title">Edit comment</string>
     <string name="comment_dialog_edittext_hint">Add comment here.</string>
+
+    <!-- settings -->
+    <!-- pref_cat_name -->
+    <!-- pref_key_category_name -->
+    <!-- pref_title_category_name -->
+    <!-- pref_summary_category_name -->
+    <!-- pref_def_category_name -->
+    <string name="pref_cat_share">Share</string>
+    <string name="pref_key_share_customformat_without_comment">pref_key_share_customformat_without_comment</string>
+    <string name="pref_def_share_customformat_without_comment">%2$s(%1$s)%3$s</string>
+    <string name="pref_title_share_customformat_without_comment">Custom Format (without comment)</string>
+    <string name="pref_summary_share_customformat_without_comment">%1$s: label, %2$s: package, %3$s: line break.</string>
+    <string name="pref_key_share_customformat_with_comment">pref_key_share_customformat_with_comment</string>
+    <string name="pref_def_share_customformat_with_comment">%2$s(%1$s)%3$s%4$s%3$s%3$s</string>
+    <string name="pref_title_share_customformat_with_comment">Custom Format (with comment)</string>
+    <string name="pref_summary_share_customformat_with_comment">%1$s: label, %2$s: package, %3$s: line break, %4$s: comment.</string>
+
 </resources>

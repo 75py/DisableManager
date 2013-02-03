@@ -64,6 +64,10 @@
                 android:id="@+id/menu_reload"
                 android:icon="@drawable/ic_menu_refresh"
                 android:title="@string/menu_reload"/>
+            <item
+                android:id="@+id/menu_preference"
+                android:icon="@android:drawable/ic_menu_preferences"
+                android:title="@string/menu_preference"/>
         </menu>
     </item>
 
