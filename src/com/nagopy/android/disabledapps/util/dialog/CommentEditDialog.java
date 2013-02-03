@@ -105,6 +105,11 @@ public class CommentEditDialog extends DialogFragment {
 		return (CommentEditDialogListener) getArguments().getSerializable(KEY_LISTENER);
 	}
 
+	/**
+	 * 入力欄のデフォルト値をセットする
+	 * @param value
+	 *           デフォルト値
+	 */
 	public void setDefaultValue(String value) {
 		Bundle bundle = getArguments();
 		if (bundle == null) {
@@ -114,6 +119,9 @@ public class CommentEditDialog extends DialogFragment {
 		setArguments(bundle);
 	}
 
+	/**
+	 * @return 入力欄のデフォルト値
+	 */
 	private String getDefaultValue() {
 		return getArguments().getString(KEY_DEFAULT_VALUE);
 	}
@@ -121,11 +129,8 @@ public class CommentEditDialog extends DialogFragment {
 	/**
 	 * ダイアログのボタンを押したときの動作を指定するリスナー
 	 */
-	public static abstract class CommentEditDialogListener implements Serializable {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+	@SuppressWarnings("serial")
+	public abstract static class CommentEditDialogListener implements Serializable {
 
 		/**
 		 * OKボタンがおされたとき

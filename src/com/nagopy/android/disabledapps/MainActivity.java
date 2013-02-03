@@ -3,13 +3,11 @@ package com.nagopy.android.disabledapps;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.view.Menu;
@@ -122,10 +120,14 @@ public class MainActivity extends BaseActivity {
 					@Override
 					public void onPositiveButtonClicked(DialogInterface dialog, String text) {
 						mCommentsUtils.saveComment(packageName, text);
+
+						updateAppList(-1, null);
 					}
 
 					@Override
+					// CHECKSTYLE:OFF
 					public void onNegativeButtonClicked(DialogInterface dialog) {}
+					// CHECKSTYLE:ON
 				});
 				mCommentEditDialog.show(getSupportFragmentManager(), "CommentEditDialog");
 
@@ -136,7 +138,6 @@ public class MainActivity extends BaseActivity {
 		createReloadAsyncTask().execute();
 	}
 
-	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -309,13 +310,21 @@ public class MainActivity extends BaseActivity {
 		private ArrayList<AppStatus> appsList;
 
 		/**
+		 * コメントを読みこむためのクラス
+		 */
+		private CommentsUtils mCommentsUtils;
+
+		/**
 		 * コンストラクタ
 		 * @param apps
 		 *           アプリ一覧
+		 * @param commentsUtils
+		 *           CommentsUtilsを渡す
 		 */
-		public AppsListAdapter(ArrayList<AppStatus> apps) {
+		public AppsListAdapter(ArrayList<AppStatus> apps, CommentsUtils commentsUtils) {
 			super();
 			appsList = apps;
+			this.mCommentsUtils = commentsUtils;
 		}
 
 		/**
@@ -371,7 +380,7 @@ public class MainActivity extends BaseActivity {
 				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
 				icon.setCallback(null);
 
-				String comment = appStatus.getComment();
+				String comment = this.mCommentsUtils.restoreComment(appStatus.getPackageName());
 				if (comment != null) {
 					holder.commentTextView.setText(comment);
 					holder.commentTextView.setVisibility(View.VISIBLE);
@@ -438,7 +447,8 @@ public class MainActivity extends BaseActivity {
 							.getAppsList()));
 					if (activity.mAdapter == null) {
 						// 初回なら
-						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(AppsFilter.DISABLED));
+						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(AppsFilter.DISABLED),
+								activity.mCommentsUtils);
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);
