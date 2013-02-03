@@ -6,6 +6,7 @@ import java.util.HashMap;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -236,6 +237,9 @@ public class MainActivity extends BaseActivity {
 		case R.id.menu_share_label_and_package:
 			sendShareIntent(item.getItemId());
 			return true;
+		case R.id.menu_share_customformat:
+			sendShareIntent(item.getItemId());
+			return true;
 
 		case R.id.menu_reload:
 			createReloadAsyncTask().execute();
@@ -295,6 +299,27 @@ public class MainActivity extends BaseActivity {
 				sb.append(appStatus.getPackageName());
 				sb.append(lineBreak);
 				sb.append(lineBreak);
+			}
+			break;
+		case R.id.menu_share_customformat:
+			for (AppStatus appStatus : appsList) {
+				String comment = mCommentsUtils.restoreComment(appStatus.getPackageName());
+				SharedPreferences sp = getSP();
+				String formatWithComment = sp.getString(
+						getString(R.string.pref_key_share_customformat_with_comment),
+						getString(R.string.pref_def_share_customformat_with_comment));
+				String formatWithoutComment = sp.getString(
+						getString(R.string.pref_key_share_customformat_without_comment),
+						getString(R.string.pref_def_share_customformat_without_comment));
+				if (comment == null) {
+					// コメントがない場合
+					sb.append(String.format(formatWithoutComment, appStatus.getLabel(),
+							appStatus.getPackageName(), lineBreak));
+				} else {
+					// コメントがある場合
+					sb.append(String.format(formatWithComment, appStatus.getLabel(), appStatus.getPackageName(),
+							lineBreak, comment));
+				}
 			}
 			break;
 		default:

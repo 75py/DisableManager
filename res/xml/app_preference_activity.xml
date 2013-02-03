@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_cat_share" >
+        <EditTextPreference
+            android:defaultValue="@string/pref_def_share_customformat_without_comment"
+            android:key="@string/pref_key_share_customformat_without_comment"
+            android:summary="@string/pref_summary_share_customformat_without_comment"
+            android:title="@string/pref_title_share_customformat_without_comment" />
+        <EditTextPreference
+            android:defaultValue="@string/pref_def_share_customformat_with_comment"
+            android:key="@string/pref_key_share_customformat_with_comment"
+            android:summary="@string/pref_summary_share_customformat_with_comment"
+            android:title="@string/pref_title_share_customformat_with_comment" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

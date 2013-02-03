@@ -46,10 +46,16 @@ public class CommentsUtils extends BaseObject {
 	 * @param packageName
 	 *           パッケージ名（キーに使う）
 	 * @param comment
-	 *           保存するコメント
+	 *           保存するコメント<br>
+	 *           nullまたは文字数0の場合は削除する
 	 * @return 保存が完了すればtrueを返す
 	 */
 	public boolean saveComment(String packageName, String comment) {
+		if (comment == null || comment.length() == 0) {
+			// コメントが空の場合は削除
+			return commentSharedPreferences.edit().remove(packageName).commit();
+		}
+
 		return commentSharedPreferences.edit().putString(packageName, comment).commit();
 	}
 
