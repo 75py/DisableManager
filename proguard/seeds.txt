@@ -56,7 +56,6 @@ com.nagopy.android.disabledapps.R$id: int lib_csg_seekbar
 com.nagopy.android.disabledapps.R$id: int lib_csg_textview
 com.nagopy.android.disabledapps.R$id: int listView_empty
 com.nagopy.android.disabledapps.R$id: int listView_enabled_apps
-com.nagopy.android.disabledapps.R$id: int list_textview_comment
 com.nagopy.android.disabledapps.R$id: int list_textview_label
 com.nagopy.android.disabledapps.R$id: int list_textview_package_name
 com.nagopy.android.disabledapps.R$id: int menu_preference

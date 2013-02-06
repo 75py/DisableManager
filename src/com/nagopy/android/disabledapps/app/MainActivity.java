@@ -105,13 +105,16 @@ public class MainActivity extends BaseActivity {
 
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> adapter, View view, int position, long arg3) {
-				String packageName = ((TextView) view.findViewById(R.id.list_textview_package_name)).getText()
-						.toString();
+			public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
+				String packageName = mAdapter.getAppList().get(position).getPackageName();
 
 				Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri
 						.parse("package:" + packageName));
-				startActivity(intent);
+				try {
+					startActivity(intent);
+				} catch (Exception e) {
+					showToast("error");
+				}
 			}
 		});
 
@@ -120,9 +123,9 @@ public class MainActivity extends BaseActivity {
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long arg3) {
-				final String packageName = ((TextView) view.findViewById(R.id.list_textview_package_name))
-						.getText().toString();
-				String label = ((TextView) view.findViewById(R.id.list_textview_label)).getText().toString();
+				AppStatus appStatus = mAdapter.getAppList().get(position);
+				final String packageName = appStatus.getPackageName();
+				String label = appStatus.getLabel();
 				mCommentEditDialog.setLabel(label);
 				mCommentEditDialog.setDefaultValue(mCommentsUtils.restoreComment(packageName));
 				mCommentEditDialog.setListener(new CommentEditDialogListener() {

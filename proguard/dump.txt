@@ -1658,7 +1658,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 395):
+Constant Pool (count = 387):
   + Integer [2130903040]
   + Integer [2131165193]
   + Integer [2131165194]
@@ -1699,7 +1699,6 @@ Constant Pool (count = 395):
   + Class [e/d]
   + Class [f/a]
   + Class [g/b]
-  + Class [java/lang/CharSequence]
   + Class [java/lang/Integer]
   + Class [java/lang/String]
   + Class [java/lang/StringBuffer]
@@ -1745,9 +1744,9 @@ Constant Pool (count = 395):
   + Methodref [b/a.execute ([Ljava/lang/Object;)Landroid/os/AsyncTask;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a ()Landroid/content/SharedPreferences;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (I)V]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (ILjava/lang/CharSequence;)V]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Ljava/lang/Object;)V]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b ()V]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (I)V]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c ()Lb/a;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.findViewById (I)Landroid/view/View;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getActionBar ()Landroid/app/ActionBar;]
@@ -1758,7 +1757,6 @@ Constant Pool (count = 395):
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getString (I)Ljava/lang/String;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getTitle ()Ljava/lang/CharSequence;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.setContentView (I)V]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.setTitle (Ljava/lang/CharSequence;)V]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.startActivity (Landroid/content/Intent;)V]
   + Methodref [com/nagopy/android/disabledapps/app/b.<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
   + Methodref [com/nagopy/android/disabledapps/app/c.<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
@@ -1811,7 +1809,6 @@ Constant Pool (count = 395):
   + NameAndType [a ()V]
   + NameAndType [a (I)Ljava/util/ArrayList;]
   + NameAndType [a (I)V]
-  + NameAndType [a (ILjava/lang/CharSequence;)V]
   + NameAndType [a (Lf/d;)V]
   + NameAndType [a (Ljava/lang/Object;)V]
   + NameAndType [a (Ljava/lang/String;)Ljava/lang/String;]
@@ -1823,6 +1820,7 @@ Constant Pool (count = 395):
   + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + NameAndType [b ()Ljava/lang/String;]
   + NameAndType [b ()V]
+  + NameAndType [b (I)V]
   + NameAndType [b Le/b;]
   + NameAndType [c ()Lb/a;]
   + NameAndType [c Landroid/widget/ListView;]
@@ -1870,7 +1868,6 @@ Constant Pool (count = 395):
   + NameAndType [setTabListener (Landroid/app/ActionBar$TabListener;)Landroid/app/ActionBar$Tab;]
   + NameAndType [setTag (Ljava/lang/Object;)Landroid/app/ActionBar$Tab;]
   + NameAndType [setText (I)Landroid/app/ActionBar$Tab;]
-  + NameAndType [setTitle (Ljava/lang/CharSequence;)V]
   + NameAndType [setType (Ljava/lang/String;)Landroid/content/Intent;]
   + NameAndType [setVisibility (I)V]
   + NameAndType [startActivity (Landroid/content/Intent;)V]
@@ -1901,7 +1898,6 @@ Constant Pool (count = 395):
   + Utf8 [(I)V]
   + Utf8 [(I)Z]
   + Utf8 [(ILandroid/view/Menu;)V]
-  + Utf8 [(ILjava/lang/CharSequence;)V]
   + Utf8 [(Landroid/app/ActionBar$Tab;)V]
   + Utf8 [(Landroid/app/ActionBar$TabListener;)Landroid/app/ActionBar$Tab;]
   + Utf8 [(Landroid/content/Context;)V]
@@ -1924,13 +1920,11 @@ Constant Pool (count = 395):
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Ljava/util/HashMap;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
-  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Landroid/app/FragmentManager;Landroid/app/Activity;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/g;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/HashMap;)V]
   + Utf8 [(Lf/d;)V]
-  + Utf8 [(Ljava/lang/CharSequence;)V]
   + Utf8 [(Ljava/lang/Object;)Landroid/app/ActionBar$Tab;]
   + Utf8 [(Ljava/lang/Object;)Ljava/lang/String;]
   + Utf8 [(Ljava/lang/Object;)V]
@@ -2018,7 +2012,6 @@ Constant Pool (count = 395):
   + Utf8 [isEmpty]
   + Utf8 [iterator]
   + Utf8 [j]
-  + Utf8 [java/lang/CharSequence]
   + Utf8 [java/lang/Integer]
   + Utf8 [java/lang/String]
   + Utf8 [java/lang/StringBuffer]
@@ -2046,7 +2039,6 @@ Constant Pool (count = 395):
   + Utf8 [setTabListener]
   + Utf8 [setTag]
   + Utf8 [setText]
-  + Utf8 [setTitle]
   + Utf8 [setType]
   + Utf8 [setVisibility]
   + Utf8 [startActivity]
@@ -2090,13 +2082,13 @@ Methods (count = 22):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokespecial #61
+      [1] invokespecial #60
         + Methodref [a/a.<init> ()V]
       [4] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 43
+        [0] -> line 46
   + Method:       onCreate(Landroid/os/Bundle;)V
     Access flags: 0x4
       = protected void onCreate(android.os.Bundle)
@@ -2104,522 +2096,513 @@ Methods (count = 22):
     + Code attribute instructions (code length = 152, locals = 2, stack = 4):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #62
+      [2] invokespecial #61
         + Methodref [a/a.onCreate (Landroid/os/Bundle;)V]
       [5] aload_0 v0
       [6] ldc #1
         + Integer [2130903040]
-      [8] invokevirtual #99
+      [8] invokevirtual #98
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.setContentView (I)V]
       [11] aload_0 v0
       [12] new #40
         + Class [g/b]
       [15] dup
-      [16] invokespecial #120
+      [16] invokespecial #118
         + Methodref [g/b.<init> ()V]
-      [19] putfield #55
+      [19] putfield #54
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.e Lg/b;]
       [22] aload_0 v0
-      [23] new #49
+      [23] new #48
         + Class [java/util/HashMap]
       [26] dup
-      [27] invokespecial #134
+      [27] invokespecial #132
         + Methodref [java/util/HashMap.<init> ()V]
-      [30] putfield #58
+      [30] putfield #57
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.h Ljava/util/HashMap;]
       [33] aload_0 v0
       [34] iconst_1
-      [35] putfield #57
+      [35] putfield #56
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.g I]
       [38] aload_0 v0
       [39] new #36
         + Class [e/b]
       [42] dup
       [43] aload_0 v0
-      [44] invokevirtual #93
+      [44] invokevirtual #92
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
-      [47] invokespecial #112
+      [47] invokespecial #110
         + Methodref [e/b.<init> (Landroid/content/Context;)V]
-      [50] putfield #52
+      [50] putfield #51
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.b Le/b;]
       [53] aload_0 v0
       [54] aload_0 v0
       [55] ldc #11
         + Integer [2131427329]
-      [57] invokevirtual #91
+      [57] invokevirtual #90
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.findViewById (I)Landroid/view/View;]
       [60] checkcast #25
         + Class [android/widget/ListView]
-      [63] putfield #53
+      [63] putfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [66] aload_0 v0
       [67] aload_0 v0
       [68] ldc #10
         + Integer [2131427328]
-      [70] invokevirtual #91
+      [70] invokevirtual #90
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.findViewById (I)Landroid/view/View;]
       [73] checkcast #26
         + Class [android/widget/TextView]
-      [76] putfield #54
+      [76] putfield #53
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.d Landroid/widget/TextView;]
       [79] aload_0 v0
-      [80] getfield #53
+      [80] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [83] new #30
         + Class [com/nagopy/android/disabledapps/app/b]
       [86] dup
       [87] aload_0 v0
-      [88] invokespecial #102
+      [88] invokespecial #100
         + Methodref [com/nagopy/android/disabledapps/app/b.<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
-      [91] invokevirtual #79
+      [91] invokevirtual #78
         + Methodref [android/widget/ListView.setOnItemClickListener (Landroid/widget/AdapterView$OnItemClickListener;)V]
       [94] aload_0 v0
       [95] new #37
         + Class [e/c]
       [98] dup
       [99] aload_0 v0
-      [100] invokevirtual #93
+      [100] invokevirtual #92
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
-      [103] invokespecial #114
+      [103] invokespecial #112
         + Methodref [e/c.<init> (Landroid/content/Context;)V]
-      [106] putfield #60
+      [106] putfield #59
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.j Le/c;]
       [109] aload_0 v0
       [110] new #39
         + Class [f/a]
       [113] dup
-      [114] invokespecial #118
+      [114] invokespecial #116
         + Methodref [f/a.<init> ()V]
-      [117] putfield #59
+      [117] putfield #58
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.i Lf/a;]
       [120] aload_0 v0
-      [121] getfield #53
+      [121] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [124] new #32
         + Class [com/nagopy/android/disabledapps/app/d]
       [127] dup
       [128] aload_0 v0
-      [129] invokespecial #104
+      [129] invokespecial #102
         + Methodref [com/nagopy/android/disabledapps/app/d.<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
-      [132] invokevirtual #80
+      [132] invokevirtual #79
         + Methodref [android/widget/ListView.setOnItemLongClickListener (Landroid/widget/AdapterView$OnItemLongClickListener;)V]
       [135] aload_0 v0
-      [136] invokespecial #90
+      [136] invokespecial #89
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c ()Lb/a;]
       [139] iconst_0
-      [140] anewarray #47
+      [140] anewarray #46
         + Class [java/lang/Void]
-      [143] invokevirtual #84
+      [143] invokevirtual #83
         + Methodref [b/a.execute ([Ljava/lang/Object;)Landroid/os/AsyncTask;]
       [146] pop
       [147] aload_0 v0
-      [148] invokespecial #89
+      [148] invokespecial #87
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b ()V]
       [151] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 15)
-        [0] -> line 93
-        [5] -> line 94
-        [11] -> line 96
-        [22] -> line 97
-        [33] -> line 98
-        [38] -> line 99
-        [53] -> line 100
-        [66] -> line 101
-        [79] -> line 103
-        [94] -> line 115
-        [109] -> line 116
-        [120] -> line 117
-        [135] -> line 146
-        [147] -> line 148
-        [151] -> line 149
+        [0] -> line 96
+        [5] -> line 97
+        [11] -> line 99
+        [22] -> line 100
+        [33] -> line 101
+        [38] -> line 102
+        [53] -> line 103
+        [66] -> line 104
+        [79] -> line 106
+        [94] -> line 121
+        [109] -> line 122
+        [120] -> line 123
+        [135] -> line 152
+        [147] -> line 154
+        [151] -> line 155
   + Method:       b()V
     Access flags: 0x2
       = private void b()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 118, locals = 3, stack = 4):
       [0] aload_0 v0
-      [1] invokevirtual #92
+      [1] invokevirtual #91
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getActionBar ()Landroid/app/ActionBar;]
       [4] astore_1 v1
       [5] aload_1 v1
       [6] iconst_2
-      [7] invokevirtual #67
+      [7] invokevirtual #66
         + Methodref [android/app/ActionBar.setNavigationMode (I)V]
       [10] new #31
         + Class [com/nagopy/android/disabledapps/app/c]
       [13] dup
       [14] aload_0 v0
       [15] aload_0 v0
-      [16] invokespecial #103
+      [16] invokespecial #101
         + Methodref [com/nagopy/android/disabledapps/app/c.<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
       [19] astore_2 v2
       [20] aload_1 v1
       [21] aload_1 v1
-      [22] invokevirtual #66
+      [22] invokevirtual #65
         + Methodref [android/app/ActionBar.newTab ()Landroid/app/ActionBar$Tab;]
       [25] ldc #2
         + Integer [2131165193]
-      [27] invokevirtual #70
+      [27] invokevirtual #69
         + Methodref [android/app/ActionBar$Tab.setText (I)Landroid/app/ActionBar$Tab;]
       [30] iconst_1
-      [31] invokestatic #123
+      [31] invokestatic #121
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [34] invokevirtual #69
+      [34] invokevirtual #68
         + Methodref [android/app/ActionBar$Tab.setTag (Ljava/lang/Object;)Landroid/app/ActionBar$Tab;]
       [37] aload_2 v2
-      [38] invokevirtual #68
+      [38] invokevirtual #67
         + Methodref [android/app/ActionBar$Tab.setTabListener (Landroid/app/ActionBar$TabListener;)Landroid/app/ActionBar$Tab;]
-      [41] invokevirtual #65
+      [41] invokevirtual #64
         + Methodref [android/app/ActionBar.addTab (Landroid/app/ActionBar$Tab;)V]
       [44] aload_1 v1
       [45] aload_1 v1
-      [46] invokevirtual #66
+      [46] invokevirtual #65
         + Methodref [android/app/ActionBar.newTab ()Landroid/app/ActionBar$Tab;]
       [49] ldc #3
         + Integer [2131165194]
-      [51] invokevirtual #70
+      [51] invokevirtual #69
         + Methodref [android/app/ActionBar$Tab.setText (I)Landroid/app/ActionBar$Tab;]
       [54] iconst_2
-      [55] invokestatic #123
+      [55] invokestatic #121
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [58] invokevirtual #69
+      [58] invokevirtual #68
         + Methodref [android/app/ActionBar$Tab.setTag (Ljava/lang/Object;)Landroid/app/ActionBar$Tab;]
       [61] aload_2 v2
-      [62] invokevirtual #68
+      [62] invokevirtual #67
         + Methodref [android/app/ActionBar$Tab.setTabListener (Landroid/app/ActionBar$TabListener;)Landroid/app/ActionBar$Tab;]
-      [65] invokevirtual #65
+      [65] invokevirtual #64
         + Methodref [android/app/ActionBar.addTab (Landroid/app/ActionBar$Tab;)V]
       [68] aload_1 v1
       [69] aload_1 v1
-      [70] invokevirtual #66
+      [70] invokevirtual #65
         + Methodref [android/app/ActionBar.newTab ()Landroid/app/ActionBar$Tab;]
       [73] ldc #4
         + Integer [2131165195]
-      [75] invokevirtual #70
+      [75] invokevirtual #69
         + Methodref [android/app/ActionBar$Tab.setText (I)Landroid/app/ActionBar$Tab;]
       [78] iconst_4
-      [79] invokestatic #123
+      [79] invokestatic #121
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [82] invokevirtual #69
+      [82] invokevirtual #68
         + Methodref [android/app/ActionBar$Tab.setTag (Ljava/lang/Object;)Landroid/app/ActionBar$Tab;]
       [85] aload_2 v2
-      [86] invokevirtual #68
+      [86] invokevirtual #67
         + Methodref [android/app/ActionBar$Tab.setTabListener (Landroid/app/ActionBar$TabListener;)Landroid/app/ActionBar$Tab;]
-      [89] invokevirtual #65
+      [89] invokevirtual #64
         + Methodref [android/app/ActionBar.addTab (Landroid/app/ActionBar$Tab;)V]
       [92] aload_1 v1
       [93] aload_1 v1
-      [94] invokevirtual #66
+      [94] invokevirtual #65
         + Methodref [android/app/ActionBar.newTab ()Landroid/app/ActionBar$Tab;]
       [97] ldc #5
         + Integer [2131165196]
-      [99] invokevirtual #70
+      [99] invokevirtual #69
         + Methodref [android/app/ActionBar$Tab.setText (I)Landroid/app/ActionBar$Tab;]
       [102] bipush 8
-      [104] invokestatic #123
+      [104] invokestatic #121
         + Methodref [java/lang/Integer.valueOf (I)Ljava/lang/Integer;]
-      [107] invokevirtual #69
+      [107] invokevirtual #68
         + Methodref [android/app/ActionBar$Tab.setTag (Ljava/lang/Object;)Landroid/app/ActionBar$Tab;]
       [110] aload_2 v2
-      [111] invokevirtual #68
+      [111] invokevirtual #67
         + Methodref [android/app/ActionBar$Tab.setTabListener (Landroid/app/ActionBar$TabListener;)Landroid/app/ActionBar$Tab;]
-      [114] invokevirtual #65
+      [114] invokevirtual #64
         + Methodref [android/app/ActionBar.addTab (Landroid/app/ActionBar$Tab;)V]
       [117] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 16)
-        [0] -> line 155
-        [5] -> line 156
-        [10] -> line 188
-        [20] -> line 190
-        [37] -> line 191
-        [41] -> line 190
-        [44] -> line 192
-        [54] -> line 193
-        [65] -> line 192
-        [68] -> line 194
-        [78] -> line 195
-        [89] -> line 194
-        [92] -> line 196
-        [102] -> line 197
-        [114] -> line 196
-        [117] -> line 198
+        [0] -> line 161
+        [5] -> line 162
+        [10] -> line 194
+        [20] -> line 196
+        [37] -> line 197
+        [41] -> line 196
+        [44] -> line 198
+        [54] -> line 199
+        [65] -> line 198
+        [68] -> line 200
+        [78] -> line 201
+        [89] -> line 200
+        [92] -> line 202
+        [102] -> line 203
+        [114] -> line 202
+        [117] -> line 204
   + Method:       onDestroy()V
     Access flags: 0x4
       = protected void onDestroy()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 122, locals = 1, stack = 3):
       [0] aload_0 v0
-      [1] invokespecial #63
+      [1] invokespecial #62
         + Methodref [a/a.onDestroy ()V]
       [4] aload_0 v0
-      [5] getfield #53
+      [5] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [8] aconst_null
-      [9] invokevirtual #78
+      [9] invokevirtual #77
         + Methodref [android/widget/ListView.setAdapter (Landroid/widget/ListAdapter;)V]
       [12] aload_0 v0
-      [13] getfield #53
+      [13] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [16] aconst_null
-      [17] invokevirtual #79
+      [17] invokevirtual #78
         + Methodref [android/widget/ListView.setOnItemClickListener (Landroid/widget/AdapterView$OnItemClickListener;)V]
       [20] aload_0 v0
-      [21] getfield #53
+      [21] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [24] aconst_null
-      [25] invokevirtual #80
+      [25] invokevirtual #79
         + Methodref [android/widget/ListView.setOnItemLongClickListener (Landroid/widget/AdapterView$OnItemLongClickListener;)V]
       [28] aload_0 v0
       [29] aconst_null
-      [30] putfield #53
+      [30] putfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [33] aload_0 v0
       [34] aconst_null
-      [35] putfield #54
+      [35] putfield #53
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.d Landroid/widget/TextView;]
       [38] aload_0 v0
-      [39] getfield #56
+      [39] getfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
       [42] aconst_null
-      [43] invokevirtual #107
+      [43] invokevirtual #105
         + Methodref [com/nagopy/android/disabledapps/app/g.a (Ljava/util/ArrayList;)V]
       [46] aload_0 v0
       [47] aconst_null
-      [48] putfield #56
+      [48] putfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
       [51] aload_0 v0
-      [52] getfield #55
+      [52] getfield #54
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.e Lg/b;]
-      [55] invokevirtual #121
+      [55] invokevirtual #119
         + Methodref [g/b.a ()V]
       [58] aload_0 v0
       [59] aconst_null
-      [60] putfield #55
+      [60] putfield #54
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.e Lg/b;]
       [63] aload_0 v0
-      [64] getfield #52
+      [64] getfield #51
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.b Le/b;]
-      [67] invokevirtual #113
+      [67] invokevirtual #111
         + Methodref [e/b.d ()V]
       [70] aload_0 v0
       [71] aconst_null
-      [72] putfield #52
+      [72] putfield #51
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.b Le/b;]
       [75] aload_0 v0
-      [76] getfield #59
+      [76] getfield #58
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.i Lf/a;]
       [79] aconst_null
-      [80] invokevirtual #119
+      [80] invokevirtual #117
         + Methodref [f/a.a (Lf/d;)V]
       [83] aload_0 v0
       [84] aconst_null
-      [85] putfield #59
+      [85] putfield #58
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.i Lf/a;]
       [88] aload_0 v0
       [89] aconst_null
-      [90] putfield #60
+      [90] putfield #59
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.j Le/c;]
       [93] aload_0 v0
       [94] aconst_null
-      [95] putfield #51
+      [95] putfield #50
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.a Ld/a;]
       [98] aload_0 v0
-      [99] getfield #58
+      [99] getfield #57
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.h Ljava/util/HashMap;]
-      [102] invokevirtual #135
+      [102] invokevirtual #133
         + Methodref [java/util/HashMap.clear ()V]
       [105] aload_0 v0
       [106] aconst_null
-      [107] putfield #58
+      [107] putfield #57
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.h Ljava/util/HashMap;]
       [110] aload_0 v0
-      [111] new #49
+      [111] new #48
         + Class [java/util/HashMap]
       [114] dup
-      [115] invokespecial #134
+      [115] invokespecial #132
         + Methodref [java/util/HashMap.<init> ()V]
-      [118] putfield #58
+      [118] putfield #57
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.h Ljava/util/HashMap;]
       [121] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 20)
-        [0] -> line 202
-        [4] -> line 203
-        [12] -> line 204
-        [20] -> line 205
-        [28] -> line 206
-        [33] -> line 208
-        [38] -> line 210
-        [46] -> line 211
-        [51] -> line 213
-        [58] -> line 214
-        [63] -> line 216
-        [70] -> line 217
-        [75] -> line 219
-        [83] -> line 220
-        [88] -> line 221
-        [93] -> line 223
-        [98] -> line 230
-        [105] -> line 231
-        [110] -> line 232
-        [121] -> line 233
+        [0] -> line 208
+        [4] -> line 209
+        [12] -> line 210
+        [20] -> line 211
+        [28] -> line 212
+        [33] -> line 214
+        [38] -> line 216
+        [46] -> line 217
+        [51] -> line 219
+        [58] -> line 220
+        [63] -> line 222
+        [70] -> line 223
+        [75] -> line 225
+        [83] -> line 226
+        [88] -> line 227
+        [93] -> line 229
+        [98] -> line 236
+        [105] -> line 237
+        [110] -> line 238
+        [121] -> line 239
   + Method:       onCreateOptionsMenu(Landroid/view/Menu;)Z
     Access flags: 0x1
       = public boolean onCreateOptionsMenu(android.view.Menu)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 12, locals = 2, stack = 3):
       [0] aload_0 v0
-      [1] invokevirtual #95
+      [1] invokevirtual #94
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getMenuInflater ()Landroid/view/MenuInflater;]
       [4] ldc #9
         + Integer [2131361792]
       [6] aload_1 v1
-      [7] invokevirtual #77
+      [7] invokevirtual #76
         + Methodref [android/view/MenuInflater.inflate (ILandroid/view/Menu;)V]
       [10] iconst_1
       [11] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 237
-        [10] -> line 238
-  + Method:       a(ILjava/lang/CharSequence;)V
+        [0] -> line 243
+        [10] -> line 244
+  + Method:       a(I)V
     Access flags: 0x2
-      = private void a(int,java.lang.CharSequence)
+      = private void a(int)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 108, locals = 4, stack = 3):
+    + Code attribute instructions (code length = 99, locals = 3, stack = 3):
       [0] iload_1 v1
       [1] ifge +11 (target=12)
       [4] aload_0 v0
-      [5] getfield #57
+      [5] getfield #56
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.g I]
       [8] istore_1 v1
       [9] goto +8 (target=17)
       [12] aload_0 v0
       [13] iload_1 v1
-      [14] putfield #57
+      [14] putfield #56
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.g I]
       [17] aload_0 v0
-      [18] getfield #56
+      [18] getfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
       [21] aload_0 v0
-      [22] getfield #55
+      [22] getfield #54
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.e Lg/b;]
       [25] iload_1 v1
-      [26] invokevirtual #122
+      [26] invokevirtual #120
         + Methodref [g/b.a (I)Ljava/util/ArrayList;]
-      [29] invokevirtual #107
+      [29] invokevirtual #105
         + Methodref [com/nagopy/android/disabledapps/app/g.a (Ljava/util/ArrayList;)V]
       [32] aload_0 v0
-      [33] getfield #56
+      [33] getfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
-      [36] invokevirtual #109
+      [36] invokevirtual #107
         + Methodref [com/nagopy/android/disabledapps/app/g.notifyDataSetChanged ()V]
       [39] aload_0 v0
-      [40] getfield #53
+      [40] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [43] iconst_0
-      [44] invokevirtual #81
+      [44] invokevirtual #80
         + Methodref [android/widget/ListView.setSelection (I)V]
       [47] aload_0 v0
-      [48] getfield #56
+      [48] getfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
-      [51] invokevirtual #108
+      [51] invokevirtual #106
         + Methodref [com/nagopy/android/disabledapps/app/g.getCount ()I]
       [54] iconst_1
       [55] ificmpge +7 (target=62)
       [58] iconst_1
       [59] goto +4 (target=63)
       [62] iconst_0
-      [63] istore_3 v3
+      [63] istore_2 v2
       [64] aload_0 v0
-      [65] getfield #54
+      [65] getfield #53
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.d Landroid/widget/TextView;]
-      [68] iload_3 v3
+      [68] iload_2 v2
       [69] ifeq +7 (target=76)
       [72] iconst_0
       [73] goto +5 (target=78)
       [76] bipush 8
-      [78] invokevirtual #83
+      [78] invokevirtual #82
         + Methodref [android/widget/TextView.setVisibility (I)V]
       [81] aload_0 v0
-      [82] getfield #53
+      [82] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
-      [85] iload_3 v3
+      [85] iload_2 v2
       [86] ifeq +8 (target=94)
       [89] bipush 8
       [91] goto +4 (target=95)
       [94] iconst_0
-      [95] invokevirtual #82
+      [95] invokevirtual #81
         + Methodref [android/widget/ListView.setVisibility (I)V]
-      [98] aload_2 v2
-      [99] ifnull +8 (target=107)
-      [102] aload_0 v0
-      [103] aload_2 v2
-      [104] invokevirtual #100
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.setTitle (Ljava/lang/CharSequence;)V]
-      [107] return
+      [98] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 12)
-        [0] -> line 250
-        [4] -> line 251
-        [12] -> line 253
-        [17] -> line 255
-        [32] -> line 256
-        [39] -> line 257
-        [47] -> line 259
-        [64] -> line 261
-        [81] -> line 262
-        [98] -> line 265
-        [102] -> line 266
-        [107] -> line 269
-      + Stack map table attribute (count = 9):
+      + Line number table attribute (count = 10)
+        [0] -> line 254
+        [4] -> line 255
+        [12] -> line 257
+        [17] -> line 259
+        [32] -> line 260
+        [39] -> line 261
+        [47] -> line 263
+        [64] -> line 265
+        [81] -> line 266
+        [98] -> line 268
+      + Stack map table attribute (count = 8):
         - [12] Var: ..., Stack: (empty)
         - [17] Var: ..., Stack: (empty)
         - [62] Var: ..., Stack: (empty)
         - [63] Var: ..., Stack: [i]
-        - [76] Var: [a:com/nagopy/android/disabledapps/app/MainActivity][i][a:java/lang/CharSequence][i], Stack: [a:android/widget/TextView]
-        - [78] Var: [a:com/nagopy/android/disabledapps/app/MainActivity][i][a:java/lang/CharSequence][i], Stack: [a:android/widget/TextView][i]
+        - [76] Var: [a:com/nagopy/android/disabledapps/app/MainActivity][i][i], Stack: [a:android/widget/TextView]
+        - [78] Var: [a:com/nagopy/android/disabledapps/app/MainActivity][i][i], Stack: [a:android/widget/TextView][i]
         - [94] Var: ..., Stack: [a:android/widget/ListView]
-        - [95] Var: [a:com/nagopy/android/disabledapps/app/MainActivity][i][a:java/lang/CharSequence][i], Stack: [a:android/widget/ListView][i]
-        - [107] Var: ..., Stack: (empty)
+        - [95] Var: [a:com/nagopy/android/disabledapps/app/MainActivity][i][i], Stack: [a:android/widget/ListView][i]
   + Method:       onOptionsItemSelected(Landroid/view/MenuItem;)Z
     Access flags: 0x1
       = public boolean onOptionsItemSelected(android.view.MenuItem)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 97, locals = 3, stack = 4):
       [0] aload_1 v1
-      [1] invokeinterface #137
+      [1] invokeinterface #135
         + InterfaceMethodref [android/view/MenuItem.getItemId ()I]
       [6] tableswitch (6 offsets, default=85) (target=91)
+        2131427342: offset = 38, target = 44
         2131427343: offset = 38, target = 44
         2131427344: offset = 38, target = 44
         2131427345: offset = 38, target = 44
-        2131427346: offset = 38, target = 44
-        2131427347: offset = 50, target = 56
-        2131427348: offset = 64, target = 70
+        2131427346: offset = 50, target = 56
+        2131427347: offset = 64, target = 70
         default: offset = 85, target = 91
       [44] aload_0 v0
       [45] aload_1 v1
-      [46] invokeinterface #137
+      [46] invokeinterface #135
         + InterfaceMethodref [android/view/MenuItem.getItemId ()I]
-      [51] invokespecial #86
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (I)V]
+      [51] invokespecial #88
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (I)V]
       [54] iconst_1
       [55] ireturn
       [56] aload_0 v0
-      [57] invokespecial #90
+      [57] invokespecial #89
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c ()Lb/a;]
       [60] iconst_0
-      [61] anewarray #47
+      [61] anewarray #46
         + Class [java/lang/Void]
-      [64] invokevirtual #84
+      [64] invokevirtual #83
         + Methodref [b/a.execute ([Ljava/lang/Object;)Landroid/os/AsyncTask;]
       [67] pop
       [68] iconst_1
@@ -2628,275 +2611,275 @@ Methods (count = 22):
         + Class [android/content/Intent]
       [73] dup
       [74] aload_0 v0
-      [75] invokevirtual #93
+      [75] invokevirtual #92
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
       [78] ldc #28
         + Class [com/nagopy/android/disabledapps/app/AppPreferenceActivity]
-      [80] invokespecial #71
+      [80] invokespecial #70
         + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
       [83] astore_2 v2
       [84] aload_0 v0
       [85] aload_2 v2
-      [86] invokevirtual #101
+      [86] invokevirtual #99
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.startActivity (Landroid/content/Intent;)V]
       [89] iconst_1
       [90] ireturn
       [91] aload_0 v0
       [92] aload_1 v1
-      [93] invokespecial #64
+      [93] invokespecial #63
         + Methodref [a/a.onOptionsItemSelected (Landroid/view/MenuItem;)Z]
       [96] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 9)
-        [0] -> line 273
-        [44] -> line 278
-        [54] -> line 279
-        [56] -> line 282
-        [68] -> line 283
-        [70] -> line 286
-        [84] -> line 287
-        [89] -> line 288
-        [91] -> line 291
+        [0] -> line 272
+        [44] -> line 277
+        [54] -> line 278
+        [56] -> line 281
+        [68] -> line 282
+        [70] -> line 285
+        [84] -> line 286
+        [89] -> line 287
+        [91] -> line 290
       + Stack map table attribute (count = 4):
         - [44] Var: ..., Stack: (empty)
         - [56] Var: ..., Stack: (empty)
         - [70] Var: ..., Stack: (empty)
         - [91] Var: ..., Stack: (empty)
-  + Method:       a(I)V
+  + Method:       b(I)V
     Access flags: 0x2
-      = private void a(int)
+      = private void b(int)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 453, locals = 10, stack = 5):
       [0] aload_0 v0
-      [1] getfield #56
+      [1] getfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
-      [4] invokevirtual #106
+      [4] invokevirtual #104
         + Methodref [com/nagopy/android/disabledapps/app/g.a ()Ljava/util/ArrayList;]
       [7] astore_2 v2
       [8] aload_2 v2
       [9] ifnull +10 (target=19)
       [12] aload_2 v2
-      [13] invokevirtual #132
+      [13] invokevirtual #130
         + Methodref [java/util/ArrayList.isEmpty ()Z]
       [16] ifeq +14 (target=30)
       [19] aload_0 v0
       [20] aload_0 v0
       [21] ldc #6
         + Integer [2131165200]
-      [23] invokevirtual #97
+      [23] invokevirtual #96
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getString (I)Ljava/lang/String;]
-      [26] invokevirtual #88
+      [26] invokevirtual #86
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Ljava/lang/Object;)V]
       [29] return
-      [30] new #44
+      [30] new #43
         + Class [java/lang/StringBuffer]
       [33] dup
-      [34] invokespecial #125
+      [34] invokespecial #123
         + Methodref [java/lang/StringBuffer.<init> ()V]
       [37] astore_3 v3
       [38] aload_0 v0
-      [39] invokevirtual #85
+      [39] invokevirtual #84
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a ()Landroid/content/SharedPreferences;]
       [42] aload_0 v0
       [43] ldc #7
         + Integer [2131165212]
-      [45] invokevirtual #97
+      [45] invokevirtual #96
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getString (I)Ljava/lang/String;]
       [48] aload_0 v0
-      [49] invokevirtual #96
+      [49] invokevirtual #95
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getResources ()Landroid/content/res/Resources;]
       [52] ldc #8
         + Integer [2131296256]
-      [54] invokevirtual #76
+      [54] invokevirtual #75
         + Methodref [android/content/res/Resources.getBoolean (I)Z]
-      [57] invokeinterface #136
+      [57] invokeinterface #134
         + InterfaceMethodref [android/content/SharedPreferences.getBoolean (Ljava/lang/String;Z)Z]
       [62] ifeq +13 (target=75)
       [65] ldc #15
         + String [line.separator]
-      [67] invokestatic #131
+      [67] invokestatic #129
         + Methodref [java/lang/System.getProperty (Ljava/lang/String;)Ljava/lang/String;]
       [70] astore v4
       [72] goto +31 (target=103)
-      [75] new #45
+      [75] new #44
         + Class [java/lang/StringBuilder]
       [78] dup
       [79] ldc #15
         + String [line.separator]
-      [81] invokestatic #131
+      [81] invokestatic #129
         + Methodref [java/lang/System.getProperty (Ljava/lang/String;)Ljava/lang/String;]
-      [84] invokestatic #124
+      [84] invokestatic #122
         + Methodref [java/lang/String.valueOf (Ljava/lang/Object;)Ljava/lang/String;]
-      [87] invokespecial #128
+      [87] invokespecial #126
         + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
       [90] ldc #15
         + String [line.separator]
-      [92] invokestatic #131
+      [92] invokestatic #129
         + Methodref [java/lang/System.getProperty (Ljava/lang/String;)Ljava/lang/String;]
-      [95] invokevirtual #129
+      [95] invokevirtual #127
         + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [98] invokevirtual #130
+      [98] invokevirtual #128
         + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
       [101] astore v4
       [103] iload_1 v1
       [104] tableswitch (4 offsets, default=299) (target=403)
-        2131427343: offset = 32, target = 136
-        2131427344: offset = 83, target = 187
-        2131427345: offset = 134, target = 238
-        2131427346: offset = 209, target = 313
+        2131427342: offset = 32, target = 136
+        2131427343: offset = 83, target = 187
+        2131427344: offset = 134, target = 238
+        2131427345: offset = 209, target = 313
         default: offset = 299, target = 403
       [136] aload_2 v2
-      [137] invokevirtual #133
+      [137] invokevirtual #131
         + Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
       [140] astore v6
       [142] goto +32 (target=174)
       [145] aload v6
-      [147] invokeinterface #139
+      [147] invokeinterface #137
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [152] checkcast #35
         + Class [e/a]
       [155] astore v5
       [157] aload_3 v3
       [158] aload v5
-      [160] invokevirtual #110
+      [160] invokevirtual #108
         + Methodref [e/a.a ()Ljava/lang/String;]
-      [163] invokevirtual #126
+      [163] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [166] pop
       [167] aload_3 v3
       [168] aload v4
-      [170] invokevirtual #126
+      [170] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [173] pop
       [174] aload v6
-      [176] invokeinterface #138
+      [176] invokeinterface #136
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [181] ifne -36 (target=145)
       [184] goto +219 (target=403)
       [187] aload_2 v2
-      [188] invokevirtual #133
+      [188] invokevirtual #131
         + Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
       [191] astore v6
       [193] goto +32 (target=225)
       [196] aload v6
-      [198] invokeinterface #139
+      [198] invokeinterface #137
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [203] checkcast #35
         + Class [e/a]
       [206] astore v5
       [208] aload_3 v3
       [209] aload v5
-      [211] invokevirtual #111
+      [211] invokevirtual #109
         + Methodref [e/a.b ()Ljava/lang/String;]
-      [214] invokevirtual #126
+      [214] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [217] pop
       [218] aload_3 v3
       [219] aload v4
-      [221] invokevirtual #126
+      [221] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [224] pop
       [225] aload v6
-      [227] invokeinterface #138
+      [227] invokeinterface #136
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [232] ifne -36 (target=196)
       [235] goto +168 (target=403)
       [238] ldc #15
         + String [line.separator]
-      [240] invokestatic #131
+      [240] invokestatic #129
         + Methodref [java/lang/System.getProperty (Ljava/lang/String;)Ljava/lang/String;]
       [243] astore v5
       [245] aload_2 v2
-      [246] invokevirtual #133
+      [246] invokevirtual #131
         + Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
       [249] astore v7
       [251] goto +49 (target=300)
       [254] aload v7
-      [256] invokeinterface #139
+      [256] invokeinterface #137
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [261] checkcast #35
         + Class [e/a]
       [264] astore v6
       [266] aload_3 v3
       [267] aload v6
-      [269] invokevirtual #110
+      [269] invokevirtual #108
         + Methodref [e/a.a ()Ljava/lang/String;]
-      [272] invokevirtual #126
+      [272] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [275] pop
       [276] aload_3 v3
       [277] aload v5
-      [279] invokevirtual #126
+      [279] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [282] pop
       [283] aload_3 v3
       [284] aload v6
-      [286] invokevirtual #111
+      [286] invokevirtual #109
         + Methodref [e/a.b ()Ljava/lang/String;]
-      [289] invokevirtual #126
+      [289] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [292] pop
       [293] aload_3 v3
       [294] aload v4
-      [296] invokevirtual #126
+      [296] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [299] pop
       [300] aload v7
-      [302] invokeinterface #138
+      [302] invokeinterface #136
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [307] ifne -53 (target=254)
       [310] goto +93 (target=403)
       [313] aload_2 v2
-      [314] invokevirtual #133
+      [314] invokevirtual #131
         + Methodref [java/util/ArrayList.iterator ()Ljava/util/Iterator;]
       [317] astore v7
       [319] goto +71 (target=390)
       [322] aload v7
-      [324] invokeinterface #139
+      [324] invokeinterface #137
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
       [329] checkcast #35
         + Class [e/a]
       [332] astore v6
       [334] aload_0 v0
-      [335] getfield #60
+      [335] getfield #59
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.j Le/c;]
       [338] aload v6
-      [340] invokevirtual #111
+      [340] invokevirtual #109
         + Methodref [e/a.b ()Ljava/lang/String;]
-      [343] invokevirtual #115
+      [343] invokevirtual #113
         + Methodref [e/c.a (Ljava/lang/String;)Ljava/lang/String;]
       [346] astore v8
       [348] new #38
         + Class [e/d]
       [351] dup
       [352] aload_0 v0
-      [353] invokevirtual #93
+      [353] invokevirtual #92
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
-      [356] invokespecial #116
+      [356] invokespecial #114
         + Methodref [e/d.<init> (Landroid/content/Context;)V]
       [359] astore v9
       [361] aload_3 v3
       [362] aload v9
       [364] aload v6
-      [366] invokevirtual #110
+      [366] invokevirtual #108
         + Methodref [e/a.a ()Ljava/lang/String;]
       [369] aload v6
-      [371] invokevirtual #111
+      [371] invokevirtual #109
         + Methodref [e/a.b ()Ljava/lang/String;]
       [374] aload v8
-      [376] invokevirtual #117
+      [376] invokevirtual #115
         + Methodref [e/d.a (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;]
-      [379] invokevirtual #126
+      [379] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [382] pop
       [383] aload_3 v3
       [384] aload v4
-      [386] invokevirtual #126
+      [386] invokevirtual #124
         + Methodref [java/lang/StringBuffer.append (Ljava/lang/String;)Ljava/lang/StringBuffer;]
       [389] pop
       [390] aload v7
-      [392] invokeinterface #138
+      [392] invokeinterface #136
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [397] ifne -75 (target=322)
       [400] goto +3 (target=403)
@@ -2905,83 +2888,83 @@ Methods (count = 22):
       [406] dup
       [407] ldc #12
         + String [android.intent.action.SEND]
-      [409] invokespecial #72
+      [409] invokespecial #71
         + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
       [412] astore v5
       [414] aload v5
       [416] ldc #16
         + String [text/plain]
-      [418] invokevirtual #75
+      [418] invokevirtual #74
         + Methodref [android/content/Intent.setType (Ljava/lang/String;)Landroid/content/Intent;]
       [421] pop
       [422] aload v5
       [424] ldc #14
         + String [android.intent.extra.TEXT]
       [426] aload_3 v3
-      [427] invokevirtual #127
+      [427] invokevirtual #125
         + Methodref [java/lang/StringBuffer.toString ()Ljava/lang/String;]
-      [430] invokevirtual #74
+      [430] invokevirtual #73
         + Methodref [android/content/Intent.putExtra (Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;]
       [433] pop
       [434] aload v5
       [436] ldc #13
         + String [android.intent.extra.SUBJECT]
       [438] aload_0 v0
-      [439] invokevirtual #98
+      [439] invokevirtual #97
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getTitle ()Ljava/lang/CharSequence;]
-      [442] invokevirtual #73
+      [442] invokevirtual #72
         + Methodref [android/content/Intent.putExtra (Ljava/lang/String;Ljava/lang/CharSequence;)Landroid/content/Intent;]
       [445] pop
       [446] aload_0 v0
       [447] aload v5
-      [449] invokevirtual #101
+      [449] invokevirtual #99
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.startActivity (Landroid/content/Intent;)V]
       [452] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 42)
-        [0] -> line 303
-        [8] -> line 304
-        [19] -> line 305
-        [29] -> line 306
-        [30] -> line 309
-        [38] -> line 311
-        [48] -> line 312
-        [57] -> line 311
-        [65] -> line 313
-        [75] -> line 315
-        [103] -> line 317
-        [136] -> line 319
-        [157] -> line 320
-        [167] -> line 321
-        [174] -> line 319
-        [184] -> line 323
-        [187] -> line 325
-        [208] -> line 326
-        [218] -> line 327
-        [225] -> line 325
-        [235] -> line 329
-        [238] -> line 331
-        [245] -> line 332
-        [266] -> line 333
-        [276] -> line 334
-        [283] -> line 335
-        [293] -> line 336
-        [300] -> line 332
-        [310] -> line 338
-        [313] -> line 340
-        [334] -> line 341
-        [348] -> line 342
-        [361] -> line 343
-        [383] -> line 344
-        [390] -> line 340
-        [400] -> line 346
-        [403] -> line 351
-        [414] -> line 352
-        [422] -> line 353
-        [434] -> line 354
-        [446] -> line 355
-        [452] -> line 356
+        [0] -> line 302
+        [8] -> line 303
+        [19] -> line 304
+        [29] -> line 305
+        [30] -> line 308
+        [38] -> line 310
+        [48] -> line 311
+        [57] -> line 310
+        [65] -> line 312
+        [75] -> line 314
+        [103] -> line 316
+        [136] -> line 318
+        [157] -> line 319
+        [167] -> line 320
+        [174] -> line 318
+        [184] -> line 322
+        [187] -> line 324
+        [208] -> line 325
+        [218] -> line 326
+        [225] -> line 324
+        [235] -> line 328
+        [238] -> line 330
+        [245] -> line 331
+        [266] -> line 332
+        [276] -> line 333
+        [283] -> line 334
+        [293] -> line 335
+        [300] -> line 331
+        [310] -> line 337
+        [313] -> line 339
+        [334] -> line 340
+        [348] -> line 341
+        [361] -> line 342
+        [383] -> line 343
+        [390] -> line 339
+        [400] -> line 345
+        [403] -> line 350
+        [414] -> line 351
+        [422] -> line 352
+        [434] -> line 353
+        [446] -> line 354
+        [452] -> line 355
       + Stack map table attribute (count = 17):
         - [19] Var: ...[a:java/util/ArrayList], Stack: (empty)
         - [30] Var: ..., Stack: (empty)
@@ -3010,83 +2993,68 @@ Methods (count = 22):
       [3] dup
       [4] aload_0 v0
       [5] aload_0 v0
-      [6] invokevirtual #94
+      [6] invokevirtual #93
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getFragmentManager ()Landroid/app/FragmentManager;]
       [9] aload_0 v0
-      [10] invokespecial #105
+      [10] invokespecial #103
         + Methodref [com/nagopy/android/disabledapps/app/f.<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;Landroid/app/FragmentManager;Landroid/app/Activity;)V]
       [13] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 475
+        [0] -> line 482
   + Method:       a(Lcom/nagopy/android/disabledapps/app/MainActivity;)Ljava/util/HashMap;
     Access flags: 0x1008
       = static synthetic java.util.HashMap a(com.nagopy.android.disabledapps.app.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #58
+      [1] getfield #57
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.h Ljava/util/HashMap;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 79
-  + Method:       b(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;
+        [0] -> line 82
+  + Method:       b(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;
     Access flags: 0x1008
-      = static synthetic f.a b(com.nagopy.android.disabledapps.app.MainActivity)
+      = static synthetic com.nagopy.android.disabledapps.app.g b(com.nagopy.android.disabledapps.app.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #59
-        + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.i Lf/a;]
-      [4] areturn
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 1)
-        [0] -> line 84
-  + Method:       c(Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;
-    Access flags: 0x1008
-      = static synthetic e.c c(com.nagopy.android.disabledapps.app.MainActivity)
-    Class member attributes (count = 1):
-    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
-      [0] aload_0 v0
-      [1] getfield #60
-        + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.j Le/c;]
-      [4] areturn
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 1)
-        [0] -> line 89
-  + Method:       a(Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V
-    Access flags: 0x1008
-      = static synthetic void a(com.nagopy.android.disabledapps.app.MainActivity,int,java.lang.CharSequence)
-    Class member attributes (count = 1):
-    + Code attribute instructions (code length = 7, locals = 3, stack = 3):
-      [0] aload_0 v0
-      [1] iload_1 v1
-      [2] aload_2 v2
-      [3] invokespecial #87
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (ILjava/lang/CharSequence;)V]
-      [6] return
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 1)
-        [0] -> line 249
-  + Method:       d(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;
-    Access flags: 0x1008
-      = static synthetic com.nagopy.android.disabledapps.app.g d(com.nagopy.android.disabledapps.app.MainActivity)
-    Class member attributes (count = 1):
-    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
-      [0] aload_0 v0
-      [1] getfield #56
+      [1] getfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 68
+        [0] -> line 71
+  + Method:       c(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;
+    Access flags: 0x1008
+      = static synthetic f.a c(com.nagopy.android.disabledapps.app.MainActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #58
+        + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.i Lf/a;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Line number table attribute (count = 1)
+        [0] -> line 87
+  + Method:       d(Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;
+    Access flags: 0x1008
+      = static synthetic e.c d(com.nagopy.android.disabledapps.app.MainActivity)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 5, locals = 1, stack = 1):
+      [0] aload_0 v0
+      [1] getfield #59
+        + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.j Le/c;]
+      [4] areturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Line number table attribute (count = 1)
+        [0] -> line 92
   + Method:       a(Lcom/nagopy/android/disabledapps/app/MainActivity;I)V
     Access flags: 0x1008
       = static synthetic void a(com.nagopy.android.disabledapps.app.MainActivity,int)
@@ -3094,26 +3062,40 @@ Methods (count = 22):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] iload_1 v1
-      [2] putfield #57
+      [2] invokespecial #85
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (I)V]
+      [5] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 1):
+      + Line number table attribute (count = 1)
+        [0] -> line 253
+  + Method:       b(Lcom/nagopy/android/disabledapps/app/MainActivity;I)V
+    Access flags: 0x1008
+      = static synthetic void b(com.nagopy.android.disabledapps.app.MainActivity,int)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 6, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] iload_1 v1
+      [2] putfield #56
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.g I]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 73
+        [0] -> line 76
   + Method:       e(Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/b;
     Access flags: 0x1008
       = static synthetic e.b e(com.nagopy.android.disabledapps.app.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #52
+      [1] getfield #51
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.b Le/b;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 48
+        [0] -> line 51
   + Method:       a(Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/HashMap;)V
     Access flags: 0x1008
       = static synthetic void a(com.nagopy.android.disabledapps.app.MainActivity,java.util.HashMap)
@@ -3121,39 +3103,39 @@ Methods (count = 22):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #58
+      [2] putfield #57
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.h Ljava/util/HashMap;]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 79
+        [0] -> line 82
   + Method:       f(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lg/b;
     Access flags: 0x1008
       = static synthetic g.b f(com.nagopy.android.disabledapps.app.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #55
+      [1] getfield #54
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.e Lg/b;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 63
+        [0] -> line 66
   + Method:       g(Lcom/nagopy/android/disabledapps/app/MainActivity;)I
     Access flags: 0x1008
       = static synthetic int g(com.nagopy.android.disabledapps.app.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #57
+      [1] getfield #56
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.g I]
       [4] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 73
+        [0] -> line 76
   + Method:       a(Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/g;)V
     Access flags: 0x1008
       = static synthetic void a(com.nagopy.android.disabledapps.app.MainActivity,com.nagopy.android.disabledapps.app.g)
@@ -3161,39 +3143,39 @@ Methods (count = 22):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #56
+      [2] putfield #55
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.f Lcom/nagopy/android/disabledapps/app/g;]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 68
+        [0] -> line 71
   + Method:       h(Lcom/nagopy/android/disabledapps/app/MainActivity;)Landroid/widget/ListView;
     Access flags: 0x1008
       = static synthetic android.widget.ListView h(com.nagopy.android.disabledapps.app.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #53
+      [1] getfield #52
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.c Landroid/widget/ListView;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 53
+        [0] -> line 56
   + Method:       i(Lcom/nagopy/android/disabledapps/app/MainActivity;)Landroid/widget/TextView;
     Access flags: 0x1008
       = static synthetic android.widget.TextView i(com.nagopy.android.disabledapps.app.MainActivity)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #54
+      [1] getfield #53
         + Fieldref [com/nagopy/android/disabledapps/app/MainActivity.d Landroid/widget/TextView;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 58
+        [0] -> line 61
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -3210,48 +3192,59 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/widget/AdapterView$OnItemClickListener]
 
-Constant Pool (count = 72):
-  + Integer [2131427332]
+Constant Pool (count = 89):
   + String [android.settings.APPLICATION_DETAILS_SETTINGS]
+  + String [error]
   + String [package:]
   + Class [android/content/Intent]
   + Class [android/net/Uri]
   + Class [android/view/View]
+  + Class [android/widget/AdapterView]
   + Class [android/widget/AdapterView$OnItemClickListener]
-  + Class [android/widget/TextView]
   + Class [com/nagopy/android/disabledapps/app/MainActivity]
   + Class [com/nagopy/android/disabledapps/app/b]
-  + Class [java/lang/CharSequence]
+  + Class [com/nagopy/android/disabledapps/app/g]
+  + Class [e/a]
+  + Class [java/lang/Exception]
   + Class [java/lang/Object]
+  + Class [java/lang/String]
   + Class [java/lang/StringBuilder]
+  + Class [java/util/ArrayList]
   + Fieldref [com/nagopy/android/disabledapps/app/b.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
   + Methodref [android/content/Intent.<init> (Ljava/lang/String;Landroid/net/Uri;)V]
   + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
-  + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-  + Methodref [android/widget/TextView.getText ()Ljava/lang/CharSequence;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Ljava/lang/Object;)V]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.startActivity (Landroid/content/Intent;)V]
+  + Methodref [com/nagopy/android/disabledapps/app/g.a ()Ljava/util/ArrayList;]
+  + Methodref [e/a.b ()Ljava/lang/String;]
   + Methodref [java/lang/Object.<init> ()V]
   + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
   + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-  + InterfaceMethodref [java/lang/CharSequence.toString ()Ljava/lang/String;]
+  + Methodref [java/util/ArrayList.get (I)Ljava/lang/Object;]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Ljava/lang/String;)V]
   + NameAndType [<init> (Ljava/lang/String;Landroid/net/Uri;)V]
+  + NameAndType [a ()Ljava/util/ArrayList;]
+  + NameAndType [a (Ljava/lang/Object;)V]
   + NameAndType [a Lcom/nagopy/android/disabledapps/app/MainActivity;]
   + NameAndType [append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-  + NameAndType [findViewById (I)Landroid/view/View;]
-  + NameAndType [getText ()Ljava/lang/CharSequence;]
+  + NameAndType [b ()Ljava/lang/String;]
+  + NameAndType [b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + NameAndType [get (I)Ljava/lang/Object;]
   + NameAndType [parse (Ljava/lang/String;)Landroid/net/Uri;]
   + NameAndType [startActivity (Landroid/content/Intent;)V]
   + NameAndType [toString ()Ljava/lang/String;]
-  + Utf8 [()Ljava/lang/CharSequence;]
   + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Ljava/util/ArrayList;]
   + Utf8 [()V]
-  + Utf8 [(I)Landroid/view/View;]
+  + Utf8 [(I)Ljava/lang/Object;]
   + Utf8 [(Landroid/content/Intent;)V]
   + Utf8 [(Landroid/widget/AdapterView;Landroid/view/View;IJ)V]
+  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
+  + Utf8 [(Ljava/lang/Object;)V]
   + Utf8 [(Ljava/lang/String;)Landroid/net/Uri;]
   + Utf8 [(Ljava/lang/String;)Ljava/lang/StringBuilder;]
   + Utf8 [(Ljava/lang/String;)V]
@@ -3262,21 +3255,27 @@ Constant Pool (count = 72):
   + Utf8 [LineNumberTable]
   + Utf8 [MainActivity.java]
   + Utf8 [SourceFile]
+  + Utf8 [StackMapTable]
   + Utf8 [a]
   + Utf8 [android.settings.APPLICATION_DETAILS_SETTINGS]
   + Utf8 [android/content/Intent]
   + Utf8 [android/net/Uri]
   + Utf8 [android/view/View]
+  + Utf8 [android/widget/AdapterView]
   + Utf8 [android/widget/AdapterView$OnItemClickListener]
-  + Utf8 [android/widget/TextView]
   + Utf8 [append]
+  + Utf8 [b]
   + Utf8 [com/nagopy/android/disabledapps/app/MainActivity]
   + Utf8 [com/nagopy/android/disabledapps/app/b]
-  + Utf8 [findViewById]
-  + Utf8 [getText]
-  + Utf8 [java/lang/CharSequence]
+  + Utf8 [com/nagopy/android/disabledapps/app/g]
+  + Utf8 [e/a]
+  + Utf8 [error]
+  + Utf8 [get]
+  + Utf8 [java/lang/Exception]
   + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
   + Utf8 [java/lang/StringBuilder]
+  + Utf8 [java/util/ArrayList]
   + Utf8 [onItemClick]
   + Utf8 [package:]
   + Utf8 [parse]
@@ -3296,74 +3295,91 @@ Methods (count = 2):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #14
+      [2] putfield #18
         + Fieldref [com/nagopy/android/disabledapps/app/b.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [5] aload_0 v0
-      [6] invokespecial #20
+      [6] invokespecial #26
         + Methodref [java/lang/Object.<init> ()V]
       [9] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [5] -> line 103
+        [5] -> line 106
   + Method:       onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
     Access flags: 0x1
       = public void onItemClick(android.widget.AdapterView,android.view.View,int,long)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 60, locals = 8, stack = 6):
-      [0] aload_2 v2
-      [1] ldc #1
-        + Integer [2131427332]
-      [3] invokevirtual #17
-        + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [6] checkcast #8
-        + Class [android/widget/TextView]
-      [9] invokevirtual #18
-        + Methodref [android/widget/TextView.getText ()Ljava/lang/CharSequence;]
-      [12] invokeinterface #24
-        + InterfaceMethodref [java/lang/CharSequence.toString ()Ljava/lang/String;]
-      [17] astore v6
-      [19] new #4
-        + Class [android/content/Intent]
-      [22] dup
-      [23] ldc #2
-        + String [android.settings.APPLICATION_DETAILS_SETTINGS]
-      [25] new #13
-        + Class [java/lang/StringBuilder]
-      [28] dup
-      [29] ldc #3
-        + String [package:]
-      [31] invokespecial #21
-        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
-      [34] aload v6
-      [36] invokevirtual #22
-        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
-      [39] invokevirtual #23
-        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
-      [42] invokestatic #16
-        + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
-      [45] invokespecial #15
-        + Methodref [android/content/Intent.<init> (Ljava/lang/String;Landroid/net/Uri;)V]
-      [48] astore v7
-      [50] aload_0 v0
-      [51] getfield #14
+    + Code attribute instructions (code length = 77, locals = 9, stack = 6):
+      [0] aload_0 v0
+      [1] getfield #18
         + Fieldref [com/nagopy/android/disabledapps/app/b.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [54] aload v7
-      [56] invokevirtual #19
+      [4] invokestatic #22
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+      [7] invokevirtual #24
+        + Methodref [com/nagopy/android/disabledapps/app/g.a ()Ljava/util/ArrayList;]
+      [10] iload_3 v3
+      [11] invokevirtual #30
+        + Methodref [java/util/ArrayList.get (I)Ljava/lang/Object;]
+      [14] checkcast #12
+        + Class [e/a]
+      [17] invokevirtual #25
+        + Methodref [e/a.b ()Ljava/lang/String;]
+      [20] astore v6
+      [22] new #4
+        + Class [android/content/Intent]
+      [25] dup
+      [26] ldc #1
+        + String [android.settings.APPLICATION_DETAILS_SETTINGS]
+      [28] new #16
+        + Class [java/lang/StringBuilder]
+      [31] dup
+      [32] ldc #3
+        + String [package:]
+      [34] invokespecial #27
+        + Methodref [java/lang/StringBuilder.<init> (Ljava/lang/String;)V]
+      [37] aload v6
+      [39] invokevirtual #28
+        + Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
+      [42] invokevirtual #29
+        + Methodref [java/lang/StringBuilder.toString ()Ljava/lang/String;]
+      [45] invokestatic #20
+        + Methodref [android/net/Uri.parse (Ljava/lang/String;)Landroid/net/Uri;]
+      [48] invokespecial #19
+        + Methodref [android/content/Intent.<init> (Ljava/lang/String;Landroid/net/Uri;)V]
+      [51] astore v7
+      [53] aload_0 v0
+      [54] getfield #18
+        + Fieldref [com/nagopy/android/disabledapps/app/b.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
+      [57] aload v7
+      [59] invokevirtual #23
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.startActivity (Landroid/content/Intent;)V]
-      [59] return
-      Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 1):
+      [62] goto +14 (target=76)
+      [65] astore v8
+      [67] aload_0 v0
+      [68] getfield #18
+        + Fieldref [com/nagopy/android/disabledapps/app/b.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
+      [71] ldc #2
+        + String [error]
+      [73] invokevirtual #21
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Ljava/lang/Object;)V]
+      [76] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (53 -> 62: 65):
+      + Class [java/lang/Exception]
+      Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 8)
-        [0] -> line 106
-        [12] -> line 107
-        [17] -> line 106
-        [19] -> line 109
-        [25] -> line 110
-        [45] -> line 109
-        [50] -> line 111
-        [59] -> line 112
+        [0] -> line 109
+        [22] -> line 111
+        [28] -> line 112
+        [48] -> line 111
+        [53] -> line 114
+        [65] -> line 115
+        [67] -> line 116
+        [76] -> line 118
+      + Stack map table attribute (count = 2):
+        - [65] Var: [a:com/nagopy/android/disabledapps/app/b][a:android/widget/AdapterView][a:android/view/View][i][l][a:java/lang/String][a:android/content/Intent], Stack: [a:java/lang/Exception]
+        - [76] Var: ..., Stack: (empty)
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -3380,7 +3396,7 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/app/ActionBar$TabListener]
 
-Constant Pool (count = 65):
+Constant Pool (count = 59):
   + Class [android/app/ActionBar$Tab]
   + Class [android/app/ActionBar$TabListener]
   + Class [com/nagopy/android/disabledapps/app/MainActivity]
@@ -3391,10 +3407,9 @@ Constant Pool (count = 65):
   + Fieldref [com/nagopy/android/disabledapps/app/c.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
   + Fieldref [com/nagopy/android/disabledapps/app/c.b Ljava/lang/ref/WeakReference;]
   + Methodref [android/app/ActionBar$Tab.getTag ()Ljava/lang/Object;]
-  + Methodref [android/app/ActionBar$Tab.getText ()Ljava/lang/CharSequence;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
   + Methodref [java/lang/Integer.intValue ()I]
   + Methodref [java/lang/Object.<init> ()V]
   + Methodref [java/lang/ref/WeakReference.<init> (Ljava/lang/Object;)V]
@@ -3402,22 +3417,19 @@ Constant Pool (count = 65):
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Ljava/lang/Object;)V]
   + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
-  + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
   + NameAndType [a Lcom/nagopy/android/disabledapps/app/MainActivity;]
+  + NameAndType [b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + NameAndType [b (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
   + NameAndType [b Ljava/lang/ref/WeakReference;]
-  + NameAndType [d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
   + NameAndType [get ()Ljava/lang/Object;]
   + NameAndType [getTag ()Ljava/lang/Object;]
-  + NameAndType [getText ()Ljava/lang/CharSequence;]
   + NameAndType [intValue ()I]
   + Utf8 [()I]
-  + Utf8 [()Ljava/lang/CharSequence;]
   + Utf8 [()Ljava/lang/Object;]
   + Utf8 [()V]
   + Utf8 [(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
-  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
   + Utf8 [(Ljava/lang/Object;)V]
   + Utf8 [<init>]
@@ -3434,10 +3446,8 @@ Constant Pool (count = 65):
   + Utf8 [b]
   + Utf8 [com/nagopy/android/disabledapps/app/MainActivity]
   + Utf8 [com/nagopy/android/disabledapps/app/c]
-  + Utf8 [d]
   + Utf8 [get]
   + Utf8 [getTag]
-  + Utf8 [getText]
   + Utf8 [intValue]
   + Utf8 [java/lang/Integer]
   + Utf8 [java/lang/Object]
@@ -3465,14 +3475,14 @@ Methods (count = 4):
       [2] putfield #8
         + Fieldref [com/nagopy/android/disabledapps/app/c.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [5] aload_0 v0
-      [6] invokespecial #16
+      [6] invokespecial #15
         + Methodref [java/lang/Object.<init> ()V]
       [9] aload_0 v0
       [10] new #7
         + Class [java/lang/ref/WeakReference]
       [13] dup
       [14] aload_2 v2
-      [15] invokespecial #17
+      [15] invokespecial #16
         + Methodref [java/lang/ref/WeakReference.<init> (Ljava/lang/Object;)V]
       [18] putfield #9
         + Fieldref [com/nagopy/android/disabledapps/app/c.b Ljava/lang/ref/WeakReference;]
@@ -3480,9 +3490,9 @@ Methods (count = 4):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 3)
-        [0] -> line 163
-        [9] -> line 164
-        [21] -> line 165
+        [0] -> line 169
+        [9] -> line 170
+        [21] -> line 171
   + Method:       onTabUnselected(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V
     Access flags: 0x1
       = public void onTabUnselected(android.app.ActionBar$Tab,android.app.FragmentTransaction)
@@ -3492,62 +3502,59 @@ Methods (count = 4):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 168
+        [0] -> line 174
   + Method:       onTabSelected(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V
     Access flags: 0x1
       = public void onTabSelected(android.app.ActionBar$Tab,android.app.FragmentTransaction)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 57, locals = 5, stack = 3):
+    + Code attribute instructions (code length = 53, locals = 5, stack = 2):
       [0] aload_0 v0
       [1] getfield #9
         + Fieldref [com/nagopy/android/disabledapps/app/c.b Ljava/lang/ref/WeakReference;]
-      [4] invokevirtual #18
+      [4] invokevirtual #17
         + Methodref [java/lang/ref/WeakReference.get ()Ljava/lang/Object;]
       [7] checkcast #3
         + Class [com/nagopy/android/disabledapps/app/MainActivity]
       [10] astore_3 v3
       [11] aload_3 v3
-      [12] ifnull +44 (target=56)
+      [12] ifnull +40 (target=52)
       [15] aload_1 v1
       [16] invokevirtual #10
         + Methodref [android/app/ActionBar$Tab.getTag ()Ljava/lang/Object;]
       [19] checkcast #5
         + Class [java/lang/Integer]
-      [22] invokevirtual #15
+      [22] invokevirtual #14
         + Methodref [java/lang/Integer.intValue ()I]
       [25] istore v4
       [27] aload_3 v3
-      [28] invokestatic #14
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
-      [31] ifnull +19 (target=50)
+      [28] invokestatic #12
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+      [31] ifnull +15 (target=46)
       [34] aload_0 v0
       [35] getfield #8
         + Fieldref [com/nagopy/android/disabledapps/app/c.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [38] iload v4
-      [40] aload_1 v1
-      [41] invokevirtual #11
-        + Methodref [android/app/ActionBar$Tab.getText ()Ljava/lang/CharSequence;]
-      [44] invokestatic #13
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
-      [47] goto +9 (target=56)
-      [50] aload_3 v3
-      [51] iload v4
-      [53] invokestatic #12
+      [40] invokestatic #11
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
-      [56] return
+      [43] goto +9 (target=52)
+      [46] aload_3 v3
+      [47] iload v4
+      [49] invokestatic #13
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
+      [52] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 7)
-        [0] -> line 172
-        [11] -> line 173
-        [15] -> line 174
-        [27] -> line 175
-        [34] -> line 176
-        [50] -> line 178
-        [56] -> line 181
+        [0] -> line 178
+        [11] -> line 179
+        [15] -> line 180
+        [27] -> line 181
+        [34] -> line 182
+        [46] -> line 184
+        [52] -> line 187
       + Stack map table attribute (count = 2):
-        - [50] Var: ...[a:com/nagopy/android/disabledapps/app/MainActivity][i], Stack: (empty)
-        - [56] Var: -1, Stack: (empty)
+        - [46] Var: ...[a:com/nagopy/android/disabledapps/app/MainActivity][i], Stack: (empty)
+        - [52] Var: -1, Stack: (empty)
   + Method:       onTabReselected(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V
     Access flags: 0x1
       = public void onTabReselected(android.app.ActionBar$Tab,android.app.FragmentTransaction)
@@ -3557,7 +3564,7 @@ Methods (count = 4):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 184
+        [0] -> line 190
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -3574,55 +3581,58 @@ _____________________________________________________________________
 Interfaces (count = 1):
   + Class [android/widget/AdapterView$OnItemLongClickListener]
 
-Constant Pool (count = 83):
-  + Integer [2131427330]
-  + Integer [2131427332]
+Constant Pool (count = 85):
   + String [CommentEditDialog]
-  + Class [android/view/View]
   + Class [android/widget/AdapterView$OnItemLongClickListener]
-  + Class [android/widget/TextView]
   + Class [com/nagopy/android/disabledapps/app/MainActivity]
   + Class [com/nagopy/android/disabledapps/app/d]
   + Class [com/nagopy/android/disabledapps/app/e]
+  + Class [com/nagopy/android/disabledapps/app/g]
+  + Class [e/a]
   + Class [e/c]
   + Class [f/a]
-  + Class [java/lang/CharSequence]
   + Class [java/lang/Object]
+  + Class [java/util/ArrayList]
   + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-  + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-  + Methodref [android/widget/TextView.getText ()Ljava/lang/CharSequence;]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getFragmentManager ()Landroid/app/FragmentManager;]
   + Methodref [com/nagopy/android/disabledapps/app/e.<init> (Lcom/nagopy/android/disabledapps/app/d;Ljava/lang/String;)V]
+  + Methodref [com/nagopy/android/disabledapps/app/g.a ()Ljava/util/ArrayList;]
+  + Methodref [e/a.a ()Ljava/lang/String;]
+  + Methodref [e/a.b ()Ljava/lang/String;]
   + Methodref [e/c.a (Ljava/lang/String;)Ljava/lang/String;]
   + Methodref [f/a.a (Lf/d;)V]
   + Methodref [f/a.a (Ljava/lang/String;)V]
   + Methodref [f/a.b (Ljava/lang/String;)V]
   + Methodref [f/a.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
   + Methodref [java/lang/Object.<init> ()V]
-  + InterfaceMethodref [java/lang/CharSequence.toString ()Ljava/lang/String;]
+  + Methodref [java/util/ArrayList.get (I)Ljava/lang/Object;]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Lcom/nagopy/android/disabledapps/app/d;Ljava/lang/String;)V]
+  + NameAndType [a ()Ljava/lang/String;]
+  + NameAndType [a ()Ljava/util/ArrayList;]
   + NameAndType [a (Lf/d;)V]
   + NameAndType [a (Ljava/lang/String;)Ljava/lang/String;]
   + NameAndType [a (Ljava/lang/String;)V]
   + NameAndType [a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-  + NameAndType [b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
+  + NameAndType [b ()Ljava/lang/String;]
+  + NameAndType [b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
   + NameAndType [b (Ljava/lang/String;)V]
-  + NameAndType [c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
-  + NameAndType [findViewById (I)Landroid/view/View;]
+  + NameAndType [c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
+  + NameAndType [d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
+  + NameAndType [get (I)Ljava/lang/Object;]
   + NameAndType [getFragmentManager ()Landroid/app/FragmentManager;]
-  + NameAndType [getText ()Ljava/lang/CharSequence;]
   + NameAndType [show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
-  + NameAndType [toString ()Ljava/lang/String;]
   + Utf8 [()Landroid/app/FragmentManager;]
-  + Utf8 [()Ljava/lang/CharSequence;]
   + Utf8 [()Ljava/lang/String;]
+  + Utf8 [()Ljava/util/ArrayList;]
   + Utf8 [()V]
-  + Utf8 [(I)Landroid/view/View;]
+  + Utf8 [(I)Ljava/lang/Object;]
   + Utf8 [(Landroid/app/FragmentManager;Ljava/lang/String;)V]
   + Utf8 [(Landroid/widget/AdapterView;Landroid/view/View;IJ)Z]
+  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)V]
@@ -3639,24 +3649,23 @@ Constant Pool (count = 83):
   + Utf8 [MainActivity.java]
   + Utf8 [SourceFile]
   + Utf8 [a]
-  + Utf8 [android/view/View]
   + Utf8 [android/widget/AdapterView$OnItemLongClickListener]
-  + Utf8 [android/widget/TextView]
   + Utf8 [b]
   + Utf8 [c]
   + Utf8 [com/nagopy/android/disabledapps/app/MainActivity]
   + Utf8 [com/nagopy/android/disabledapps/app/d]
   + Utf8 [com/nagopy/android/disabledapps/app/e]
+  + Utf8 [com/nagopy/android/disabledapps/app/g]
+  + Utf8 [d]
+  + Utf8 [e/a]
   + Utf8 [e/c]
   + Utf8 [f/a]
-  + Utf8 [findViewById]
+  + Utf8 [get]
   + Utf8 [getFragmentManager]
-  + Utf8 [getText]
-  + Utf8 [java/lang/CharSequence]
   + Utf8 [java/lang/Object]
+  + Utf8 [java/util/ArrayList]
   + Utf8 [onItemLongClick]
   + Utf8 [show]
-  + Utf8 [toString]
 
 Fields (count = 1):
   + Field:        a Lcom/nagopy/android/disabledapps/app/MainActivity;
@@ -3671,7 +3680,7 @@ Methods (count = 3):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #14
+      [2] putfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [5] aload_0 v0
       [6] invokespecial #26
@@ -3681,114 +3690,110 @@ Methods (count = 3):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [5] -> line 117
+        [5] -> line 123
   + Method:       onItemLongClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)Z
     Access flags: 0x1
       = public boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 113, locals = 8, stack = 5):
-      [0] aload_2 v2
-      [1] ldc #2
-        + Integer [2131427332]
-      [3] invokevirtual #15
-        + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [6] checkcast #6
-        + Class [android/widget/TextView]
-      [9] invokevirtual #16
-        + Methodref [android/widget/TextView.getText ()Ljava/lang/CharSequence;]
-      [12] invokeinterface #27
-        + InterfaceMethodref [java/lang/CharSequence.toString ()Ljava/lang/String;]
+    + Code attribute instructions (code length = 108, locals = 9, stack = 5):
+      [0] aload_0 v0
+      [1] getfield #12
+        + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
+      [4] invokestatic #13
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+      [7] invokevirtual #18
+        + Methodref [com/nagopy/android/disabledapps/app/g.a ()Ljava/util/ArrayList;]
+      [10] iload_3 v3
+      [11] invokevirtual #27
+        + Methodref [java/util/ArrayList.get (I)Ljava/lang/Object;]
+      [14] checkcast #7
+        + Class [e/a]
       [17] astore v6
-      [19] aload_2 v2
-      [20] ldc #1
-        + Integer [2131427330]
-      [22] invokevirtual #15
-        + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [25] checkcast #6
-        + Class [android/widget/TextView]
-      [28] invokevirtual #16
-        + Methodref [android/widget/TextView.getText ()Ljava/lang/CharSequence;]
-      [31] invokeinterface #27
-        + InterfaceMethodref [java/lang/CharSequence.toString ()Ljava/lang/String;]
-      [36] astore v7
-      [38] aload_0 v0
-      [39] getfield #14
+      [19] aload v6
+      [21] invokevirtual #20
+        + Methodref [e/a.b ()Ljava/lang/String;]
+      [24] astore v7
+      [26] aload v6
+      [28] invokevirtual #19
+        + Methodref [e/a.a ()Ljava/lang/String;]
+      [31] astore v8
+      [33] aload_0 v0
+      [34] getfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [42] invokestatic #17
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
-      [45] aload v7
-      [47] invokevirtual #23
+      [37] invokestatic #14
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
+      [40] aload v8
+      [42] invokevirtual #23
         + Methodref [f/a.a (Ljava/lang/String;)V]
-      [50] aload_0 v0
-      [51] getfield #14
+      [45] aload_0 v0
+      [46] getfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [54] invokestatic #17
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
-      [57] aload_0 v0
-      [58] getfield #14
+      [49] invokestatic #14
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
+      [52] aload_0 v0
+      [53] getfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [61] invokestatic #18
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
-      [64] aload v6
-      [66] invokevirtual #21
+      [56] invokestatic #15
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
+      [59] aload v7
+      [61] invokevirtual #21
         + Methodref [e/c.a (Ljava/lang/String;)Ljava/lang/String;]
-      [69] invokevirtual #24
+      [64] invokevirtual #24
         + Methodref [f/a.b (Ljava/lang/String;)V]
-      [72] aload_0 v0
-      [73] getfield #14
+      [67] aload_0 v0
+      [68] getfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [76] invokestatic #17
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
-      [79] new #9
+      [71] invokestatic #14
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
+      [74] new #5
         + Class [com/nagopy/android/disabledapps/app/e]
-      [82] dup
-      [83] aload_0 v0
-      [84] aload v6
-      [86] invokespecial #20
+      [77] dup
+      [78] aload_0 v0
+      [79] aload v7
+      [81] invokespecial #17
         + Methodref [com/nagopy/android/disabledapps/app/e.<init> (Lcom/nagopy/android/disabledapps/app/d;Ljava/lang/String;)V]
-      [89] invokevirtual #22
+      [84] invokevirtual #22
         + Methodref [f/a.a (Lf/d;)V]
-      [92] aload_0 v0
-      [93] getfield #14
+      [87] aload_0 v0
+      [88] getfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [96] invokestatic #17
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
-      [99] aload_0 v0
-      [100] getfield #14
+      [91] invokestatic #14
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lf/a;]
+      [94] aload_0 v0
+      [95] getfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [103] invokevirtual #19
+      [98] invokevirtual #16
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getFragmentManager ()Landroid/app/FragmentManager;]
-      [106] ldc #3
+      [101] ldc #1
         + String [CommentEditDialog]
-      [108] invokevirtual #25
+      [103] invokevirtual #25
         + Methodref [f/a.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
-      [111] iconst_0
-      [112] ireturn
+      [106] iconst_0
+      [107] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 9)
-        [0] -> line 120
-        [9] -> line 121
-        [17] -> line 120
-        [19] -> line 122
-        [38] -> line 123
-        [50] -> line 124
-        [72] -> line 125
-        [92] -> line 140
-        [111] -> line 142
+      + Line number table attribute (count = 8)
+        [0] -> line 126
+        [19] -> line 127
+        [26] -> line 128
+        [33] -> line 129
+        [45] -> line 130
+        [67] -> line 131
+        [87] -> line 146
+        [106] -> line 148
   + Method:       a(Lcom/nagopy/android/disabledapps/app/d;)Lcom/nagopy/android/disabledapps/app/MainActivity;
     Access flags: 0x1008
       = static synthetic com.nagopy.android.disabledapps.app.MainActivity a(com.nagopy.android.disabledapps.app.d)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #14
+      [1] getfield #12
         + Fieldref [com/nagopy/android/disabledapps/app/d.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 117
+        [0] -> line 123
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -3812,23 +3817,23 @@ Constant Pool (count = 43):
   + Class [f/d]
   + Fieldref [com/nagopy/android/disabledapps/app/e.a Lcom/nagopy/android/disabledapps/app/d;]
   + Fieldref [com/nagopy/android/disabledapps/app/e.b Ljava/lang/String;]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + Methodref [com/nagopy/android/disabledapps/app/d.a (Lcom/nagopy/android/disabledapps/app/d;)Lcom/nagopy/android/disabledapps/app/MainActivity;]
   + Methodref [e/c.a (Ljava/lang/String;Ljava/lang/String;)Z]
   + Methodref [f/d.<init> ()V]
   + NameAndType [<init> ()V]
-  + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
+  + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
   + NameAndType [a (Lcom/nagopy/android/disabledapps/app/d;)Lcom/nagopy/android/disabledapps/app/MainActivity;]
   + NameAndType [a (Ljava/lang/String;Ljava/lang/String;)Z]
   + NameAndType [a Lcom/nagopy/android/disabledapps/app/d;]
   + NameAndType [b Ljava/lang/String;]
-  + NameAndType [c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
+  + NameAndType [d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + Utf8 [()V]
   + Utf8 [(Landroid/content/DialogInterface;)V]
   + Utf8 [(Landroid/content/DialogInterface;Ljava/lang/String;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
-  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
+  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/d;)Lcom/nagopy/android/disabledapps/app/MainActivity;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/d;Ljava/lang/String;)V]
   + Utf8 [(Ljava/lang/String;Ljava/lang/String;)Z]
@@ -3841,10 +3846,10 @@ Constant Pool (count = 43):
   + Utf8 [SourceFile]
   + Utf8 [a]
   + Utf8 [b]
-  + Utf8 [c]
   + Utf8 [com/nagopy/android/disabledapps/app/MainActivity]
   + Utf8 [com/nagopy/android/disabledapps/app/d]
   + Utf8 [com/nagopy/android/disabledapps/app/e]
+  + Utf8 [d]
   + Utf8 [e/c]
   + Utf8 [f/d]
 
@@ -3878,19 +3883,19 @@ Methods (count = 3):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [10] -> line 125
+        [10] -> line 131
   + Method:       a(Landroid/content/DialogInterface;Ljava/lang/String;)V
     Access flags: 0x1
       = public void a(android.content.DialogInterface,java.lang.String)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 32, locals = 3, stack = 3):
+    + Code attribute instructions (code length = 31, locals = 3, stack = 3):
       [0] aload_0 v0
       [1] getfield #6
         + Fieldref [com/nagopy/android/disabledapps/app/e.a Lcom/nagopy/android/disabledapps/app/d;]
       [4] invokestatic #10
         + Methodref [com/nagopy/android/disabledapps/app/d.a (Lcom/nagopy/android/disabledapps/app/d;)Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [7] invokestatic #9
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
       [10] aload_0 v0
       [11] getfield #7
         + Fieldref [com/nagopy/android/disabledapps/app/e.b Ljava/lang/String;]
@@ -3904,16 +3909,15 @@ Methods (count = 3):
       [23] invokestatic #10
         + Methodref [com/nagopy/android/disabledapps/app/d.a (Lcom/nagopy/android/disabledapps/app/d;)Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [26] iconst_m1
-      [27] aconst_null
-      [28] invokestatic #8
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
-      [31] return
+      [27] invokestatic #8
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
+      [30] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 3)
-        [0] -> line 130
-        [19] -> line 132
-        [31] -> line 133
+        [0] -> line 136
+        [19] -> line 138
+        [30] -> line 139
   + Method:       a(Landroid/content/DialogInterface;)V
     Access flags: 0x1
       = public void a(android.content.DialogInterface)
@@ -3923,7 +3927,7 @@ Methods (count = 3):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 137
+        [0] -> line 143
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -3959,11 +3963,11 @@ Constant Pool (count = 133):
   + Methodref [b/a.<init> (Landroid/app/FragmentManager;Landroid/app/Activity;)V]
   + Methodref [b/a.a (Ljava/lang/Void;)V]
   + Methodref [b/a.onPreExecute ()V]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/g;)V]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/HashMap;)V]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
-  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.e (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/b;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.f (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lg/b;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.g (Lcom/nagopy/android/disabledapps/app/MainActivity;)I]
@@ -3984,19 +3988,19 @@ Constant Pool (count = 133):
   + NameAndType [<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/ArrayList;Le/c;)V]
   + NameAndType [a ()Landroid/app/Activity;]
   + NameAndType [a (I)Ljava/util/ArrayList;]
-  + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
+  + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
   + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/g;)V]
   + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/HashMap;)V]
   + NameAndType [a (Ljava/lang/Void;)V]
   + NameAndType [a (Ljava/util/ArrayList;)Ljava/util/ArrayList;]
   + NameAndType [a ([Ljava/lang/Void;)Ljava/lang/Void;]
   + NameAndType [b ()Ljava/util/HashMap;]
+  + NameAndType [b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
   + NameAndType [b (Ljava/util/ArrayList;)V]
   + NameAndType [b Lcom/nagopy/android/disabledapps/app/MainActivity;]
   + NameAndType [c ()Ljava/util/ArrayList;]
-  + NameAndType [c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + NameAndType [cancel (Z)Z]
-  + NameAndType [d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+  + NameAndType [d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + NameAndType [e (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/b;]
   + NameAndType [f (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lg/b;]
   + NameAndType [g (Lcom/nagopy/android/disabledapps/app/MainActivity;)I]
@@ -4025,7 +4029,7 @@ Constant Pool (count = 133):
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/b;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Lg/b;]
-  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
+  + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Landroid/app/FragmentManager;Landroid/app/Activity;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Lcom/nagopy/android/disabledapps/app/g;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/ArrayList;Le/c;)V]
@@ -4098,7 +4102,7 @@ Methods (count = 5):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [5] -> line 475
+        [5] -> line 482
   + Method:       onPreExecute()V
     Access flags: 0x4
       = protected void onPreExecute()
@@ -4131,12 +4135,12 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 6)
-        [0] -> line 479
-        [13] -> line 480
-        [20] -> line 481
-        [26] -> line 482
-        [27] -> line 484
-        [31] -> line 485
+        [0] -> line 486
+        [13] -> line 487
+        [20] -> line 488
+        [26] -> line 489
+        [27] -> line 491
+        [31] -> line 492
       + Stack map table attribute (count = 1):
         - [27] Var: ...[a:android/os/PowerManager], Stack: (empty)
   + Method:       a([Ljava/lang/Void;)Ljava/lang/Void;
@@ -4165,17 +4169,17 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 4)
-        [0] -> line 489
-        [8] -> line 490
-        [12] -> line 491
-        [23] -> line 493
+        [0] -> line 496
+        [8] -> line 497
+        [12] -> line 498
+        [23] -> line 500
       + Stack map table attribute (count = 1):
         - [23] Var: ...[a:com/nagopy/android/disabledapps/app/MainActivity], Stack: (empty)
   + Method:       a(Ljava/lang/Void;)V
     Access flags: 0x4
       = protected void a(java.lang.Void)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 124, locals = 3, stack = 6):
+    + Code attribute instructions (code length = 123, locals = 3, stack = 6):
       [0] aload_0 v0
       [1] aload_1 v1
       [2] invokespecial #18
@@ -4187,7 +4191,7 @@ Methods (count = 5):
         + Class [com/nagopy/android/disabledapps/app/MainActivity]
       [12] astore_2 v2
       [13] aload_2 v2
-      [14] ifnull +109 (target=123)
+      [14] ifnull +108 (target=122)
       [17] aload_2 v2
       [18] invokestatic #26
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.f (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lg/b;]
@@ -4204,8 +4208,8 @@ Methods (count = 5):
       [35] invokevirtual #40
         + Methodref [g/b.b (Ljava/util/ArrayList;)V]
       [38] aload_2 v2
-      [39] invokestatic #24
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+      [39] invokestatic #23
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
       [42] ifnonnull +75 (target=117)
       [45] aload_2 v2
       [46] new #9
@@ -4223,8 +4227,8 @@ Methods (count = 5):
       [62] invokevirtual #38
         + Methodref [g/b.a (I)Ljava/util/ArrayList;]
       [65] aload_2 v2
-      [66] invokestatic #23
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.c (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
+      [66] invokestatic #24
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Le/c;]
       [69] invokespecial #34
         + Methodref [com/nagopy/android/disabledapps/app/g.<init> (Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/ArrayList;Le/c;)V]
       [72] invokestatic #21
@@ -4233,17 +4237,17 @@ Methods (count = 5):
       [76] invokestatic #29
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.h (Lcom/nagopy/android/disabledapps/app/MainActivity;)Landroid/widget/ListView;]
       [79] aload_2 v2
-      [80] invokestatic #24
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+      [80] invokestatic #23
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
       [83] invokevirtual #14
         + Methodref [android/widget/ListView.setAdapter (Landroid/widget/ListAdapter;)V]
       [86] aload_2 v2
-      [87] invokestatic #24
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.d (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
+      [87] invokestatic #23
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.b (Lcom/nagopy/android/disabledapps/app/MainActivity;)Lcom/nagopy/android/disabledapps/app/g;]
       [90] invokevirtual #35
         + Methodref [com/nagopy/android/disabledapps/app/g.getCount ()I]
       [93] iconst_1
-      [94] ificmpge +29 (target=123)
+      [94] ificmpge +28 (target=122)
       [97] aload_2 v2
       [98] invokestatic #30
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.i (Lcom/nagopy/android/disabledapps/app/MainActivity;)Landroid/widget/TextView;]
@@ -4256,36 +4260,35 @@ Methods (count = 5):
       [109] bipush 8
       [111] invokevirtual #15
         + Methodref [android/widget/ListView.setVisibility (I)V]
-      [114] goto +9 (target=123)
+      [114] goto +8 (target=122)
       [117] aload_2 v2
       [118] iconst_m1
-      [119] aconst_null
-      [120] invokestatic #20
-        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;ILjava/lang/CharSequence;)V]
-      [123] return
+      [119] invokestatic #20
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;I)V]
+      [122] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 16)
-        [0] -> line 498
-        [5] -> line 499
-        [13] -> line 500
-        [17] -> line 501
-        [29] -> line 502
-        [32] -> line 501
-        [38] -> line 503
-        [45] -> line 505
-        [54] -> line 506
-        [72] -> line 505
-        [75] -> line 507
-        [86] -> line 508
-        [97] -> line 509
-        [105] -> line 510
-        [117] -> line 513
-        [123] -> line 516
+        [0] -> line 505
+        [5] -> line 506
+        [13] -> line 507
+        [17] -> line 508
+        [29] -> line 509
+        [32] -> line 508
+        [38] -> line 510
+        [45] -> line 512
+        [54] -> line 513
+        [72] -> line 512
+        [75] -> line 514
+        [86] -> line 515
+        [97] -> line 516
+        [105] -> line 517
+        [117] -> line 520
+        [122] -> line 523
       + Stack map table attribute (count = 3):
         - [114] Var: ...[a:com/nagopy/android/disabledapps/app/MainActivity], Stack: (empty)
         - [117] Var: ..., Stack: (empty)
-        - [123] Var: ..., Stack: (empty)
+        - [122] Var: ..., Stack: (empty)
   + Method:       doInBackground([Ljava/lang/Object;)Ljava/lang/Object;
     Access flags: 0x1084
       = protected varargs synthetic java.lang.Object doInBackground(java.lang.Object[])
@@ -4317,13 +4320,18 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 129):
+Constant Pool (count = 145):
+  + Integer [16973892]
+  + Integer [16973894]
   + Integer [2130903041]
   + Integer [2131165187]
   + Integer [2131427330]
   + Integer [2131427331]
-  + Integer [2131427332]
+  + String [
+]
   + Class [android/graphics/drawable/Drawable]
+  + Class [android/text/SpannableStringBuilder]
+  + Class [android/text/style/TextAppearanceSpan]
   + Class [android/view/View]
   + Class [android/widget/BaseAdapter]
   + Class [android/widget/TextView]
@@ -4340,8 +4348,12 @@ Constant Pool (count = 129):
   + Fieldref [com/nagopy/android/disabledapps/app/g.c Le/c;]
   + Fieldref [com/nagopy/android/disabledapps/app/h.a Landroid/widget/TextView;]
   + Fieldref [com/nagopy/android/disabledapps/app/h.b Landroid/widget/TextView;]
-  + Fieldref [com/nagopy/android/disabledapps/app/h.c Landroid/widget/TextView;]
   + Methodref [android/graphics/drawable/Drawable.setCallback (Landroid/graphics/drawable/Drawable$Callback;)V]
+  + Methodref [android/text/SpannableStringBuilder.<init> ()V]
+  + Methodref [android/text/SpannableStringBuilder.append (Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;]
+  + Methodref [android/text/SpannableStringBuilder.length ()I]
+  + Methodref [android/text/SpannableStringBuilder.setSpan (Ljava/lang/Object;III)V]
+  + Methodref [android/text/style/TextAppearanceSpan.<init> (Landroid/content/Context;I)V]
   + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
   + Methodref [android/view/View.getTag (I)Ljava/lang/Object;]
   + Methodref [android/view/View.inflate (Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;]
@@ -4349,7 +4361,6 @@ Constant Pool (count = 129):
   + Methodref [android/widget/BaseAdapter.<init> ()V]
   + Methodref [android/widget/TextView.setCompoundDrawables (Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V]
   + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
-  + Methodref [android/widget/TextView.setVisibility (I)V]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;)Ljava/util/HashMap;]
   + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
   + Methodref [com/nagopy/android/disabledapps/app/g.getItem (I)Ljava/lang/Object;]
@@ -4361,16 +4372,17 @@ Constant Pool (count = 129):
   + Methodref [java/util/ArrayList.size ()I]
   + Methodref [java/util/HashMap.get (Ljava/lang/Object;)Ljava/lang/Object;]
   + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;I)V]
   + NameAndType [<init> (Lcom/nagopy/android/disabledapps/app/h;)V]
   + NameAndType [a ()Ljava/lang/String;]
   + NameAndType [a (Lcom/nagopy/android/disabledapps/app/MainActivity;)Ljava/util/HashMap;]
   + NameAndType [a (Ljava/lang/String;)Ljava/lang/String;]
   + NameAndType [a Landroid/widget/TextView;]
   + NameAndType [a Lcom/nagopy/android/disabledapps/app/MainActivity;]
+  + NameAndType [append (Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;]
   + NameAndType [b ()Ljava/lang/String;]
   + NameAndType [b Landroid/widget/TextView;]
   + NameAndType [b Ljava/util/ArrayList;]
-  + NameAndType [c Landroid/widget/TextView;]
   + NameAndType [c Le/c;]
   + NameAndType [findViewById (I)Landroid/view/View;]
   + NameAndType [get (I)Ljava/lang/Object;]
@@ -4379,12 +4391,15 @@ Constant Pool (count = 129):
   + NameAndType [getItem (I)Ljava/lang/Object;]
   + NameAndType [getTag (I)Ljava/lang/Object;]
   + NameAndType [inflate (Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;]
+  + NameAndType [length ()I]
   + NameAndType [setCallback (Landroid/graphics/drawable/Drawable$Callback;)V]
   + NameAndType [setCompoundDrawables (Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V]
+  + NameAndType [setSpan (Ljava/lang/Object;III)V]
   + NameAndType [setTag (ILjava/lang/Object;)V]
   + NameAndType [setText (Ljava/lang/CharSequence;)V]
-  + NameAndType [setVisibility (I)V]
   + NameAndType [size ()I]
+  + Utf8 [
+]
   + Utf8 [()I]
   + Utf8 [()Landroid/content/Context;]
   + Utf8 [()Ljava/lang/String;]
@@ -4393,17 +4408,19 @@ Constant Pool (count = 129):
   + Utf8 [(I)J]
   + Utf8 [(I)Landroid/view/View;]
   + Utf8 [(I)Ljava/lang/Object;]
-  + Utf8 [(I)V]
   + Utf8 [(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;]
   + Utf8 [(ILjava/lang/Object;)V]
+  + Utf8 [(Landroid/content/Context;I)V]
   + Utf8 [(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;]
   + Utf8 [(Landroid/graphics/drawable/Drawable$Callback;)V]
   + Utf8 [(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;)Ljava/util/HashMap;]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/MainActivity;Ljava/util/ArrayList;Le/c;)V]
   + Utf8 [(Lcom/nagopy/android/disabledapps/app/h;)V]
+  + Utf8 [(Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;]
   + Utf8 [(Ljava/lang/CharSequence;)V]
   + Utf8 [(Ljava/lang/Object;)Ljava/lang/Object;]
+  + Utf8 [(Ljava/lang/Object;III)V]
   + Utf8 [(Ljava/lang/String;)Ljava/lang/String;]
   + Utf8 [(Ljava/util/ArrayList;)V]
   + Utf8 [<init>]
@@ -4418,9 +4435,12 @@ Constant Pool (count = 129):
   + Utf8 [StackMapTable]
   + Utf8 [a]
   + Utf8 [android/graphics/drawable/Drawable]
+  + Utf8 [android/text/SpannableStringBuilder]
+  + Utf8 [android/text/style/TextAppearanceSpan]
   + Utf8 [android/view/View]
   + Utf8 [android/widget/BaseAdapter]
   + Utf8 [android/widget/TextView]
+  + Utf8 [append]
   + Utf8 [b]
   + Utf8 [c]
   + Utf8 [com/nagopy/android/disabledapps/app/MainActivity]
@@ -4440,11 +4460,12 @@ Constant Pool (count = 129):
   + Utf8 [java/lang/String]
   + Utf8 [java/util/ArrayList]
   + Utf8 [java/util/HashMap]
+  + Utf8 [length]
   + Utf8 [setCallback]
   + Utf8 [setCompoundDrawables]
+  + Utf8 [setSpan]
   + Utf8 [setTag]
   + Utf8 [setText]
-  + Utf8 [setVisibility]
   + Utf8 [size]
 
 Fields (count = 3):
@@ -4466,41 +4487,41 @@ Methods (count = 7):
     + Code attribute instructions (code length = 20, locals = 4, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #18
+      [2] putfield #22
         + Fieldref [com/nagopy/android/disabledapps/app/g.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
       [5] aload_0 v0
-      [6] invokespecial #29
+      [6] invokespecial #37
         + Methodref [android/widget/BaseAdapter.<init> ()V]
       [9] aload_0 v0
       [10] aload_2 v2
-      [11] putfield #19
+      [11] putfield #23
         + Fieldref [com/nagopy/android/disabledapps/app/g.b Ljava/util/ArrayList;]
       [14] aload_0 v0
       [15] aload_3 v3
-      [16] putfield #20
+      [16] putfield #24
         + Fieldref [com/nagopy/android/disabledapps/app/g.c Le/c;]
       [19] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 5)
-        [0] -> line 379
-        [5] -> line 380
-        [9] -> line 381
-        [14] -> line 382
-        [19] -> line 383
+        [0] -> line 378
+        [5] -> line 379
+        [9] -> line 380
+        [14] -> line 381
+        [19] -> line 382
   + Method:       a()Ljava/util/ArrayList;
     Access flags: 0x1
       = public java.util.ArrayList a()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #19
+      [1] getfield #23
         + Fieldref [com/nagopy/android/disabledapps/app/g.b Ljava/util/ArrayList;]
       [4] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 389
+        [0] -> line 388
   + Method:       a(Ljava/util/ArrayList;)V
     Access flags: 0x1
       = public void a(java.util.ArrayList)
@@ -4508,45 +4529,45 @@ Methods (count = 7):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] putfield #19
+      [2] putfield #23
         + Fieldref [com/nagopy/android/disabledapps/app/g.b Ljava/util/ArrayList;]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 398
-        [5] -> line 399
+        [0] -> line 397
+        [5] -> line 398
   + Method:       getCount()I
     Access flags: 0x1
       = public int getCount()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 8, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #19
+      [1] getfield #23
         + Fieldref [com/nagopy/android/disabledapps/app/g.b Ljava/util/ArrayList;]
-      [4] invokevirtual #41
+      [4] invokevirtual #48
         + Methodref [java/util/ArrayList.size ()I]
       [7] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 403
+        [0] -> line 402
   + Method:       getItem(I)Ljava/lang/Object;
     Access flags: 0x1
       = public java.lang.Object getItem(int)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 9, locals = 2, stack = 2):
       [0] aload_0 v0
-      [1] getfield #19
+      [1] getfield #23
         + Fieldref [com/nagopy/android/disabledapps/app/g.b Ljava/util/ArrayList;]
       [4] iload_1 v1
-      [5] invokevirtual #40
+      [5] invokevirtual #47
         + Methodref [java/util/ArrayList.get (I)Ljava/lang/Object;]
       [8] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 408
+        [0] -> line 407
   + Method:       getItemId(I)J
     Access flags: 0x1
       = public long getItemId(int)
@@ -4558,189 +4579,258 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 413
+        [0] -> line 412
   + Method:       getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
     Access flags: 0x1
       = public android.view.View getView(int,android.view.View,android.view.ViewGroup)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 225, locals = 8, stack = 5):
+    + Code attribute instructions (code length = 311, locals = 12, stack = 5):
       [0] aload_2 v2
-      [1] ifnonnull +80 (target=81)
+      [1] ifnonnull +66 (target=67)
       [4] aload_0 v0
-      [5] getfield #18
+      [5] getfield #22
         + Fieldref [com/nagopy/android/disabledapps/app/g.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [8] invokevirtual #34
+      [8] invokevirtual #41
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
-      [11] ldc #1
+      [11] ldc #3
         + Integer [2130903041]
       [13] aconst_null
-      [14] invokestatic #27
+      [14] invokestatic #35
         + Methodref [android/view/View.inflate (Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;]
       [17] astore_2 v2
-      [18] new #12
+      [18] new #16
         + Class [com/nagopy/android/disabledapps/app/h]
       [21] dup
       [22] aconst_null
-      [23] invokespecial #36
+      [23] invokespecial #43
         + Methodref [com/nagopy/android/disabledapps/app/h.<init> (Lcom/nagopy/android/disabledapps/app/h;)V]
       [26] astore v4
       [28] aload v4
       [30] aload_2 v2
-      [31] ldc #3
+      [31] ldc #5
         + Integer [2131427330]
-      [33] invokevirtual #25
+      [33] invokevirtual #33
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [36] checkcast #9
+      [36] checkcast #13
         + Class [android/widget/TextView]
-      [39] putfield #21
+      [39] putfield #25
         + Fieldref [com/nagopy/android/disabledapps/app/h.a Landroid/widget/TextView;]
       [42] aload v4
       [44] aload_2 v2
-      [45] ldc #4
+      [45] ldc #6
         + Integer [2131427331]
-      [47] invokevirtual #25
+      [47] invokevirtual #33
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [50] checkcast #9
+      [50] checkcast #13
         + Class [android/widget/TextView]
-      [53] putfield #22
+      [53] putfield #26
         + Fieldref [com/nagopy/android/disabledapps/app/h.b Landroid/widget/TextView;]
-      [56] aload v4
-      [58] aload_2 v2
-      [59] ldc #5
-        + Integer [2131427332]
-      [61] invokevirtual #25
-        + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
-      [64] checkcast #9
-        + Class [android/widget/TextView]
-      [67] putfield #23
-        + Fieldref [com/nagopy/android/disabledapps/app/h.c Landroid/widget/TextView;]
-      [70] aload_2 v2
-      [71] ldc #2
+      [56] aload_2 v2
+      [57] ldc #4
         + Integer [2131165187]
-      [73] aload v4
-      [75] invokevirtual #28
+      [59] aload v4
+      [61] invokevirtual #36
         + Methodref [android/view/View.setTag (ILjava/lang/Object;)V]
-      [78] goto +14 (target=92)
-      [81] aload_2 v2
-      [82] ldc #2
+      [64] goto +14 (target=78)
+      [67] aload_2 v2
+      [68] ldc #4
         + Integer [2131165187]
-      [84] invokevirtual #26
+      [70] invokevirtual #34
         + Methodref [android/view/View.getTag (I)Ljava/lang/Object;]
-      [87] checkcast #12
+      [73] checkcast #16
         + Class [com/nagopy/android/disabledapps/app/h]
-      [90] astore v4
-      [92] aload_0 v0
-      [93] iload_1 v1
-      [94] invokevirtual #35
+      [76] astore v4
+      [78] aload_0 v0
+      [79] iload_1 v1
+      [80] invokevirtual #42
         + Methodref [com/nagopy/android/disabledapps/app/g.getItem (I)Ljava/lang/Object;]
-      [97] checkcast #13
+      [83] checkcast #17
         + Class [e/a]
-      [100] astore v5
-      [102] aload v5
-      [104] ifnull +119 (target=223)
-      [107] aload v4
-      [109] getfield #21
+      [86] astore v5
+      [88] aload v5
+      [90] ifnull +219 (target=309)
+      [93] aload v4
+      [95] getfield #25
         + Fieldref [com/nagopy/android/disabledapps/app/h.a Landroid/widget/TextView;]
-      [112] aload v5
-      [114] invokevirtual #37
+      [98] aload v5
+      [100] invokevirtual #44
         + Methodref [e/a.a ()Ljava/lang/String;]
-      [117] invokevirtual #31
+      [103] invokevirtual #39
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
-      [120] aload v4
-      [122] getfield #23
-        + Fieldref [com/nagopy/android/disabledapps/app/h.c Landroid/widget/TextView;]
-      [125] aload v5
-      [127] invokevirtual #38
-        + Methodref [e/a.b ()Ljava/lang/String;]
-      [130] invokevirtual #31
-        + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
-      [133] aload_0 v0
-      [134] getfield #18
+      [106] aload_0 v0
+      [107] getfield #22
         + Fieldref [com/nagopy/android/disabledapps/app/g.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
-      [137] invokestatic #33
+      [110] invokestatic #40
         + Methodref [com/nagopy/android/disabledapps/app/MainActivity.a (Lcom/nagopy/android/disabledapps/app/MainActivity;)Ljava/util/HashMap;]
-      [140] aload v5
-      [142] invokevirtual #38
+      [113] aload v5
+      [115] invokevirtual #45
         + Methodref [e/a.b ()Ljava/lang/String;]
-      [145] invokevirtual #42
+      [118] invokevirtual #49
         + Methodref [java/util/HashMap.get (Ljava/lang/Object;)Ljava/lang/Object;]
-      [148] checkcast #6
+      [121] checkcast #8
         + Class [android/graphics/drawable/Drawable]
-      [151] astore v6
-      [153] aload v4
-      [155] getfield #21
+      [124] astore v6
+      [126] aload v4
+      [128] getfield #25
         + Fieldref [com/nagopy/android/disabledapps/app/h.a Landroid/widget/TextView;]
-      [158] aload v6
-      [160] aconst_null
-      [161] aconst_null
-      [162] aconst_null
-      [163] invokevirtual #30
+      [131] aload v6
+      [133] aconst_null
+      [134] aconst_null
+      [135] aconst_null
+      [136] invokevirtual #38
         + Methodref [android/widget/TextView.setCompoundDrawables (Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V]
-      [166] aload v6
-      [168] aconst_null
-      [169] invokevirtual #24
+      [139] aload v6
+      [141] aconst_null
+      [142] invokevirtual #27
         + Methodref [android/graphics/drawable/Drawable.setCallback (Landroid/graphics/drawable/Drawable$Callback;)V]
-      [172] aload_0 v0
-      [173] getfield #20
+      [145] aload_0 v0
+      [146] getfield #24
         + Fieldref [com/nagopy/android/disabledapps/app/g.c Le/c;]
-      [176] aload v5
-      [178] invokevirtual #38
+      [149] aload v5
+      [151] invokevirtual #45
         + Methodref [e/a.b ()Ljava/lang/String;]
-      [181] invokevirtual #39
+      [154] invokevirtual #46
         + Methodref [e/c.a (Ljava/lang/String;)Ljava/lang/String;]
-      [184] astore v7
-      [186] aload v7
-      [188] ifnull +25 (target=213)
-      [191] aload v4
+      [157] astore v7
+      [159] aload v7
+      [161] ifnull +135 (target=296)
+      [164] new #9
+        + Class [android/text/SpannableStringBuilder]
+      [167] dup
+      [168] invokespecial #28
+        + Methodref [android/text/SpannableStringBuilder.<init> ()V]
+      [171] astore v8
+      [173] aload v8
+      [175] invokevirtual #30
+        + Methodref [android/text/SpannableStringBuilder.length ()I]
+      [178] istore v9
+      [180] aload v8
+      [182] aload v7
+      [184] invokevirtual #29
+        + Methodref [android/text/SpannableStringBuilder.append (Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;]
+      [187] pop
+      [188] new #10
+        + Class [android/text/style/TextAppearanceSpan]
+      [191] dup
+      [192] aload_0 v0
       [193] getfield #22
+        + Fieldref [com/nagopy/android/disabledapps/app/g.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
+      [196] invokevirtual #41
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
+      [199] ldc #1
+        + Integer [16973892]
+      [201] invokespecial #32
+        + Methodref [android/text/style/TextAppearanceSpan.<init> (Landroid/content/Context;I)V]
+      [204] astore v10
+      [206] aload v8
+      [208] invokevirtual #30
+        + Methodref [android/text/SpannableStringBuilder.length ()I]
+      [211] istore v11
+      [213] aload v8
+      [215] aload v10
+      [217] iload v9
+      [219] iload v11
+      [221] bipush 33
+      [223] invokevirtual #31
+        + Methodref [android/text/SpannableStringBuilder.setSpan (Ljava/lang/Object;III)V]
+      [226] iload v11
+      [228] istore v9
+      [230] aload v8
+      [232] ldc #7
+        + String [
+]
+      [234] invokevirtual #29
+        + Methodref [android/text/SpannableStringBuilder.append (Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;]
+      [237] pop
+      [238] aload v8
+      [240] aload v5
+      [242] invokevirtual #45
+        + Methodref [e/a.b ()Ljava/lang/String;]
+      [245] invokevirtual #29
+        + Methodref [android/text/SpannableStringBuilder.append (Ljava/lang/CharSequence;)Landroid/text/SpannableStringBuilder;]
+      [248] pop
+      [249] aload v8
+      [251] invokevirtual #30
+        + Methodref [android/text/SpannableStringBuilder.length ()I]
+      [254] istore v11
+      [256] aload v8
+      [258] new #10
+        + Class [android/text/style/TextAppearanceSpan]
+      [261] dup
+      [262] aload_0 v0
+      [263] getfield #22
+        + Fieldref [com/nagopy/android/disabledapps/app/g.a Lcom/nagopy/android/disabledapps/app/MainActivity;]
+      [266] invokevirtual #41
+        + Methodref [com/nagopy/android/disabledapps/app/MainActivity.getApplicationContext ()Landroid/content/Context;]
+      [269] ldc #2
+        + Integer [16973894]
+      [271] invokespecial #32
+        + Methodref [android/text/style/TextAppearanceSpan.<init> (Landroid/content/Context;I)V]
+      [274] iload v9
+      [276] iload v11
+      [278] bipush 33
+      [280] invokevirtual #31
+        + Methodref [android/text/SpannableStringBuilder.setSpan (Ljava/lang/Object;III)V]
+      [283] aload v4
+      [285] getfield #26
         + Fieldref [com/nagopy/android/disabledapps/app/h.b Landroid/widget/TextView;]
-      [196] aload v7
-      [198] invokevirtual #31
+      [288] aload v8
+      [290] invokevirtual #39
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
-      [201] aload v4
-      [203] getfield #22
+      [293] goto +16 (target=309)
+      [296] aload v4
+      [298] getfield #26
         + Fieldref [com/nagopy/android/disabledapps/app/h.b Landroid/widget/TextView;]
-      [206] iconst_0
-      [207] invokevirtual #32
-        + Methodref [android/widget/TextView.setVisibility (I)V]
-      [210] goto +13 (target=223)
-      [213] aload v4
-      [215] getfield #22
-        + Fieldref [com/nagopy/android/disabledapps/app/h.b Landroid/widget/TextView;]
-      [218] bipush 8
-      [220] invokevirtual #32
-        + Methodref [android/widget/TextView.setVisibility (I)V]
-      [223] aload_2 v2
-      [224] areturn
+      [301] aload v5
+      [303] invokevirtual #45
+        + Methodref [e/a.b ()Ljava/lang/String;]
+      [306] invokevirtual #39
+        + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
+      [309] aload_2 v2
+      [310] areturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 21)
-        [0] -> line 419
-        [4] -> line 420
-        [18] -> line 421
-        [28] -> line 422
-        [42] -> line 423
-        [56] -> line 424
-        [70] -> line 425
-        [81] -> line 427
-        [92] -> line 430
-        [102] -> line 431
-        [107] -> line 432
-        [120] -> line 433
-        [133] -> line 434
-        [153] -> line 435
-        [166] -> line 436
-        [172] -> line 438
-        [186] -> line 439
-        [191] -> line 440
-        [201] -> line 441
+      + Line number table attribute (count = 35)
+        [0] -> line 418
+        [4] -> line 419
+        [18] -> line 420
+        [28] -> line 421
+        [42] -> line 422
+        [56] -> line 423
+        [67] -> line 425
+        [78] -> line 428
+        [88] -> line 429
+        [93] -> line 430
+        [106] -> line 431
+        [126] -> line 432
+        [139] -> line 433
+        [145] -> line 435
+        [159] -> line 436
+        [164] -> line 437
+        [173] -> line 438
+        [180] -> line 439
+        [188] -> line 440
+        [199] -> line 441
+        [201] -> line 440
+        [206] -> line 442
         [213] -> line 443
-        [223] -> line 446
+        [221] -> line 444
+        [223] -> line 443
+        [226] -> line 446
+        [230] -> line 447
+        [238] -> line 448
+        [249] -> line 449
+        [256] -> line 450
+        [269] -> line 451
+        [280] -> line 450
+        [283] -> line 453
+        [296] -> line 455
+        [309] -> line 458
       + Stack map table attribute (count = 4):
-        - [81] Var: ..., Stack: (empty)
-        - [92] Var: ...[a:com/nagopy/android/disabledapps/app/h], Stack: (empty)
-        - [213] Var: ...[a:e/a][a:android/graphics/drawable/Drawable][a:java/lang/String], Stack: (empty)
-        - [223] Var: -2, Stack: (empty)
+        - [67] Var: ..., Stack: (empty)
+        - [78] Var: ...[a:com/nagopy/android/disabledapps/app/h], Stack: (empty)
+        - [296] Var: ...[a:e/a][a:android/graphics/drawable/Drawable][a:java/lang/String], Stack: (empty)
+        - [309] Var: -2, Stack: (empty)
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -4756,7 +4846,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 19):
+Constant Pool (count = 18):
   + Class [com/nagopy/android/disabledapps/app/h]
   + Class [java/lang/Object]
   + Methodref [com/nagopy/android/disabledapps/app/h.<init> ()V]
@@ -4772,20 +4862,16 @@ Constant Pool (count = 19):
   + Utf8 [SourceFile]
   + Utf8 [a]
   + Utf8 [b]
-  + Utf8 [c]
   + Utf8 [com/nagopy/android/disabledapps/app/h]
   + Utf8 [java/lang/Object]
 
-Fields (count = 3):
+Fields (count = 2):
   + Field:        a Landroid/widget/TextView;
     Access flags: 0x0
       = android.widget.TextView a
   + Field:        b Landroid/widget/TextView;
     Access flags: 0x0
       = android.widget.TextView b
-  + Field:        c Landroid/widget/TextView;
-    Access flags: 0x0
-      = android.widget.TextView c
 
 Methods (count = 2):
   - Method:       <init>()V
@@ -4800,7 +4886,7 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 454
+        [0] -> line 466
   - Method:       <init>(Lcom/nagopy/android/disabledapps/app/h;)V
     Access flags: 0x1000
       = synthetic h(com.nagopy.android.disabledapps.app.h)
@@ -4813,7 +4899,7 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 454
+        [0] -> line 466
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -7059,8 +7145,8 @@ Constant Pool (count = 133):
   + Integer [17039370]
   + Integer [2130903042]
   + Integer [2131165201]
+  + Integer [2131427332]
   + Integer [2131427333]
-  + Integer [2131427334]
   + String [KEY_DEFAULT_VALUE]
   + String [KEY_LABEL]
   + String [KEY_LISTENER]
@@ -7240,7 +7326,7 @@ Methods (count = 8):
       [36] pop
       [37] aload_3 v3
       [38] ldc #5
-        + Integer [2131427333]
+        + Integer [2131427332]
       [40] invokevirtual #34
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
       [43] checkcast #16
@@ -7252,7 +7338,7 @@ Methods (count = 8):
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [53] aload_3 v3
       [54] ldc #6
-        + Integer [2131427334]
+        + Integer [2131427333]
       [56] invokevirtual #34
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
       [59] checkcast #15
@@ -7783,9 +7869,9 @@ Constant Pool (count = 167):
   + Integer [17039360]
   + Integer [17039370]
   + Integer [2130903043]
+  + Integer [2131427334]
   + Integer [2131427335]
   + Integer [2131427336]
-  + Integer [2131427337]
   + String [KEY_DEFAULT_VALUE]
   + String [KEY_LISTENER]
   + String [KEY_SUMMARY]
@@ -8003,7 +8089,7 @@ Methods (count = 13):
       [38] pop
       [39] aload_3 v3
       [40] ldc #4
-        + Integer [2131427335]
+        + Integer [2131427334]
       [42] invokevirtual #38
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
       [45] checkcast #17
@@ -8015,7 +8101,7 @@ Methods (count = 13):
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [55] aload_3 v3
       [56] ldc #5
-        + Integer [2131427336]
+        + Integer [2131427335]
       [58] invokevirtual #38
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
       [61] checkcast #17
@@ -8032,7 +8118,7 @@ Methods (count = 13):
         + Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [79] aload_3 v3
       [80] ldc #6
-        + Integer [2131427337]
+        + Integer [2131427336]
       [82] invokevirtual #38
         + Methodref [android/view/View.findViewById (I)Landroid/view/View;]
       [85] checkcast #16
