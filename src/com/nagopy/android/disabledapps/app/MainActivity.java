@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity {
 					public void onPositiveButtonClicked(DialogInterface dialog, String text) {
 						mCommentsUtils.saveComment(packageName, text);
 
-						updateAppList(-1, null);
+						updateAppList(-1);
 					}
 
 					@Override
@@ -173,7 +173,7 @@ public class MainActivity extends BaseActivity {
 				if (activity != null) {
 					int id = (Integer) tab.getTag();
 					if (activity.mAdapter != null) {
-						updateAppList(id, tab.getText());
+						updateAppList(id);
 					} else {
 						activity.lastAppFilterCondition = id;
 					}
@@ -243,10 +243,8 @@ public class MainActivity extends BaseActivity {
 	 * @param key
 	 *           表示するアプリを選ぶ条件<br>
 	 *           負の数を渡すと前回と同じフィルタを使う
-	 * @param title
-	 *           ヘッダーのテキストを指定。nullなら変更しない
 	 */
-	private void updateAppList(int key, CharSequence title) {
+	private void updateAppList(int key) {
 		if (key < 0) {
 			key = lastAppFilterCondition;
 		} else {
@@ -261,11 +259,6 @@ public class MainActivity extends BaseActivity {
 		mEmptyView.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
 		mListView.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
 		// CHECKSTYLE:ON
-
-		if (title != null) {
-			setTitle(title);
-
-		}
 	}
 
 	@Override
@@ -510,7 +503,7 @@ public class MainActivity extends BaseActivity {
 							activity.mListView.setVisibility(View.GONE);
 						}
 					} else {
-						activity.updateAppList(-1, null);
+						activity.updateAppList(-1);
 					}
 				}
 			}

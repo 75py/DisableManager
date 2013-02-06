@@ -6,6 +6,7 @@
     <string name="menu_share_label">アプリ名</string>
     <string name="menu_share_package">パッケージ名</string>
     <string name="menu_share_label_and_package">アプリ名とパッケージ名</string>
+    <string name="menu_share_customformat">カスタムフォーマット</string>
     <string name="menu_filter_disabled">無効化済みのアプリ</string>
     <string name="menu_filter_disablable_and_enabled_apps">無効化可能、有効なシステムアプリ</string>
     <string name="menu_filter_undisablable_system">無効化不可のシステムアプリ</string>
