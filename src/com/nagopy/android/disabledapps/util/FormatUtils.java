@@ -12,6 +12,8 @@ public class FormatUtils extends BaseObject {
 	private String formatWithComment;
 	private String formatWithoutComment;
 
+	private String lineBreak;
+
 	public FormatUtils(Context context) {
 		super(context);
 
@@ -21,6 +23,12 @@ public class FormatUtils extends BaseObject {
 		formatWithoutComment = sp.getString(
 				context.getString(R.string.pref_key_share_customformat_without_comment),
 				context.getString(R.string.pref_def_share_customformat_without_comment));
+		if (sp.getBoolean(context.getString(R.string.pref_key_share_customformat_linebreak_single), context
+				.getResources().getBoolean(R.bool.pref_def_share_customformat_linebreak_single))) {
+			lineBreak = System.getProperty("line.separator");
+		} else {
+			lineBreak = System.getProperty("line.separator") + System.getProperty("line.separator");
+		}
 	}
 
 	/**
@@ -32,8 +40,9 @@ public class FormatUtils extends BaseObject {
 	public String formatTest(String format) {
 		try {
 			Context context = getContext();
-			return String.format(format, context.getString(R.string.app_name), context.getPackageName(),
+			String text = String.format(format, context.getString(R.string.app_name), context.getPackageName(),
 					"your comment");
+			return text + lineBreak + text;
 		} catch (Exception e) {
 			return null;
 		}

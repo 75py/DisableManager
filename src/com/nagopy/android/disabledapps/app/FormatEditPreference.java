@@ -9,6 +9,7 @@ import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 
 import com.nagopy.android.common.util.CommonUtil;
+import com.nagopy.android.disabledapps.R;
 import com.nagopy.android.disabledapps.util.dialog.FormatEditDialog;
 import com.nagopy.android.disabledapps.util.dialog.FormatEditDialog.FormatEditDialogListener;
 
@@ -30,7 +31,7 @@ public class FormatEditPreference extends Preference {
 
 			FormatEditDialog formatEditDialog = new FormatEditDialog();
 			formatEditDialog.init(getTitle().toString(), getSummary().toString(), PreferenceManager
-					.getDefaultSharedPreferences(activity).getString(getKey(), null),
+					.getDefaultSharedPreferences(activity).getString(getKey(), getDefault()),
 					new FormatEditDialogListener() {
 						@Override
 						public void onPositiveButtonClicked(DialogInterface dialog, String text) {
@@ -48,6 +49,15 @@ public class FormatEditPreference extends Preference {
 						}
 					});
 			formatEditDialog.show(fragmentManager, "");
+		}
+	}
+
+	private String getDefault() {
+		String key = getKey();
+		if (getContext().getString(R.string.pref_key_share_customformat_with_comment).equals(key)) {
+			return getContext().getString(R.string.pref_def_share_customformat_with_comment);
+		} else {
+			return getContext().getString(R.string.pref_def_share_customformat_without_comment);
 		}
 	}
 

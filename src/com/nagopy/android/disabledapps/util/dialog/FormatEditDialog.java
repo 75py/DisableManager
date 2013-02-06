@@ -64,7 +64,7 @@ public class FormatEditDialog extends DialogFragment {
 					sampleTextView.setText("format error");
 				} else {
 					// Log.d("debug", formatString + formatString);
-					sampleTextView.setText(formatString + formatString);
+					sampleTextView.setText(formatString);
 				}
 			}
 
