@@ -22,6 +22,8 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.nagopy.android.common.app.BaseActivity;
+import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disabledapps.R;
 import com.nagopy.android.disabledapps.util.AppStatus;
 import com.nagopy.android.disabledapps.util.AppsLoader;
@@ -29,8 +31,6 @@ import com.nagopy.android.disabledapps.util.CommentsUtils;
 import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog;
 import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disabledapps.util.filter.AppsFilter;
-import com.nagopy.lib.base.BaseActivity;
-import com.nagopy.lib.fragment.dialog.AsyncTaskWithProgressDialog;
 
 /**
  * ランチャーから起動するアクティビティ<br>
@@ -133,7 +133,7 @@ public class MainActivity extends BaseActivity {
 					public void onNegativeButtonClicked(DialogInterface dialog) {}
 					// CHECKSTYLE:ON
 				});
-				mCommentEditDialog.show(getSupportFragmentManager(), "CommentEditDialog");
+				mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
 
 				return false;
 			}
@@ -450,7 +450,7 @@ public class MainActivity extends BaseActivity {
 	 * @return アプリを読み込み直すAsyncTaskWithProgressDialogのインスタンス
 	 */
 	private AsyncTaskWithProgressDialog createReloadAsyncTask() {
-		return new AsyncTaskWithProgressDialog(getSupportFragmentManager(), this) {
+		return new AsyncTaskWithProgressDialog(getFragmentManager(), this) {
 
 			@Override
 			protected void onPreExecute() {

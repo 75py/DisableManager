@@ -9,8 +9,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
-import com.nagopy.lib.base.BaseObject;
-import com.nagopy.lib.image.ImageUtils;
+import com.nagopy.android.common.app.BaseObject;
+import com.nagopy.android.common.image.ImageUtils;
 
 /**
  * アプリ名などを読みこみ、アプリ一覧を取得するクラス。

@@ -10,7 +10,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 
-import com.nagopy.lib.base.BaseObject;
+import com.nagopy.android.common.app.BaseObject;
 
 /**
  * 「無効化ができるかを判定するためのクラス」の基になるクラス

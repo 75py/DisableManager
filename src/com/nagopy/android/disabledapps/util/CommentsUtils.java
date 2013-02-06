@@ -3,7 +3,7 @@ package com.nagopy.android.disabledapps.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.nagopy.lib.base.BaseObject;
+import com.nagopy.android.common.app.BaseObject;
 
 /**
  * コメントを保存・復元するクラス

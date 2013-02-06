@@ -2,8 +2,8 @@ package com.nagopy.android.disabledapps.app;
 
 import android.os.Bundle;
 
+import com.nagopy.android.common.app.BasePreferenceActivity;
 import com.nagopy.android.disabledapps.R;
-import com.nagopy.lib.base.BasePreferenceActivity;
 
 /**
  * 設定画面を表示するアクティビティ
