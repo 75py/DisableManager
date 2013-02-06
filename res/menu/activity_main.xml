@@ -19,50 +19,11 @@
                 android:title="@string/menu_share_customformat"/>
         </menu>
     </item>
-    <!-- <item -->
-    <!-- android:icon="@android:drawable/ic_menu_agenda" -->
-    <!-- android:showAsAction="always|collapseActionView" -->
-    <!-- android:title="filter"> -->
-    <!-- <menu> -->
-    <!-- <item -->
-    <!-- android:id="@+id/menu_filter_disabled" -->
-    <!-- android:icon="@android:drawable/ic_menu_agenda" -->
-    <!-- android:title="@string/menu_filter_disabled"/> -->
-    <!-- <item -->
-    <!-- android:id="@+id/menu_filter_disablable_and_enabled_apps" -->
-    <!-- android:icon="@android:drawable/ic_menu_agenda" -->
-    <!-- android:title="@string/menu_filter_disablable_and_enabled_apps"/> -->
-    <!-- <item -->
-    <!-- android:id="@+id/menu_filter_undisablable_system" -->
-    <!-- android:icon="@android:drawable/ic_menu_agenda" -->
-    <!-- android:title="@string/menu_filter_undisablable_system"/> -->
-    <!-- <item -->
-    <!-- android:id="@+id/menu_filter_user_apps" -->
-    <!-- android:icon="@android:drawable/ic_menu_agenda" -->
-    <!-- android:title="@string/menu_filter_user_apps"/> -->
-    <!-- </menu> -->
-    <!-- </item> -->
     <item
         android:icon="@android:drawable/ic_menu_more"
         android:showAsAction="always"
         android:title="More">
         <menu>
-            <item
-                android:id="@+id/menu_filter_disabled"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="@string/menu_filter_disabled"/>
-            <item
-                android:id="@+id/menu_filter_disablable_and_enabled_apps"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="@string/menu_filter_disablable_and_enabled_apps"/>
-            <item
-                android:id="@+id/menu_filter_undisablable_system"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="@string/menu_filter_undisablable_system"/>
-            <item
-                android:id="@+id/menu_filter_user_apps"
-                android:icon="@android:drawable/ic_menu_agenda"
-                android:title="@string/menu_filter_user_apps"/>
             <item
                 android:id="@+id/menu_reload"
                 android:icon="@drawable/ic_menu_refresh"

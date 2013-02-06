@@ -1,8 +1,12 @@
 package com.nagopy.android.disabledapps.app;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -140,6 +144,57 @@ public class MainActivity extends BaseActivity {
 		});
 
 		createReloadAsyncTask().execute();
+
+		initActionBarTabs();
+	}
+
+	/**
+	 * タブを設定する
+	 */
+	private void initActionBarTabs() {
+		ActionBar actionBar = getActionBar();
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+		// CHECKSTYLE:OFF
+		// 何となくローカルインナークラスを使ってみたかったｗ
+		class TabListener implements ActionBar.TabListener {
+			private WeakReference<MainActivity> weakReference;
+
+			public TabListener(MainActivity activity) {
+				weakReference = new WeakReference<MainActivity>(activity);
+			}
+
+			@Override
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
+
+			@Override
+			public void onTabSelected(Tab tab, FragmentTransaction ft) {
+				MainActivity activity = weakReference.get();
+				if (activity != null) {
+					int id = (Integer) tab.getTag();
+					if (activity.mAdapter != null) {
+						updateAppList(id, tab.getText());
+					} else {
+						activity.lastAppFilterCondition = id;
+					}
+				}
+			}
+
+			@Override
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {}
+		}
+		// CHECKSTYLE:ON
+
+		TabListener tabListener = new TabListener(this);
+
+		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
+				.setTabListener(tabListener));
+		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disablable_and_enabled_apps)
+				.setTag(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM).setTabListener(tabListener));
+		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_undisablable_system)
+				.setTag(AppsFilter.UNDISABLABLE_SYSTEM).setTabListener(tabListener));
+		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_user_apps)
+				.setTag(AppsFilter.USER_APPS).setTabListener(tabListener));
 	}
 
 	@Override
@@ -216,27 +271,9 @@ public class MainActivity extends BaseActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.menu_filter_disablable_and_enabled_apps:
-			updateAppList(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM, item.getTitle());
-			return true;
-		case R.id.menu_filter_disabled:
-			updateAppList(AppsFilter.DISABLED, item.getTitle());
-			return true;
-		case R.id.menu_filter_undisablable_system:
-			updateAppList(AppsFilter.UNDISABLABLE_SYSTEM, item.getTitle());
-			return true;
-		case R.id.menu_filter_user_apps:
-			updateAppList(AppsFilter.USER_APPS, item.getTitle());
-			return true;
 		case R.id.menu_share_label:
-			sendShareIntent(item.getItemId());
-			return true;
 		case R.id.menu_share_package:
-			sendShareIntent(item.getItemId());
-			return true;
 		case R.id.menu_share_label_and_package:
-			sendShareIntent(item.getItemId());
-			return true;
 		case R.id.menu_share_customformat:
 			sendShareIntent(item.getItemId());
 			return true;
@@ -480,8 +517,8 @@ public class MainActivity extends BaseActivity {
 							.getAppsList()));
 					if (activity.mAdapter == null) {
 						// 初回なら
-						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(AppsFilter.DISABLED),
-								activity.mCommentsUtils);
+						activity.mAdapter = new AppsListAdapter(
+								activity.mAppFilter.execute(activity.lastAppFilterCondition), activity.mCommentsUtils);
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);
