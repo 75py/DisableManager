@@ -14,6 +14,9 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -413,7 +416,6 @@ public class MainActivity extends BaseActivity {
 				convertView = View.inflate(getApplicationContext(), R.layout.app_list_row, null);
 				holder = new ViewHolder();
 				holder.labelTextView = (TextView) convertView.findViewById(R.id.list_textview_label);
-				holder.commentTextView = (TextView) convertView.findViewById(R.id.list_textview_comment);
 				holder.pkgNameTextView = (TextView) convertView.findViewById(R.id.list_textview_package_name);
 				convertView.setTag(R.string.app_name, holder);
 			} else {
@@ -423,17 +425,31 @@ public class MainActivity extends BaseActivity {
 			AppStatus appStatus = (AppStatus) getItem(position);
 			if (appStatus != null) {
 				holder.labelTextView.setText(appStatus.getLabel());
-				holder.pkgNameTextView.setText(appStatus.getPackageName());
 				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
 				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
 				icon.setCallback(null);
 
 				String comment = this.mCommentsUtils.restoreComment(appStatus.getPackageName());
 				if (comment != null) {
-					holder.commentTextView.setText(comment);
-					holder.commentTextView.setVisibility(View.VISIBLE);
+					SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+					int start = spannableStringBuilder.length();
+					spannableStringBuilder.append(comment);
+					TextAppearanceSpan cyanTextAppearanceSpan = new TextAppearanceSpan(getApplicationContext(),
+							android.R.style.TextAppearance_Medium);
+					int end = spannableStringBuilder.length();
+					spannableStringBuilder.setSpan(cyanTextAppearanceSpan, start, end,
+							Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+					start = end;
+					spannableStringBuilder.append("\n");
+					spannableStringBuilder.append(appStatus.getPackageName());
+					end = spannableStringBuilder.length();
+					spannableStringBuilder.setSpan(new TextAppearanceSpan(getApplicationContext(),
+							android.R.style.TextAppearance_Small), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+					holder.pkgNameTextView.setText(spannableStringBuilder);
 				} else {
-					holder.commentTextView.setVisibility(View.GONE);
+					holder.pkgNameTextView.setText(appStatus.getPackageName());
 				}
 			}
 			return convertView;
@@ -449,11 +465,6 @@ public class MainActivity extends BaseActivity {
 		 * ラベルを表示するテキストビュー
 		 */
 		TextView labelTextView; // CHECKSTYLE IGNORE THIS LINE
-
-		/**
-		 * コメントを表示するテキストビュー
-		 */
-		TextView commentTextView; // CHECKSTYLE IGNORE THIS LINE
 
 		/**
 		 * パッケージ名を表示するテキストビュー

@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/comment_dialog_edittext_hint" >
+        android:hint="@string/menu_share_customformat" >
 
         <requestFocus />
     </EditText>
