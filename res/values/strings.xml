@@ -32,12 +32,20 @@
     <!-- pref_def_category_name -->
     <string name="pref_cat_share">Share</string>
     <string name="pref_key_share_customformat_without_comment">pref_key_share_customformat_without_comment</string>
-    <string name="pref_def_share_customformat_without_comment">%2$s(%1$s)%3$s</string>
+    <string name="pref_def_share_customformat_without_comment">%2$s(%1$s)</string>
     <string name="pref_title_share_customformat_without_comment">Custom Format (without comment)</string>
-    <string name="pref_summary_share_customformat_without_comment">%1$s: label, %2$s: package, %3$s: line break.</string>
+    <string name="pref_summary_share_customformat_without_comment">%1$s: label, %2$s: package.</string>
     <string name="pref_key_share_customformat_with_comment">pref_key_share_customformat_with_comment</string>
-    <string name="pref_def_share_customformat_with_comment">%2$s(%1$s)%3$s%4$s%3$s%3$s</string>
+    <string name="pref_def_share_customformat_with_comment">%2$s(%1$s)%3$s\n%3$s%3$s</string>
     <string name="pref_title_share_customformat_with_comment">Custom Format (with comment)</string>
-    <string name="pref_summary_share_customformat_with_comment">%1$s: label, %2$s: package, %3$s: line break, %4$s: comment.</string>
+    <string name="pref_summary_share_customformat_with_comment">%1$s: label, %2$s: package, %3$s: comment.</string>
+
+    <!-- line break -->
+    <string name="pref_key_share_customformat_linebreak_single">pref_key_share_customformat_linebreak_single</string>
+
+    <bool name="pref_def_share_customformat_linebreak_single">false</bool>
+
+    <string name="pref_title_share_customformat_linebreak_single">Single Line break</string>
+    <string name="pref_summary_share_customformat_linebreak_single">line break between items. To single If checked. otherwise to double.</string>
 
 </resources>
