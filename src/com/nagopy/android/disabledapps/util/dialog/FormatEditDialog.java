@@ -43,6 +43,9 @@ public class FormatEditDialog extends DialogFragment {
 	 */
 	private static final String KEY_LISTENER = "KEY_LISTENER";
 
+	/**
+	 * フォーマットのサンプルを表示したりするために使う
+	 */
 	private FormatUtils mFormatUtils;
 
 	@Override
@@ -53,13 +56,13 @@ public class FormatEditDialog extends DialogFragment {
 		((TextView) rootView.findViewById(R.id.format_edit_dialog_summary_textview)).setText(getSummary());
 		final TextView sampleTextView = (TextView) rootView
 				.findViewById(R.id.format_edit_dialog_sample_textview);
-		sampleTextView.setText(format(getDefaultValue()));
+		sampleTextView.setText(formatTest(getDefaultValue()));
 		final EditText editText = (EditText) rootView.findViewById(R.id.format_edit_dialog_editText);
 		editText.setText(getDefaultValue());
 		editText.addTextChangedListener(new TextWatcher() {
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
-				String formatString = format(s.toString());
+				String formatString = formatTest(s.toString());
 				if (formatString == null) {
 					sampleTextView.setText("format error");
 				} else {
@@ -68,11 +71,13 @@ public class FormatEditDialog extends DialogFragment {
 				}
 			}
 
+			// CHECKSTYLE:OFF
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
 			@Override
 			public void afterTextChanged(Editable s) {}
+			// CHECKSTYLE:ON
 		});
 
 		final FormatEditDialogListener listener = getListener();
@@ -80,7 +85,7 @@ public class FormatEditDialog extends DialogFragment {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				String text = editText.getText().toString();
-				if (format(editText.getText().toString()) != null) {
+				if (formatTest(editText.getText().toString()) != null) {
 					listener.onPositiveButtonClicked(dialog, text);
 				} else {
 					listener.onFormatError();
@@ -230,7 +235,13 @@ public class FormatEditDialog extends DialogFragment {
 		public abstract void onFormatError();
 	}
 
-	private String format(String format) {
+	/**
+	 * フォーマットのテストを行う
+	 * @param format
+	 *           フォーマット前の文字列
+	 * @return フォーマット後の文字列。エラーがある場合はnullが返る
+	 */
+	private String formatTest(String format) {
 		if (mFormatUtils == null) {
 			mFormatUtils = new FormatUtils(getActivity().getApplicationContext());
 		}

@@ -18,7 +18,7 @@ import com.nagopy.android.disabledapps.util.dialog.FormatEditDialog.FormatEditDi
  */
 public class FormatEditPreference extends Preference {
 
-	public FormatEditPreference(Context context, AttributeSet attrs) {
+	public FormatEditPreference(Context context, AttributeSet attrs) { // CHECKSTYLE IGNORE THIS LINE
 		super(context, attrs);
 	}
 
@@ -39,8 +39,11 @@ public class FormatEditPreference extends Preference {
 									.putString(getKey(), text).commit();
 						}
 
+						// CHECKSTYLE:OFF
 						@Override
 						public void onNegativeButtonClicked(DialogInterface dialog) {}
+
+						// CHECKSTYLE:ON
 
 						@Override
 						public void onFormatError() {
@@ -52,6 +55,10 @@ public class FormatEditPreference extends Preference {
 		}
 	}
 
+	/**
+	 * デフォルト値を返す
+	 * @return デフォルト
+	 */
 	private String getDefault() {
 		String key = getKey();
 		if (getContext().getString(R.string.pref_key_share_customformat_with_comment).equals(key)) {

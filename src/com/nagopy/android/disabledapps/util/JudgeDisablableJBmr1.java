@@ -3,7 +3,6 @@ package com.nagopy.android.disabledapps.util;
 import java.util.List;
 
 import android.annotation.TargetApi;
-import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;

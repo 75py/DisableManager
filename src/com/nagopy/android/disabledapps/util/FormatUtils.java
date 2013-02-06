@@ -7,13 +7,31 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+/**
+ * フォーマットをしたりするクラス
+ */
 public class FormatUtils extends BaseObject {
 
+	/**
+	 * コメントありのときに使うフォーマット
+	 */
 	private String formatWithComment;
+
+	/**
+	 * コメントなしの時に使うフォーマット
+	 */
 	private String formatWithoutComment;
 
+	/**
+	 * 改行（一つまたは2つ）
+	 */
 	private String lineBreak;
 
+	/**
+	 * コンストラクタ。設定を読み込んだりもする
+	 * @param context
+	 *           アプリケーションのコンテキスト
+	 */
 	public FormatUtils(Context context) {
 		super(context);
 
