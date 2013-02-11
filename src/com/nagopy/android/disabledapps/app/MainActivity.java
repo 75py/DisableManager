@@ -91,6 +91,11 @@ public class MainActivity extends BaseActivity {
 	 */
 	private CommentsUtils mCommentsUtils;
 
+	/**
+	 * onResumeで読みこみ直すパッケージ名を保持するフィールド
+	 */
+	private String shouldReloadPackageNameString;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -110,6 +115,7 @@ public class MainActivity extends BaseActivity {
 
 				Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri
 						.parse("package:" + packageName));
+				shouldReloadPackageNameString = packageName;
 				try {
 					startActivity(intent);
 				} catch (Exception e) {
@@ -152,6 +158,17 @@ public class MainActivity extends BaseActivity {
 		createReloadAsyncTask().execute();
 
 		initActionBarTabs();
+	}
+
+	@Override
+	protected void onRestart() {
+		super.onRestart();
+		if (shouldReloadPackageNameString != null) {
+			mAppLoader.updateStatus(shouldReloadPackageNameString);
+			mAppFilter.sortOriginalAppList();
+			updateAppList(-1);
+			shouldReloadPackageNameString = null;
+		}
 	}
 
 	/**

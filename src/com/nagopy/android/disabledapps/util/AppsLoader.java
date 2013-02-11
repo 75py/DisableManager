@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
@@ -69,6 +70,38 @@ public class AppsLoader extends BaseObject {
 	 */
 	public ArrayList<AppStatus> getAppsList() {
 		return appsList;
+	}
+
+	/**
+	 * ペッケージ名を指定してステータスを更新する
+	 * @param packageName
+	 *           パッケージ名
+	 */
+	public void updateStatus(String packageName) {
+		AppStatus appStatus = null;
+		for (AppStatus status : appsList) {
+			if (status.getPackageName().equals(packageName)) {
+				appStatus = status;
+				break;
+			}
+		}
+		if (appStatus == null) {
+			return;
+		}
+
+		try {
+			appsList.remove(appStatus);
+			PackageManager packageManager = getContext().getPackageManager();
+			PackageInfo packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
+			ApplicationInfo info = packageInfo.applicationInfo;
+			JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
+
+			AppStatus newStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
+					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+					judgeDisablable.isDisablable(info));
+			appsList.add(newStatus);
+		} catch (Exception e) {
+		}
 	}
 
 	/**

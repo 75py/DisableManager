@@ -86,7 +86,8 @@ public class AppsFilter {
 	/**
 	 * ソートする<br>
 	 * 大文字小文字は区別しない
-	 * @param list ソートしたいリスト
+	 * @param list
+	 *           ソートしたいリスト
 	 * @return ソート後のリスト
 	 */
 	public ArrayList<AppStatus> sort(ArrayList<AppStatus> list) {
@@ -120,6 +121,13 @@ public class AppsFilter {
 	 */
 	public void setOriginalAppList(ArrayList<AppStatus> original) {
 		this.originalAppList = original;
+	}
+
+	/**
+	 * オリジナルをソートする
+	 */
+	public void sortOriginalAppList() {
+		sort(originalAppList);
 	}
 
 	/**
