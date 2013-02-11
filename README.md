@@ -36,6 +36,6 @@
 
 ##ダウンロード
 
-http://ux.getuploader.com/75py/download/6/Disabled_Apps_List_v1.2.0.apk
+http://ux.getuploader.com/75py/download/7/Disabled_Apps_List_v1.3.0.apk
 
 <p>もう少し手直ししたらplayにあげる予定です。</p>
