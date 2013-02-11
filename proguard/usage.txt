@@ -61,10 +61,13 @@ com.nagopy.android.disabledapps.R$drawable
 com.nagopy.android.disabledapps.R$id
 com.nagopy.android.disabledapps.R$layout
 com.nagopy.android.disabledapps.R$menu
+com.nagopy.android.disabledapps.R$raw
 com.nagopy.android.disabledapps.R$string
 com.nagopy.android.disabledapps.R$style
 com.nagopy.android.disabledapps.R$styleable
 com.nagopy.android.disabledapps.R$xml
+com.nagopy.android.disabledapps.app.AppPreferenceActivity$AboutPreferenceFragment
+com.nagopy.android.disabledapps.app.AppPreferenceActivity$SharePreferenceFragment
 com.nagopy.android.disabledapps.app.MainActivity$2$1:
     private static final long serialVersionUID
 com.nagopy.android.disabledapps.util.CommentsUtils:
