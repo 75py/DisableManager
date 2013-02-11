@@ -38,9 +38,9 @@
     <string name="pref_summary_share_customformat_with_comment">「%1$s」がラベル名、「%2$s」がパッケージ名、「%3$s」がコメントに変換されます。</string>
 
     <!-- line break -->
-    <bool name="pref_def_share_customformat_linebreak_single">false</bool>
+    <bool name="pref_def_share_add_linebreak">false</bool>
 
-    <string name="pref_title_share_customformat_linebreak_single">単一改行</string>
-    <string name="pref_summary_share_customformat_linebreak_single">共有時にアプリとアプリの間に挟む改行の数を指定します。チェックを外すと空行が挿入されます。</string>
+    <string name="pref_title_share_add_linebreak">改行を挿入する</string>
+    <string name="pref_summary_share_add_linebreak">チェックを入れると、空行が挿入されます。</string>
 
 </resources>

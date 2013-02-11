@@ -230,7 +230,7 @@ public class MainActivity extends BaseActivity {
 
 		mEmptyView = null;
 
-		mAdapter.updateAppList(null);
+		// mAdapter.updateAppList(null);
 		mAdapter = null;
 
 		mAppFilter.deallocate();
@@ -324,11 +324,11 @@ public class MainActivity extends BaseActivity {
 
 		StringBuffer sb = new StringBuffer();
 		String lineBreak;
-		if (getSP().getBoolean(getString(R.string.pref_key_share_customformat_linebreak_single),
-				getResources().getBoolean(R.bool.pref_def_share_customformat_linebreak_single))) {
-			lineBreak = System.getProperty("line.separator");
-		} else {
+		if (getSP().getBoolean(getString(R.string.pref_key_share_add_linebreak),
+				getResources().getBoolean(R.bool.pref_def_share_add_linebreak))) {
 			lineBreak = System.getProperty("line.separator") + System.getProperty("line.separator");
+		} else {
+			lineBreak = System.getProperty("line.separator");
 		}
 		switch (id) {
 		case R.id.menu_share_label:
@@ -540,5 +540,4 @@ public class MainActivity extends BaseActivity {
 			}
 		};
 	}
-
 }

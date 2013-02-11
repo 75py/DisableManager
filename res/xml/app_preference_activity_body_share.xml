@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <com.nagopy.android.disabledapps.app.FormatEditPreference
+        android:key="@string/pref_key_share_customformat_without_comment"
+        android:summary="@string/pref_summary_share_customformat_without_comment"
+        android:title="@string/pref_title_share_customformat_without_comment" />
+    <com.nagopy.android.disabledapps.app.FormatEditPreference
+        android:key="@string/pref_key_share_customformat_with_comment"
+        android:summary="@string/pref_summary_share_customformat_with_comment"
+        android:title="@string/pref_title_share_customformat_with_comment" />
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_def_share_add_linebreak"
+        android:key="@string/pref_key_share_add_linebreak"
+        android:summary="@string/pref_summary_share_add_linebreak"
+        android:title="@string/pref_title_share_add_linebreak" />
+
+</PreferenceScreen>

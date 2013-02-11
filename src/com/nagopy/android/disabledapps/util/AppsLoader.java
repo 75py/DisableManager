@@ -101,6 +101,7 @@ public class AppsLoader extends BaseObject {
 					judgeDisablable.isDisablable(info));
 			appsList.add(newStatus);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

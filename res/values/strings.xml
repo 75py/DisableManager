@@ -41,11 +41,11 @@
     <string name="pref_summary_share_customformat_with_comment">%1$s: label, %2$s: package, %3$s: comment.</string>
 
     <!-- line break -->
-    <string name="pref_key_share_customformat_linebreak_single">pref_key_share_customformat_linebreak_single</string>
+    <string name="pref_key_share_add_linebreak">pref_key_share_add_linebreak</string>
 
-    <bool name="pref_def_share_customformat_linebreak_single">false</bool>
+    <bool name="pref_def_share_add_linebreak">false</bool>
 
-    <string name="pref_title_share_customformat_linebreak_single">Single Line break</string>
-    <string name="pref_summary_share_customformat_linebreak_single">line break between items. To single If checked. otherwise to double.</string>
+    <string name="pref_title_share_add_linebreak">Add Line break</string>
+    <string name="pref_summary_share_add_linebreak">Add a line break between items.</string>
 
 </resources>

@@ -41,11 +41,11 @@ public class FormatUtils extends BaseObject {
 		formatWithoutComment = sp.getString(
 				context.getString(R.string.pref_key_share_customformat_without_comment),
 				context.getString(R.string.pref_def_share_customformat_without_comment));
-		if (sp.getBoolean(context.getString(R.string.pref_key_share_customformat_linebreak_single), context
-				.getResources().getBoolean(R.bool.pref_def_share_customformat_linebreak_single))) {
-			lineBreak = System.getProperty("line.separator");
-		} else {
+		if (sp.getBoolean(context.getString(R.string.pref_key_share_add_linebreak), context.getResources()
+				.getBoolean(R.bool.pref_def_share_add_linebreak))) {
 			lineBreak = System.getProperty("line.separator") + System.getProperty("line.separator");
+		} else {
+			lineBreak = System.getProperty("line.separator");
 		}
 	}
 
