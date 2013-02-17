@@ -1,4 +1,4 @@
-package com.nagopy.android.disabledapps.util;
+package com.nagopy.android.disabledapps.util.dpm;
 
 import java.util.List;
 
@@ -93,10 +93,6 @@ class JudgeDisablableJBmr1 extends JudgeDisablable {
 		List<ResolveInfo> homes = getPackageManager().queryIntentActivities(intent, 0);
 		if ((homes != null && homes.size() > 0) || isThisASystemPackage(mPackageInfo)) {
 			disableable = false;
-			// } else if (enabled) {
-			// disableable = true;
-			// } else {
-			// disableable = true;
 		}
 
 		return disableable;

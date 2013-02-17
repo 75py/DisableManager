@@ -1,4 +1,4 @@
-package com.nagopy.android.disabledapps.util;
+package com.nagopy.android.disabledapps.util.dpm;
 
 import java.lang.reflect.Method;
 

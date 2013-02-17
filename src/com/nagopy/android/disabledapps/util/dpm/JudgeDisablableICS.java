@@ -1,4 +1,4 @@
-package com.nagopy.android.disabledapps.util;
+package com.nagopy.android.disabledapps.util.dpm;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import android.content.pm.ResolveInfo;
 /**
  * 無効化できるかを判定するクラス（ICS～JB用）
  */
-public class JudgeDisablableICS extends JudgeDisablable {
+class JudgeDisablableICS extends JudgeDisablable {
 	/**
 	 * PackageInfo
 	 */

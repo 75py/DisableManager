@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 
 import com.nagopy.android.common.app.BaseObject;
 import com.nagopy.android.common.image.ImageUtils;
+import com.nagopy.android.disabledapps.util.dpm.JudgeDisablable;
 
 /**
  * アプリ名などを読みこみ、アプリ一覧を取得するクラス。
