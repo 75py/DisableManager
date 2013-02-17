@@ -2,6 +2,9 @@
 <preference-headers xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <header
+        android:fragment="com.nagopy.android.disabledapps.pref.GeneralPreferenceFragment"
+        android:title="@string/pref_cat_general" />
+    <header
         android:fragment="com.nagopy.android.disabledapps.pref.SharePreferenceFragment"
         android:title="@string/pref_cat_share" />
     <header

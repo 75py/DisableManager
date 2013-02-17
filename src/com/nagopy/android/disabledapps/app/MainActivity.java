@@ -180,6 +180,7 @@ public class MainActivity extends BaseActivity {
 	protected void onRestart() {
 		super.onRestart();
 		if (shouldReloadPackageNameString != null) {
+			// 読みこみ直すパッケージがあれば読みこんで反映する
 			mAppLoader.updateStatus(shouldReloadPackageNameString);
 			mAppFilter.sortOriginalAppList();
 			updateAppList(-1);
@@ -290,6 +291,7 @@ public class MainActivity extends BaseActivity {
 			lastAppFilterCondition = key;
 		}
 		mAdapter.updateAppList(mAppFilter.execute(key));
+		mAdapter.getAppList();
 		mAdapter.notifyDataSetChanged();
 		mListView.setSelection(0);
 

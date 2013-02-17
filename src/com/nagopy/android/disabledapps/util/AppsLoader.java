@@ -20,24 +20,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 
-import com.nagopy.android.common.app.BaseObject;
 import com.nagopy.android.common.image.ImageUtils;
+import com.nagopy.android.disabledapps.R;
 import com.nagopy.android.disabledapps.util.dpm.JudgeDisablable;
 
 /**
  * アプリ名などを読みこみ、アプリ一覧を取得するクラス。
  */
-public class AppsLoader extends BaseObject {
+public class AppsLoader {
 	/**
 	 * アプリ一覧を保存しておくためのフィールド。
 	 */
 	private ArrayList<AppStatus> appsList;
+
+	private Context mContext;
 
 	/**
 	 * コンストラクタ
@@ -45,8 +52,23 @@ public class AppsLoader extends BaseObject {
 	 *           　アプリケーションのコンテキスト
 	 */
 	public AppsLoader(Context context) {
-		super(context);
+		mContext = context;
 		appsList = new ArrayList<AppStatus>();
+	}
+
+	private Context getContext() {
+		return mContext;
+	}
+
+	public HashMap<String, Drawable> load() {
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+		if (sharedPreferences.getBoolean(
+				getContext().getString(R.string.pref_key_general_show_only_running_packages), getContext()
+						.getResources().getBoolean(R.bool.pref_def_general_show_only_running_packages))) {
+			return loadRunningApps();
+		} else {
+			return loadAll();
+		}
 	}
 
 	/**
@@ -54,7 +76,7 @@ public class AppsLoader extends BaseObject {
 	 * ちょっと時間かかるかも
 	 * @return アイコンのキャッシュ
 	 */
-	public HashMap<String, Drawable> load() {
+	private HashMap<String, Drawable> loadAll() {
 		appsList.clear();
 
 		PackageManager packageManager = getContext().getPackageManager();
@@ -76,6 +98,51 @@ public class AppsLoader extends BaseObject {
 
 			appsList.add(appStatus);
 			iconCache.put(info.packageName, icon);
+		}
+
+		return iconCache;
+	}
+
+	/**
+	 * アプリ一覧を読み込む。<br>
+	 * ちょっと時間かかるかも
+	 * @return アイコンのキャッシュ
+	 */
+	private HashMap<String, Drawable> loadRunningApps() {
+		appsList.clear();
+
+		ActivityManager activityManager = (ActivityManager) getContext().getSystemService(
+				Context.ACTIVITY_SERVICE);
+		PackageManager packageManager = getContext().getPackageManager();
+		// インストール済みのアプリケーション一覧の取得
+		List<ActivityManager.RunningAppProcessInfo> applicationInfo = activityManager.getRunningAppProcesses();
+		int iconSize = ImageUtils.getIconSize(getContext());
+
+		JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
+		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
+
+		for (RunningAppProcessInfo info : applicationInfo) {
+			String[] pkgList = info.pkgList;
+			for (String pkg : pkgList) {
+				ApplicationInfo appInfo;
+				try {
+					appInfo = packageManager.getApplicationInfo(pkg, PackageManager.GET_META_DATA);
+				} catch (NameNotFoundException e) {
+					e.printStackTrace();
+					continue;
+				}
+				Drawable icon = appInfo.loadIcon(packageManager);
+				icon.setBounds(0, 0, iconSize, iconSize);
+
+				AppStatus appStatus = new AppStatus(appInfo.loadLabel(packageManager).toString(),
+						appInfo.packageName, appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+						judgeDisablable.isDisablable(appInfo));
+				appStatus.setRunningStatus(info.importance);
+
+				appsList.add(appStatus);
+				iconCache.put(appInfo.packageName, icon);
+			}
+
 		}
 
 		return iconCache;

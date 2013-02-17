@@ -14,19 +14,21 @@
  * limitations under the License.
  */
 
-package com.nagopy.android.disabledapps.util.filter;
+package com.nagopy.android.disabledapps.pref;
 
-import com.nagopy.android.disabledapps.util.AppStatus;
+import com.nagopy.android.disabledapps.R;
+
+import android.os.Bundle;
+import android.preference.PreferenceFragment;
 
 /**
- * フィルターかける条件を指定するためのインターフェース
+ * 一般設定を表示するフラグメント
  */
-interface AppFilterCondition {
+public class GeneralPreferenceFragment extends PreferenceFragment {
 
-	/**
-	 * @param appStatus
-	 *           判定するアプリのステータス
-	 * @return フィルターの条件に適していればtrue
-	 */
-	boolean valid(AppStatus appStatus);
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		addPreferencesFromResource(R.xml.app_preference_activity_body_general);
+	}
 }

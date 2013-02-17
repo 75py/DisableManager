@@ -45,6 +45,8 @@ public class AppStatus {
 	 * 無効化が可能かどうか
 	 */
 	private boolean canDisable;
+	
+	private int runningStatus;
 
 	/**
 	 * コンストラクタ
@@ -106,5 +108,13 @@ public class AppStatus {
 	public String toString() {
 		return getLabel() + ":" + getPackageName() + ", enabled:" + isEnabled() + ", system:" + isSystem()
 				+ ", canDisable:" + canDisable();
+	}
+
+	public int getRunningStatus() {
+		return runningStatus;
+	}
+
+	public void setRunningStatus(int runningStatus) {
+		this.runningStatus = runningStatus;
 	}
 }
