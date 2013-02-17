@@ -45,8 +45,16 @@ public class AppStatus {
 	 * 無効化が可能かどうか
 	 */
 	private boolean canDisable;
-	
-	private int runningStatus;
+
+	/**
+	 * タスク情報が未設定時の値
+	 */
+	public static final int NULL_STATUS = -7575;
+
+	/**
+	 * タスクの状態
+	 */
+	private int runningStatus = NULL_STATUS;
 
 	/**
 	 * コンストラクタ

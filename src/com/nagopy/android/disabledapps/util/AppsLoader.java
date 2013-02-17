@@ -88,6 +88,19 @@ public class AppsLoader {
 		JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
 		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
 
+		// 現在動いてるプロセスを読みこんで、パッケージ名とフラグをHashmapに入れる
+		ActivityManager activityManager = (ActivityManager) getContext().getSystemService(
+				Context.ACTIVITY_SERVICE);
+		List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos = activityManager
+				.getRunningAppProcesses();
+		HashMap<String, Integer> runningPackages = new HashMap<String, Integer>();
+		for (RunningAppProcessInfo runningAppProcessInfo : runningAppProcessInfos) {
+			String[] pkgList = runningAppProcessInfo.pkgList;
+			for (String pkg : pkgList) {
+				runningPackages.put(pkg, runningAppProcessInfo.importance);
+			}
+		}
+
 		for (ApplicationInfo info : applicationInfo) {
 			Drawable icon = info.loadIcon(packageManager);
 			icon.setBounds(0, 0, iconSize, iconSize);
@@ -95,6 +108,11 @@ public class AppsLoader {
 			AppStatus appStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
 					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
 					judgeDisablable.isDisablable(info));
+
+			// 動いている場合はその情報も追加する
+			if (runningPackages.containsKey(info.packageName)) {
+				appStatus.setRunningStatus(runningPackages.get(info.packageName));
+			}
 
 			appsList.add(appStatus);
 			iconCache.put(info.packageName, icon);
@@ -114,7 +132,6 @@ public class AppsLoader {
 		ActivityManager activityManager = (ActivityManager) getContext().getSystemService(
 				Context.ACTIVITY_SERVICE);
 		PackageManager packageManager = getContext().getPackageManager();
-		// インストール済みのアプリケーション一覧の取得
 		List<ActivityManager.RunningAppProcessInfo> applicationInfo = activityManager.getRunningAppProcesses();
 		int iconSize = ImageUtils.getIconSize(getContext());
 

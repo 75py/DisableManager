@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -462,7 +463,45 @@ public class MainActivity extends BaseActivity {
 
 			AppStatus appStatus = (AppStatus) getItem(position);
 			if (appStatus != null) {
-				holder.labelTextView.setText(appStatus.getLabel());
+				String packageStatusText = null;
+				// パッケージのステータスを文字列にする
+				switch (appStatus.getRunningStatus()) {
+				case AppStatus.NULL_STATUS:
+					break;
+				case RunningAppProcessInfo.IMPORTANCE_BACKGROUND:
+					packageStatusText = "[Background]";
+					break;
+				case RunningAppProcessInfo.IMPORTANCE_FOREGROUND:
+					packageStatusText = "[Foreground]";
+					break;
+				case RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE:
+					packageStatusText = "[Perceptible]";
+					break;
+				case RunningAppProcessInfo.IMPORTANCE_SERVICE:
+					packageStatusText = "[Service]";
+					break;
+				case RunningAppProcessInfo.IMPORTANCE_VISIBLE:
+					packageStatusText = "[Visible]";
+					break;
+				case RunningAppProcessInfo.IMPORTANCE_EMPTY:
+					packageStatusText = "[Empty]";
+					break;
+				}
+				if (packageStatusText == null) {
+					holder.labelTextView.setText(appStatus.getLabel());
+				} else {
+					SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
+					int start = spannableStringBuilder.length();
+					spannableStringBuilder.append(packageStatusText);
+					int end = spannableStringBuilder.length();
+					TextAppearanceSpan cyanTextAppearanceSpan = new TextAppearanceSpan(getApplicationContext(),
+							android.R.style.TextAppearance_Medium);
+					spannableStringBuilder.setSpan(cyanTextAppearanceSpan, start, end,
+							Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+					spannableStringBuilder.append(" ");
+					spannableStringBuilder.append(appStatus.getLabel());
+					holder.labelTextView.setText(spannableStringBuilder);
+				}
 				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
 				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
 				icon.setCallback(null);
