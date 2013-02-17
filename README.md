@@ -58,6 +58,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 </pre>
 
+アイコンファイルの無断転載を禁止します。
+
 無効化できるアプリを判定する際に、Androidのソースコードの一部を利用しています。
 該当するクラスとライセンスは以下の通りです。
 
