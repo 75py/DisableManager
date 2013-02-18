@@ -276,6 +276,12 @@ public class MainActivity extends BaseActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_main, menu);
+
+		MenuItem menuCheckboxShorOnlyRunnings = menu
+				.findItem(R.id.menu_pref_general_show_only_running_packages);
+		menuCheckboxShorOnlyRunnings.setChecked(getSP().getBoolean(
+				getString(R.string.pref_key_general_show_only_running_packages),
+				getBooleanFromResources(R.bool.pref_def_general_show_only_running_packages)));
 		return true;
 	}
 
@@ -313,8 +319,14 @@ public class MainActivity extends BaseActivity {
 			sendShareIntent(item.getItemId());
 			return true;
 
-		case R.id.menu_reload:
-			createReloadAsyncTask().execute();
+		case R.id.menu_pref_general_show_only_running_packages:
+			boolean newValue = !item.isChecked();
+			item.setChecked(newValue);
+			if (getSP().edit()
+					.putBoolean(getString(R.string.pref_key_general_show_only_running_packages), newValue)
+					.commit()) {
+				createReloadAsyncTask().execute();
+			}
 			return true;
 
 		case R.id.menu_preference:
