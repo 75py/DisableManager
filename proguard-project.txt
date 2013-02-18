@@ -19,6 +19,8 @@
 #   public *;
 #}
 
+-keep public class * extends android.preference.PreferenceFragment
+
 -dontskipnonpubliclibraryclasses
 -optimizationpasses 3
 -flattenpackagehierarchy

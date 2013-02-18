@@ -11,7 +11,6 @@ com.nagopy.android.common.R$styleable
 com.nagopy.android.common.app.BaseActivity:
     32:32:public java.lang.String getStringFromResources(int)
     37:37:public int getIntFromResources(int)
-    42:42:public boolean getBooleanFromResources(int)
     47:48:public void log(java.lang.Object)
 com.nagopy.android.common.app.BaseListActivity
 com.nagopy.android.common.app.BasePreferenceActivity:
@@ -42,7 +41,6 @@ com.nagopy.android.common.util.AboutUtil
 com.nagopy.android.common.util.CommonUtil:
     32:32:public java.lang.String getStringFromResources(int)
     41:41:public int getIntFromResources(int)
-    50:50:public boolean getBooleanFromResources(int)
     115:124:public boolean isServiceRunning(java.lang.Class)
     132:133:public static void killProcess()
     141:144:public synchronized void sleep(long)
@@ -66,10 +64,10 @@ com.nagopy.android.disabledapps.R$string
 com.nagopy.android.disabledapps.R$style
 com.nagopy.android.disabledapps.R$styleable
 com.nagopy.android.disabledapps.R$xml
-com.nagopy.android.disabledapps.app.AppPreferenceActivity$AboutPreferenceFragment
-com.nagopy.android.disabledapps.app.AppPreferenceActivity$SharePreferenceFragment
 com.nagopy.android.disabledapps.app.MainActivity$2$1:
     private static final long serialVersionUID
+com.nagopy.android.disabledapps.util.AppStatus:
+    public static final int NULL_STATUS
 com.nagopy.android.disabledapps.util.CommentsUtils:
     private static final java.lang.String PREFERENCE_FILE_NAME
 com.nagopy.android.disabledapps.util.dialog.CommentEditDialog:

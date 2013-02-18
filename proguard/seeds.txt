@@ -36,6 +36,7 @@ com.nagopy.android.disabledapps.R$attr: int defValue
 com.nagopy.android.disabledapps.R$attr: int max
 com.nagopy.android.disabledapps.R$attr: int min
 com.nagopy.android.disabledapps.R$attr: int scale
+com.nagopy.android.disabledapps.R$bool: int pref_def_general_show_only_running_packages
 com.nagopy.android.disabledapps.R$bool: int pref_def_share_add_linebreak
 com.nagopy.android.disabledapps.R$color: int holo_blue_light
 com.nagopy.android.disabledapps.R$color: int holo_blue_light_disabled
@@ -45,6 +46,7 @@ com.nagopy.android.disabledapps.R$drawable: int ic_launcher
 com.nagopy.android.disabledapps.R$drawable: int ic_menu_refresh
 com.nagopy.android.disabledapps.R$drawable: int util_lib_ic_file
 com.nagopy.android.disabledapps.R$drawable: int util_lib_ic_folder
+com.nagopy.android.disabledapps.R$id: int about_fragment_scroll_view
 com.nagopy.android.disabledapps.R$id: int about_fragment_textview_about
 com.nagopy.android.disabledapps.R$id: int about_fragment_textview_app_name
 com.nagopy.android.disabledapps.R$id: int about_fragment_textview_version_name
@@ -57,16 +59,16 @@ com.nagopy.android.disabledapps.R$id: int lib_csg_btn_minus
 com.nagopy.android.disabledapps.R$id: int lib_csg_btn_plus
 com.nagopy.android.disabledapps.R$id: int lib_csg_seekbar
 com.nagopy.android.disabledapps.R$id: int lib_csg_textview
-com.nagopy.android.disabledapps.R$id: int listView_empty
-com.nagopy.android.disabledapps.R$id: int listView_enabled_apps
 com.nagopy.android.disabledapps.R$id: int list_textview_label
 com.nagopy.android.disabledapps.R$id: int list_textview_package_name
+com.nagopy.android.disabledapps.R$id: int menu_pref_general_show_only_running_packages
 com.nagopy.android.disabledapps.R$id: int menu_preference
-com.nagopy.android.disabledapps.R$id: int menu_reload
 com.nagopy.android.disabledapps.R$id: int menu_share_customformat
 com.nagopy.android.disabledapps.R$id: int menu_share_label
 com.nagopy.android.disabledapps.R$id: int menu_share_label_and_package
 com.nagopy.android.disabledapps.R$id: int menu_share_package
+com.nagopy.android.disabledapps.R$id: int start_activity_empty
+com.nagopy.android.disabledapps.R$id: int start_activity_listView
 com.nagopy.android.disabledapps.R$id: int util_lib_fod_lo_label
 com.nagopy.android.disabledapps.R$layout: int about_fragment
 com.nagopy.android.disabledapps.R$layout: int activity_main
@@ -94,15 +96,20 @@ com.nagopy.android.disabledapps.R$string: int menu_share_label_and_package
 com.nagopy.android.disabledapps.R$string: int menu_share_package
 com.nagopy.android.disabledapps.R$string: int message_empty_list
 com.nagopy.android.disabledapps.R$string: int message_share_no_app
+com.nagopy.android.disabledapps.R$string: int pref_cat_about
+com.nagopy.android.disabledapps.R$string: int pref_cat_general
 com.nagopy.android.disabledapps.R$string: int pref_cat_share
 com.nagopy.android.disabledapps.R$string: int pref_def_share_customformat_with_comment
 com.nagopy.android.disabledapps.R$string: int pref_def_share_customformat_without_comment
+com.nagopy.android.disabledapps.R$string: int pref_key_general_show_only_running_packages
 com.nagopy.android.disabledapps.R$string: int pref_key_share_add_linebreak
 com.nagopy.android.disabledapps.R$string: int pref_key_share_customformat_with_comment
 com.nagopy.android.disabledapps.R$string: int pref_key_share_customformat_without_comment
+com.nagopy.android.disabledapps.R$string: int pref_summary_general_show_only_running_packages
 com.nagopy.android.disabledapps.R$string: int pref_summary_share_add_linebreak
 com.nagopy.android.disabledapps.R$string: int pref_summary_share_customformat_with_comment
 com.nagopy.android.disabledapps.R$string: int pref_summary_share_customformat_without_comment
+com.nagopy.android.disabledapps.R$string: int pref_title_general_show_only_running_packages
 com.nagopy.android.disabledapps.R$string: int pref_title_share_add_linebreak
 com.nagopy.android.disabledapps.R$string: int pref_title_share_customformat_with_comment
 com.nagopy.android.disabledapps.R$string: int pref_title_share_customformat_without_comment
@@ -119,11 +126,16 @@ com.nagopy.android.disabledapps.R$styleable: int CustomSeekBarGroup_defValue
 com.nagopy.android.disabledapps.R$styleable: int CustomSeekBarGroup_max
 com.nagopy.android.disabledapps.R$styleable: int CustomSeekBarGroup_min
 com.nagopy.android.disabledapps.R$styleable: int CustomSeekBarGroup_scale
+com.nagopy.android.disabledapps.R$xml: int app_preference_activity_body_general
 com.nagopy.android.disabledapps.R$xml: int app_preference_activity_body_share
 com.nagopy.android.disabledapps.R$xml: int app_preference_activity_header
 com.nagopy.android.disabledapps.app.AppPreferenceActivity
 com.nagopy.android.disabledapps.app.AppPreferenceActivity: AppPreferenceActivity()
+com.nagopy.android.disabledapps.app.AppPreferenceActivity$TestPreferenceFragment
 com.nagopy.android.disabledapps.app.FormatEditPreference
 com.nagopy.android.disabledapps.app.FormatEditPreference: FormatEditPreference(android.content.Context,android.util.AttributeSet)
 com.nagopy.android.disabledapps.app.MainActivity
 com.nagopy.android.disabledapps.app.MainActivity: MainActivity()
+com.nagopy.android.disabledapps.pref.AboutPreferenceFragment
+com.nagopy.android.disabledapps.pref.GeneralPreferenceFragment
+com.nagopy.android.disabledapps.pref.SharePreferenceFragment
