@@ -122,8 +122,8 @@ public class MainActivity extends BaseActivity {
 		mIconCacheHashMap = new HashMap<String, Drawable>();
 		lastAppFilterCondition = AppsFilter.DISABLED;
 		mAppLoader = new AppsLoader(getApplicationContext());
-		mListView = (ListView) findViewById(R.id.listView_enabled_apps);
-		mEmptyView = (TextView) findViewById(R.id.listView_empty);
+		mListView = (ListView) findViewById(R.id.start_activity_listView);
+		mEmptyView = (TextView) findViewById(R.id.start_activity_empty);
 
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override

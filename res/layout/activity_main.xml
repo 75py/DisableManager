@@ -6,7 +6,7 @@
     tools:context=".MainActivity" >
 
     <TextView
-        android:id="@+id/listView_empty"
+        android:id="@+id/start_activity_empty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="6sp"
@@ -16,7 +16,7 @@
         android:visibility="gone" />
 
     <ListView
-        android:id="@+id/listView_enabled_apps"
+        android:id="@+id/start_activity_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
