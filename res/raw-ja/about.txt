@@ -15,6 +15,21 @@ https://play.google.com/store/apps/developer?id=75py
 （SH-02Eにおいて、一部のドコモのアプリが無効化できないにも関わらず一覧に表示されるのを確認しています）
 
 
+・実行中アプリのステータスについて
+[Foreground]
+this process is running the foreground UI.
+[Perceptible]
+this process is running something that is considered to be actively perceptible to the user. An example would be an application performing background music playback.
+[Service]
+this process is contains services that should remain running. 
+[Visible]
+this process is running something that is actively visible to the user, though not in the immediate foreground. 
+[Background]
+this process process contains background code that is expendable.
+[Empty]
+this process is empty of any actively running code. 
+
+
 ソースコード
 https://github.com/75py/DisabledAppsList
 

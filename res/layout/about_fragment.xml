@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="20dp"
         android:drawableTop="@drawable/ic_launcher"
         android:text="@string/app_name"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -23,14 +23,20 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/about_fragment_textview_about"
+    <ScrollView
+        android:id="@+id/about_fragment_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:autoLink="web|email"
-        android:layout_below="@+id/about_fragment_textview_version_name"
-        android:layout_marginTop="21dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_below="@+id/about_fragment_textview_version_name" >
+
+        <TextView
+            android:id="@+id/about_fragment_textview_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:autoLink="web|email"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </ScrollView>
 
 </RelativeLayout>

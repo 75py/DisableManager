@@ -7,11 +7,25 @@ https://twitter.com/dev75py
 Other apps:
 https://play.google.com/store/apps/developer?id=75py
 
+About status
+[Foreground]
+this process is running the foreground UI.
+[Perceptible]
+this process is running something that is considered to be actively perceptible to the user. An example would be an application performing background music playback.
+[Service]
+this process is contains services that should remain running. 
+[Visible]
+this process is running something that is actively visible to the user, though not in the immediate foreground. 
+[Background]
+this process process contains background code that is expendable.
+[Empty]
+this process is empty of any actively running code. 
+
 Source code
 https://github.com/75py/DisabledAppsList
 
 
-ライセンス
+License
 Copyright 2013 75py
 
 Licensed under the Apache License, Version 2.0 (the "License");
