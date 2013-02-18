@@ -44,6 +44,9 @@ public class AppsLoader {
 	 */
 	private ArrayList<AppStatus> appsList;
 
+	/**
+	 * コンテキスト
+	 */
 	private Context mContext;
 
 	/**
@@ -56,10 +59,17 @@ public class AppsLoader {
 		appsList = new ArrayList<AppStatus>();
 	}
 
+	/**
+	 * @return コンテキスト
+	 */
 	private Context getContext() {
 		return mContext;
 	}
 
+	/**
+	 * アプリを読みこむ
+	 * @return アイコンのキャッシュ
+	 */
 	public HashMap<String, Drawable> load() {
 		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
 		if (sharedPreferences.getBoolean(

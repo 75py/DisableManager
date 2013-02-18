@@ -118,10 +118,19 @@ public class AppStatus {
 				+ ", canDisable:" + canDisable();
 	}
 
+	/**
+	 * ステータスを取得
+	 * @return ステータス
+	 */
 	public int getRunningStatus() {
 		return runningStatus;
 	}
 
+	/**
+	 * ステータスを設定
+	 * @param runningStatus
+	 *           ステータス
+	 */
 	public void setRunningStatus(int runningStatus) {
 		this.runningStatus = runningStatus;
 	}

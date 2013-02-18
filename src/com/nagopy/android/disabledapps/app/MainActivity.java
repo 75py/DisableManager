@@ -498,6 +498,8 @@ public class MainActivity extends BaseActivity {
 				case RunningAppProcessInfo.IMPORTANCE_EMPTY:
 					packageStatusText = "[Empty]";
 					break;
+				default:
+					break;
 				}
 				if (packageStatusText == null) {
 					holder.labelTextView.setText(appStatus.getLabel());

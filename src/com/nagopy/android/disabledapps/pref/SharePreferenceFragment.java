@@ -21,6 +21,9 @@ import android.preference.PreferenceFragment;
 
 import com.nagopy.android.disabledapps.R;
 
+/**
+ * 共有に関する設定を表示するフラグメント
+ */
 public class SharePreferenceFragment extends PreferenceFragment {
 
 	@Override

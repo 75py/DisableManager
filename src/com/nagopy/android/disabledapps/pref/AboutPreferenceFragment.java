@@ -33,6 +33,9 @@ import android.widget.TextView;
 
 import com.nagopy.android.disabledapps.R;
 
+/**
+ * About画面を表示するフラグメント
+ */
 public class AboutPreferenceFragment extends PreferenceFragment {
 
 	@Override
