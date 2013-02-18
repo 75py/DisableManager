@@ -9,6 +9,6 @@
         android:title="@string/pref_cat_share" />
     <header
         android:fragment="com.nagopy.android.disabledapps.pref.AboutPreferenceFragment"
-        android:title="about" />
+        android:title="@string/pref_cat_about" />
 
 </preference-headers>
