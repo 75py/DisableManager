@@ -92,6 +92,10 @@ class JudgeDisablableICS extends JudgeDisablable {
 
 	@Override
 	public boolean isDisablable(ApplicationInfo applicationInfo) {
+		if (!((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0)) {
+			// システムアプリじゃない場合
+			return false;
+		}
 		try {
 			mPackageInfo = getPackageManager().getPackageInfo(
 					applicationInfo.packageName,
