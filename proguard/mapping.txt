@@ -36,9 +36,8 @@ com.nagopy.android.common.util.CommonUtil -> d.a:
     98:98:android.content.SharedPreferences getSP() -> b
     105:106:void showToast(java.lang.Object) -> c
 com.nagopy.android.disabledapps.app.AppPreferenceActivity -> com.nagopy.android.disabledapps.app.AppPreferenceActivity:
-    34:35:void onCreate(android.os.Bundle) -> onCreate
-    39:40:void onBuildHeaders(java.util.List) -> onBuildHeaders
-com.nagopy.android.disabledapps.app.AppPreferenceActivity$TestPreferenceFragment -> com.nagopy.android.disabledapps.app.AppPreferenceActivity$TestPreferenceFragment:
+    33:34:void onCreate(android.os.Bundle) -> onCreate
+    38:39:void onBuildHeaders(java.util.List) -> onBuildHeaders
 com.nagopy.android.disabledapps.app.FormatEditPreference -> com.nagopy.android.disabledapps.app.FormatEditPreference:
     44:72:void onClick() -> onClick
     79:83:java.lang.String getDefault() -> a
@@ -51,80 +50,151 @@ com.nagopy.android.disabledapps.app.MainActivity -> com.nagopy.android.disableda
     com.nagopy.android.disabledapps.util.AppsLoader mAppLoader -> b
     android.widget.ListView mListView -> c
     android.widget.TextView mEmptyView -> d
-    com.nagopy.android.disabledapps.util.filter.AppsFilter mAppFilter -> e
+    com.nagopy.android.disabledapps.util.AppsFilter mAppFilter -> e
     com.nagopy.android.disabledapps.app.MainActivity$AppsListAdapter mAdapter -> f
     int lastAppFilterCondition -> g
     java.util.HashMap mIconCacheHashMap -> h
     com.nagopy.android.disabledapps.dialog.CommentEditDialog mCommentEditDialog -> i
     com.nagopy.android.disabledapps.util.CommentsUtils mCommentsUtils -> j
     java.lang.String shouldReloadPackageNameString -> k
-    118:178:void onCreate(android.os.Bundle) -> onCreate
-    182:190:void onRestart() -> onRestart
-    196:239:void initActionBarTabs() -> b
-    243:274:void onDestroy() -> onDestroy
-    278:285:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
-    295:310:void updateAppList(int) -> b
-    314:338:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    350:403:void sendShareIntent(int) -> c
-    570:570:com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog createReloadAsyncTask() -> c
+    com.nagopy.android.disabledapps.dialog.ListDialogFragment mListDialogFragment -> l
+    com.nagopy.android.disabledapps.util.HideUtils mAppHideUtils -> m
+    128:211:void onCreate(android.os.Bundle) -> onCreate
+    215:223:void onRestart() -> onRestart
+    229:274:void initActionBarTabs() -> b
+    278:309:void onDestroy() -> onDestroy
+    313:320:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    330:345:void updateAppList(int) -> b
+    349:377:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    389:398:void sendShareIntent(int) -> c
+    509:509:com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog createReloadAsyncTask() -> c
     99:99:java.util.HashMap access$0(com.nagopy.android.disabledapps.app.MainActivity) -> a
     88:88:com.nagopy.android.disabledapps.app.MainActivity$AppsListAdapter access$1(com.nagopy.android.disabledapps.app.MainActivity) -> b
     114:114:void access$2(com.nagopy.android.disabledapps.app.MainActivity,java.lang.String) -> a
-    104:104:com.nagopy.android.disabledapps.dialog.CommentEditDialog access$3(com.nagopy.android.disabledapps.app.MainActivity) -> c
-    109:109:com.nagopy.android.disabledapps.util.CommentsUtils access$4(com.nagopy.android.disabledapps.app.MainActivity) -> d
-    294:294:void access$5(com.nagopy.android.disabledapps.app.MainActivity,int) -> a
-    93:93:void access$6(com.nagopy.android.disabledapps.app.MainActivity,int) -> b
-    68:68:com.nagopy.android.disabledapps.util.AppsLoader access$7(com.nagopy.android.disabledapps.app.MainActivity) -> e
-    99:99:void access$8(com.nagopy.android.disabledapps.app.MainActivity,java.util.HashMap) -> a
-    83:83:com.nagopy.android.disabledapps.util.filter.AppsFilter access$9(com.nagopy.android.disabledapps.app.MainActivity) -> f
-    93:93:int access$10(com.nagopy.android.disabledapps.app.MainActivity) -> g
-    88:88:void access$11(com.nagopy.android.disabledapps.app.MainActivity,com.nagopy.android.disabledapps.app.MainActivity$AppsListAdapter) -> a
-    73:73:android.widget.ListView access$12(com.nagopy.android.disabledapps.app.MainActivity) -> h
-    78:78:android.widget.TextView access$13(com.nagopy.android.disabledapps.app.MainActivity) -> i
+    119:119:com.nagopy.android.disabledapps.dialog.ListDialogFragment access$3(com.nagopy.android.disabledapps.app.MainActivity) -> c
+    104:104:com.nagopy.android.disabledapps.dialog.CommentEditDialog access$4(com.nagopy.android.disabledapps.app.MainActivity) -> d
+    109:109:com.nagopy.android.disabledapps.util.CommentsUtils access$5(com.nagopy.android.disabledapps.app.MainActivity) -> e
+    329:329:void access$6(com.nagopy.android.disabledapps.app.MainActivity,int) -> a
+    124:124:com.nagopy.android.disabledapps.util.HideUtils access$7(com.nagopy.android.disabledapps.app.MainActivity) -> f
+    93:93:void access$8(com.nagopy.android.disabledapps.app.MainActivity,int) -> b
+    68:68:com.nagopy.android.disabledapps.util.AppsLoader access$9(com.nagopy.android.disabledapps.app.MainActivity) -> g
+    99:99:void access$10(com.nagopy.android.disabledapps.app.MainActivity,java.util.HashMap) -> a
+    83:83:com.nagopy.android.disabledapps.util.AppsFilter access$11(com.nagopy.android.disabledapps.app.MainActivity) -> h
+    93:93:int access$12(com.nagopy.android.disabledapps.app.MainActivity) -> i
+    88:88:void access$13(com.nagopy.android.disabledapps.app.MainActivity,com.nagopy.android.disabledapps.app.MainActivity$AppsListAdapter) -> a
+    73:73:android.widget.ListView access$14(com.nagopy.android.disabledapps.app.MainActivity) -> j
+    78:78:android.widget.TextView access$15(com.nagopy.android.disabledapps.app.MainActivity) -> k
 com.nagopy.android.disabledapps.app.MainActivity$1 -> com.nagopy.android.disabledapps.app.b:
     com.nagopy.android.disabledapps.app.MainActivity this$0 -> a
-    131:141:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    141:151:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 com.nagopy.android.disabledapps.app.MainActivity$1TabListener -> com.nagopy.android.disabledapps.app.c:
     java.lang.ref.WeakReference weakReference -> b
     com.nagopy.android.disabledapps.app.MainActivity this$0 -> a
-    209:209:void onTabUnselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabUnselected
-    213:222:void onTabSelected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabSelected
-    225:225:void onTabReselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabReselected
+    242:242:void onTabUnselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabUnselected
+    246:255:void onTabSelected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabSelected
+    258:258:void onTabReselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabReselected
 com.nagopy.android.disabledapps.app.MainActivity$2 -> com.nagopy.android.disabledapps.app.d:
     com.nagopy.android.disabledapps.app.MainActivity this$0 -> a
-    149:171:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
-    146:146:com.nagopy.android.disabledapps.app.MainActivity access$0(com.nagopy.android.disabledapps.app.MainActivity$2) -> a
+    163:203:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    158:158:com.nagopy.android.disabledapps.app.MainActivity access$0(com.nagopy.android.disabledapps.app.MainActivity$2) -> a
 com.nagopy.android.disabledapps.app.MainActivity$2$1 -> com.nagopy.android.disabledapps.app.e:
     com.nagopy.android.disabledapps.app.MainActivity$2 this$1 -> a
+    java.lang.String val$label -> b
+    java.lang.String val$packageName -> c
+    171:200:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    168:168:com.nagopy.android.disabledapps.app.MainActivity$2 access$0(com.nagopy.android.disabledapps.app.MainActivity$2$1) -> a
+com.nagopy.android.disabledapps.app.MainActivity$2$1$1 -> com.nagopy.android.disabledapps.app.f:
+    com.nagopy.android.disabledapps.app.MainActivity$2$1 this$2 -> a
     java.lang.String val$packageName -> b
-    159:162:void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
-    166:166:void onNegativeButtonClicked(android.content.DialogInterface) -> a
-com.nagopy.android.disabledapps.app.MainActivity$3 -> com.nagopy.android.disabledapps.app.f:
+    180:183:void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
+    187:187:void onNegativeButtonClicked(android.content.DialogInterface) -> a
+com.nagopy.android.disabledapps.app.MainActivity$3 -> com.nagopy.android.disabledapps.app.g:
     com.nagopy.android.disabledapps.app.MainActivity this$0 -> b
-    574:580:void onPreExecute() -> onPreExecute
-    584:588:java.lang.Void doInBackground(java.lang.Void[]) -> a
-    593:611:void onPostExecute(java.lang.Void) -> a
+    513:519:void onPreExecute() -> onPreExecute
+    523:528:java.lang.Void doInBackground(java.lang.Void[]) -> a
+    533:552:void onPostExecute(java.lang.Void) -> a
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.nagopy.android.disabledapps.app.MainActivity$AppsListAdapter -> com.nagopy.android.disabledapps.app.g:
+com.nagopy.android.disabledapps.app.MainActivity$AppsListAdapter -> com.nagopy.android.disabledapps.app.h:
     java.util.ArrayList appsList -> b
     com.nagopy.android.disabledapps.util.CommentsUtils mCommentsUtils -> c
+    com.nagopy.android.disabledapps.util.CustomSpannableStringBuilder mBuilder -> d
     com.nagopy.android.disabledapps.app.MainActivity this$0 -> a
-    436:436:java.util.ArrayList getAppList() -> a
-    445:446:void updateAppList(java.util.ArrayList) -> a
-    450:450:int getCount() -> getCount
-    455:455:java.lang.Object getItem(int) -> getItem
-    460:460:long getItemId(int) -> getItemId
-    466:546:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-com.nagopy.android.disabledapps.app.MainActivity$ViewHolder -> com.nagopy.android.disabledapps.app.h:
+    434:434:java.util.ArrayList getAppList() -> a
+    443:444:void updateAppList(java.util.ArrayList) -> a
+    448:448:int getCount() -> getCount
+    453:453:java.lang.Object getItem(int) -> getItem
+    458:458:long getItemId(int) -> getItemId
+    464:485:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.nagopy.android.disabledapps.app.MainActivity$ViewHolder -> com.nagopy.android.disabledapps.app.i:
     android.widget.TextView labelTextView -> a
     android.widget.TextView pkgNameTextView -> b
+com.nagopy.android.disabledapps.dialog.CommentEditDialog -> e.a:
+    55:77:android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
+    86:92:void setLabel(java.lang.String) -> a
+    99:99:java.lang.String getLabel() -> a
+    108:114:void setListener(com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener) -> a
+    121:121:com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener getListener() -> b
+    130:136:void setDefaultValue(java.lang.String) -> b
+    142:142:java.lang.String getDefaultValue() -> c
+com.nagopy.android.disabledapps.dialog.CommentEditDialog$1 -> e.b:
+    com.nagopy.android.disabledapps.dialog.CommentEditDialog this$0 -> a
+    android.widget.EditText val$editText -> b
+    com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener val$listener -> c
+    66:68:void onClick(android.content.DialogInterface,int) -> onClick
+com.nagopy.android.disabledapps.dialog.CommentEditDialog$2 -> e.c:
+    com.nagopy.android.disabledapps.dialog.CommentEditDialog this$0 -> a
+    com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener val$listener -> b
+    73:74:void onClick(android.content.DialogInterface,int) -> onClick
+com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener -> e.d:
+    void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
+    void onNegativeButtonClicked(android.content.DialogInterface) -> a
+com.nagopy.android.disabledapps.dialog.FormatEditDialog -> e.e:
+    com.nagopy.android.disabledapps.util.FormatUtils mFormatUtils -> a
+    69:118:android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
+    133:137:void init(java.lang.String,java.lang.String,java.lang.String,com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener) -> a
+    145:151:void setTitle(java.lang.String) -> a
+    158:158:java.lang.String getTitle() -> a
+    167:173:void setSummary(java.lang.String) -> b
+    180:180:java.lang.String getSummary() -> b
+    189:195:void setListener(com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener) -> a
+    202:202:com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener getListener() -> c
+    211:217:void setDefaultValue(java.lang.String) -> c
+    223:223:java.lang.String getDefaultValue() -> d
+    261:264:java.lang.String formatTest(java.lang.String) -> d
+    260:260:java.lang.String access$0(com.nagopy.android.disabledapps.dialog.FormatEditDialog,java.lang.String) -> a
+com.nagopy.android.disabledapps.dialog.FormatEditDialog$1 -> e.f:
+    com.nagopy.android.disabledapps.dialog.FormatEditDialog this$0 -> a
+    android.widget.TextView val$sampleTextView -> b
+    81:88:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
+    92:92:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
+    95:95:void afterTextChanged(android.text.Editable) -> afterTextChanged
+com.nagopy.android.disabledapps.dialog.FormatEditDialog$2 -> e.g:
+    com.nagopy.android.disabledapps.dialog.FormatEditDialog this$0 -> a
+    android.widget.EditText val$editText -> b
+    com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener val$listener -> c
+    103:109:void onClick(android.content.DialogInterface,int) -> onClick
+com.nagopy.android.disabledapps.dialog.FormatEditDialog$3 -> e.h:
+    com.nagopy.android.disabledapps.dialog.FormatEditDialog this$0 -> a
+    com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener val$listener -> b
+    114:115:void onClick(android.content.DialogInterface,int) -> onClick
+com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener -> e.i:
+    void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
+    void onNegativeButtonClicked(android.content.DialogInterface) -> a
+    void onFormatError() -> a
+com.nagopy.android.disabledapps.dialog.ListDialogFragment -> e.j:
+    35:42:android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
+    50:50:int getArrayResId() -> a
+    58:58:android.widget.AdapterView$OnItemClickListener getOnItemClickListener() -> b
+    65:65:java.lang.String getDialogTitle() -> c
+    78:83:void init(java.lang.String,int,com.nagopy.android.disabledapps.dialog.ListDialogFragment$OnListDialogItemClickListener) -> a
+com.nagopy.android.disabledapps.dialog.ListDialogFragment$OnListDialogItemClickListener -> e.k:
 com.nagopy.android.disabledapps.pref.AboutPreferenceFragment -> com.nagopy.android.disabledapps.pref.AboutPreferenceFragment:
     43:70:android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> onCreateView
 com.nagopy.android.disabledapps.pref.GeneralPreferenceFragment -> com.nagopy.android.disabledapps.pref.GeneralPreferenceFragment:
     31:33:void onCreate(android.os.Bundle) -> onCreate
 com.nagopy.android.disabledapps.pref.SharePreferenceFragment -> com.nagopy.android.disabledapps.pref.SharePreferenceFragment:
     31:33:void onCreate(android.os.Bundle) -> onCreate
-com.nagopy.android.disabledapps.util.AppStatus -> e.a:
+com.nagopy.android.disabledapps.util.AppStatus -> f.a:
     java.lang.String label -> a
     java.lang.String packageName -> b
     boolean enabled -> c
@@ -139,7 +209,41 @@ com.nagopy.android.disabledapps.util.AppStatus -> e.a:
     117:117:java.lang.String toString() -> toString
     126:126:int getRunningStatus() -> f
     135:136:void setRunningStatus(int) -> a
-com.nagopy.android.disabledapps.util.AppsLoader -> e.b:
+com.nagopy.android.disabledapps.util.AppsFilter -> f.b:
+    java.util.ArrayList originalAppList -> a
+    75:94:java.util.ArrayList sort(java.util.ArrayList) -> a
+    104:105:void setOriginalAppList(java.util.ArrayList) -> b
+    111:112:void sortOriginalAppList() -> a
+    123:130:java.util.ArrayList execute(int,java.util.Set) -> a
+    142:186:com.nagopy.android.disabledapps.util.AppsFilterCondition createFilterCondition(int,java.util.Set) -> b
+    194:195:void deallocate() -> b
+com.nagopy.android.disabledapps.util.AppsFilter$1 -> f.c:
+    com.nagopy.android.disabledapps.util.AppsFilter this$0 -> a
+    78:88:int compare(com.nagopy.android.disabledapps.util.AppStatus,com.nagopy.android.disabledapps.util.AppStatus) -> a
+    1:1:int compare(java.lang.Object,java.lang.Object) -> compare
+com.nagopy.android.disabledapps.util.AppsFilter$2 -> f.d:
+    com.nagopy.android.disabledapps.util.AppsFilter this$0 -> a
+    java.util.Set val$hides -> b
+    148:148:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
+com.nagopy.android.disabledapps.util.AppsFilter$3 -> f.e:
+    com.nagopy.android.disabledapps.util.AppsFilter this$0 -> a
+    java.util.Set val$hides -> b
+    156:156:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
+com.nagopy.android.disabledapps.util.AppsFilter$4 -> f.f:
+    com.nagopy.android.disabledapps.util.AppsFilter this$0 -> a
+    java.util.Set val$hides -> b
+    165:165:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
+com.nagopy.android.disabledapps.util.AppsFilter$5 -> f.g:
+    com.nagopy.android.disabledapps.util.AppsFilter this$0 -> a
+    java.util.Set val$hides -> b
+    174:174:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
+com.nagopy.android.disabledapps.util.AppsFilter$6 -> f.h:
+    com.nagopy.android.disabledapps.util.AppsFilter this$0 -> a
+    java.util.Set val$hides -> b
+    181:181:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
+com.nagopy.android.disabledapps.util.AppsFilterCondition -> f.i:
+    boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
+com.nagopy.android.disabledapps.util.AppsLoader -> f.j:
     java.util.ArrayList appsList -> a
     android.content.Context mContext -> b
     66:66:android.content.Context getContext() -> d
@@ -149,69 +253,26 @@ com.nagopy.android.disabledapps.util.AppsLoader -> e.b:
     182:182:java.util.ArrayList getAppsList() -> b
     191:216:void updateStatus(java.lang.String) -> a
     222:223:void deallocate() -> c
-com.nagopy.android.disabledapps.util.CommentsUtils -> e.c:
+com.nagopy.android.disabledapps.util.CommentsUtils -> f.k:
     android.content.SharedPreferences commentSharedPreferences -> b
     57:57:java.lang.String restoreComment(java.lang.String) -> a
     70:75:boolean saveComment(java.lang.String,java.lang.String) -> a
-com.nagopy.android.disabledapps.util.FormatUtils -> e.d:
+com.nagopy.android.disabledapps.util.CustomSpannableStringBuilder -> f.l:
+    android.text.style.TextAppearanceSpan mTextAppearanceSpanProcess -> a
+    android.text.style.TextAppearanceSpan mTextAppearanceSpanComment -> b
+    40:64:java.lang.CharSequence getLabelText(java.lang.String,java.lang.String,int) -> a
+    69:95:java.lang.String getStatusText(int) -> a
+com.nagopy.android.disabledapps.util.FormatUtils -> f.m:
     java.lang.String formatWithComment -> b
     java.lang.String formatWithoutComment -> c
     java.lang.String lineBreak -> d
     76:81:java.lang.String formatTest(java.lang.String) -> a
     97:102:java.lang.String format(java.lang.String,java.lang.String,java.lang.String) -> a
-com.nagopy.android.disabledapps.dialog.CommentEditDialog -> f.a:
-    55:77:android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
-    86:92:void setLabel(java.lang.String) -> a
-    99:99:java.lang.String getLabel() -> a
-    108:114:void setListener(com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener) -> a
-    121:121:com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener getListener() -> b
-    130:136:void setDefaultValue(java.lang.String) -> b
-    142:142:java.lang.String getDefaultValue() -> c
-com.nagopy.android.disabledapps.dialog.CommentEditDialog$1 -> f.b:
-    com.nagopy.android.disabledapps.dialog.CommentEditDialog this$0 -> a
-    android.widget.EditText val$editText -> b
-    com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener val$listener -> c
-    66:68:void onClick(android.content.DialogInterface,int) -> onClick
-com.nagopy.android.disabledapps.dialog.CommentEditDialog$2 -> f.c:
-    com.nagopy.android.disabledapps.dialog.CommentEditDialog this$0 -> a
-    com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener val$listener -> b
-    73:74:void onClick(android.content.DialogInterface,int) -> onClick
-com.nagopy.android.disabledapps.dialog.CommentEditDialog$CommentEditDialogListener -> f.d:
-    void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
-    void onNegativeButtonClicked(android.content.DialogInterface) -> a
-com.nagopy.android.disabledapps.dialog.FormatEditDialog -> f.e:
-    com.nagopy.android.disabledapps.util.FormatUtils mFormatUtils -> a
-    69:118:android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
-    133:137:void init(java.lang.String,java.lang.String,java.lang.String,com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener) -> a
-    145:151:void setTitle(java.lang.String) -> a
-    158:158:java.lang.String getTitle() -> a
-    167:173:void setSummary(java.lang.String) -> b
-    180:180:java.lang.String getSummary() -> b
-    189:195:void setListener(com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener) -> a
-    202:202:com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener getListener() -> c
-    211:217:void setDefaultValue(java.lang.String) -> c
-    223:223:java.lang.String getDefaultValue() -> d
-    261:264:java.lang.String formatTest(java.lang.String) -> d
-    260:260:java.lang.String access$0(com.nagopy.android.disabledapps.dialog.FormatEditDialog,java.lang.String) -> a
-com.nagopy.android.disabledapps.dialog.FormatEditDialog$1 -> f.f:
-    com.nagopy.android.disabledapps.dialog.FormatEditDialog this$0 -> a
-    android.widget.TextView val$sampleTextView -> b
-    81:88:void onTextChanged(java.lang.CharSequence,int,int,int) -> onTextChanged
-    92:92:void beforeTextChanged(java.lang.CharSequence,int,int,int) -> beforeTextChanged
-    95:95:void afterTextChanged(android.text.Editable) -> afterTextChanged
-com.nagopy.android.disabledapps.dialog.FormatEditDialog$2 -> f.g:
-    com.nagopy.android.disabledapps.dialog.FormatEditDialog this$0 -> a
-    android.widget.EditText val$editText -> b
-    com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener val$listener -> c
-    103:109:void onClick(android.content.DialogInterface,int) -> onClick
-com.nagopy.android.disabledapps.dialog.FormatEditDialog$3 -> f.h:
-    com.nagopy.android.disabledapps.dialog.FormatEditDialog this$0 -> a
-    com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener val$listener -> b
-    114:115:void onClick(android.content.DialogInterface,int) -> onClick
-com.nagopy.android.disabledapps.dialog.FormatEditDialog$FormatEditDialogListener -> f.i:
-    void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
-    void onNegativeButtonClicked(android.content.DialogInterface) -> a
-    void onFormatError() -> a
+com.nagopy.android.disabledapps.util.HideUtils -> f.n:
+    android.content.Context mContext -> a
+    android.content.SharedPreferences sp -> b
+    43:49:boolean updateHideList(java.lang.String) -> a
+    56:56:java.util.Set getHideAppsList() -> a
 com.nagopy.android.disabledapps.util.dpm.JudgeDisablable -> g.a:
     android.app.admin.DevicePolicyManager mDevicePolicyManager -> b
     java.lang.reflect.Method methodPackageHasActiveAdmins -> c
@@ -226,36 +287,29 @@ com.nagopy.android.disabledapps.util.dpm.JudgeDisablable$1 -> g.b:
     181:181:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
 com.nagopy.android.disabledapps.util.dpm.JudgeDisablableIcs -> g.c:
     android.content.pm.PackageInfo mPackageInfo -> b
-    96:104:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
-    116:134:boolean initUninstallButtons(int,java.lang.String) -> a
+    95:108:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
+    120:138:boolean initUninstallButtons(int,java.lang.String) -> a
 com.nagopy.android.disabledapps.util.dpm.JudgeDisablableJbMr1 -> g.d:
     android.content.pm.PackageInfo mPackageInfo -> b
     99:114:boolean isDisablable(android.content.pm.ApplicationInfo) -> a
     126:141:boolean initUninstallButtons(int,java.lang.String) -> a
     151:160:boolean handleDisableable(java.lang.String) -> b
-com.nagopy.android.disabledapps.util.filter.AppFilterCondition -> h.a:
-    boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
-com.nagopy.android.disabledapps.util.filter.AppsFilter -> h.b:
-    java.util.ArrayList originalAppList -> a
-    android.util.SparseArray conditions -> b
-    110:129:java.util.ArrayList sort(java.util.ArrayList) -> a
-    139:140:void setOriginalAppList(java.util.ArrayList) -> b
-    146:147:void sortOriginalAppList() -> a
-    156:163:java.util.ArrayList execute(int) -> a
-    170:172:void deallocate() -> b
-com.nagopy.android.disabledapps.util.filter.AppsFilter$1 -> h.c:
-    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
-    73:73:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
-com.nagopy.android.disabledapps.util.filter.AppsFilter$2 -> h.d:
-    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
-    81:81:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
-com.nagopy.android.disabledapps.util.filter.AppsFilter$3 -> h.e:
-    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
-    89:89:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
-com.nagopy.android.disabledapps.util.filter.AppsFilter$4 -> h.f:
-    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
-    97:97:boolean valid(com.nagopy.android.disabledapps.util.AppStatus) -> a
-com.nagopy.android.disabledapps.util.filter.AppsFilter$5 -> h.g:
-    com.nagopy.android.disabledapps.util.filter.AppsFilter this$0 -> a
-    113:123:int compare(com.nagopy.android.disabledapps.util.AppStatus,com.nagopy.android.disabledapps.util.AppStatus) -> a
-    1:1:int compare(java.lang.Object,java.lang.Object) -> compare
+com.nagopy.android.disabledapps.util.share.ShareCustom -> h.a:
+    com.nagopy.android.disabledapps.util.CommentsUtils mCommentsUtils -> a
+    com.nagopy.android.disabledapps.util.FormatUtils mFormatUtils -> b
+    54:59:void make(java.util.ArrayList,java.lang.StringBuffer,java.lang.String) -> a
+com.nagopy.android.disabledapps.util.share.ShareLabel -> h.b:
+    30:34:void make(java.util.ArrayList,java.lang.StringBuffer,java.lang.String) -> a
+com.nagopy.android.disabledapps.util.share.ShareLabelAndPackage -> h.c:
+    30:37:void make(java.util.ArrayList,java.lang.StringBuffer,java.lang.String) -> a
+com.nagopy.android.disabledapps.util.share.SharePackage -> h.d:
+    30:34:void make(java.util.ArrayList,java.lang.StringBuffer,java.lang.String) -> a
+com.nagopy.android.disabledapps.util.share.ShareTextMaker -> h.e:
+    void make(java.util.ArrayList,java.lang.StringBuffer,java.lang.String) -> a
+com.nagopy.android.disabledapps.util.share.ShareUtils -> h.f:
+    java.lang.ref.WeakReference mWeakReference -> a
+    55:55:boolean isEmpty(java.util.ArrayList) -> a
+    67:87:java.lang.String createShareString(int,java.util.ArrayList) -> a
+    98:108:void sendIntent(java.lang.String,java.lang.String) -> a
+    116:127:com.nagopy.android.disabledapps.util.share.ShareTextMaker getShareTextMaker(int) -> a
+    135:135:android.app.Activity getActivity() -> a

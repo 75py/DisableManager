@@ -32,6 +32,8 @@ com.nagopy.android.common.R$styleable: int CustomSeekBarGroup_defValue
 com.nagopy.android.common.R$styleable: int CustomSeekBarGroup_max
 com.nagopy.android.common.app.BaseActivity: BaseActivity()
 com.nagopy.android.common.app.BasePreferenceActivity: BasePreferenceActivity()
+com.nagopy.android.disabledapps.R$array: int main_atcitity_hided_long_tap_menu
+com.nagopy.android.disabledapps.R$array: int main_atcitity_long_tap_menu
 com.nagopy.android.disabledapps.R$attr: int defValue
 com.nagopy.android.disabledapps.R$attr: int max
 com.nagopy.android.disabledapps.R$attr: int min
@@ -63,6 +65,7 @@ com.nagopy.android.disabledapps.R$id: int list_textview_label
 com.nagopy.android.disabledapps.R$id: int list_textview_package_name
 com.nagopy.android.disabledapps.R$id: int menu_pref_general_show_only_running_packages
 com.nagopy.android.disabledapps.R$id: int menu_preference
+com.nagopy.android.disabledapps.R$id: int menu_reload
 com.nagopy.android.disabledapps.R$id: int menu_share_customformat
 com.nagopy.android.disabledapps.R$id: int menu_share_label
 com.nagopy.android.disabledapps.R$id: int menu_share_label_and_package
@@ -85,6 +88,7 @@ com.nagopy.android.disabledapps.R$string: int comment_dialog_edittext_hint
 com.nagopy.android.disabledapps.R$string: int comment_dialog_title
 com.nagopy.android.disabledapps.R$string: int menu_filter_disablable_and_enabled_apps
 com.nagopy.android.disabledapps.R$string: int menu_filter_disabled
+com.nagopy.android.disabledapps.R$string: int menu_filter_hide
 com.nagopy.android.disabledapps.R$string: int menu_filter_undisablable_system
 com.nagopy.android.disabledapps.R$string: int menu_filter_user_apps
 com.nagopy.android.disabledapps.R$string: int menu_preference
@@ -116,6 +120,14 @@ com.nagopy.android.disabledapps.R$string: int pref_title_share_customformat_with
 com.nagopy.android.disabledapps.R$string: int support_library_contact_debug_information_descriptive_text
 com.nagopy.android.disabledapps.R$string: int support_library_file_open_dialog_back_to_default_path
 com.nagopy.android.disabledapps.R$string: int support_library_file_open_dialog_back_to_default_path_mes
+com.nagopy.android.disabledapps.R$style: int Comment
+com.nagopy.android.disabledapps.R$style: int ProcessStatus
+com.nagopy.android.disabledapps.R$style: int ProcessStatus_Background
+com.nagopy.android.disabledapps.R$style: int ProcessStatus_Empty
+com.nagopy.android.disabledapps.R$style: int ProcessStatus_Foreground
+com.nagopy.android.disabledapps.R$style: int ProcessStatus_Perceptible
+com.nagopy.android.disabledapps.R$style: int ProcessStatus_Service
+com.nagopy.android.disabledapps.R$style: int ProcessStatus_Visible
 com.nagopy.android.disabledapps.R$style: int SupportLibrary_TextAppearance_Body
 com.nagopy.android.disabledapps.R$style: int SupportLibrary_TextAppearance_Header
 com.nagopy.android.disabledapps.R$style: int SupportLibrary_Theme_Default
@@ -131,7 +143,6 @@ com.nagopy.android.disabledapps.R$xml: int app_preference_activity_body_share
 com.nagopy.android.disabledapps.R$xml: int app_preference_activity_header
 com.nagopy.android.disabledapps.app.AppPreferenceActivity
 com.nagopy.android.disabledapps.app.AppPreferenceActivity: AppPreferenceActivity()
-com.nagopy.android.disabledapps.app.AppPreferenceActivity$TestPreferenceFragment
 com.nagopy.android.disabledapps.app.FormatEditPreference
 com.nagopy.android.disabledapps.app.FormatEditPreference: FormatEditPreference(android.content.Context,android.util.AttributeSet)
 com.nagopy.android.disabledapps.app.MainActivity

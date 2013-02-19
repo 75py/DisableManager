@@ -22,7 +22,6 @@ import java.util.HashMap;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -31,9 +30,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.style.TextAppearanceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,6 +52,7 @@ import com.nagopy.android.disabledapps.util.AppStatus;
 import com.nagopy.android.disabledapps.util.AppsFilter;
 import com.nagopy.android.disabledapps.util.AppsLoader;
 import com.nagopy.android.disabledapps.util.CommentsUtils;
+import com.nagopy.android.disabledapps.util.CustomSpannableStringBuilder;
 import com.nagopy.android.disabledapps.util.HideUtils;
 import com.nagopy.android.disabledapps.util.share.ShareUtils;
 
@@ -136,6 +133,7 @@ public class MainActivity extends BaseActivity {
 		lastAppFilterCondition = AppsFilter.DISABLED;
 		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.start_activity_listView);
+
 		mEmptyView = (TextView) findViewById(R.id.start_activity_empty);
 
 		mListView.setOnItemClickListener(new OnItemClickListener() {
@@ -414,6 +412,8 @@ public class MainActivity extends BaseActivity {
 		 */
 		private CommentsUtils mCommentsUtils;
 
+		private CustomSpannableStringBuilder mBuilder;
+
 		/**
 		 * コンストラクタ
 		 * @param apps
@@ -421,10 +421,11 @@ public class MainActivity extends BaseActivity {
 		 * @param commentsUtils
 		 *           CommentsUtilsを渡す
 		 */
-		public AppsListAdapter(ArrayList<AppStatus> apps, CommentsUtils commentsUtils) {
+		public AppsListAdapter(ArrayList<AppStatus> apps, CommentsUtils commentsUtils, Context context) {
 			super();
 			appsList = apps;
 			this.mCommentsUtils = commentsUtils;
+			mBuilder = new CustomSpannableStringBuilder(context);
 		}
 
 		/**
@@ -473,73 +474,14 @@ public class MainActivity extends BaseActivity {
 
 			AppStatus appStatus = (AppStatus) getItem(position);
 			if (appStatus != null) {
-				String packageStatusText = null;
-				// パッケージのステータスを文字列にする
-				switch (appStatus.getRunningStatus()) {
-				case AppStatus.NULL_STATUS:
-					break;
-				case RunningAppProcessInfo.IMPORTANCE_BACKGROUND:
-					packageStatusText = "[Background]";
-					break;
-				case RunningAppProcessInfo.IMPORTANCE_FOREGROUND:
-					packageStatusText = "[Foreground]";
-					break;
-				case RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE:
-					packageStatusText = "[Perceptible]";
-					break;
-				case RunningAppProcessInfo.IMPORTANCE_SERVICE:
-					packageStatusText = "[Service]";
-					break;
-				case RunningAppProcessInfo.IMPORTANCE_VISIBLE:
-					packageStatusText = "[Visible]";
-					break;
-				case RunningAppProcessInfo.IMPORTANCE_EMPTY:
-					packageStatusText = "[Empty]";
-					break;
-				default:
-					break;
-				}
-				if (packageStatusText == null) {
-					holder.labelTextView.setText(appStatus.getLabel());
-				} else {
-					SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-					int start = spannableStringBuilder.length();
-					spannableStringBuilder.append(packageStatusText);
-					int end = spannableStringBuilder.length();
-					TextAppearanceSpan cyanTextAppearanceSpan = new TextAppearanceSpan(getApplicationContext(),
-							android.R.style.TextAppearance_Medium);
-					spannableStringBuilder.setSpan(cyanTextAppearanceSpan, start, end,
-							Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-					spannableStringBuilder.append(" ");
-					spannableStringBuilder.append(appStatus.getLabel());
-					holder.labelTextView.setText(spannableStringBuilder);
-				}
+				holder.labelTextView.setText(appStatus.getLabel());
 				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
 				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
 				icon.setCallback(null);
 
 				String comment = this.mCommentsUtils.restoreComment(appStatus.getPackageName());
-				if (comment != null) {
-					SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder();
-					int start = spannableStringBuilder.length();
-					spannableStringBuilder.append(comment);
-					TextAppearanceSpan cyanTextAppearanceSpan = new TextAppearanceSpan(getApplicationContext(),
-							android.R.style.TextAppearance_Medium);
-					int end = spannableStringBuilder.length();
-					spannableStringBuilder.setSpan(cyanTextAppearanceSpan, start, end,
-							Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-					start = end;
-					spannableStringBuilder.append("\n");
-					spannableStringBuilder.append(appStatus.getPackageName());
-					end = spannableStringBuilder.length();
-					spannableStringBuilder.setSpan(new TextAppearanceSpan(getApplicationContext(),
-							android.R.style.TextAppearance_Small), start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-					holder.pkgNameTextView.setText(spannableStringBuilder);
-				} else {
-					holder.pkgNameTextView.setText(appStatus.getPackageName());
-				}
+				holder.pkgNameTextView.setText(mBuilder.getLabelText(appStatus.getPackageName(), comment,
+						appStatus.getRunningStatus()));
 			}
 			return convertView;
 		}
@@ -598,7 +540,7 @@ public class MainActivity extends BaseActivity {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
 								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
-								activity.mCommentsUtils);
+								activity.mCommentsUtils, activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);

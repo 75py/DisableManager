@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="ProcessStatus" parent="android:style/TextAppearance.Medium">
+        <item name="android:textColor">#c2ffffff</item>
+    </style>
+
+    <style name="Comment" parent="android:style/TextAppearance.Medium"></style>
+
+    <style name="ProcessStatus_Background" parent="android:style/TextAppearance.Medium">
+        <item name="android:textColor">#c33dcfff</item>
+    </style>
+
+    <style name="ProcessStatus_Foreground" parent="android:style/TextAppearance.Medium">
+        <item name="android:textColor">#c3ff3d3d</item>
+    </style>
+
+    <style name="ProcessStatus_Perceptible" parent="android:style/TextAppearance.Medium">
+        <item name="android:textColor">#c3df3dff</item>
+    </style>
+
+    <style name="ProcessStatus_Service" parent="android:style/TextAppearance.Medium">
+        <item name="android:textColor">#c33d4aff</item>
+    </style>
+
+    <style name="ProcessStatus_Visible" parent="android:style/TextAppearance.Medium">
+        <item name="android:textColor">#c33dff98</item>
+    </style>
+
+    <style name="ProcessStatus_Empty" parent="android:style/TextAppearance.Medium">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+</resources>
