@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nagopy.android.disabledapps"
     android:installLocation="auto"
-    android:versionCode="20130218"
+    android:versionCode="20130219"
     android:versionName="1.4.0" >
 
     <uses-sdk
