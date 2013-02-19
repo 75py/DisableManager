@@ -90,7 +90,7 @@ public class AppsLoaderTest extends AndroidTestCase {
 
 	public void test_loadRunningApps_Visible() throws Exception {
 		AppStatus appStatusGSF = null;
-		String pkgName = "com.google.android.gsf";
+		String pkgName = "com.google.process.gapps";
 		for (AppStatus appStatus : runningAppsList) {
 			if (appStatus.getPackageName().equals(pkgName)) {
 				appStatusGSF = appStatus;
@@ -103,7 +103,7 @@ public class AppsLoaderTest extends AndroidTestCase {
 	}
 
 	public void test_loadRunningApps_Service() throws Exception {
-		String pkgName = "com.android.providers.media";
+		String pkgName = "android.process.media";
 		AppStatus appStatusMedia = null;
 		for (AppStatus appStatus : runningAppsList) {
 			if (appStatus.getPackageName().equals(pkgName)) {
