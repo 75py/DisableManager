@@ -56,7 +56,7 @@
     <bool name="pref_def_general_show_only_running_packages">false</bool>
 
     <string name="pref_key_general_show_only_running_packages">pref_key_show_only_running_packages</string>
-    <string name="pref_title_general_show_only_running_packages">Show only running packages</string>
+    <string name="pref_title_general_show_only_running_packages">Show only running process</string>
     <string name="pref_summary_general_show_only_running_packages">If checked, show only running packages, Otherwise show all packages.</string>
 
     <!-- about -->

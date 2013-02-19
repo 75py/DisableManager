@@ -139,11 +139,10 @@ public class MainActivity extends BaseActivity {
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-				String packageName = mAdapter.getAppList().get(position).getPackageName();
-
+				String[] packageName = mAdapter.getAppList().get(position).getPackageName().split(":");
 				Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri
-						.parse("package:" + packageName));
-				shouldReloadPackageNameString = packageName;
+						.parse("package:" + packageName[0]));
+				shouldReloadPackageNameString = packageName[0];
 				try {
 					startActivity(intent);
 				} catch (Exception e) {
@@ -164,8 +163,12 @@ public class MainActivity extends BaseActivity {
 				AppStatus appStatus = mAdapter.getAppList().get(position);
 				final String packageName = appStatus.getPackageName();
 				final String label = appStatus.getLabel();
-				int resId = getActionBar().getSelectedTab().getTag().equals(AppsFilter.HIDE_APPS) ? R.array.main_atcitity_hided_long_tap_menu
-						: R.array.main_atcitity_long_tap_menu;
+				int resId;
+				if (getActionBar().getSelectedTab().getTag().equals(AppsFilter.HIDE_APPS)) {
+					resId = R.array.main_atcitity_hided_long_tap_menu;
+				} else {
+					resId = R.array.main_atcitity_long_tap_menu;
+				}
 				mListDialogFragment.init(label, resId, new OnListDialogItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
@@ -336,7 +339,7 @@ public class MainActivity extends BaseActivity {
 		mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
 		mAdapter.getAppList();
 		mAdapter.notifyDataSetChanged();
-		mListView.setSelection(0);
+		// mListView.setSelection(0);
 
 		boolean isEmpty = mAdapter.getCount() < 1;
 		// CHECKSTYLE:OFF

@@ -48,7 +48,7 @@
     <string name="pref_cat_general">一般</string>
 
     <!-- show only running tasks -->
-    <string name="pref_title_general_show_only_running_packages">実行中のパッケージのみ表示</string>
+    <string name="pref_title_general_show_only_running_packages">実行中のプロセスのみ表示</string>
     <string name="pref_summary_general_show_only_running_packages">チェックを入れると、実行中（バックグラウンド含む）のパッケージのみを表示します。設定変更後は手動でリロードを行ってください。</string>
 
     <!-- about -->
