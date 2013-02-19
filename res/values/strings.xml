@@ -11,6 +11,7 @@
     <string name="menu_filter_disablable_and_enabled_apps">Enabled and Disablable apps</string>
     <string name="menu_filter_undisablable_system">Undisablable system apps</string>
     <string name="menu_filter_user_apps">User apps</string>
+    <string name="menu_filter_hide">Hided apps</string>
     <string name="menu_reload">Reload</string>
     <string name="menu_preference">Preference</string>
 
@@ -60,4 +61,15 @@
 
     <!-- about -->
     <string name="pref_cat_about">About</string>
+
+    <!-- long tap menu -->
+    <string-array name="main_atcitity_long_tap_menu">
+        <item>Edit comment</item>
+        <item>Hide this app</item>
+    </string-array>
+    <string-array name="main_atcitity_hided_long_tap_menu">
+        <item>Edit comment</item>
+        <item>Show this app</item>
+    </string-array>
+
 </resources>

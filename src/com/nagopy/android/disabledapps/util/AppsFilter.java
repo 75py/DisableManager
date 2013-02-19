@@ -19,9 +19,7 @@ package com.nagopy.android.disabledapps.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-
-import android.util.SparseArray;
-
+import java.util.Set;
 
 /**
  * アプリ一覧を、条件を指定してフィルタリングするクラス
@@ -32,11 +30,6 @@ public class AppsFilter {
 	 * 編集前のオリジナルを保持するリスト
 	 */
 	private ArrayList<AppStatus> originalAppList;
-
-	/**
-	 * 条件群を保持するSparseArray
-	 */
-	private SparseArray<AppsFilterCondition> conditions;
 
 	/**
 	 * 無効化済み
@@ -59,43 +52,16 @@ public class AppsFilter {
 	public static final int USER_APPS = 0x08;
 
 	/**
+	 * 非表示アプリ
+	 */
+	public static final int HIDE_APPS = 0x10;
+
+	/**
 	 * コンストラクタ<br>
 	 * リストの初期化などを行う
 	 */
 	public AppsFilter() {
 		originalAppList = new ArrayList<AppStatus>();
-		conditions = new SparseArray<AppsFilterCondition>();
-		conditions.put(DISABLED, new AppsFilterCondition() {
-			@Override
-			public boolean valid(final AppStatus appStatus) {
-				// 無効化済み
-				return !appStatus.isEnabled();
-			}
-		});
-
-		conditions.put(DISABLABLE_AND_ENABLED_SYSTEM, new AppsFilterCondition() {
-			@Override
-			public boolean valid(final AppStatus appStatus) {
-				// システムで、無効化可能で、まだ有効なアプリ
-				return appStatus.isSystem() && appStatus.canDisable() && appStatus.isEnabled();
-			}
-		});
-
-		conditions.put(UNDISABLABLE_SYSTEM, new AppsFilterCondition() {
-			@Override
-			public boolean valid(final AppStatus appStatus) {
-				// 無効化できないシステムアプリ
-				return appStatus.isSystem() && !appStatus.canDisable();
-			}
-		});
-
-		conditions.put(USER_APPS, new AppsFilterCondition() {
-			@Override
-			public boolean valid(final AppStatus appStatus) {
-				// 通常のアプリ
-				return !appStatus.isSystem();
-			}
-		});
 	}
 
 	/**
@@ -151,8 +117,8 @@ public class AppsFilter {
 	 *           実行するフィルタのキー
 	 * @return フィルター結果
 	 */
-	public ArrayList<AppStatus> execute(int key) {
-		AppsFilterCondition condition = conditions.get(key);
+	public ArrayList<AppStatus> execute(int key, final Set<String> hides) {
+		AppsFilterCondition condition = createFilterCondition(key, hides);
 		ArrayList<AppStatus> filtered = new ArrayList<AppStatus>();
 		for (AppStatus appStatus : originalAppList) {
 			if (condition.valid(appStatus)) {
@@ -163,10 +129,66 @@ public class AppsFilter {
 	}
 
 	/**
+	 * フィルターを作成して返す
+	 * @param key
+	 *           フィルターのキー
+	 * @param hides
+	 *           非表示アプリ
+	 * @return うまいことやったやつ
+	 */
+	private AppsFilterCondition createFilterCondition(int key, final Set<String> hides) {
+		switch (key) {
+		case DISABLED:
+			return new AppsFilterCondition() {
+				@Override
+				public boolean valid(final AppStatus appStatus) {
+					// 無効化済み
+					return !appStatus.isEnabled() && !hides.contains(appStatus.getPackageName());
+				}
+			};
+		case DISABLABLE_AND_ENABLED_SYSTEM:
+			return new AppsFilterCondition() {
+				@Override
+				public boolean valid(final AppStatus appStatus) {
+					// システムで、無効化可能で、まだ有効なアプリ
+					return appStatus.isSystem() && appStatus.canDisable() && appStatus.isEnabled()
+							&& !hides.contains(appStatus.getPackageName());
+				}
+			};
+		case UNDISABLABLE_SYSTEM:
+			return new AppsFilterCondition() {
+				@Override
+				public boolean valid(final AppStatus appStatus) {
+					// 無効化できないシステムアプリ
+					return appStatus.isSystem() && !appStatus.canDisable()
+							&& !hides.contains(appStatus.getPackageName());
+				}
+			};
+		case USER_APPS:
+			return new AppsFilterCondition() {
+				@Override
+				public boolean valid(final AppStatus appStatus) {
+					// 通常のアプリ
+					return !appStatus.isSystem() && !hides.contains(appStatus.getPackageName());
+				}
+			};
+		case HIDE_APPS:
+			return new AppsFilterCondition() {
+				@Override
+				public boolean valid(AppStatus appStatus) {
+					return hides.contains(appStatus.getPackageName());
+				}
+			};
+
+		default:
+			return null;
+		}
+	}
+
+	/**
 	 * 保存しているコレクションのクリア
 	 */
 	public void deallocate() {
 		originalAppList = null;
-		conditions = null;
 	}
 }

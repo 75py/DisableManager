@@ -11,6 +11,7 @@
     <string name="menu_filter_disablable_and_enabled_apps">無効化可能、有効なシステムアプリ</string>
     <string name="menu_filter_undisablable_system">無効化不可のシステムアプリ</string>
     <string name="menu_filter_user_apps">通常アプリ</string>
+    <string name="menu_filter_hide">除外したアプリ</string>
     <string name="menu_reload">アプリ情報を更新する</string>
     <string name="menu_preference">設定</string>
 
@@ -52,4 +53,15 @@
 
     <!-- about -->
     <string name="pref_cat_about">このアプリについて</string>
+
+    <!-- long tap menu -->
+    <string-array name="main_atcitity_long_tap_menu">
+        <item>コメント編集</item>
+        <item>除外リストに追加</item>
+    </string-array>
+    <string-array name="main_atcitity_hided_long_tap_menu">
+        <item>コメント編集</item>
+        <item>除外リストから削除</item>
+    </string-array>
+
 </resources>

@@ -50,6 +50,9 @@ import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disabledapps.R;
 import com.nagopy.android.disabledapps.dialog.CommentEditDialog;
 import com.nagopy.android.disabledapps.dialog.CommentEditDialog.CommentEditDialogListener;
+import com.nagopy.android.disabledapps.dialog.ListDialogFragment;
+import com.nagopy.android.disabledapps.dialog.ListDialogFragment.OnListDialogItemClickListener;
+import com.nagopy.android.disabledapps.util.AppHideUtils;
 import com.nagopy.android.disabledapps.util.AppStatus;
 import com.nagopy.android.disabledapps.util.AppsFilter;
 import com.nagopy.android.disabledapps.util.AppsLoader;
@@ -113,6 +116,16 @@ public class MainActivity extends BaseActivity {
 	 */
 	private String shouldReloadPackageNameString;
 
+	/**
+	 * 長押しメニューを表示するフラグメント
+	 */
+	private ListDialogFragment mListDialogFragment;
+
+	/**
+	 * 非表示アプリを管理するクラス
+	 */
+	private AppHideUtils mAppHideUtils;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -143,33 +156,56 @@ public class MainActivity extends BaseActivity {
 
 		mCommentsUtils = new CommentsUtils(getApplicationContext());
 		mCommentEditDialog = new CommentEditDialog();
+		mListDialogFragment = new ListDialogFragment();
+		mAppHideUtils = new AppHideUtils(getApplicationContext());
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			@SuppressWarnings("serial")
 			@Override
-			public boolean onItemLongClick(AdapterView<?> adapter, View view, int position, long arg3) {
+			public boolean onItemLongClick(AdapterView<?> arg0, final View view, int position, long arg3) {
 				AppStatus appStatus = mAdapter.getAppList().get(position);
 				final String packageName = appStatus.getPackageName();
-				String label = appStatus.getLabel();
-				mCommentEditDialog.setLabel(label);
-				mCommentEditDialog.setDefaultValue(mCommentsUtils.restoreComment(packageName));
-				mCommentEditDialog.setListener(new CommentEditDialogListener() {
-					private static final long serialVersionUID = 1L;
-
+				final String label = appStatus.getLabel();
+				int resId = getActionBar().getSelectedTab().getTag().equals(AppsFilter.HIDE_APPS) ? R.array.main_atcitity_hided_long_tap_menu
+						: R.array.main_atcitity_long_tap_menu;
+				mListDialogFragment.init(label, resId, new OnListDialogItemClickListener() {
 					@Override
-					public void onPositiveButtonClicked(DialogInterface dialog, String text) {
-						mCommentsUtils.saveComment(packageName, text);
+					public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
+						switch (pos) {
+						case 0:
+							mCommentEditDialog.setLabel(label);
+							mCommentEditDialog.setDefaultValue(mCommentsUtils.restoreComment(packageName));
+							mCommentEditDialog.setListener(new CommentEditDialogListener() {
+								private static final long serialVersionUID = 1L;
 
-						updateAppList(-1);
+								@Override
+								public void onPositiveButtonClicked(DialogInterface dialog, String text) {
+									mCommentsUtils.saveComment(packageName, text);
+
+									updateAppList(-1);
+								}
+
+								@Override
+								// CHECKSTYLE:OFF
+								public void onNegativeButtonClicked(DialogInterface dialog) {}
+								// CHECKSTYLE:ON
+							});
+							mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
+							break;
+						case 1:
+							mAppHideUtils.updateHideList(packageName);
+							updateAppList(-1);
+							break;
+						default:
+							break;
+						}
+						mListDialogFragment.dismiss();
 					}
-
-					@Override
-					// CHECKSTYLE:OFF
-					public void onNegativeButtonClicked(DialogInterface dialog) {}
-					// CHECKSTYLE:ON
 				});
-				mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
-
+				mListDialogFragment.show(getFragmentManager(), "list");
 				return false;
 			}
+
 		});
 
 		createReloadAsyncTask().execute();
@@ -236,6 +272,8 @@ public class MainActivity extends BaseActivity {
 				.setTag(AppsFilter.UNDISABLABLE_SYSTEM).setTabListener(tabListener));
 		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_user_apps)
 				.setTag(AppsFilter.USER_APPS).setTabListener(tabListener));
+		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_hide).setTag(AppsFilter.HIDE_APPS)
+				.setTabListener(tabListener));
 	}
 
 	@Override
@@ -297,7 +335,7 @@ public class MainActivity extends BaseActivity {
 		} else {
 			lastAppFilterCondition = key;
 		}
-		mAdapter.updateAppList(mAppFilter.execute(key));
+		mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
 		mAdapter.getAppList();
 		mAdapter.notifyDataSetChanged();
 		mListView.setSelection(0);
@@ -327,6 +365,10 @@ public class MainActivity extends BaseActivity {
 					.commit()) {
 				createReloadAsyncTask().execute();
 			}
+			return true;
+
+		case R.id.menu_reload:
+			createReloadAsyncTask().execute();
 			return true;
 
 		case R.id.menu_preference:
@@ -554,8 +596,9 @@ public class MainActivity extends BaseActivity {
 							.getAppsList()));
 					if (activity.mAdapter == null) {
 						// 初回なら
-						activity.mAdapter = new AppsListAdapter(
-								activity.mAppFilter.execute(activity.lastAppFilterCondition), activity.mCommentsUtils);
+						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
+								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
+								activity.mCommentsUtils);
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);

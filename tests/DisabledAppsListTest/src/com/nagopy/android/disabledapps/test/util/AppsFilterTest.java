@@ -1,4 +1,4 @@
-package com.nagopy.android.disabledapps.test.util.filter;
+package com.nagopy.android.disabledapps.test.util;
 
 import java.util.ArrayList;
 

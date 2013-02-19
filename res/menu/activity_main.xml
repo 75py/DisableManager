@@ -27,10 +27,14 @@
             <item
                 android:id="@+id/menu_pref_general_show_only_running_packages"
                 android:checkable="true"
-                android:icon="@android:drawable/ic_menu_preferences"
                 android:title="@string/pref_title_general_show_only_running_packages"/>
             <item
+                android:id="@+id/menu_reload"
+                android:icon="@drawable/ic_menu_refresh"
+                android:title="@string/menu_reload"/>
+            <item
                 android:id="@+id/menu_preference"
+                android:icon="@android:drawable/ic_menu_preferences"
                 android:title="@string/menu_preference"/>
         </menu>
     </item>
