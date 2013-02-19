@@ -52,7 +52,7 @@ import com.nagopy.android.disabledapps.dialog.CommentEditDialog;
 import com.nagopy.android.disabledapps.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disabledapps.dialog.ListDialogFragment;
 import com.nagopy.android.disabledapps.dialog.ListDialogFragment.OnListDialogItemClickListener;
-import com.nagopy.android.disabledapps.util.AppHideUtils;
+import com.nagopy.android.disabledapps.util.HideUtils;
 import com.nagopy.android.disabledapps.util.AppStatus;
 import com.nagopy.android.disabledapps.util.AppsFilter;
 import com.nagopy.android.disabledapps.util.AppsLoader;
@@ -124,7 +124,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 非表示アプリを管理するクラス
 	 */
-	private AppHideUtils mAppHideUtils;
+	private HideUtils mAppHideUtils;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +157,7 @@ public class MainActivity extends BaseActivity {
 		mCommentsUtils = new CommentsUtils(getApplicationContext());
 		mCommentEditDialog = new CommentEditDialog();
 		mListDialogFragment = new ListDialogFragment();
-		mAppHideUtils = new AppHideUtils(getApplicationContext());
+		mAppHideUtils = new HideUtils(getApplicationContext());
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			@SuppressWarnings("serial")

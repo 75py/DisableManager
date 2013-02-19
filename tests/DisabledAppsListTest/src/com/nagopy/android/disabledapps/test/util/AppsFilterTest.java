@@ -1,6 +1,7 @@
 package com.nagopy.android.disabledapps.test.util;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import android.test.AndroidTestCase;
 
@@ -58,7 +59,7 @@ public class AppsFilterTest extends AndroidTestCase {
 	@SuppressWarnings("unchecked")
 	private void filter(int type, AppStatus appStatus) {
 		mAppsFilter.setOriginalAppList((ArrayList<AppStatus>) testList.clone());
-		ArrayList<AppStatus> result = mAppsFilter.execute(type);
+		ArrayList<AppStatus> result = mAppsFilter.execute(type, new HashSet<String>());
 		assertEquals(1, result.size());
 		assertEquals(appStatus, result.get(0));
 	}

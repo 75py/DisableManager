@@ -7,13 +7,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class AppHideUtils {
+public class HideUtils {
 
 	@SuppressWarnings("unused")
 	private Context mContext;
 	private SharedPreferences sp;
 
-	public AppHideUtils(Context context) {
+	public HideUtils(Context context) {
 		mContext = context;
 		sp = PreferenceManager.getDefaultSharedPreferences(context);
 	}
