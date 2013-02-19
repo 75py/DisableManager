@@ -1,11 +1,13 @@
 package com.nagopy.android.disabledapps.test.app;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.widget.TextView;
 
 import com.nagopy.android.disabledapps.R;
 import com.nagopy.android.disabledapps.app.MainActivity;
@@ -46,6 +48,20 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 			assertTrue("タブのテキストが予定のものの一覧に含まれているか", tabTextsAndTags.containsKey(text));
 			assertTrue("タブのタグが予定のものの一覧に含まれているか", tabTextsAndTags.containsValue(tag));
 			assertTrue("文字とタグの組み合わせが一致しているか", tabTextsAndTags.get(text).equals(tag));
+		}
+	}
+
+	public void test表示アプリがないときのテキストビュー() throws Throwable {
+		Activity activity = getActivity();
+		try {
+			Field mEmptyView = activity.getClass().getDeclaredField("mEmptyView");
+			mEmptyView.setAccessible(true);
+			assertNotNull(mEmptyView.get(activity));
+			assertEquals(TextView.class, mEmptyView.get(activity).getClass());
+			TextView textView = (TextView) mEmptyView.get(activity);
+			assertEquals(activity.getText(R.string.message_empty_list), textView.getText());
+		} catch (NoSuchFieldException e) {
+			fail();
 		}
 	}
 

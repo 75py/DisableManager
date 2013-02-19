@@ -52,11 +52,11 @@ import com.nagopy.android.disabledapps.dialog.CommentEditDialog;
 import com.nagopy.android.disabledapps.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disabledapps.dialog.ListDialogFragment;
 import com.nagopy.android.disabledapps.dialog.ListDialogFragment.OnListDialogItemClickListener;
-import com.nagopy.android.disabledapps.util.HideUtils;
 import com.nagopy.android.disabledapps.util.AppStatus;
 import com.nagopy.android.disabledapps.util.AppsFilter;
 import com.nagopy.android.disabledapps.util.AppsLoader;
 import com.nagopy.android.disabledapps.util.CommentsUtils;
+import com.nagopy.android.disabledapps.util.HideUtils;
 import com.nagopy.android.disabledapps.util.share.ShareUtils;
 
 /**
