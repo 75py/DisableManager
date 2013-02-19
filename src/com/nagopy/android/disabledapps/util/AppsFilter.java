@@ -115,6 +115,8 @@ public class AppsFilter {
 	 * フィルターを実行して、結果を返す
 	 * @param key
 	 *           実行するフィルタのキー
+	 * @param hides
+	 *           除外アプリの一覧
 	 * @return フィルター結果
 	 */
 	public ArrayList<AppStatus> execute(int key, final Set<String> hides) {

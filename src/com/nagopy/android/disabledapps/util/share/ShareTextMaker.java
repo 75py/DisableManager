@@ -34,5 +34,5 @@ interface ShareTextMaker {
 	 * @param lineBreak
 	 *           改行文字列
 	 */
-	public abstract void make(ArrayList<AppStatus> appsList, StringBuffer sb, String lineBreak);
+	void make(ArrayList<AppStatus> appsList, StringBuffer sb, String lineBreak);
 }

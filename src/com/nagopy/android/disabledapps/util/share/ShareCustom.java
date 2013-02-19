@@ -29,9 +29,21 @@ import com.nagopy.android.disabledapps.util.FormatUtils;
  */
 class ShareCustom implements ShareTextMaker {
 
+	/**
+	 * @see CommentsUtils
+	 */
 	private CommentsUtils mCommentsUtils;
+
+	/**
+	 * @see FormatUtils
+	 */
 	private FormatUtils mFormatUtils;
 
+	/**
+	 * コンストラクタ
+	 * @param context
+	 *           アプリケーションのコンテキスト
+	 */
 	public ShareCustom(Context context) {
 		mCommentsUtils = new CommentsUtils(context);
 		mFormatUtils = new FormatUtils(context);

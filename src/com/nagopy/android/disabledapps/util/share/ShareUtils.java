@@ -32,30 +32,26 @@ import android.preference.PreferenceManager;
  */
 public class ShareUtils {
 
+	/**
+	 * アクティビティを保持
+	 */
 	private WeakReference<Activity> mWeakReference;
-	private ArrayList<AppStatus> appsList;
 
+	/**
+	 * コンストラクタ
+	 * @param activity
+	 *           アクティビティ
+	 */
 	public ShareUtils(Activity activity) {
 		mWeakReference = new WeakReference<Activity>(activity);
 	}
 
-	public ShareUtils(Activity activity, ArrayList<AppStatus> appsList) {
-		this(activity);
-		setList(appsList);
-	}
-
 	/**
 	 * @param appsList
-	 *           アプリの一覧
-	 */
-	public void setList(ArrayList<AppStatus> appsList) {
-		this.appsList = appsList;
-	}
-
-	/**
+	 *           アプリ一覧
 	 * @return 一覧がnullまたは1つもない場合はtrueを返す
 	 */
-	public boolean isEmpty() {
+	public boolean isEmpty(ArrayList<AppStatus> appsList) {
 		return appsList == null || appsList.isEmpty();
 	}
 
@@ -63,9 +59,11 @@ public class ShareUtils {
 	 * 共有するテキストを作成する
 	 * @param type
 	 *           R.id.menu_share_～
+	 * @param appsList
+	 *           アプリ一覧
 	 * @return 共有する文字列
 	 */
-	public String createShareString(int type) {
+	public String createShareString(int type, ArrayList<AppStatus> appsList) {
 		StringBuffer sb = new StringBuffer();
 		String lineBreak;
 

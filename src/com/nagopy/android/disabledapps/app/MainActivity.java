@@ -390,13 +390,13 @@ public class MainActivity extends BaseActivity {
 	 */
 	private void sendShareIntent(int id) {
 		ArrayList<AppStatus> appsList = mAdapter.getAppList();
-		ShareUtils shareUtils = new ShareUtils(this, appsList);
-		if (shareUtils.isEmpty()) {
+		ShareUtils shareUtils = new ShareUtils(this);
+		if (shareUtils.isEmpty(appsList)) {
 			showToast(getString(R.string.message_share_no_app));
 			return;
 		}
 
-		String text = shareUtils.createShareString(id);
+		String text = shareUtils.createShareString(id, appsList);
 		shareUtils.sendIntent(text, getActionBar().getSelectedTab().getText().toString());
 	}
 

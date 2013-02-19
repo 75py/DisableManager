@@ -26,66 +26,57 @@ public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivit
 	}
 
 	public void test_isEmptyにnullでtrueが返る() throws Exception {
-		mShareUtils.setList(null);
-		assertTrue(mShareUtils.isEmpty());
+		assertTrue(mShareUtils.isEmpty(null));
 	}
 
 	public void test_isEmptyに空のリストでtrueが返る() throws Exception {
-		mShareUtils.setList(new ArrayList<AppStatus>());
-		assertTrue(mShareUtils.isEmpty());
+		assertTrue(mShareUtils.isEmpty(new ArrayList<AppStatus>()));
 	}
 
 	public void test_isEmptyでアイテムがあればfalseが返る() throws Exception {
 		ArrayList<AppStatus> list = new ArrayList<AppStatus>();
 		list.add(new AppStatus("label", "packagename", false, false, false));
-		mShareUtils.setList(list);
-		assertFalse(mShareUtils.isEmpty());
+		assertFalse(mShareUtils.isEmpty(list));
 	}
 
 	public void test_createShareString_アプリ名_改行挿入なし() throws Exception {
 		改行なしに変更();
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_label);
+		String actual = mShareUtils.createShareString(R.id.menu_share_label, createTestList());
 		String expected = "label_1\nlabel_2\n";
 		assertEquals(expected, actual);
 	}
 
 	public void test_createShareString_アプリ名_改行挿入あり() throws Exception {
 		改行ありに変更();
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_label);
+		String actual = mShareUtils.createShareString(R.id.menu_share_label, createTestList());
 		String expected = "label_1\n\nlabel_2\n\n";
 		assertEquals(expected, actual);
 	}
 
 	public void test_createShareString_パッケージ名_改行挿入なし() throws Exception {
 		改行なしに変更();
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_package);
+		String actual = mShareUtils.createShareString(R.id.menu_share_package, createTestList());
 		String expected = "packagename_1\npackagename_2\n";
 		assertEquals(expected, actual);
 	}
 
 	public void test_createShareString_パッケージ名_改行挿入あり() throws Exception {
 		改行ありに変更();
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_package);
+		String actual = mShareUtils.createShareString(R.id.menu_share_package, createTestList());
 		String expected = "packagename_1\n\npackagename_2\n\n";
 		assertEquals(expected, actual);
 	}
 
 	public void test_createShareString_アプリ名とパッケージ名_改行挿入なし() throws Exception {
 		改行なしに変更();
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_label_and_package);
+		String actual = mShareUtils.createShareString(R.id.menu_share_label_and_package, createTestList());
 		String expected = "label_1\npackagename_1\nlabel_2\npackagename_2\n";
 		assertEquals(expected, actual);
 	}
 
 	public void test_createShareString_アプリ名とパッケージ名_改行挿入あり() throws Exception {
 		改行ありに変更();
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_label_and_package);
+		String actual = mShareUtils.createShareString(R.id.menu_share_label_and_package, createTestList());
 		String expected = "label_1\npackagename_1\n\nlabel_2\npackagename_2\n\n";
 		assertEquals(expected, actual);
 	}
@@ -93,8 +84,7 @@ public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivit
 	public void test_createShareString_カスタム_コメントなし_改行挿入なし() throws Exception {
 		改行なしに変更();
 		コメントなしカスタムフォーマットの変更("%1$s(%2$s)");
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_customformat);
+		String actual = mShareUtils.createShareString(R.id.menu_share_customformat, createTestList());
 		String expected = "label_1(packagename_1)\nlabel_2(packagename_2)\n";
 		assertEquals(expected, actual);
 	}
@@ -102,8 +92,8 @@ public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivit
 	public void test_createShareString_カスタム_コメントなし_改行挿入あり() throws Exception {
 		改行ありに変更();
 		コメントなしカスタムフォーマットの変更("%1$s(%2$s)");
-		mShareUtils.setList(createTestList());
-		String actual = mShareUtils.createShareString(R.id.menu_share_customformat);
+
+		String actual = mShareUtils.createShareString(R.id.menu_share_customformat, createTestList());
 		String expected = "label_1(packagename_1)\n\nlabel_2(packagename_2)\n\n";
 		assertEquals(expected, actual);
 	}

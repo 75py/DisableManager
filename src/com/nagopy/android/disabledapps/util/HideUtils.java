@@ -7,12 +7,27 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+/**
+ * 除外アプリの管理クラス
+ */
 public class HideUtils {
 
+	/**
+	 * コンテキスト
+	 */
 	@SuppressWarnings("unused")
 	private Context mContext;
+
+	/**
+	 * デフォルトのSharedPreferences
+	 */
 	private SharedPreferences sp;
 
+	/**
+	 * コンストラクタ
+	 * @param context
+	 *           アプリケーションのコンテキスト
+	 */
 	public HideUtils(Context context) {
 		mContext = context;
 		sp = PreferenceManager.getDefaultSharedPreferences(context);
