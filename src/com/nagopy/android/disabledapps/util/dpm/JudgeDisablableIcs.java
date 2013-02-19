@@ -75,7 +75,7 @@ import android.content.pm.ResolveInfo;
 /**
  * 無効化できるかを判定するクラス（ICS～JB用）
  */
-class JudgeDisablableICS extends JudgeDisablable {
+class JudgeDisablableIcs extends JudgeDisablable {
 	/**
 	 * PackageInfo
 	 */
@@ -86,7 +86,7 @@ class JudgeDisablableICS extends JudgeDisablable {
 	 * @param context
 	 *           アプリケーションのコンストラクタ
 	 */
-	public JudgeDisablableICS(Context context) {
+	public JudgeDisablableIcs(Context context) {
 		super(context);
 	}
 

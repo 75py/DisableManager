@@ -26,8 +26,8 @@ import android.util.AttributeSet;
 
 import com.nagopy.android.common.util.CommonUtil;
 import com.nagopy.android.disabledapps.R;
-import com.nagopy.android.disabledapps.util.dialog.FormatEditDialog;
-import com.nagopy.android.disabledapps.util.dialog.FormatEditDialog.FormatEditDialogListener;
+import com.nagopy.android.disabledapps.dialog.FormatEditDialog;
+import com.nagopy.android.disabledapps.dialog.FormatEditDialog.FormatEditDialogListener;
 
 /**
  * フォーマットを編集するPreference

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.nagopy.android.disabledapps.util.filter;
+package com.nagopy.android.disabledapps.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +22,6 @@ import java.util.Comparator;
 
 import android.util.SparseArray;
 
-import com.nagopy.android.disabledapps.util.AppStatus;
 
 /**
  * アプリ一覧を、条件を指定してフィルタリングするクラス
@@ -37,7 +36,7 @@ public class AppsFilter {
 	/**
 	 * 条件群を保持するSparseArray
 	 */
-	private SparseArray<AppFilterCondition> conditions;
+	private SparseArray<AppsFilterCondition> conditions;
 
 	/**
 	 * 無効化済み
@@ -65,8 +64,8 @@ public class AppsFilter {
 	 */
 	public AppsFilter() {
 		originalAppList = new ArrayList<AppStatus>();
-		conditions = new SparseArray<AppFilterCondition>();
-		conditions.put(DISABLED, new AppFilterCondition() {
+		conditions = new SparseArray<AppsFilterCondition>();
+		conditions.put(DISABLED, new AppsFilterCondition() {
 			@Override
 			public boolean valid(final AppStatus appStatus) {
 				// 無効化済み
@@ -74,7 +73,7 @@ public class AppsFilter {
 			}
 		});
 
-		conditions.put(DISABLABLE_AND_ENABLED_SYSTEM, new AppFilterCondition() {
+		conditions.put(DISABLABLE_AND_ENABLED_SYSTEM, new AppsFilterCondition() {
 			@Override
 			public boolean valid(final AppStatus appStatus) {
 				// システムで、無効化可能で、まだ有効なアプリ
@@ -82,7 +81,7 @@ public class AppsFilter {
 			}
 		});
 
-		conditions.put(UNDISABLABLE_SYSTEM, new AppFilterCondition() {
+		conditions.put(UNDISABLABLE_SYSTEM, new AppsFilterCondition() {
 			@Override
 			public boolean valid(final AppStatus appStatus) {
 				// 無効化できないシステムアプリ
@@ -90,7 +89,7 @@ public class AppsFilter {
 			}
 		});
 
-		conditions.put(USER_APPS, new AppFilterCondition() {
+		conditions.put(USER_APPS, new AppsFilterCondition() {
 			@Override
 			public boolean valid(final AppStatus appStatus) {
 				// 通常のアプリ
@@ -153,7 +152,7 @@ public class AppsFilter {
 	 * @return フィルター結果
 	 */
 	public ArrayList<AppStatus> execute(int key) {
-		AppFilterCondition condition = conditions.get(key);
+		AppsFilterCondition condition = conditions.get(key);
 		ArrayList<AppStatus> filtered = new ArrayList<AppStatus>();
 		for (AppStatus appStatus : originalAppList) {
 			if (condition.valid(appStatus)) {

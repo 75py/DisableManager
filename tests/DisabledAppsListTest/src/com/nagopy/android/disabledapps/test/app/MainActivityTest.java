@@ -9,7 +9,7 @@ import android.test.ActivityInstrumentationTestCase2;
 
 import com.nagopy.android.disabledapps.R;
 import com.nagopy.android.disabledapps.app.MainActivity;
-import com.nagopy.android.disabledapps.util.filter.AppsFilter;
+import com.nagopy.android.disabledapps.util.AppsFilter;
 
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
 

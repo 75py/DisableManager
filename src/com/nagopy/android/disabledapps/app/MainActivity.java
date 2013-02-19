@@ -48,12 +48,12 @@ import android.widget.TextView;
 import com.nagopy.android.common.app.BaseActivity;
 import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disabledapps.R;
+import com.nagopy.android.disabledapps.dialog.CommentEditDialog;
+import com.nagopy.android.disabledapps.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disabledapps.util.AppStatus;
+import com.nagopy.android.disabledapps.util.AppsFilter;
 import com.nagopy.android.disabledapps.util.AppsLoader;
 import com.nagopy.android.disabledapps.util.CommentsUtils;
-import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog;
-import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog.CommentEditDialogListener;
-import com.nagopy.android.disabledapps.util.filter.AppsFilter;
 import com.nagopy.android.disabledapps.util.share.ShareUtils;
 
 /**

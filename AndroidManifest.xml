@@ -37,7 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.AppPreferenceActivity" />
+        <activity android:name="com.nagopy.android.disabledapps.app.AppPreferenceActivity" />
     </application>
 
 </manifest>

@@ -70,11 +70,11 @@ com.nagopy.android.disabledapps.util.AppStatus:
     public static final int NULL_STATUS
 com.nagopy.android.disabledapps.util.CommentsUtils:
     private static final java.lang.String PREFERENCE_FILE_NAME
-com.nagopy.android.disabledapps.util.dialog.CommentEditDialog:
+com.nagopy.android.disabledapps.dialog.CommentEditDialog:
     private static final java.lang.String KEY_LABEL
     private static final java.lang.String KEY_DEFAULT_VALUE
     private static final java.lang.String KEY_LISTENER
-com.nagopy.android.disabledapps.util.dialog.FormatEditDialog:
+com.nagopy.android.disabledapps.dialog.FormatEditDialog:
     private static final java.lang.String KEY_TITLE
     private static final java.lang.String KEY_SUMMARY
     private static final java.lang.String KEY_DEFAULT_VALUE

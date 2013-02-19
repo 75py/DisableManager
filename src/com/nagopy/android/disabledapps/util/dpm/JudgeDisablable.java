@@ -169,10 +169,10 @@ public abstract class JudgeDisablable extends BaseObject {
 		int version = Build.VERSION.SDK_INT;
 		if (version >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 			// 4.2以上
-			return new JudgeDisablableJBmr1(context);
+			return new JudgeDisablableJbMr1(context);
 		} else if (version >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			// 4.0.4以上
-			return new JudgeDisablableICS(context);
+			return new JudgeDisablableIcs(context);
 		} else {
 			// 4.0.4未満の場合は、常にfalseを返すようにする
 			return new JudgeDisablable(context) {

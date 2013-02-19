@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.nagopy.android.disabledapps.util.dialog;
+package com.nagopy.android.disabledapps.dialog;
 
 import java.io.Serializable;
 

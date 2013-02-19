@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.nagopy.android.disabledapps.util.filter;
+package com.nagopy.android.disabledapps.util;
 
-import com.nagopy.android.disabledapps.util.AppStatus;
 
 /**
  * フィルターかける条件を指定するためのインターフェース
  */
-interface AppFilterCondition {
+interface AppsFilterCondition {
 
 	/**
 	 * @param appStatus

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import android.test.AndroidTestCase;
 
 import com.nagopy.android.disabledapps.util.AppStatus;
-import com.nagopy.android.disabledapps.util.filter.AppsFilter;
+import com.nagopy.android.disabledapps.util.AppsFilter;
 
 public class AppsFilterTest extends AndroidTestCase {
 
