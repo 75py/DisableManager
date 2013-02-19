@@ -51,10 +51,10 @@ import com.nagopy.android.disabledapps.R;
 import com.nagopy.android.disabledapps.util.AppStatus;
 import com.nagopy.android.disabledapps.util.AppsLoader;
 import com.nagopy.android.disabledapps.util.CommentsUtils;
-import com.nagopy.android.disabledapps.util.FormatUtils;
 import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog;
 import com.nagopy.android.disabledapps.util.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disabledapps.util.filter.AppsFilter;
+import com.nagopy.android.disabledapps.util.share.ShareUtils;
 
 /**
  * ランチャーから起動するアクティビティ<br>
@@ -348,58 +348,14 @@ public class MainActivity extends BaseActivity {
 	 */
 	private void sendShareIntent(int id) {
 		ArrayList<AppStatus> appsList = mAdapter.getAppList();
-		if (appsList == null || appsList.isEmpty()) {
+		ShareUtils shareUtils = new ShareUtils(this, appsList);
+		if (shareUtils.isEmpty()) {
 			showToast(getString(R.string.message_share_no_app));
 			return;
 		}
 
-		StringBuffer sb = new StringBuffer();
-		String lineBreak;
-		if (getSP().getBoolean(getString(R.string.pref_key_share_add_linebreak),
-				getResources().getBoolean(R.bool.pref_def_share_add_linebreak))) {
-			lineBreak = System.getProperty("line.separator") + System.getProperty("line.separator");
-		} else {
-			lineBreak = System.getProperty("line.separator");
-		}
-		switch (id) {
-		case R.id.menu_share_label:
-			for (AppStatus appStatus : appsList) {
-				sb.append(appStatus.getLabel());
-				sb.append(lineBreak);
-			}
-			break;
-		case R.id.menu_share_package:
-			for (AppStatus appStatus : appsList) {
-				sb.append(appStatus.getPackageName());
-				sb.append(lineBreak);
-			}
-			break;
-		case R.id.menu_share_label_and_package:
-			String singleLineBreak = System.getProperty("line.separator");
-			for (AppStatus appStatus : appsList) {
-				sb.append(appStatus.getLabel());
-				sb.append(singleLineBreak);
-				sb.append(appStatus.getPackageName());
-				sb.append(lineBreak);
-			}
-			break;
-		case R.id.menu_share_customformat:
-			for (AppStatus appStatus : appsList) {
-				String comment = mCommentsUtils.restoreComment(appStatus.getPackageName());
-				FormatUtils formatUtils = new FormatUtils(getApplicationContext());
-				sb.append(formatUtils.format(appStatus.getLabel(), appStatus.getPackageName(), comment));
-				sb.append(lineBreak);
-			}
-			break;
-		default:
-			break;
-		}
-
-		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType("text/plain");
-		intent.putExtra(Intent.EXTRA_TEXT, sb.toString());
-		intent.putExtra(Intent.EXTRA_SUBJECT, getTitle());
-		startActivity(intent);
+		String text = shareUtils.createShareString(id);
+		shareUtils.sendIntent(text, getActionBar().getSelectedTab().getText().toString());
 	}
 
 	/**
