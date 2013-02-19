@@ -24,6 +24,12 @@ public class JudgeDisablableTest extends AndroidTestCase {
 
 	public void testDisablableApp() {
 		ApplicationInfo applicationInfo = getAppInfo("com.google.android.email");
+		if (applicationInfo == null) {
+			applicationInfo = getAppInfo("com.android.email");
+			if (applicationInfo == null) {
+				fail("パッケージが見つからないお");
+			}
+		}
 		assertTrue("無効化可能アプリの判定", mJudgeDisablable.isDisablable(applicationInfo));
 	}
 

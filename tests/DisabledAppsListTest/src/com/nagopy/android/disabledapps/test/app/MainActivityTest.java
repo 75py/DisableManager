@@ -47,18 +47,12 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 			assertTrue("文字とタグの組み合わせが一致しているか", tabTextsAndTags.get(text).equals(tag));
 		}
 	}
-
-	public void testChangeShowingTab() throws Throwable {
-		runTestOnUiThread(new Runnable() {
-			@Override
-			public void run() {
-				mActionBar.selectTab(mActionBar.getTabAt(1));
-			}
-		});
-		getInstrumentation().waitForIdleSync();
-		assertTrue("選択中のタブが変わったか", mActionBar.getSelectedTab() == mActionBar.getTabAt(1));
-	}
 	
+	@Override
+	protected void tearDown() throws Exception {
+		super.tearDown();
+		getInstrumentation().onDestroy();
+	}
 
 
 	private CharSequence _(int resId) {

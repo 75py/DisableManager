@@ -539,6 +539,7 @@ public class MainActivity extends BaseActivity {
 			protected Void doInBackground(Void... params) {
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
+					// テスト実行時はコメントアウト
 					activity.mIconCacheHashMap = activity.mAppLoader.load();
 				}
 				return null;

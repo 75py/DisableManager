@@ -30,6 +30,11 @@ public class AppsLoaderTest extends AndroidTestCase {
 
 	}
 
+	@Override
+	protected void tearDown() throws Exception {
+		super.tearDown();
+	}
+
 	@SuppressWarnings("unchecked")
 	private void loadAllApps() throws Exception {
 		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
@@ -74,17 +79,17 @@ public class AppsLoaderTest extends AndroidTestCase {
 	}
 
 	public void test_loadRunningApps_Perceptible() throws Exception {
-		AppStatus appStatusAtok = null;
-		String pkgName = "com.justsystems.atokmobile.service";
+		AppStatus appStatusBC = null;
+		String pkgName = "com.nagopy.bashfulclock";
 		for (AppStatus appStatus : runningAppsList) {
 			if (appStatus.getPackageName().equals(pkgName)) {
-				appStatusAtok = appStatus;
+				appStatusBC = appStatus;
 				break;
 			}
 		}
-		assertNotNull("ATOKが実行中に含まれているか", appStatusAtok);
-		assertEquals("ATOKのステータスがperceptibleか", RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE,
-				appStatusAtok.getRunningStatus());
+		assertNotNull("Bashful Clockが実行中に含まれているか", appStatusBC);
+		assertEquals("Bashful Clockのステータスがperceptibleか", RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE,
+				appStatusBC.getRunningStatus());
 		assertTrue("このアプリのアイコンがキャッシュされている", runningAppsIcon.containsKey(pkgName));
 	}
 
@@ -94,6 +99,7 @@ public class AppsLoaderTest extends AndroidTestCase {
 		for (AppStatus appStatus : runningAppsList) {
 			if (appStatus.getPackageName().equals(pkgName)) {
 				appStatusGSF = appStatus;
+				break;
 			}
 		}
 		assertNotNull("Googleサービスフレームワークが含まれているか", appStatusGSF);
@@ -108,6 +114,7 @@ public class AppsLoaderTest extends AndroidTestCase {
 		for (AppStatus appStatus : runningAppsList) {
 			if (appStatus.getPackageName().equals(pkgName)) {
 				appStatusMedia = appStatus;
+				break;
 			}
 		}
 		assertNotNull("メディアストレージが含まれているか", appStatusMedia);
@@ -118,10 +125,11 @@ public class AppsLoaderTest extends AndroidTestCase {
 
 	public void test_loadRunningApps_Background() throws Exception {
 		AppStatus appStatusGooglePlay = null;
-		String pkgName = "com.android.vending";
+		String pkgName = "com.android.settings";
 		for (AppStatus appStatus : runningAppsList) {
 			if (appStatus.getPackageName().equals(pkgName)) {
 				appStatusGooglePlay = appStatus;
+				break;
 			}
 		}
 		assertNotNull("Google Playが含まれているか", appStatusGooglePlay);

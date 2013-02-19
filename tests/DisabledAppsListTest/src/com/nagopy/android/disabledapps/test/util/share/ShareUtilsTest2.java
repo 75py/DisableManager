@@ -4,7 +4,6 @@ import android.app.Instrumentation.ActivityMonitor;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.test.ActivityInstrumentationTestCase2;
-import android.view.KeyEvent;
 
 import com.nagopy.android.disabledapps.app.MainActivity;
 import com.nagopy.android.disabledapps.util.share.ShareUtils;
@@ -38,7 +37,12 @@ public class ShareUtilsTest2 extends ActivityInstrumentationTestCase2<MainActivi
 
 		assertEquals(1, monitor.getHits());
 		getInstrumentation().removeMonitor(monitor);
-		
-		
+
+	}
+
+	@Override
+	protected void tearDown() throws Exception {
+		super.tearDown();
+		getInstrumentation().onDestroy();
 	}
 }
