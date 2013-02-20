@@ -27,20 +27,17 @@ com.nagopy.android.common.fragment.dialog.ProgressDialogFragment:
     private static final java.lang.String KEY_PROGRESS_DIALOG_MESSAGE
     private static final java.lang.String DEFAULT_PROGRESS_DIALOG_MESSAGE
     29:32:public void setProgressDialogMessage(java.lang.String)
-com.nagopy.android.common.image.ImageUtils:
-    24:25:public ImageUtils(android.content.Context)
-    36:91:public android.graphics.Bitmap loadBitmap(android.net.Uri,int,int)
-    95:105:public static android.graphics.Bitmap reduceByMatrix(android.graphics.Bitmap,int,int)
-    114:115:public static android.graphics.drawable.Drawable getDrawable(android.content.res.Resources,android.graphics.Bitmap)
-    124:124:public static android.graphics.Bitmap getBitmap(android.graphics.drawable.Drawable)
-    135:135:public static com.nagopy.android.common.image.ResourceDrawables getResourceDrawablesInstance(android.content.Context)
+com.nagopy.android.common.image.ImageUtils
+com.nagopy.android.common.image.ImageUtils$IconSizeGetterOverApi11
 com.nagopy.android.common.image.ResourceDrawables
 com.nagopy.android.common.image.ResourceDrawables$ResourceDrawablesCompat
 com.nagopy.android.common.image.ResourceDrawables$ResourceDrawablesIcsMr1
 com.nagopy.android.common.util.AboutUtil
 com.nagopy.android.common.util.CommonUtil:
+    23:23:public android.content.Context getContext()
     32:32:public java.lang.String getStringFromResources(int)
     41:41:public int getIntFromResources(int)
+    58:59:public void log(java.lang.Object)
     115:124:public boolean isServiceRunning(java.lang.Class)
     132:133:public static void killProcess()
     141:144:public synchronized void sleep(long)
@@ -82,11 +79,16 @@ com.nagopy.android.disabledapps.dialog.ListDialogFragment:
     private static final java.lang.String KEY_ON_ITEM_CLICK_LISTENER
 com.nagopy.android.disabledapps.util.AppStatus:
     public static final int NULL_STATUS
+    135:136:public void setRunningStatus(int)
 com.nagopy.android.disabledapps.util.AppsFilter:
     public static final int DISABLED
     public static final int DISABLABLE_AND_ENABLED_SYSTEM
     public static final int UNDISABLABLE_SYSTEM
     public static final int USER_APPS
     public static final int HIDE_APPS
+com.nagopy.android.disabledapps.util.AppsLoader:
+    74:80:public java.util.HashMap load()
+    90:131:private java.util.HashMap loadAll()
+    140:174:private java.util.HashMap loadRunningApps()
 com.nagopy.android.disabledapps.util.CommentsUtils:
     private static final java.lang.String PREFERENCE_FILE_NAME
