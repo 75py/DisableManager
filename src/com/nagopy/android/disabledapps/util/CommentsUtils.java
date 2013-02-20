@@ -19,12 +19,16 @@ package com.nagopy.android.disabledapps.util;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.nagopy.android.common.app.BaseObject;
-
 /**
  * コメントを保存・復元するクラス
  */
-public class CommentsUtils extends BaseObject {
+public class CommentsUtils {
+
+	/**
+	 * アプリケーションのコンテキスト
+	 */
+	@SuppressWarnings("unused")
+	private Context mContext;
 
 	/**
 	 * コメントを保存するSharedPreferencesのファイル名
@@ -42,8 +46,7 @@ public class CommentsUtils extends BaseObject {
 	 *           アプリケーションのコンテキスト
 	 */
 	public CommentsUtils(Context context) {
-		super(context);
-
+		mContext = context;
 		commentSharedPreferences = context.getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE);
 	}
 

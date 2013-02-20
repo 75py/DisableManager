@@ -1,20 +1,20 @@
 package com.nagopy.android.disabledapps.test.util.dpm;
 
-import com.nagopy.android.disabledapps.util.dpm.JudgeDisablable;
-
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.test.AndroidTestCase;
 
-public class JudgeDisablableTest extends AndroidTestCase {
+import com.nagopy.android.disabledapps.util.dpm.Disablable;
 
-	private JudgeDisablable mJudgeDisablable;
+public class DisablableTest extends AndroidTestCase {
+
+	private Disablable mJudgeDisablable;
 
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		mJudgeDisablable = JudgeDisablable.getInstance(getContext());
+		mJudgeDisablable = Disablable.getInstance(getContext());
 	}
 
 	public void testUserApp() {

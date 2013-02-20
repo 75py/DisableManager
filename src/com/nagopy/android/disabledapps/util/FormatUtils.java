@@ -16,17 +16,16 @@
 
 package com.nagopy.android.disabledapps.util;
 
-import com.nagopy.android.common.app.BaseObject;
-import com.nagopy.android.disabledapps.R;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.nagopy.android.disabledapps.R;
+
 /**
  * フォーマットをしたりするクラス
  */
-public class FormatUtils extends BaseObject {
+public class FormatUtils {
 
 	/**
 	 * コメントありのときに使うフォーマット
@@ -44,13 +43,17 @@ public class FormatUtils extends BaseObject {
 	private String lineBreak;
 
 	/**
+	 * アプリケーションのコンテキスト
+	 */
+	private Context mContext;
+
+	/**
 	 * コンストラクタ。設定を読み込んだりもする
 	 * @param context
 	 *           アプリケーションのコンテキスト
 	 */
 	public FormatUtils(Context context) {
-		super(context);
-
+		mContext = context;
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
 		formatWithComment = sp.getString(context.getString(R.string.pref_key_share_customformat_with_comment),
 				context.getString(R.string.pref_def_share_customformat_with_comment));
@@ -73,7 +76,7 @@ public class FormatUtils extends BaseObject {
 	 */
 	public String formatTest(String format) {
 		try {
-			Context context = getContext();
+			Context context = mContext;
 			String text = String.format(format, context.getString(R.string.app_name), context.getPackageName(),
 					"your comment");
 			return text + lineBreak + text;

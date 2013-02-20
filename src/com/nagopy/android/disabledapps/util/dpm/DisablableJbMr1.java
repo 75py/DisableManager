@@ -79,7 +79,7 @@ import android.os.UserManager;
  * 無効化できるかを判定するクラス（4.2以上用）
  */
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-class JudgeDisablableJbMr1 extends JudgeDisablable {
+class DisablableJbMr1 extends Disablable {
 	/**
 	 * PackageInfo
 	 */
@@ -90,7 +90,7 @@ class JudgeDisablableJbMr1 extends JudgeDisablable {
 	 * @param context
 	 *           アプリケーションのコンテキスト
 	 */
-	public JudgeDisablableJbMr1(Context context) {
+	public DisablableJbMr1(Context context) {
 		super(context);
 	}
 

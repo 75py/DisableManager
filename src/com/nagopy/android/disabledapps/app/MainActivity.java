@@ -415,6 +415,9 @@ public class MainActivity extends BaseActivity {
 		 */
 		private CommentsUtils mCommentsUtils;
 
+		/**
+		 * パッケージ名とコメントとステータスをうまいこと一つのテキストビューに表示するためのクラス
+		 */
 		private CustomSpannableStringBuilder mBuilder;
 
 		/**
@@ -423,6 +426,8 @@ public class MainActivity extends BaseActivity {
 		 *           アプリ一覧
 		 * @param commentsUtils
 		 *           CommentsUtilsを渡す
+		 * @param context
+		 *           アプリケーションのコンテキスト
 		 */
 		public AppsListAdapter(ArrayList<AppStatus> apps, CommentsUtils commentsUtils, Context context) {
 			super();
@@ -527,7 +532,7 @@ public class MainActivity extends BaseActivity {
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
 					// テスト実行時はコメントアウト
-					activity.mIconCacheHashMap = activity.mAppLoader.load();
+//					activity.mIconCacheHashMap = activity.mAppLoader.load();
 				}
 				return null;
 			}

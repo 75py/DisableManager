@@ -33,7 +33,7 @@ import android.preference.PreferenceManager;
 
 import com.nagopy.android.common.image.ImageUtils;
 import com.nagopy.android.disabledapps.R;
-import com.nagopy.android.disabledapps.util.dpm.JudgeDisablable;
+import com.nagopy.android.disabledapps.util.dpm.Disablable;
 
 /**
  * アプリ名などを読みこみ、アプリ一覧を取得するクラス。
@@ -95,7 +95,7 @@ public class AppsLoader {
 				.getInstalledApplications(PackageManager.GET_META_DATA);
 		int iconSize = ImageUtils.getIconSize(getContext());
 
-		JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
+		Disablable judgeDisablable = Disablable.getInstance(getContext());
 		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
 
 		// 現在動いてるプロセスを読みこんで、パッケージ名とフラグをHashmapに入れる
@@ -145,7 +145,7 @@ public class AppsLoader {
 		List<ActivityManager.RunningAppProcessInfo> applicationInfo = activityManager.getRunningAppProcesses();
 		int iconSize = ImageUtils.getIconSize(getContext());
 
-		JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
+		Disablable judgeDisablable = Disablable.getInstance(getContext());
 		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
 
 		for (RunningAppProcessInfo info : applicationInfo) {
@@ -204,7 +204,7 @@ public class AppsLoader {
 			PackageManager packageManager = getContext().getPackageManager();
 			PackageInfo packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
 			ApplicationInfo info = packageInfo.applicationInfo;
-			JudgeDisablable judgeDisablable = JudgeDisablable.getInstance(getContext());
+			Disablable judgeDisablable = Disablable.getInstance(getContext());
 
 			AppStatus newStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
 					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,

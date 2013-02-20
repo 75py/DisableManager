@@ -8,13 +8,28 @@ import android.text.style.TextAppearanceSpan;
 
 import com.nagopy.android.disabledapps.R;
 
+/**
+ * 一覧画面のリストで、コメント・ステータス・パッケージ名を一つのTextViewで表示するために見た目を弄ってうまいことやるためのクラス
+ */
 public class CustomSpannableStringBuilder {
 
 	// private SparseArray<TextAppearanceSpan> mTarray;
 
+	/**
+	 * プロセス表示で使うやつ
+	 */
 	private TextAppearanceSpan mTextAppearanceSpanProcess;
+
+	/**
+	 * コメント表示で使うやつ
+	 */
 	private TextAppearanceSpan mTextAppearanceSpanComment;
 
+	/**
+	 * コンストラクタ
+	 * @param context
+	 *           アプリケーションのコンテキスト
+	 */
 	public CustomSpannableStringBuilder(Context context) {
 		// mTarray = new SparseArray<TextAppearanceSpan>();
 		// mTarray.append(RunningAppProcessInfo.IMPORTANCE_BACKGROUND, new
@@ -36,6 +51,17 @@ public class CustomSpannableStringBuilder {
 		mTextAppearanceSpanComment = new TextAppearanceSpan(context, R.style.Comment);
 	}
 
+	/**
+	 * ラベルを取得する
+	 * @param packageName
+	 *           パッケージ名
+	 * @param comment
+	 *           コメント<br>
+	 *           ない場合はnull
+	 * @param status
+	 *           ステータス
+	 * @return うまいことやった結果。setTextでおｋ
+	 */
 	public CharSequence getLabelText(String packageName, String comment, int status) {
 		String statusText = getStatusText(status);
 		if (statusText == null && comment == null) {
@@ -64,6 +90,12 @@ public class CustomSpannableStringBuilder {
 		return mBuilder;
 	}
 
+	/**
+	 * ステータスのintをもとに文字列に変換
+	 * @param status
+	 *           {@link AppStatus#getRunningStatus()}
+	 * @return 文字列（Foregroundとか）
+	 */
 	private String getStatusText(int status) {
 		String packageStatusText;
 		switch (status) {

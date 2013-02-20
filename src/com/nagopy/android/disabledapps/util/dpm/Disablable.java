@@ -72,12 +72,15 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Build;
 
-import com.nagopy.android.common.app.BaseObject;
-
 /**
  * 「無効化ができるかを判定するためのクラス」の基になるクラス
  */
-public abstract class JudgeDisablable extends BaseObject {
+public abstract class Disablable {
+
+	/**
+	 * アプリケーションのコンテキスト
+	 */
+	private Context mContext;
 
 	/**
 	 * デバイスポリシーマネージャー<br>
@@ -113,8 +116,8 @@ public abstract class JudgeDisablable extends BaseObject {
 	 * @param context
 	 *           アプリケーションのコンストラクタ
 	 */
-	protected JudgeDisablable(Context context) {
-		super(context);
+	protected Disablable(Context context) {
+		setContext(context);
 		mPackageManager = context.getPackageManager();
 		mDevicePolicyManager = (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
 		try {
@@ -122,7 +125,6 @@ public abstract class JudgeDisablable extends BaseObject {
 					String.class);
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
-			log("NoSuchMethodException");
 		}
 
 		try {
@@ -165,17 +167,17 @@ public abstract class JudgeDisablable extends BaseObject {
 	 *           アプリケーションのコンテキスト
 	 * @return 4.2以上、4.0.以上、それ未満で別々のオブジェクトを返す
 	 */
-	public static JudgeDisablable getInstance(Context context) {
+	public static Disablable getInstance(Context context) {
 		int version = Build.VERSION.SDK_INT;
 		if (version >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
 			// 4.2以上
-			return new JudgeDisablableJbMr1(context);
+			return new DisablableJbMr1(context);
 		} else if (version >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
 			// 4.0.4以上
-			return new JudgeDisablableIcs(context);
+			return new DisablableIcs(context);
 		} else {
 			// 4.0.4未満の場合は、常にfalseを返すようにする
-			return new JudgeDisablable(context) {
+			return new Disablable(context) {
 				@Override
 				public boolean isDisablable(final ApplicationInfo applicationInfo) {
 					return false;
@@ -189,5 +191,20 @@ public abstract class JudgeDisablable extends BaseObject {
 	 */
 	public PackageManager getPackageManager() {
 		return mPackageManager;
+	}
+
+	/**
+	 * @return コンテキスト
+	 */
+	protected Context getContext() {
+		return mContext;
+	}
+
+	/**
+	 * @param mContext
+	 *           コンテキスト
+	 */
+	private void setContext(Context mContext) {
+		this.mContext = mContext;
 	}
 }
