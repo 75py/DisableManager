@@ -40,7 +40,7 @@
 
 ##ダウンロード
 
-http://ux.getuploader.com/75py/download/8/Disabled_Apps_List_v1.4.0.apk
+http://ux.getuploader.com/75py/download/9/Disabled_Apps_List_v1.4.0.apk
 
 <p>もう少し手直ししたらplayにあげる予定です。</p>
 
