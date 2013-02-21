@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">無効化アプリ一覧</string>
+    <string name="app_name">無効化マネージャー</string>
     <string name="menu_share">共有</string>
     <string name="menu_share_label">アプリ名</string>
     <string name="menu_share_package">パッケージ名</string>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Disabled Apps List</string>
+    <string name="app_name">Disable Manager</string>
     <string name="menu_share">Share</string>
     <string name="menu_share_label">Label</string>
     <string name="menu_share_package">Package name</string>

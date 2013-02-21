@@ -30,6 +30,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PowerManager;
+import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -123,6 +124,8 @@ public class MainActivity extends BaseActivity {
 	 */
 	private HideUtils mAppHideUtils;
 
+	private SparseIntArray mListPositionHolder = new SparseIntArray();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -210,7 +213,7 @@ public class MainActivity extends BaseActivity {
 		});
 
 		// テスト実行時はコメントアウト
-//		createReloadAsyncTask().execute();
+		createReloadAsyncTask().execute();
 
 		initActionBarTabs();
 	}
@@ -244,7 +247,13 @@ public class MainActivity extends BaseActivity {
 			}
 
 			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
+			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
+				MainActivity activity = weakReference.get();
+				if (activity != null) {
+					activity.mListPositionHolder.append((Integer) tab.getTag(),
+							activity.mListView.getFirstVisiblePosition());
+				}
+			}
 
 			@Override
 			public void onTabSelected(Tab tab, FragmentTransaction ft) {
@@ -338,15 +347,15 @@ public class MainActivity extends BaseActivity {
 			lastAppFilterCondition = key;
 		}
 		mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
-		mAdapter.getAppList();
 		mAdapter.notifyDataSetChanged();
-		// mListView.setSelection(0);
+		mListView.setSelection(mListPositionHolder.get((Integer) getActionBar().getSelectedTab().getTag()));
 
 		boolean isEmpty = mAdapter.getCount() < 1;
 		// CHECKSTYLE:OFF
 		mEmptyView.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
 		mListView.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
 		// CHECKSTYLE:ON
+
 	}
 
 	@Override

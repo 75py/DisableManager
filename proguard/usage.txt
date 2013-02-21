@@ -52,44 +52,44 @@ com.nagopy.android.common.util.WindowUtil
 com.nagopy.android.common.util.WindowUtil$DisplaySize
 com.nagopy.android.common.util.WindowUtil$DisplaySizeCompat
 com.nagopy.android.common.util.WindowUtil$DisplaySizeHoneyComb
-com.nagopy.android.disabledapps.BuildConfig
-com.nagopy.android.disabledapps.R
-com.nagopy.android.disabledapps.R$array
-com.nagopy.android.disabledapps.R$attr
-com.nagopy.android.disabledapps.R$bool
-com.nagopy.android.disabledapps.R$color
-com.nagopy.android.disabledapps.R$dimen
-com.nagopy.android.disabledapps.R$drawable
-com.nagopy.android.disabledapps.R$id
-com.nagopy.android.disabledapps.R$layout
-com.nagopy.android.disabledapps.R$menu
-com.nagopy.android.disabledapps.R$raw
-com.nagopy.android.disabledapps.R$string
-com.nagopy.android.disabledapps.R$style
-com.nagopy.android.disabledapps.R$styleable
-com.nagopy.android.disabledapps.R$xml
-com.nagopy.android.disabledapps.app.MainActivity$2$1$1:
+com.nagopy.android.disablemanager.BuildConfig
+com.nagopy.android.disablemanager.R
+com.nagopy.android.disablemanager.R$array
+com.nagopy.android.disablemanager.R$attr
+com.nagopy.android.disablemanager.R$bool
+com.nagopy.android.disablemanager.R$color
+com.nagopy.android.disablemanager.R$dimen
+com.nagopy.android.disablemanager.R$drawable
+com.nagopy.android.disablemanager.R$id
+com.nagopy.android.disablemanager.R$layout
+com.nagopy.android.disablemanager.R$menu
+com.nagopy.android.disablemanager.R$raw
+com.nagopy.android.disablemanager.R$string
+com.nagopy.android.disablemanager.R$style
+com.nagopy.android.disablemanager.R$styleable
+com.nagopy.android.disablemanager.R$xml
+com.nagopy.android.disablemanager.app.MainActivity$2$1$1:
     private static final long serialVersionUID
-com.nagopy.android.disabledapps.dialog.CommentEditDialog:
+com.nagopy.android.disablemanager.dialog.CommentEditDialog:
     private static final java.lang.String KEY_LABEL
     private static final java.lang.String KEY_DEFAULT_VALUE
     private static final java.lang.String KEY_LISTENER
-com.nagopy.android.disabledapps.dialog.FormatEditDialog:
+com.nagopy.android.disablemanager.dialog.FormatEditDialog:
     private static final java.lang.String KEY_TITLE
     private static final java.lang.String KEY_SUMMARY
     private static final java.lang.String KEY_DEFAULT_VALUE
     private static final java.lang.String KEY_LISTENER
-com.nagopy.android.disabledapps.dialog.ListDialogFragment:
+com.nagopy.android.disablemanager.dialog.ListDialogFragment:
     private static final java.lang.String KEY_ARRAYSTRING_RES_ID
     private static final java.lang.String KEY_DIALOG_TITLE
     private static final java.lang.String KEY_ON_ITEM_CLICK_LISTENER
-com.nagopy.android.disabledapps.util.AppStatus:
+com.nagopy.android.disablemanager.util.AppStatus:
     public static final int NULL_STATUS
-com.nagopy.android.disabledapps.util.AppsFilter:
+com.nagopy.android.disablemanager.util.AppsFilter:
     public static final int DISABLED
     public static final int DISABLABLE_AND_ENABLED_SYSTEM
     public static final int UNDISABLABLE_SYSTEM
     public static final int USER_APPS
     public static final int HIDE_APPS
-com.nagopy.android.disabledapps.util.CommentsUtils:
+com.nagopy.android.disablemanager.util.CommentsUtils:
     private static final java.lang.String PREFERENCE_FILE_NAME
