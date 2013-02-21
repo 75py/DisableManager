@@ -31,12 +31,10 @@
 無効化できない子たちはリストに並ばれると邪魔なので、手動にて「長押し→除外リストに追加」で除外してください。</p>
 
 ##要求パーミッション
-
-<p>ありません。</p>
+ありません。
 
 ##動作環境
-
-<p>4.0.3、4.1.2のエミュレータとNexus 7(4.2.2）で動作確認済み。OS4.0.3以上で動作可能です。</p>
+4.0.3、4.1.2のエミュレータとNexus 7(4.2.2）で動作確認済み。OS4.0.3以上で動作可能です。
 
 ##ダウンロード
 
@@ -45,6 +43,12 @@ http://ux.getuploader.com/75py/download/9/Disabled_Apps_List_v1.4.0.apk
 <p>もう少し手直ししたらplayにあげる予定です。</p>
 
 ##ライセンス
+
+EXCEPT icon resources, this source and related resources are available under Apache License 2.0.
+Unauthorized copying and replication of the icon files are strictly prohibited. All Rights Reserved.
+
+アイコンファイルを除いて、このソースコードや関連リソースはApache License 2.0とします。
+アイコンファイルの無断転載を禁止します。
 
 <pre>
 Copyright 2013 75py
@@ -61,8 +65,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 </pre>
-
-アイコンファイルの無断転載を禁止します。
 
 無効化できるアプリを判定する際に、Androidのソースコードの一部を利用しています。
 該当するクラスとライセンスは以下の通りです。

@@ -2,26 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nagopy.android.disabledapps"
     android:installLocation="auto"
-    android:versionCode="20130220"
-    android:versionName="1.4.0" >
+    android:versionCode="20130221"
+    android:versionName="1.0.0" >
 
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="17" />
-
-    <!-- <uses-permission android:name="android.permission.GET_TASKS" /> -->
-
-
-    <!--  -->
-    <!-- <instrumentation -->
-    <!-- android:name="com.google.android.testing.nativedriver.server.ServerInstrumentation" -->
-    <!-- android:targetPackage="com.nagopy.android.disabledapps" /> -->
-
-
-    <!-- <uses-permission android:name="android.permission.INTERNET" /> -->
-    <!-- <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
-    <!-- <uses-permission android:name="android.permission.DISABLE_KEYGUARD" /> -->
-
 
     <application
         android:allowBackup="true"

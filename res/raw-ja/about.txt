@@ -2,11 +2,11 @@
 dev.75py@gmail.com
 https://twitter.com/dev75py
 
-他のアプリ
+＜他のアプリ＞
 https://play.google.com/store/apps/developer?id=75py
 
 
-諸注意
+＜諸注意＞
 ・このアプリは非rootユーザー向けです。アプリの無効化はAndroid（ICS以上）のOS標準機能です。
 
 ・アプリの無効化は自己責任で行ってください。無効化可能アプリの中にも、無効化すべきでないアプリは存在します。
@@ -15,7 +15,7 @@ https://play.google.com/store/apps/developer?id=75py
 （SH-02Eにおいて、一部のドコモのアプリが無効化できないにも関わらず一覧に表示されるのを確認しています）
 
 
-・実行中アプリのステータスについて
+＜実行中アプリのステータスについて＞
 [Foreground]
 this process is running the foreground UI.
 [Perceptible]
@@ -30,10 +30,16 @@ this process process contains background code that is expendable.
 this process is empty of any actively running code. 
 
 
-ソースコード
+＜ソースコード＞
 https://github.com/75py/DisabledAppsList
 
-ライセンス
+＜ライセンス＞
+EXCEPT icon resources, this source and related resources are available under Apache License 2.0.
+Unauthorized copying and replication of the icon files are strictly prohibited. All Rights Reserved.
+
+アイコンファイルを除いて、このソースコードや関連リソースはApache License 2.0とします。
+アイコンファイルの無断転載を禁止します。
+
 Copyright 2013 75py
 
 Licensed under the Apache License, Version 2.0 (the "License");
