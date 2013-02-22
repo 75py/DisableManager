@@ -98,23 +98,12 @@ public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivit
 		assertEquals(expected, actual);
 	}
 
-	// public void test_sendIntent() throws Throwable {
-	// ActivityMonitor monitor = new ActivityMonitor(new IntentFilter(Intent.ACTION_SEND,
-	// "text/plain"), null,
-	// false);
-	// getInstrumentation().addMonitor(monitor);
-	//
-	// runTestOnUiThread(new Runnable() {
-	// @Override
-	// public void run() {
-	// mShareUtils.sendIntent("text", "title");
-	// }
-	// });
-	// getInstrumentation().waitForIdleSync();
-	//
-	// assertEquals(1, monitor.getHits());
-	// getInstrumentation().removeMonitor(monitor);
-	// }
+	public void test_createShareString_typeが不正の場合() throws Exception {
+		改行なしに変更();
+		String expected = mShareUtils.createShareString(R.id.menu_share_label, createTestList());
+		String actual = mShareUtils.createShareString(-75, createTestList());
+		assertEquals(expected, actual);
+	}
 
 	/**
 	 * @return テスト用のアプリリストを作成して返す

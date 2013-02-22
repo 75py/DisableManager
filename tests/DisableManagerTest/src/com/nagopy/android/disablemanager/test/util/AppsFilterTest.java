@@ -2,7 +2,10 @@ package com.nagopy.android.disablemanager.test.util;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Set;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.test.AndroidTestCase;
 
 import com.nagopy.android.disablemanager.util.AppStatus;
@@ -56,9 +59,35 @@ public class AppsFilterTest extends AndroidTestCase {
 		filter(AppsFilter.USER_APPS, userAppStatus);
 	}
 
-	@SuppressWarnings("unchecked")
+	public void test除外アプリの抽出() throws Exception {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
+		Set<String> arg1 = new HashSet<String>();
+		arg1.add("hide.package");
+		assertTrue(sp.edit().putStringSet("hides", arg1).commit());
+
+		AppStatus hideAppStatus = new AppStatus("_hide", "hide.package", false, false, false);
+		ArrayList<AppStatus> list = new ArrayList<AppStatus>();
+		for (AppStatus appStatus : testList) {
+			list.add(appStatus);
+		}
+		list.add(hideAppStatus);
+		mAppsFilter.setOriginalAppList(list);
+		ArrayList<AppStatus> result = mAppsFilter.execute(AppsFilter.HIDE_APPS, sp.getStringSet("hides", null));
+		assertEquals(1, result.size());
+		assertEquals(hideAppStatus, result.get(0));
+	}
+
+	public void testTypeが無効なとき() throws Exception {
+		try {
+			filter(-75, disabledAppStatus);
+		} catch (NullPointerException e) {
+			return;
+		}
+		fail("ぬるぽで落ちるはずなのに落ちない");
+	}
+
 	private void filter(int type, AppStatus appStatus) {
-		mAppsFilter.setOriginalAppList((ArrayList<AppStatus>) testList.clone());
+		mAppsFilter.setOriginalAppList(testList);
 		ArrayList<AppStatus> result = mAppsFilter.execute(type, new HashSet<String>());
 		assertEquals(1, result.size());
 		assertEquals(appStatus, result.get(0));

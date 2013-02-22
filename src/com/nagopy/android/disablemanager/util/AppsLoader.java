@@ -183,7 +183,7 @@ public class AppsLoader {
 	}
 
 	/**
-	 * ペッケージ名を指定してステータスを更新する
+	 * パッケージ名を指定してステータスを更新する
 	 * @param packageName
 	 *           パッケージ名
 	 */

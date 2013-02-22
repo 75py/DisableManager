@@ -38,4 +38,10 @@ public class AppStatusTest extends AndroidTestCase {
 		mAppStatus.setRunningStatus(1);
 		assertEquals(1, mAppStatus.getRunningStatus());
 	}
+
+	public void testToString() throws Exception {
+		String expected = "label:packageName, enabled:false, system:false, canDisable:false";
+		String actual = mAppStatus.toString();
+		assertEquals(expected, actual);
+	}
 }

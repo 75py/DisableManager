@@ -78,6 +78,12 @@ public class CustomSpannableStringBuilderTest extends AndroidTestCase {
 		てすと("comment\nVisible\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_VISIBLE);
 	}
 
+	public void testタイプが不正() throws Exception {
+		CharSequence expected = "package";
+		CharSequence actual = mCustomSpannableStringBuilder.getLabelText("package", null, -75);
+		assertEquals(expected, actual);
+	}
+
 	/**
 	 * @param expected
 	 */

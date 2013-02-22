@@ -164,4 +164,8 @@ public class AppsLoaderTest extends AndroidTestCase {
 		assertTrue("すべてのアプリのアイコン：" + allAppsIcon.size() + " 実行中：" + runningAppsIcon.size(),
 				allAppsIcon.size() > runningAppsIcon.size());
 	}
+
+	// 良いテストが思いつかん
+	// public void testUpdateStatus() throws Exception {
+	// }
 }
