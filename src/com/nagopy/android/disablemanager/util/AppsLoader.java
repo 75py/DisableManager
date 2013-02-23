@@ -162,12 +162,14 @@ public class AppsLoader {
 				icon.setBounds(0, 0, iconSize, iconSize);
 
 				AppStatus appStatus = new AppStatus(appInfo.loadLabel(packageManager).toString(),
-						info.processName, appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+				// info.processName, appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+						pkg, appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
 						judgeDisablable.isDisablable(appInfo));
 				appStatus.setRunningStatus(info.importance);
 
 				appsList.add(appStatus);
-				iconCache.put(info.processName, icon);
+				// iconCache.put(info.processName, icon);
+				iconCache.put(pkg, icon);
 			}
 
 		}
