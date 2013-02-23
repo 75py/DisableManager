@@ -1,4 +1,4 @@
-package com.nagopy.android.disablemanager.test.util;
+package com.nagopy.android.disablemanager.util;
 
 import java.util.ArrayList;
 import java.util.HashMap;

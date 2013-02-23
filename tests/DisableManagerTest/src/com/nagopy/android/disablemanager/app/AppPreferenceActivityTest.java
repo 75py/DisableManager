@@ -1,4 +1,4 @@
-package com.nagopy.android.disablemanager.test.app;
+package com.nagopy.android.disablemanager.app;
 
 import com.nagopy.android.disablemanager.app.AppPreferenceActivity;
 

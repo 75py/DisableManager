@@ -1,4 +1,4 @@
-package com.nagopy.android.disablemanager.test.util.dpm;
+package com.nagopy.android.disablemanager.util.dpm;
 
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;

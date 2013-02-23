@@ -1,4 +1,4 @@
-package com.nagopy.android.disablemanager.test.util;
+package com.nagopy.android.disablemanager.util;
 
 import com.nagopy.android.disablemanager.util.AppStatus;
 import com.nagopy.android.disablemanager.util.CustomSpannableStringBuilder;

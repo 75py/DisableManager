@@ -1,4 +1,4 @@
-package com.nagopy.android.disablemanager.test.util.share;
+package com.nagopy.android.disablemanager.util.share;
 
 import java.util.ArrayList;
 

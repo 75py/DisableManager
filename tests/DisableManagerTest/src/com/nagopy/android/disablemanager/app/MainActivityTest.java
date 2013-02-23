@@ -1,4 +1,4 @@
-package com.nagopy.android.disablemanager.test.app;
+package com.nagopy.android.disablemanager.app;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
