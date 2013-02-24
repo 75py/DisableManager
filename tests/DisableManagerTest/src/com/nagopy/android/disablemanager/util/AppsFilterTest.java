@@ -8,9 +8,6 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.test.AndroidTestCase;
 
-import com.nagopy.android.disablemanager.util.AppStatus;
-import com.nagopy.android.disablemanager.util.AppsFilter;
-
 public class AppsFilterTest extends AndroidTestCase {
 
 	private AppsFilter mAppsFilter;
@@ -31,10 +28,10 @@ public class AppsFilterTest extends AndroidTestCase {
 		mAppsFilter = new AppsFilter();
 
 		testList = new ArrayList<AppStatus>();
-		disabledAppStatus = new AppStatus("0_disabled", "com.disabled", false, true, true);
-		disablableAppStatus = new AppStatus("5_disablable", "com.disablable", true, true, true);
-		undisablableAppStatus = new AppStatus("a_undisablable", "com.undisablable", true, true, false);
-		userAppStatus = new AppStatus("x_user", "com.user", true, false, false);
+		disabledAppStatus = AppStatusTest.createMockAppStatus("0_disabled", "com.disabled", false, true, true);
+		disablableAppStatus = AppStatusTest.createMockAppStatus("5_disablable", "com.disablable", true, true, true);
+		undisablableAppStatus = AppStatusTest.createMockAppStatus("a_undisablable", "com.undisablable", true, true, false);
+		userAppStatus = AppStatusTest.createMockAppStatus("x_user", "com.user", true, false, false);
 		testList.add(undisablableAppStatus);
 		testList.add(disablableAppStatus);
 		testList.add(disabledAppStatus);
@@ -65,7 +62,7 @@ public class AppsFilterTest extends AndroidTestCase {
 		arg1.add("hide.package");
 		assertTrue(sp.edit().putStringSet("hides", arg1).commit());
 
-		AppStatus hideAppStatus = new AppStatus("_hide", "hide.package", false, false, false);
+		AppStatus hideAppStatus = AppStatusTest.createMockAppStatus("_hide", "hide.package", false, false, false);
 		ArrayList<AppStatus> list = new ArrayList<AppStatus>();
 		for (AppStatus appStatus : testList) {
 			list.add(appStatus);

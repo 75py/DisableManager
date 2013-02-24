@@ -28,7 +28,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PowerManager;
 import android.util.SparseIntArray;
 import android.view.Menu;
@@ -124,7 +126,7 @@ public class MainActivity extends BaseActivity {
 	 */
 	private HideUtils mAppHideUtils;
 
-	private SparseIntArray mListPositionHolder = new SparseIntArray();
+	private SparseIntArray mListPositionHolder = new SparseIntArray(5);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -250,22 +252,48 @@ public class MainActivity extends BaseActivity {
 			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 				MainActivity activity = weakReference.get();
 				if (activity != null) {
-					activity.mListPositionHolder.append((Integer) tab.getTag(),
+					activity.mListPositionHolder.put(((Integer) tab.getTag()).intValue(),
 							activity.mListView.getFirstVisiblePosition());
 				}
 			}
 
 			@Override
-			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				MainActivity activity = weakReference.get();
-				if (activity != null) {
-					int id = (Integer) tab.getTag();
-					if (activity.mAdapter != null) {
-						updateAppList(id);
-					} else {
-						activity.lastAppFilterCondition = id;
-					}
+			public void onTabSelected(final Tab tab, FragmentTransaction ft) {
+				final MainActivity activity = weakReference.get();
+				if (activity == null) {
+					return;
 				}
+
+				final Handler handler = new Handler();
+				AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+					@Override
+					protected Void doInBackground(Void... params) {
+						handler.post(new Runnable() {
+							@Override
+							public void run() {
+								int id = (Integer) tab.getTag();
+								if (activity.mAdapter != null) {
+									updateAppList(id);
+								} else {
+									activity.lastAppFilterCondition = id;
+								}
+							}
+						});
+						return null;
+					}
+
+					@Override
+					protected void onPostExecute(Void param) {
+						handler.post(new Runnable() {
+							@Override
+							public void run() {
+								activity.mListView.setSelection(activity.mListPositionHolder.get(((Integer) tab
+										.getTag()).intValue()));
+							}
+						});
+					}
+				};
+				task.execute();
 			}
 
 			@Override
@@ -348,7 +376,6 @@ public class MainActivity extends BaseActivity {
 		}
 		mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
 		mAdapter.notifyDataSetChanged();
-		mListView.setSelection(mListPositionHolder.get((Integer) getActionBar().getSelectedTab().getTag()));
 
 		boolean isEmpty = mAdapter.getCount() < 1;
 		// CHECKSTYLE:OFF

@@ -1,5 +1,7 @@
 package com.nagopy.android.disablemanager.util;
 
+import com.google.android.testing.mocking.AndroidMock;
+import com.google.android.testing.mocking.UsesMocks;
 import com.nagopy.android.disablemanager.util.AppStatus;
 
 import android.test.AndroidTestCase;
@@ -43,5 +45,19 @@ public class AppStatusTest extends AndroidTestCase {
 		String expected = "label:packageName, enabled:false, system:false, canDisable:false";
 		String actual = mAppStatus.toString();
 		assertEquals(expected, actual);
+	}
+
+	@UsesMocks(AppStatus.class)
+	public static AppStatus createMockAppStatus(String label, String packageName, boolean isEnabled,
+			boolean isSystem, boolean canDisable) {
+		AppStatus mock = AndroidMock.createMock(AppStatus.class, label, packageName, isEnabled, isSystem,
+				canDisable);
+		AndroidMock.expect(mock.getLabel()).andStubReturn(label);
+		AndroidMock.expect(mock.getPackageName()).andStubReturn(packageName);
+		AndroidMock.expect(mock.isEnabled()).andStubReturn(isEnabled);
+		AndroidMock.expect(mock.isSystem()).andStubReturn(isSystem);
+		AndroidMock.expect(mock.canDisable()).andStubReturn(canDisable);
+		AndroidMock.replay(mock);
+		return mock;
 	}
 }

@@ -2,27 +2,29 @@ package com.nagopy.android.disablemanager.util.share;
 
 import java.util.ArrayList;
 
-import android.content.Context;
+import android.app.Activity;
 import android.preference.PreferenceManager;
-import android.test.ActivityInstrumentationTestCase2;
+import android.test.AndroidTestCase;
 
+import com.google.android.testing.mocking.AndroidMock;
+import com.google.android.testing.mocking.UsesMocks;
 import com.nagopy.android.disablemanager.R;
-import com.nagopy.android.disablemanager.app.MainActivity;
 import com.nagopy.android.disablemanager.util.AppStatus;
-import com.nagopy.android.disablemanager.util.share.ShareUtils;
+import com.nagopy.android.disablemanager.util.AppStatusTest;
 
-public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivity> {
+public class ShareUtilsTest extends AndroidTestCase {
 
 	private ShareUtils mShareUtils;
 
-	public ShareUtilsTest() {
-		super(MainActivity.class);
-	}
-
 	@Override
+	@UsesMocks(Activity.class)
 	protected void setUp() throws Exception {
 		super.setUp();
-		mShareUtils = new ShareUtils(getActivity());
+		Activity activity = AndroidMock.createMock(Activity.class);
+		AndroidMock.expect(activity.getApplicationContext()).andStubReturn(getContext());
+		AndroidMock.makeThreadSafe(activity, true);
+		AndroidMock.replay(activity);
+		mShareUtils = new ShareUtils(activity);
 	}
 
 	public void test_isEmptyにnullでtrueが返る() throws Exception {
@@ -35,7 +37,7 @@ public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivit
 
 	public void test_isEmptyでアイテムがあればfalseが返る() throws Exception {
 		ArrayList<AppStatus> list = new ArrayList<AppStatus>();
-		list.add(new AppStatus("label", "packagename", false, false, false));
+		list.add(AppStatusTest.createMockAppStatus("label", "packagename", false, false, false));
 		assertFalse(mShareUtils.isEmpty(list));
 	}
 
@@ -110,8 +112,8 @@ public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivit
 	 */
 	private ArrayList<AppStatus> createTestList() {
 		ArrayList<AppStatus> list = new ArrayList<AppStatus>();
-		list.add(new AppStatus("label_1", "packagename_1", false, false, false));
-		list.add(new AppStatus("label_2", "packagename_2", false, false, false));
+		list.add(AppStatusTest.createMockAppStatus("label_1", "packagename_1", false, false, false));
+		list.add(AppStatusTest.createMockAppStatus("label_2", "packagename_2", false, false, false));
 		return list;
 	}
 
@@ -136,9 +138,5 @@ public class ShareUtilsTest extends ActivityInstrumentationTestCase2<MainActivit
 		assertTrue(PreferenceManager.getDefaultSharedPreferences(getContext()).edit()
 				.putString(getContext().getString(R.string.pref_key_share_customformat_without_comment), format)
 				.commit());
-	}
-
-	private Context getContext() {
-		return getActivity().getApplicationContext();
 	}
 }
