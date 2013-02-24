@@ -11,9 +11,10 @@ https://play.google.com/store/apps/developer?id=75py
 
 ・アプリの無効化は自己責任で行ってください。無効化可能アプリの中にも、無効化すべきでないアプリは存在します。
 
-・無効化が可能かどうかの判定は、Androidのソースをもとにそれっぽい処理をしているだけなので、端末によっては正常に動作しないかもしれません。対応には限界があるので、無効化できないやつが混ざっていても怒らないでください。
-（SH-02Eにおいて、一部のドコモのアプリが無効化できないにも関わらず一覧に表示されるのを確認しています）
-
+・無効化が可能かどうかの判定は、公開されているAndroidのソースコードを参考にしています。
+そのため、端末によっては正常に動作しないかもしれません。予めご了承ください。
+SH-02Eにおいて、一部のドコモアプリが無効化できないにも関わらず無効化可能として表示されることを確認しています。
+そういったアプリを見つけた場合は、お手数ですが手動で除外してください（長押し→「除外アプリに追加」）。
 
 ＜実行中アプリのステータスについて＞
 [Foreground]
@@ -31,7 +32,7 @@ this process is empty of any actively running code.
 
 
 ＜ソースコード＞
-https://github.com/75py/DisabledAppsList
+https://github.com/75py/DisableManager
 
 ＜ライセンス＞
 EXCEPT icon resources, this source and related resources are available under Apache License 2.0.

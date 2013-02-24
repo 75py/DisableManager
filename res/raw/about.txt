@@ -22,7 +22,7 @@ this process process contains background code that is expendable.
 this process is empty of any actively running code. 
 
 Source code
-https://github.com/75py/DisabledAppsList
+https://github.com/75py/DisableManager
 
 
 License

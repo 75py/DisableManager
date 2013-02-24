@@ -54,74 +54,95 @@ com.nagopy.android.disablemanager.app.MainActivity -> com.nagopy.android.disable
     com.nagopy.android.disablemanager.dialog.ListDialogFragment mListDialogFragment -> l
     com.nagopy.android.disablemanager.util.HideUtils mAppHideUtils -> m
     android.util.SparseIntArray mListPositionHolder -> n
-    131:219:void onCreate(android.os.Bundle) -> onCreate
-    223:231:void onRestart() -> onRestart
-    237:288:void initActionBarTabs() -> b
-    292:323:void onDestroy() -> onDestroy
-    327:334:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
-    344:359:void updateAppList(int) -> b
-    363:391:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    403:412:void sendShareIntent(int) -> c
-    528:528:com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog createReloadAsyncTask() -> c
-    100:100:java.util.HashMap access$0(com.nagopy.android.disablemanager.app.MainActivity) -> a
-    89:89:com.nagopy.android.disablemanager.app.MainActivity$AppsListAdapter access$1(com.nagopy.android.disablemanager.app.MainActivity) -> b
-    115:115:void access$2(com.nagopy.android.disablemanager.app.MainActivity,java.lang.String) -> a
-    120:120:com.nagopy.android.disablemanager.dialog.ListDialogFragment access$3(com.nagopy.android.disablemanager.app.MainActivity) -> c
-    105:105:com.nagopy.android.disablemanager.dialog.CommentEditDialog access$4(com.nagopy.android.disablemanager.app.MainActivity) -> d
-    110:110:com.nagopy.android.disablemanager.util.CommentsUtils access$5(com.nagopy.android.disablemanager.app.MainActivity) -> e
-    343:343:void access$6(com.nagopy.android.disablemanager.app.MainActivity,int) -> a
-    125:125:com.nagopy.android.disablemanager.util.HideUtils access$7(com.nagopy.android.disablemanager.app.MainActivity) -> f
-    127:127:android.util.SparseIntArray access$8(com.nagopy.android.disablemanager.app.MainActivity) -> g
-    74:74:android.widget.ListView access$9(com.nagopy.android.disablemanager.app.MainActivity) -> h
-    94:94:void access$10(com.nagopy.android.disablemanager.app.MainActivity,int) -> b
-    69:69:com.nagopy.android.disablemanager.util.AppsLoader access$11(com.nagopy.android.disablemanager.app.MainActivity) -> i
-    100:100:void access$12(com.nagopy.android.disablemanager.app.MainActivity,java.util.HashMap) -> a
-    84:84:com.nagopy.android.disablemanager.util.AppsFilter access$13(com.nagopy.android.disablemanager.app.MainActivity) -> j
-    94:94:int access$14(com.nagopy.android.disablemanager.app.MainActivity) -> k
-    89:89:void access$15(com.nagopy.android.disablemanager.app.MainActivity,com.nagopy.android.disablemanager.app.MainActivity$AppsListAdapter) -> a
-    79:79:android.widget.TextView access$16(com.nagopy.android.disablemanager.app.MainActivity) -> l
+    133:221:void onCreate(android.os.Bundle) -> onCreate
+    225:233:void onRestart() -> onRestart
+    239:316:void initActionBarTabs() -> b
+    320:351:void onDestroy() -> onDestroy
+    355:362:boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    372:386:void updateAppList(int) -> b
+    390:418:boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    430:439:void sendShareIntent(int) -> c
+    555:555:com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog createReloadAsyncTask() -> c
+    102:102:java.util.HashMap access$0(com.nagopy.android.disablemanager.app.MainActivity) -> a
+    91:91:com.nagopy.android.disablemanager.app.MainActivity$AppsListAdapter access$1(com.nagopy.android.disablemanager.app.MainActivity) -> b
+    117:117:void access$2(com.nagopy.android.disablemanager.app.MainActivity,java.lang.String) -> a
+    122:122:com.nagopy.android.disablemanager.dialog.ListDialogFragment access$3(com.nagopy.android.disablemanager.app.MainActivity) -> c
+    107:107:com.nagopy.android.disablemanager.dialog.CommentEditDialog access$4(com.nagopy.android.disablemanager.app.MainActivity) -> d
+    112:112:com.nagopy.android.disablemanager.util.CommentsUtils access$5(com.nagopy.android.disablemanager.app.MainActivity) -> e
+    371:371:void access$6(com.nagopy.android.disablemanager.app.MainActivity,int) -> a
+    127:127:com.nagopy.android.disablemanager.util.HideUtils access$7(com.nagopy.android.disablemanager.app.MainActivity) -> f
+    129:129:android.util.SparseIntArray access$8(com.nagopy.android.disablemanager.app.MainActivity) -> g
+    76:76:android.widget.ListView access$9(com.nagopy.android.disablemanager.app.MainActivity) -> h
+    96:96:void access$10(com.nagopy.android.disablemanager.app.MainActivity,int) -> b
+    71:71:com.nagopy.android.disablemanager.util.AppsLoader access$11(com.nagopy.android.disablemanager.app.MainActivity) -> i
+    102:102:void access$12(com.nagopy.android.disablemanager.app.MainActivity,java.util.HashMap) -> a
+    86:86:com.nagopy.android.disablemanager.util.AppsFilter access$13(com.nagopy.android.disablemanager.app.MainActivity) -> j
+    96:96:int access$14(com.nagopy.android.disablemanager.app.MainActivity) -> k
+    91:91:void access$15(com.nagopy.android.disablemanager.app.MainActivity,com.nagopy.android.disablemanager.app.MainActivity$AppsListAdapter) -> a
+    81:81:android.widget.TextView access$16(com.nagopy.android.disablemanager.app.MainActivity) -> l
 com.nagopy.android.disablemanager.app.MainActivity$1 -> com.nagopy.android.disablemanager.app.b:
     com.nagopy.android.disablemanager.app.MainActivity this$0 -> a
-    145:154:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    147:156:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
 com.nagopy.android.disablemanager.app.MainActivity$1TabListener -> com.nagopy.android.disablemanager.app.c:
     java.lang.ref.WeakReference weakReference -> b
     com.nagopy.android.disablemanager.app.MainActivity this$0 -> a
-    251:256:void onTabUnselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabUnselected
-    260:269:void onTabSelected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabSelected
-    272:272:void onTabReselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabReselected
-com.nagopy.android.disablemanager.app.MainActivity$2 -> com.nagopy.android.disablemanager.app.d:
+    253:258:void onTabUnselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabUnselected
+    262:297:void onTabSelected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabSelected
+    300:300:void onTabReselected(android.app.ActionBar$Tab,android.app.FragmentTransaction) -> onTabReselected
+    244:244:com.nagopy.android.disablemanager.app.MainActivity access$0(com.nagopy.android.disablemanager.app.MainActivity$1TabListener) -> a
+com.nagopy.android.disablemanager.app.MainActivity$1TabListener$1 -> com.nagopy.android.disablemanager.app.d:
+    com.nagopy.android.disablemanager.app.MainActivity$1TabListener this$1 -> a
+    android.os.Handler val$handler -> b
+    android.app.ActionBar$Tab val$tab -> c
+    com.nagopy.android.disablemanager.app.MainActivity val$activity -> d
+    271:282:java.lang.Void doInBackground(java.lang.Void[]) -> a
+    287:294:void onPostExecute(java.lang.Void) -> a
+    1:1:void onPostExecute(java.lang.Object) -> onPostExecute
+    1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    268:268:com.nagopy.android.disablemanager.app.MainActivity$1TabListener access$2(com.nagopy.android.disablemanager.app.MainActivity$1TabListener$1) -> a
+com.nagopy.android.disablemanager.app.MainActivity$1TabListener$1$1 -> com.nagopy.android.disablemanager.app.e:
+    com.nagopy.android.disablemanager.app.MainActivity$1TabListener$1 this$2 -> a
+    android.app.ActionBar$Tab val$tab -> b
+    com.nagopy.android.disablemanager.app.MainActivity val$activity -> c
+    274:280:void run() -> run
+com.nagopy.android.disablemanager.app.MainActivity$1TabListener$1$2 -> com.nagopy.android.disablemanager.app.f:
+    com.nagopy.android.disablemanager.app.MainActivity$1TabListener$1 this$2 -> a
+    com.nagopy.android.disablemanager.app.MainActivity val$activity -> b
+    android.app.ActionBar$Tab val$tab -> c
+    290:292:void run() -> run
+com.nagopy.android.disablemanager.app.MainActivity$2 -> com.nagopy.android.disablemanager.app.g:
     com.nagopy.android.disablemanager.app.MainActivity this$0 -> a
-    166:210:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
-    161:161:com.nagopy.android.disablemanager.app.MainActivity access$0(com.nagopy.android.disablemanager.app.MainActivity$2) -> a
-com.nagopy.android.disablemanager.app.MainActivity$2$1 -> com.nagopy.android.disablemanager.app.e:
+    168:212:boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+    163:163:com.nagopy.android.disablemanager.app.MainActivity access$0(com.nagopy.android.disablemanager.app.MainActivity$2) -> a
+com.nagopy.android.disablemanager.app.MainActivity$2$1 -> com.nagopy.android.disablemanager.app.h:
     com.nagopy.android.disablemanager.app.MainActivity$2 this$1 -> a
     java.lang.String val$label -> b
     java.lang.String val$packageName -> c
-    178:207:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-    175:175:com.nagopy.android.disablemanager.app.MainActivity$2 access$0(com.nagopy.android.disablemanager.app.MainActivity$2$1) -> a
-com.nagopy.android.disablemanager.app.MainActivity$2$1$1 -> com.nagopy.android.disablemanager.app.f:
+    180:209:void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+    177:177:com.nagopy.android.disablemanager.app.MainActivity$2 access$0(com.nagopy.android.disablemanager.app.MainActivity$2$1) -> a
+com.nagopy.android.disablemanager.app.MainActivity$2$1$1 -> com.nagopy.android.disablemanager.app.i:
     com.nagopy.android.disablemanager.app.MainActivity$2$1 this$2 -> a
     java.lang.String val$packageName -> b
-    187:190:void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
-    194:194:void onNegativeButtonClicked(android.content.DialogInterface) -> a
-com.nagopy.android.disablemanager.app.MainActivity$3 -> com.nagopy.android.disablemanager.app.g:
+    189:192:void onPositiveButtonClicked(android.content.DialogInterface,java.lang.String) -> a
+    196:196:void onNegativeButtonClicked(android.content.DialogInterface) -> a
+com.nagopy.android.disablemanager.app.MainActivity$3 -> com.nagopy.android.disablemanager.app.j:
     com.nagopy.android.disablemanager.app.MainActivity this$0 -> b
-    532:538:void onPreExecute() -> onPreExecute
-    542:546:java.lang.Void doInBackground(java.lang.Void[]) -> a
-    551:570:void onPostExecute(java.lang.Void) -> a
+    559:565:void onPreExecute() -> onPreExecute
+    569:573:java.lang.Void doInBackground(java.lang.Void[]) -> a
+    578:597:void onPostExecute(java.lang.Void) -> a
     1:1:java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
-com.nagopy.android.disablemanager.app.MainActivity$AppsListAdapter -> com.nagopy.android.disablemanager.app.h:
+com.nagopy.android.disablemanager.app.MainActivity$AppsListAdapter -> com.nagopy.android.disablemanager.app.k:
     java.util.ArrayList appsList -> b
     com.nagopy.android.disablemanager.util.CommentsUtils mCommentsUtils -> c
     com.nagopy.android.disablemanager.util.CustomSpannableStringBuilder mBuilder -> d
     com.nagopy.android.disablemanager.app.MainActivity this$0 -> a
-    453:453:java.util.ArrayList getAppList() -> a
-    462:463:void updateAppList(java.util.ArrayList) -> a
-    467:467:int getCount() -> getCount
-    472:472:java.lang.Object getItem(int) -> getItem
-    477:477:long getItemId(int) -> getItemId
-    483:504:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-com.nagopy.android.disablemanager.app.MainActivity$ViewHolder -> com.nagopy.android.disablemanager.app.i:
+    480:480:java.util.ArrayList getAppList() -> a
+    489:490:void updateAppList(java.util.ArrayList) -> a
+    494:494:int getCount() -> getCount
+    499:499:java.lang.Object getItem(int) -> getItem
+    504:504:long getItemId(int) -> getItemId
+    510:531:android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.nagopy.android.disablemanager.app.MainActivity$ViewHolder -> com.nagopy.android.disablemanager.app.l:
     android.widget.TextView labelTextView -> a
     android.widget.TextView pkgNameTextView -> b
 com.nagopy.android.disablemanager.dialog.CommentEditDialog -> e.a:
@@ -245,10 +266,10 @@ com.nagopy.android.disablemanager.util.AppsLoader -> f.j:
     66:66:android.content.Context getContext() -> d
     74:80:java.util.HashMap load() -> a
     90:131:java.util.HashMap loadAll() -> e
-    140:174:java.util.HashMap loadRunningApps() -> f
-    182:182:java.util.ArrayList getAppsList() -> b
-    191:216:void updateStatus(java.lang.String) -> a
-    222:223:void deallocate() -> c
+    140:176:java.util.HashMap loadRunningApps() -> f
+    184:184:java.util.ArrayList getAppsList() -> b
+    193:218:void updateStatus(java.lang.String) -> a
+    224:225:void deallocate() -> c
 com.nagopy.android.disablemanager.util.CommentsUtils -> f.k:
     android.content.Context mContext -> a
     android.content.SharedPreferences commentSharedPreferences -> b

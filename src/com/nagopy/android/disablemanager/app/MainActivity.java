@@ -303,10 +303,10 @@ public class MainActivity extends BaseActivity {
 
 		TabListener tabListener = new TabListener(this);
 
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
-				.setTabListener(tabListener));
 		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disablable_and_enabled_apps)
 				.setTag(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM).setTabListener(tabListener));
+		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
+				.setTabListener(tabListener));
 		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_undisablable_system)
 				.setTag(AppsFilter.UNDISABLABLE_SYSTEM).setTabListener(tabListener));
 		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_user_apps)
