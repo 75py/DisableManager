@@ -1,6 +1,6 @@
 <factorypath>
-    <factorypathentry kind="VARJAR" id="ANDROID_RUNTIME" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="ANDROID_FRAMEWORK_MOCKS" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="APP_UNDER_TEST" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="EXTJAR" id="D:\workspace\libs\AndroidMock-1.1.2\AndroidMockGenerator.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="ANDROID_RUNTIME" enabled="true" runInBatchMode="false"/>
 </factorypath>

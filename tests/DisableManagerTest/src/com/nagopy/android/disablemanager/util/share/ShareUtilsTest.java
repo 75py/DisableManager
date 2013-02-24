@@ -27,7 +27,7 @@ public class ShareUtilsTest extends AndroidTestCase {
 		mShareUtils = new ShareUtils(activity);
 	}
 
-	public void test_isEmptyにnullでtrueが返る() throws Exception {
+	public void test_isEmptyNull() throws Exception {
 		assertTrue(mShareUtils.isEmpty(null));
 	}
 
