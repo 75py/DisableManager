@@ -41,7 +41,7 @@ Unauthorized copying and replication of the icon files are strictly prohibited. 
 アイコンファイルを除いて、このソースコードや関連リソースはApache License 2.0とします。
 アイコンファイルの無断転載を禁止します。
 
-Copyright 2013 75py
+Copyright (C) 2013 75py
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

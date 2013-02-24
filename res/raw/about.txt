@@ -31,7 +31,7 @@ EXCEPT icon resources, this source and related resources are available under Apa
 Unauthorized copying and replication of the icon files are strictly prohibited. All Rights Reserved.
 
 
-Copyright 2013 75py
+Copyright (C) 2013 75py
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

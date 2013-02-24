@@ -49,7 +49,7 @@ Unauthorized copying and replication of the icon files are strictly prohibited. 
 アイコンファイルの無断転載を禁止します。
 
 <pre>
-Copyright 2013 75py
+Copyright (C) 2013 75py
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
