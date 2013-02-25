@@ -199,8 +199,9 @@ public class MainActivity extends BaseActivity {
 							mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
 							break;
 						case 1:
-							mAppHideUtils.updateHideList(packageName);
-							updateAppList(-1);
+							if (mAppHideUtils.updateHideList(packageName)) {
+								updateAppList(-1);
+							}
 							break;
 						default:
 							break;
