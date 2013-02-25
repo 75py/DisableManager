@@ -47,6 +47,21 @@ public class HideUtilsTest extends AndroidTestCase {
 		assertFalse(getSharedPreferences().getStringSet("hides", null).contains("test.hide"));
 	}
 
+	public void test追加() throws Exception {
+		SharedPreferences sp = getSharedPreferences();
+		assertTrue(sp.edit().clear().commit());
+
+		assertTrue(mHideUtils.updateHideList("test.hide1"));
+		assertTrue(getSharedPreferences().getStringSet("hides", null).contains("test.hide1"));
+		assertTrue(mHideUtils.getHideAppsList().contains("test.hide1"));
+
+		assertTrue(mHideUtils.updateHideList("test.hide2"));
+		assertTrue(getSharedPreferences().getStringSet("hides", null).contains("test.hide1"));
+		assertTrue(getSharedPreferences().getStringSet("hides", null).contains("test.hide2"));
+		assertTrue(mHideUtils.getHideAppsList().contains("test.hide1"));
+		assertTrue(mHideUtils.getHideAppsList().contains("test.hide2"));
+	}
+
 	/**
 	 * @return
 	 */

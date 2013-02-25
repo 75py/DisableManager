@@ -2172,9 +2172,9 @@ Methods (count = 27):
         [120] -> line 161
         [131] -> line 162
         [146] -> line 163
-        [161] -> line 218
-        [173] -> line 220
-        [177] -> line 221
+        [161] -> line 219
+        [173] -> line 221
+        [177] -> line 222
   + Method:       onRestart()V
     Access flags: 0x4
       = protected void onRestart()
@@ -2212,13 +2212,13 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 7)
-        [0] -> line 225
-        [4] -> line 226
-        [11] -> line 228
-        [22] -> line 229
-        [29] -> line 230
-        [34] -> line 231
-        [39] -> line 233
+        [0] -> line 226
+        [4] -> line 227
+        [11] -> line 229
+        [22] -> line 230
+        [29] -> line 231
+        [34] -> line 232
+        [39] -> line 234
       + Stack map table attribute (count = 1):
         - [39] Var: ..., Stack: (empty)
   + Method:       b()V
@@ -2336,25 +2336,25 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 19)
-        [0] -> line 239
-        [5] -> line 240
-        [10] -> line 304
-        [20] -> line 306
-        [30] -> line 307
-        [41] -> line 306
-        [44] -> line 308
-        [61] -> line 309
-        [65] -> line 308
-        [68] -> line 310
-        [78] -> line 311
-        [89] -> line 310
-        [92] -> line 312
-        [102] -> line 313
-        [114] -> line 312
-        [117] -> line 314
-        [135] -> line 315
-        [139] -> line 314
-        [142] -> line 316
+        [0] -> line 240
+        [5] -> line 241
+        [10] -> line 305
+        [20] -> line 307
+        [30] -> line 308
+        [41] -> line 307
+        [44] -> line 309
+        [61] -> line 310
+        [65] -> line 309
+        [68] -> line 311
+        [78] -> line 312
+        [89] -> line 311
+        [92] -> line 313
+        [102] -> line 314
+        [114] -> line 313
+        [117] -> line 315
+        [135] -> line 316
+        [139] -> line 315
+        [142] -> line 317
   + Method:       onDestroy()V
     Access flags: 0x4
       = protected void onDestroy()
@@ -2450,25 +2450,25 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 19)
-        [0] -> line 320
-        [4] -> line 321
-        [12] -> line 322
-        [20] -> line 323
-        [28] -> line 324
-        [33] -> line 326
-        [38] -> line 329
-        [43] -> line 331
-        [50] -> line 332
-        [55] -> line 334
-        [62] -> line 335
-        [67] -> line 337
-        [75] -> line 338
-        [80] -> line 339
-        [85] -> line 341
-        [90] -> line 348
-        [97] -> line 349
-        [102] -> line 350
-        [113] -> line 351
+        [0] -> line 321
+        [4] -> line 322
+        [12] -> line 323
+        [20] -> line 324
+        [28] -> line 325
+        [33] -> line 327
+        [38] -> line 330
+        [43] -> line 332
+        [50] -> line 333
+        [55] -> line 335
+        [62] -> line 336
+        [67] -> line 338
+        [75] -> line 339
+        [80] -> line 340
+        [85] -> line 342
+        [90] -> line 349
+        [97] -> line 350
+        [102] -> line 351
+        [113] -> line 352
   + Method:       onCreateOptionsMenu(Landroid/view/Menu;)Z
     Access flags: 0x1
       = public boolean onCreateOptionsMenu(android.view.Menu)
@@ -2512,15 +2512,15 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 9)
-        [0] -> line 355
-        [10] -> line 357
-        [11] -> line 358
-        [18] -> line 357
-        [19] -> line 359
-        [24] -> line 360
-        [30] -> line 361
-        [36] -> line 359
-        [47] -> line 362
+        [0] -> line 356
+        [10] -> line 358
+        [11] -> line 359
+        [18] -> line 358
+        [19] -> line 360
+        [24] -> line 361
+        [30] -> line 362
+        [36] -> line 360
+        [47] -> line 363
   + Method:       b(I)V
     Access flags: 0x2
       = private void b(int)
@@ -2593,15 +2593,15 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 9)
-        [0] -> line 372
-        [4] -> line 373
-        [12] -> line 375
-        [17] -> line 377
-        [39] -> line 378
-        [46] -> line 380
-        [63] -> line 382
-        [80] -> line 383
-        [97] -> line 386
+        [0] -> line 373
+        [4] -> line 374
+        [12] -> line 376
+        [17] -> line 378
+        [39] -> line 379
+        [46] -> line 381
+        [63] -> line 383
+        [80] -> line 384
+        [97] -> line 387
       + Stack map table attribute (count = 8):
         - [12] Var: ..., Stack: (empty)
         - [17] Var: ..., Stack: (empty)
@@ -2712,22 +2712,22 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 16)
-        [0] -> line 390
-        [48] -> line 395
-        [58] -> line 396
-        [60] -> line 399
-        [75] -> line 400
-        [83] -> line 401
-        [92] -> line 402
-        [104] -> line 403
-        [112] -> line 404
-        [124] -> line 406
-        [126] -> line 409
-        [138] -> line 410
-        [140] -> line 413
-        [154] -> line 414
-        [159] -> line 415
-        [161] -> line 418
+        [0] -> line 391
+        [48] -> line 396
+        [58] -> line 397
+        [60] -> line 400
+        [75] -> line 401
+        [83] -> line 402
+        [92] -> line 403
+        [104] -> line 404
+        [112] -> line 405
+        [124] -> line 407
+        [126] -> line 410
+        [138] -> line 411
+        [140] -> line 414
+        [154] -> line 415
+        [159] -> line 416
+        [161] -> line 419
       + Stack map table attribute (count = 8):
         - [48] Var: ..., Stack: (empty)
         - [60] Var: ..., Stack: (empty)
@@ -2792,14 +2792,14 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 8)
-        [0] -> line 430
-        [8] -> line 431
-        [17] -> line 432
-        [25] -> line 433
-        [35] -> line 434
-        [36] -> line 437
-        [44] -> line 438
-        [65] -> line 439
+        [0] -> line 431
+        [8] -> line 432
+        [17] -> line 433
+        [25] -> line 434
+        [35] -> line 435
+        [36] -> line 438
+        [44] -> line 439
+        [65] -> line 440
       + Stack map table attribute (count = 1):
         - [36] Var: ...[a:java/util/ArrayList][a:h/f], Stack: (empty)
   + Method:       c()Lb/a;
@@ -2821,7 +2821,7 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 555
+        [0] -> line 556
   + Method:       a(Lcom/nagopy/android/disablemanager/app/MainActivity;)Ljava/util/HashMap;
     Access flags: 0x1008
       = static synthetic java.util.HashMap a(com.nagopy.android.disablemanager.app.MainActivity)
@@ -2914,7 +2914,7 @@ Methods (count = 27):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 371
+        [0] -> line 372
   + Method:       f(Lcom/nagopy/android/disablemanager/app/MainActivity;)Lf/n;
     Access flags: 0x1008
       = static synthetic f.n f(com.nagopy.android.disablemanager.app.MainActivity)
@@ -3416,9 +3416,9 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 3)
-        [0] -> line 247
-        [9] -> line 248
-        [21] -> line 249
+        [0] -> line 248
+        [9] -> line 249
+        [21] -> line 250
   + Method:       onTabUnselected(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V
     Access flags: 0x1
       = public void onTabUnselected(android.app.ActionBar$Tab,android.app.FragmentTransaction)
@@ -3455,12 +3455,12 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 6)
-        [0] -> line 253
-        [11] -> line 254
-        [15] -> line 255
-        [29] -> line 256
-        [36] -> line 255
-        [39] -> line 258
+        [0] -> line 254
+        [11] -> line 255
+        [15] -> line 256
+        [29] -> line 257
+        [36] -> line 256
+        [39] -> line 259
       + Stack map table attribute (count = 1):
         - [39] Var: ...[a:com/nagopy/android/disablemanager/app/MainActivity], Stack: (empty)
   + Method:       onTabSelected(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V
@@ -3506,13 +3506,13 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 7)
-        [0] -> line 262
-        [11] -> line 263
-        [15] -> line 264
-        [16] -> line 267
-        [25] -> line 268
-        [39] -> line 296
-        [49] -> line 297
+        [0] -> line 263
+        [11] -> line 264
+        [15] -> line 265
+        [16] -> line 268
+        [25] -> line 269
+        [39] -> line 297
+        [49] -> line 298
       + Stack map table attribute (count = 1):
         - [16] Var: ...[a:com/nagopy/android/disablemanager/app/MainActivity], Stack: (empty)
   + Method:       onTabReselected(Landroid/app/ActionBar$Tab;Landroid/app/FragmentTransaction;)V
@@ -3524,7 +3524,7 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 300
+        [0] -> line 301
   + Method:       a(Lcom/nagopy/android/disablemanager/app/c;)Lcom/nagopy/android/disablemanager/app/MainActivity;
     Access flags: 0x1008
       = static synthetic com.nagopy.android.disablemanager.app.MainActivity a(com.nagopy.android.disablemanager.app.c)
@@ -3537,7 +3537,7 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 244
+        [0] -> line 245
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -3659,7 +3659,7 @@ Methods (count = 6):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [21] -> line 268
+        [21] -> line 269
   + Method:       a([Ljava/lang/Void;)Ljava/lang/Void;
     Access flags: 0x84
       = protected varargs java.lang.Void a(java.lang.Void[])
@@ -3688,8 +3688,8 @@ Methods (count = 6):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 271
-        [24] -> line 282
+        [0] -> line 272
+        [24] -> line 283
   + Method:       a(Ljava/lang/Void;)V
     Access flags: 0x4
       = protected void a(java.lang.Void)
@@ -3717,8 +3717,8 @@ Methods (count = 6):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 287
-        [24] -> line 294
+        [0] -> line 288
+        [24] -> line 295
   + Method:       onPostExecute(Ljava/lang/Object;)V
     Access flags: 0x1004
       = protected synthetic void onPostExecute(java.lang.Object)
@@ -3763,7 +3763,7 @@ Methods (count = 6):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 268
+        [0] -> line 269
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -3880,7 +3880,7 @@ Methods (count = 2):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [15] -> line 271
+        [15] -> line 272
   + Method:       run()V
     Access flags: 0x1
       = public void run()
@@ -3923,11 +3923,11 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 5)
-        [0] -> line 274
-        [14] -> line 275
-        [24] -> line 276
-        [41] -> line 278
-        [49] -> line 280
+        [0] -> line 275
+        [14] -> line 276
+        [24] -> line 277
+        [41] -> line 279
+        [49] -> line 281
       + Stack map table attribute (count = 2):
         - [41] Var: ...[i], Stack: (empty)
         - [49] Var: ..., Stack: (empty)
@@ -4048,7 +4048,7 @@ Methods (count = 2):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [15] -> line 287
+        [15] -> line 288
   + Method:       run()V
     Access flags: 0x1
       = public void run()
@@ -4081,10 +4081,10 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 4)
-        [0] -> line 290
-        [18] -> line 291
-        [27] -> line 290
-        [33] -> line 292
+        [0] -> line 291
+        [18] -> line 292
+        [27] -> line 291
+        [33] -> line 293
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -4319,8 +4319,8 @@ Methods (count = 3):
         [57] -> line 173
         [64] -> line 175
         [68] -> line 177
-        [94] -> line 211
-        [113] -> line 212
+        [94] -> line 212
+        [113] -> line 213
       + Stack map table attribute (count = 2):
         - [64] Var: ...[a:f/a][a:java/lang/String][a:java/lang/String], Stack: (empty)
         - [68] Var: ...[i], Stack: (empty)
@@ -4489,12 +4489,12 @@ Methods (count = 3):
     Access flags: 0x1
       = public void onItemClick(android.widget.AdapterView,android.view.View,int,long)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 170, locals = 6, stack = 5):
+    + Code attribute instructions (code length = 172, locals = 6, stack = 5):
       [0] iload_3 v3
-      [1] tableswitch (2 offsets, default=155) (target=156)
+      [1] tableswitch (2 offsets, default=157) (target=158)
         0: offset = 23, target = 24
         1: offset = 123, target = 124
-        default: offset = 155, target = 156
+        default: offset = 157, target = 158
       [24] aload_0 v0
       [25] getfield #11
         + Fieldref [com/nagopy/android/disablemanager/app/h.a Lcom/nagopy/android/disablemanager/app/g;]
@@ -4564,7 +4564,7 @@ Methods (count = 3):
         + String [CommentEditDialog]
       [118] invokevirtual #25
         + Methodref [e/a.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
-      [121] goto +35 (target=156)
+      [121] goto +37 (target=158)
       [124] aload_0 v0
       [125] getfield #11
         + Fieldref [com/nagopy/android/disablemanager/app/h.a Lcom/nagopy/android/disablemanager/app/g;]
@@ -4577,26 +4577,26 @@ Methods (count = 3):
         + Fieldref [com/nagopy/android/disablemanager/app/h.c Ljava/lang/String;]
       [138] invokevirtual #29
         + Methodref [f/n.a (Ljava/lang/String;)Z]
-      [141] pop
-      [142] aload_0 v0
-      [143] getfield #11
+      [141] ifeq +17 (target=158)
+      [144] aload_0 v0
+      [145] getfield #11
         + Fieldref [com/nagopy/android/disablemanager/app/h.a Lcom/nagopy/android/disablemanager/app/g;]
-      [146] invokestatic #20
+      [148] invokestatic #20
         + Methodref [com/nagopy/android/disablemanager/app/g.a (Lcom/nagopy/android/disablemanager/app/g;)Lcom/nagopy/android/disablemanager/app/MainActivity;]
-      [149] iconst_m1
-      [150] invokestatic #14
+      [151] iconst_m1
+      [152] invokestatic #14
         + Methodref [com/nagopy/android/disablemanager/app/MainActivity.a (Lcom/nagopy/android/disablemanager/app/MainActivity;I)V]
-      [153] goto +3 (target=156)
-      [156] aload_0 v0
-      [157] getfield #11
+      [155] goto +3 (target=158)
+      [158] aload_0 v0
+      [159] getfield #11
         + Fieldref [com/nagopy/android/disablemanager/app/h.a Lcom/nagopy/android/disablemanager/app/g;]
-      [160] invokestatic #20
+      [162] invokestatic #20
         + Methodref [com/nagopy/android/disablemanager/app/g.a (Lcom/nagopy/android/disablemanager/app/g;)Lcom/nagopy/android/disablemanager/app/MainActivity;]
-      [163] invokestatic #15
+      [165] invokestatic #15
         + Methodref [com/nagopy/android/disablemanager/app/MainActivity.c (Lcom/nagopy/android/disablemanager/app/MainActivity;)Le/j;]
-      [166] invokevirtual #26
+      [168] invokevirtual #26
         + Methodref [e/j.dismiss ()V]
-      [169] return
+      [171] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 11)
@@ -4607,14 +4607,15 @@ Methods (count = 3):
         [96] -> line 199
         [121] -> line 200
         [124] -> line 202
-        [142] -> line 203
-        [153] -> line 204
-        [156] -> line 208
-        [169] -> line 209
-      + Stack map table attribute (count = 3):
+        [144] -> line 203
+        [155] -> line 205
+        [158] -> line 209
+        [171] -> line 210
+      + Stack map table attribute (count = 4):
         - [24] Var: ..., Stack: (empty)
         - [124] Var: ..., Stack: (empty)
-        - [156] Var: ..., Stack: (empty)
+        - [155] Var: ..., Stack: (empty)
+        - [158] Var: ..., Stack: (empty)
   + Method:       a(Lcom/nagopy/android/disablemanager/app/h;)Lcom/nagopy/android/disablemanager/app/g;
     Access flags: 0x1008
       = static synthetic com.nagopy.android.disablemanager.app.g a(com.nagopy.android.disablemanager.app.h)
@@ -4957,7 +4958,7 @@ Methods (count = 5):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [5] -> line 555
+        [5] -> line 556
   + Method:       onPreExecute()V
     Access flags: 0x4
       = protected void onPreExecute()
@@ -4990,12 +4991,12 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 6)
-        [0] -> line 559
-        [13] -> line 560
-        [20] -> line 561
-        [26] -> line 562
-        [27] -> line 564
-        [31] -> line 565
+        [0] -> line 560
+        [13] -> line 561
+        [20] -> line 562
+        [26] -> line 563
+        [27] -> line 565
+        [31] -> line 566
       + Stack map table attribute (count = 1):
         - [27] Var: ...[a:android/os/PowerManager], Stack: (empty)
   + Method:       a([Ljava/lang/Void;)Ljava/lang/Void;
@@ -5024,10 +5025,10 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 4)
-        [0] -> line 569
-        [8] -> line 570
-        [12] -> line 571
-        [23] -> line 573
+        [0] -> line 570
+        [8] -> line 571
+        [12] -> line 572
+        [23] -> line 574
       + Stack map table attribute (count = 1):
         - [23] Var: ...[a:com/nagopy/android/disablemanager/app/MainActivity], Stack: (empty)
   + Method:       a(Ljava/lang/Void;)V
@@ -5132,24 +5133,24 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 18)
-        [0] -> line 578
-        [5] -> line 579
-        [13] -> line 580
-        [17] -> line 581
-        [29] -> line 582
-        [32] -> line 581
-        [38] -> line 583
-        [45] -> line 585
-        [58] -> line 586
-        [69] -> line 585
-        [72] -> line 587
-        [83] -> line 585
-        [86] -> line 588
-        [97] -> line 589
-        [108] -> line 590
-        [116] -> line 591
-        [128] -> line 594
-        [133] -> line 597
+        [0] -> line 579
+        [5] -> line 580
+        [13] -> line 581
+        [17] -> line 582
+        [29] -> line 583
+        [32] -> line 582
+        [38] -> line 584
+        [45] -> line 586
+        [58] -> line 587
+        [69] -> line 586
+        [72] -> line 588
+        [83] -> line 586
+        [86] -> line 589
+        [97] -> line 590
+        [108] -> line 591
+        [116] -> line 592
+        [128] -> line 595
+        [133] -> line 598
       + Stack map table attribute (count = 3):
         - [125] Var: ...[a:com/nagopy/android/disablemanager/app/MainActivity], Stack: (empty)
         - [128] Var: ..., Stack: (empty)
@@ -5369,12 +5370,12 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 6)
-        [0] -> line 469
-        [5] -> line 470
-        [9] -> line 471
-        [14] -> line 472
-        [19] -> line 473
-        [32] -> line 474
+        [0] -> line 470
+        [5] -> line 471
+        [9] -> line 472
+        [14] -> line 473
+        [19] -> line 474
+        [32] -> line 475
   + Method:       a()Ljava/util/ArrayList;
     Access flags: 0x1
       = public java.util.ArrayList a()
@@ -5387,7 +5388,7 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 480
+        [0] -> line 481
   + Method:       a(Ljava/util/ArrayList;)V
     Access flags: 0x1
       = public void a(java.util.ArrayList)
@@ -5401,8 +5402,8 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 489
-        [5] -> line 490
+        [0] -> line 490
+        [5] -> line 491
   + Method:       getCount()I
     Access flags: 0x1
       = public int getCount()
@@ -5417,7 +5418,7 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 494
+        [0] -> line 495
   + Method:       getItem(I)Ljava/lang/Object;
     Access flags: 0x1
       = public java.lang.Object getItem(int)
@@ -5433,7 +5434,7 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 499
+        [0] -> line 500
   + Method:       getItemId(I)J
     Access flags: 0x1
       = public long getItemId(int)
@@ -5445,7 +5446,7 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 504
+        [0] -> line 505
   + Method:       getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
     Access flags: 0x1
       = public android.view.View getView(int,android.view.View,android.view.ViewGroup)
@@ -5580,24 +5581,24 @@ Methods (count = 7):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 18)
-        [0] -> line 510
-        [4] -> line 511
-        [18] -> line 512
-        [28] -> line 513
-        [42] -> line 514
-        [56] -> line 515
-        [67] -> line 517
-        [78] -> line 520
-        [88] -> line 521
-        [93] -> line 522
-        [106] -> line 523
-        [126] -> line 524
-        [139] -> line 525
-        [145] -> line 527
-        [159] -> line 528
-        [175] -> line 529
-        [180] -> line 528
-        [186] -> line 531
+        [0] -> line 511
+        [4] -> line 512
+        [18] -> line 513
+        [28] -> line 514
+        [42] -> line 515
+        [56] -> line 516
+        [67] -> line 518
+        [78] -> line 521
+        [88] -> line 522
+        [93] -> line 523
+        [106] -> line 524
+        [126] -> line 525
+        [139] -> line 526
+        [145] -> line 528
+        [159] -> line 529
+        [175] -> line 530
+        [180] -> line 529
+        [186] -> line 532
       + Stack map table attribute (count = 3):
         - [67] Var: ..., Stack: (empty)
         - [78] Var: ...[a:com/nagopy/android/disablemanager/app/l], Stack: (empty)
@@ -5657,7 +5658,7 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 539
+        [0] -> line 540
   - Method:       <init>(Lcom/nagopy/android/disablemanager/app/l;)V
     Access flags: 0x1000
       = synthetic l(com.nagopy.android.disablemanager.app.l)
@@ -5670,7 +5671,7 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 539
+        [0] -> line 540
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -11697,14 +11698,16 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 70):
+Constant Pool (count = 93):
   + String [hides]
   + Class [android/content/SharedPreferences]
   + Class [android/content/SharedPreferences$Editor]
   + Class [android/preference/PreferenceManager]
   + Class [f/n]
   + Class [java/lang/Object]
+  + Class [java/lang/String]
   + Class [java/util/HashSet]
+  + Class [java/util/Iterator]
   + Class [java/util/Set]
   + Fieldref [f/n.a Landroid/content/Context;]
   + Fieldref [f/n.b Landroid/content/SharedPreferences;]
@@ -11712,14 +11715,21 @@ Constant Pool (count = 70):
   + Methodref [f/n.a ()Ljava/util/Set;]
   + Methodref [java/lang/Object.<init> ()V]
   + Methodref [java/util/HashSet.<init> ()V]
+  + Methodref [java/util/HashSet.<init> (I)V]
+  + Methodref [java/util/HashSet.add (Ljava/lang/Object;)Z]
   + InterfaceMethodref [android/content/SharedPreferences.edit ()Landroid/content/SharedPreferences$Editor;]
   + InterfaceMethodref [android/content/SharedPreferences.getStringSet (Ljava/lang/String;Ljava/util/Set;)Ljava/util/Set;]
   + InterfaceMethodref [android/content/SharedPreferences$Editor.commit ()Z]
   + InterfaceMethodref [android/content/SharedPreferences$Editor.putStringSet (Ljava/lang/String;Ljava/util/Set;)Landroid/content/SharedPreferences$Editor;]
+  + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+  + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
   + InterfaceMethodref [java/util/Set.add (Ljava/lang/Object;)Z]
   + InterfaceMethodref [java/util/Set.contains (Ljava/lang/Object;)Z]
+  + InterfaceMethodref [java/util/Set.iterator ()Ljava/util/Iterator;]
   + InterfaceMethodref [java/util/Set.remove (Ljava/lang/Object;)Z]
+  + InterfaceMethodref [java/util/Set.size ()I]
   + NameAndType [<init> ()V]
+  + NameAndType [<init> (I)V]
   + NameAndType [a ()Ljava/util/Set;]
   + NameAndType [a Landroid/content/Context;]
   + NameAndType [add (Ljava/lang/Object;)Z]
@@ -11729,12 +11739,20 @@ Constant Pool (count = 70):
   + NameAndType [edit ()Landroid/content/SharedPreferences$Editor;]
   + NameAndType [getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
   + NameAndType [getStringSet (Ljava/lang/String;Ljava/util/Set;)Ljava/util/Set;]
+  + NameAndType [hasNext ()Z]
+  + NameAndType [iterator ()Ljava/util/Iterator;]
+  + NameAndType [next ()Ljava/lang/Object;]
   + NameAndType [putStringSet (Ljava/lang/String;Ljava/util/Set;)Landroid/content/SharedPreferences$Editor;]
   + NameAndType [remove (Ljava/lang/Object;)Z]
+  + NameAndType [size ()I]
+  + Utf8 [()I]
   + Utf8 [()Landroid/content/SharedPreferences$Editor;]
+  + Utf8 [()Ljava/lang/Object;]
+  + Utf8 [()Ljava/util/Iterator;]
   + Utf8 [()Ljava/util/Set;]
   + Utf8 [()V]
   + Utf8 [()Z]
+  + Utf8 [(I)V]
   + Utf8 [(Landroid/content/Context;)Landroid/content/SharedPreferences;]
   + Utf8 [(Landroid/content/Context;)V]
   + Utf8 [(Ljava/lang/Object;)Z]
@@ -11761,12 +11779,18 @@ Constant Pool (count = 70):
   + Utf8 [f/n]
   + Utf8 [getDefaultSharedPreferences]
   + Utf8 [getStringSet]
+  + Utf8 [hasNext]
   + Utf8 [hides]
+  + Utf8 [iterator]
   + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/String]
   + Utf8 [java/util/HashSet]
+  + Utf8 [java/util/Iterator]
   + Utf8 [java/util/Set]
+  + Utf8 [next]
   + Utf8 [putStringSet]
   + Utf8 [remove]
+  + Utf8 [size]
 
 Fields (count = 2):
   + Field:        a Landroid/content/Context;
@@ -11783,17 +11807,17 @@ Methods (count = 3):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 18, locals = 2, stack = 2):
       [0] aload_0 v0
-      [1] invokespecial #13
+      [1] invokespecial #15
         + Methodref [java/lang/Object.<init> ()V]
       [4] aload_0 v0
       [5] aload_1 v1
-      [6] putfield #9
+      [6] putfield #11
         + Fieldref [f/n.a Landroid/content/Context;]
       [9] aload_0 v0
       [10] aload_1 v1
-      [11] invokestatic #11
+      [11] invokestatic #13
         + Methodref [android/preference/PreferenceManager.getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
-      [14] putfield #10
+      [14] putfield #12
         + Fieldref [f/n.b Landroid/content/SharedPreferences;]
       [17] return
       Code attribute exceptions (count = 0):
@@ -11809,36 +11833,36 @@ Methods (count = 3):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 57, locals = 3, stack = 3):
       [0] aload_0 v0
-      [1] invokevirtual #12
+      [1] invokevirtual #14
         + Methodref [f/n.a ()Ljava/util/Set;]
       [4] astore_2 v2
       [5] aload_2 v2
       [6] aload_1 v1
-      [7] invokeinterface #20
+      [7] invokeinterface #26
         + InterfaceMethodref [java/util/Set.contains (Ljava/lang/Object;)Z]
       [12] ifeq +14 (target=26)
       [15] aload_2 v2
       [16] aload_1 v1
-      [17] invokeinterface #21
+      [17] invokeinterface #28
         + InterfaceMethodref [java/util/Set.remove (Ljava/lang/Object;)Z]
       [22] pop
       [23] goto +11 (target=34)
       [26] aload_2 v2
       [27] aload_1 v1
-      [28] invokeinterface #19
+      [28] invokeinterface #25
         + InterfaceMethodref [java/util/Set.add (Ljava/lang/Object;)Z]
       [33] pop
       [34] aload_0 v0
-      [35] getfield #10
+      [35] getfield #12
         + Fieldref [f/n.b Landroid/content/SharedPreferences;]
-      [38] invokeinterface #15
+      [38] invokeinterface #19
         + InterfaceMethodref [android/content/SharedPreferences.edit ()Landroid/content/SharedPreferences$Editor;]
       [43] ldc #1
         + String [hides]
       [45] aload_2 v2
-      [46] invokeinterface #18
+      [46] invokeinterface #22
         + InterfaceMethodref [android/content/SharedPreferences$Editor.putStringSet (Ljava/lang/String;Ljava/util/Set;)Landroid/content/SharedPreferences$Editor;]
-      [51] invokeinterface #17
+      [51] invokeinterface #21
         + InterfaceMethodref [android/content/SharedPreferences$Editor.commit ()Z]
       [56] ireturn
       Code attribute exceptions (count = 0):
@@ -11848,7 +11872,7 @@ Methods (count = 3):
         [5] -> line 44
         [15] -> line 45
         [26] -> line 47
-        [34] -> line 49
+        [34] -> line 50
       + Stack map table attribute (count = 2):
         - [26] Var: ...[a:java/util/Set], Stack: (empty)
         - [34] Var: ..., Stack: (empty)
@@ -11856,24 +11880,63 @@ Methods (count = 3):
     Access flags: 0x1
       = public java.util.Set a()
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 19, locals = 1, stack = 4):
+    + Code attribute instructions (code length = 73, locals = 5, stack = 4):
       [0] aload_0 v0
-      [1] getfield #10
+      [1] getfield #12
         + Fieldref [f/n.b Landroid/content/SharedPreferences;]
       [4] ldc #1
         + String [hides]
-      [6] new #7
+      [6] new #8
         + Class [java/util/HashSet]
       [9] dup
-      [10] invokespecial #14
+      [10] invokespecial #16
         + Methodref [java/util/HashSet.<init> ()V]
-      [13] invokeinterface #16
+      [13] invokeinterface #20
         + InterfaceMethodref [android/content/SharedPreferences.getStringSet (Ljava/lang/String;Ljava/util/Set;)Ljava/util/Set;]
-      [18] areturn
+      [18] astore_1 v1
+      [19] new #8
+        + Class [java/util/HashSet]
+      [22] dup
+      [23] aload_1 v1
+      [24] invokeinterface #29
+        + InterfaceMethodref [java/util/Set.size ()I]
+      [29] invokespecial #17
+        + Methodref [java/util/HashSet.<init> (I)V]
+      [32] astore_2 v2
+      [33] aload_1 v1
+      [34] invokeinterface #27
+        + InterfaceMethodref [java/util/Set.iterator ()Ljava/util/Iterator;]
+      [39] astore v4
+      [41] goto +20 (target=61)
+      [44] aload v4
+      [46] invokeinterface #24
+        + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
+      [51] checkcast #7
+        + Class [java/lang/String]
+      [54] astore_3 v3
+      [55] aload_2 v2
+      [56] aload_3 v3
+      [57] invokevirtual #18
+        + Methodref [java/util/HashSet.add (Ljava/lang/Object;)Z]
+      [60] pop
+      [61] aload v4
+      [63] invokeinterface #23
+        + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
+      [68] ifne -24 (target=44)
+      [71] aload_2 v2
+      [72] areturn
       Code attribute exceptions (count = 0):
-      Code attribute attributes (attribute count = 1):
-      + Line number table attribute (count = 1)
-        [0] -> line 56
+      Code attribute attributes (attribute count = 2):
+      + Line number table attribute (count = 6)
+        [0] -> line 57
+        [19] -> line 58
+        [33] -> line 59
+        [55] -> line 60
+        [61] -> line 59
+        [71] -> line 62
+      + Stack map table attribute (count = 2):
+        - [44] Var: [a:f/n][a:java/util/Set][a:java/util/HashSet][T][a:java/util/Iterator], Stack: 
+        - [61] Var: ..., Stack: (empty)
 
 Class file attributes (count = 1):
   + Source file attribute:

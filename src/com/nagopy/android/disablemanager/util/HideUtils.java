@@ -40,20 +40,26 @@ public class HideUtils {
 	 * @return 保存が成功すればtrue
 	 */
 	public boolean updateHideList(String packageName) {
-		Set<String> hides = getHideAppsList();
-		if (hides.contains(packageName)) {
-			hides.remove(packageName);
+		Set<String> set = getHideAppsList();
+		if (set.contains(packageName)) {
+			set.remove(packageName);
 		} else {
-			hides.add(packageName);
+			set.add(packageName);
 		}
-		return sp.edit().putStringSet("hides", hides).commit();
+
+		return sp.edit().putStringSet("hides", set).commit();
 	}
 
 	/**
 	 * @return 非表示アプリ一覧
 	 */
 	public Set<String> getHideAppsList() {
-		return sp.getStringSet("hides", new HashSet<String>());
+		Set<String> savedHashSet = sp.getStringSet("hides", new HashSet<String>());
+		HashSet<String> returnHashSet = new HashSet<String>(savedHashSet.size());
+		for (String packageName : savedHashSet) {
+			returnHashSet.add(packageName);
+		}
+		return returnHashSet;
 	}
 
 }
