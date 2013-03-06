@@ -3,13 +3,27 @@ package com.nagopy.android.disablemanager.util.sort;
 import java.util.Comparator;
 
 import com.nagopy.android.disablemanager.util.AppStatus;
+import com.nagopy.android.disablemanager.util.ChangedDateUtils;
 
-class AppComparator implements Comparator<AppStatus> {
+/**
+ * ラベル・パッケージ名でソートする
+ */
+final class AppComparator implements Comparator<AppStatus> {
 
+	/**
+	 * インスタンス
+	 */
 	private static final AppComparator instance = new AppComparator();
 
+	/**
+	 * コンストラクタ
+	 */
 	private AppComparator() {}
 
+	/**
+	 * インスタンスを取得する
+	 * @return インスタンス
+	 */
 	public static final Comparator<AppStatus> getInstance() {
 		return instance;
 	}

@@ -8,10 +8,21 @@ import android.content.SharedPreferences;
  */
 public class ChangedDateUtils {
 
+	/**
+	 * アプリケーションのコンテキスト
+	 */
 	private Context mContext;
 
+	/**
+	 * 変更日時を保存しておくSP
+	 */
 	private SharedPreferences mSharedPreferences;
 
+	/**
+	 * コンストラクタ
+	 * @param context
+	 *           アプリケーションのコンテキスト
+	 */
 	public ChangedDateUtils(Context context) {
 		mContext = context;
 		mSharedPreferences = context.getSharedPreferences("date", Context.MODE_PRIVATE);

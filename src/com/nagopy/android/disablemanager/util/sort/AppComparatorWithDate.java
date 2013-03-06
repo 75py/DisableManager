@@ -5,14 +5,32 @@ import java.util.Comparator;
 import com.nagopy.android.disablemanager.util.AppStatus;
 import com.nagopy.android.disablemanager.util.ChangedDateUtils;
 
-class AppComparatorWithDate implements Comparator<AppStatus> {
+/**
+ * 変更された日付でソート、それ以外はラベル・パッケージ名でソートする
+ */
+final class AppComparatorWithDate implements Comparator<AppStatus> {
 
+	/**
+	 * インスタンス
+	 */
 	private static final AppComparatorWithDate instance = new AppComparatorWithDate();
 
+	/**
+	 * @see ChangedDateUtils
+	 */
 	private ChangedDateUtils mDateUtils;
 
+	/**
+	 * コンストラクタ
+	 */
 	private AppComparatorWithDate() {}
 
+	/**
+	 * インスタンスを取得する
+	 * @param dateUtils
+	 *           {@link ChangedDateUtils}
+	 * @return インスタンス
+	 */
 	public static final Comparator<AppStatus> getInstance(ChangedDateUtils dateUtils) {
 		instance.mDateUtils = dateUtils;
 		return instance;

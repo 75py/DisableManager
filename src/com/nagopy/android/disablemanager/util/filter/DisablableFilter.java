@@ -9,8 +9,17 @@ import com.nagopy.android.disablemanager.util.AppStatus;
  */
 class DisablableFilter extends AppsFilterCondition {
 
+	/**
+	 * インスタンス
+	 */
 	private static final AppsFilterCondition instance = new DisablableFilter();
 
+	/**
+	 * インスタンスの取得
+	 * @param hideSet
+	 *           除外アプリの一覧
+	 * @return インスタンス
+	 */
 	public static AppsFilterCondition getInstance(Set<String> hideSet) {
 		instance.setHideSet(hideSet);
 		return instance;

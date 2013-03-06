@@ -20,12 +20,14 @@ import java.util.Set;
 
 import com.nagopy.android.disablemanager.util.AppStatus;
 
-
 /**
  * フィルターかける条件を指定するためのインターフェース
  */
 abstract class AppsFilterCondition {
 
+	/**
+	 * 除外アプリの一覧
+	 */
 	private Set<String> hideSet;
 
 	/**
@@ -35,10 +37,18 @@ abstract class AppsFilterCondition {
 	 */
 	public abstract boolean valid(AppStatus appStatus);
 
+	/**
+	 * @return 除外アプリの一覧
+	 */
 	protected Set<String> getHideSet() {
 		return hideSet;
 	}
 
+	/**
+	 * 除外アプリをセットする
+	 * @param hideSet
+	 *           除外アプリ一覧
+	 */
 	protected void setHideSet(Set<String> hideSet) {
 		this.hideSet = hideSet;
 	}

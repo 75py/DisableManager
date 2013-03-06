@@ -29,8 +29,14 @@ public class CustomSpannableStringBuilder {
 	 */
 	private TextAppearanceSpan mTextAppearanceSpanDate;
 
+	/**
+	 * @see ChangedDateUtils
+	 */
 	private ChangedDateUtils mDateUtils;
 
+	/**
+	 * アプリケーションのコンテキスト
+	 */
 	private Context mContext;
 
 	/**
