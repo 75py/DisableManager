@@ -93,7 +93,7 @@ public class AppsFilterTest extends AndroidTestCase {
 	}
 
 	public void testソート() throws Exception {
-		ArrayList<AppStatus> sorted = mAppsFilter.sort(testList);
+		ArrayList<AppStatus> sorted = mAppsFilter.sortByLabelAndPackageName(testList);
 		assertEquals(disabledAppStatus, sorted.get(0));
 		assertEquals(disablableAppStatus, sorted.get(1));
 		assertEquals(undisablableAppStatus, sorted.get(2));

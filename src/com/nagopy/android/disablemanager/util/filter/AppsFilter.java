@@ -67,13 +67,13 @@ public class AppsFilter {
 	}
 
 	/**
-	 * ソートする<br>
+	 * ラベル名とパッケージ名でソートする<br>
 	 * 大文字小文字は区別しない
 	 * @param list
 	 *           ソートしたいリスト
 	 * @return ソート後のリスト
 	 */
-	public ArrayList<AppStatus> sort(ArrayList<AppStatus> list) {
+	public ArrayList<AppStatus> sortByLabelAndPackageName(ArrayList<AppStatus> list) {
 		Comparator<AppStatus> comparator = new Comparator<AppStatus>() {
 			@Override
 			public int compare(final AppStatus obj0, final AppStatus obj1) {
@@ -98,7 +98,7 @@ public class AppsFilter {
 
 	/**
 	 * すべてのアプリを登録しておく<br>
-	 * ソートする場合は {@link #sort(ArrayList)}
+	 * ソートする場合は {@link #sortByLabelAndPackageName(ArrayList)}
 	 * @param original
 	 *           登録するリスト
 	 */
@@ -110,7 +110,7 @@ public class AppsFilter {
 	 * オリジナルをソートする
 	 */
 	public void sortOriginalAppList() {
-		sort(originalAppList);
+		sortByLabelAndPackageName(originalAppList);
 	}
 
 	/**
