@@ -31,51 +31,51 @@ public class CustomSpannableStringBuilderTest extends AndroidTestCase {
 	}
 
 	public void testコメントなし・ステータスあり_background() throws Exception {
-		てすと("Background\npackage", null, RunningAppProcessInfo.IMPORTANCE_BACKGROUND);
+		doTest("Background\npackage", null, RunningAppProcessInfo.IMPORTANCE_BACKGROUND);
 	}
 
 	public void testコメントなし・ステータスあり_IMPORTANCE_EMPTY() throws Exception {
-		てすと("Empty\npackage", null, RunningAppProcessInfo.IMPORTANCE_EMPTY);
+		doTest("Empty\npackage", null, RunningAppProcessInfo.IMPORTANCE_EMPTY);
 	}
 
 	public void testコメントなし・ステータスあり_foreground() throws Exception {
-		てすと("Foreground\npackage", null, RunningAppProcessInfo.IMPORTANCE_FOREGROUND);
+		doTest("Foreground\npackage", null, RunningAppProcessInfo.IMPORTANCE_FOREGROUND);
 	}
 
 	public void testコメントなし・ステータスあり_perceptible() throws Exception {
-		てすと("Perceptible\npackage", null, RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE);
+		doTest("Perceptible\npackage", null, RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE);
 	}
 
 	public void testコメントなし・ステータスあり_service() throws Exception {
-		てすと("Service\npackage", null, RunningAppProcessInfo.IMPORTANCE_SERVICE);
+		doTest("Service\npackage", null, RunningAppProcessInfo.IMPORTANCE_SERVICE);
 	}
 
 	public void testコメントなし・ステータスあり_visible() throws Exception {
-		てすと("Visible\npackage", null, RunningAppProcessInfo.IMPORTANCE_VISIBLE);
+		doTest("Visible\npackage", null, RunningAppProcessInfo.IMPORTANCE_VISIBLE);
 	}
 
 	public void testコメントあり・ステータスあり_background() throws Exception {
-		てすと("comment\nBackground\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_BACKGROUND);
+		doTest("comment\nBackground\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_BACKGROUND);
 	}
 
 	public void testコメントあり・ステータスあり_IMPORTANCE_EMPTY() throws Exception {
-		てすと("comment\nEmpty\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_EMPTY);
+		doTest("comment\nEmpty\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_EMPTY);
 	}
 
 	public void testコメントあり・ステータスあり_foreground() throws Exception {
-		てすと("comment\nForeground\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_FOREGROUND);
+		doTest("comment\nForeground\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_FOREGROUND);
 	}
 
 	public void testコメントあり・ステータスあり_perceptible() throws Exception {
-		てすと("comment\nPerceptible\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE);
+		doTest("comment\nPerceptible\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE);
 	}
 
 	public void testコメントあり・ステータスあり_service() throws Exception {
-		てすと("comment\nService\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_SERVICE);
+		doTest("comment\nService\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_SERVICE);
 	}
 
 	public void testコメントあり・ステータスあり_visible() throws Exception {
-		てすと("comment\nVisible\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_VISIBLE);
+		doTest("comment\nVisible\npackage", "comment", RunningAppProcessInfo.IMPORTANCE_VISIBLE);
 	}
 
 	public void testタイプが不正() throws Exception {
@@ -87,7 +87,7 @@ public class CustomSpannableStringBuilderTest extends AndroidTestCase {
 	/**
 	 * @param expected
 	 */
-	private void てすと(String expected, String comment, int type) {
+	private void doTest(String expected, String comment, int type) {
 		String actual = mCustomSpannableStringBuilder.getLabelText("package", comment, type).toString();
 		assertEquals(expected, actual);
 	}

@@ -1,14 +1,15 @@
-package com.nagopy.android.disablemanager.util;
+package com.nagopy.android.disablemanager.util.filter;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.nagopy.android.disablemanager.util.filter.AppsFilter;
-
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.test.AndroidTestCase;
+
+import com.nagopy.android.disablemanager.util.AppStatus;
+import com.nagopy.android.disablemanager.util.AppStatusTest;
 
 public class AppsFilterTest extends AndroidTestCase {
 
@@ -31,8 +32,10 @@ public class AppsFilterTest extends AndroidTestCase {
 
 		testList = new ArrayList<AppStatus>();
 		disabledAppStatus = AppStatusTest.createMockAppStatus("0_disabled", "com.disabled", false, true, true);
-		disablableAppStatus = AppStatusTest.createMockAppStatus("5_disablable", "com.disablable", true, true, true);
-		undisablableAppStatus = AppStatusTest.createMockAppStatus("a_undisablable", "com.undisablable", true, true, false);
+		disablableAppStatus = AppStatusTest.createMockAppStatus("5_disablable", "com.disablable", true, true,
+				true);
+		undisablableAppStatus = AppStatusTest.createMockAppStatus("a_undisablable", "com.undisablable", true,
+				true, false);
 		userAppStatus = AppStatusTest.createMockAppStatus("x_user", "com.user", true, false, false);
 		testList.add(undisablableAppStatus);
 		testList.add(disablableAppStatus);
@@ -64,7 +67,8 @@ public class AppsFilterTest extends AndroidTestCase {
 		arg1.add("hide.package");
 		assertTrue(sp.edit().putStringSet("hides", arg1).commit());
 
-		AppStatus hideAppStatus = AppStatusTest.createMockAppStatus("_hide", "hide.package", false, false, false);
+		AppStatus hideAppStatus = AppStatusTest.createMockAppStatus("_hide", "hide.package", false, false,
+				false);
 		ArrayList<AppStatus> list = new ArrayList<AppStatus>();
 		for (AppStatus appStatus : testList) {
 			list.add(appStatus);
@@ -90,13 +94,5 @@ public class AppsFilterTest extends AndroidTestCase {
 		ArrayList<AppStatus> result = mAppsFilter.execute(type, new HashSet<String>());
 		assertEquals(1, result.size());
 		assertEquals(appStatus, result.get(0));
-	}
-
-	public void testソート() throws Exception {
-		ArrayList<AppStatus> sorted = mAppsFilter.sortByLabelAndPackageName(testList);
-		assertEquals(disabledAppStatus, sorted.get(0));
-		assertEquals(disablableAppStatus, sorted.get(1));
-		assertEquals(undisablableAppStatus, sorted.get(2));
-		assertEquals(userAppStatus, sorted.get(3));
 	}
 }
