@@ -53,9 +53,9 @@ import com.nagopy.android.disablemanager.dialog.ListDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ListDialogFragment.OnListDialogItemClickListener;
 import com.nagopy.android.disablemanager.util.AppStatus;
 import com.nagopy.android.disablemanager.util.AppsLoader;
+import com.nagopy.android.disablemanager.util.ChangedDateUtils;
 import com.nagopy.android.disablemanager.util.CommentsUtils;
 import com.nagopy.android.disablemanager.util.CustomSpannableStringBuilder;
-import com.nagopy.android.disablemanager.util.ChangedDateUtils;
 import com.nagopy.android.disablemanager.util.HideUtils;
 import com.nagopy.android.disablemanager.util.filter.AppsFilter;
 import com.nagopy.android.disablemanager.util.share.ShareUtils;
@@ -128,14 +128,15 @@ public class MainActivity extends BaseActivity {
 	 */
 	private HideUtils mAppHideUtils;
 
+	/**
+	 * リストの表示位置を記憶するためのホルダー
+	 */
 	private SparseIntArray mListPositionHolder = new SparseIntArray(5);
 
-	private ChangedDateUtils mDateUtils;
-
 	/**
-	 * onRestartでtrueになっている場合は再読み込みする
+	 * @see ChangedDateUtils
 	 */
-	private boolean forceReload;
+	private ChangedDateUtils mDateUtils;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -242,8 +243,8 @@ public class MainActivity extends BaseActivity {
 			mAppFilter.sortOriginalAppList();
 			updateAppList(-1);
 			shouldReloadPackageNameString = null;
-		} else if (forceReload) {
-			forceReload = false;
+		} else if (getSP().getBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, false)) {
+			getSP().edit().putBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, false).apply();
 			createReloadAsyncTask().execute();
 		}
 	}
@@ -437,7 +438,6 @@ public class MainActivity extends BaseActivity {
 		case R.id.menu_preference:
 			Intent intent = new Intent(getApplicationContext(), AppPreferenceActivity.class);
 			startActivity(intent);
-			forceReload = true;
 			return true;
 
 		default:
