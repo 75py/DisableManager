@@ -18,7 +18,6 @@ com.nagopy.android.common.app.BasePreferenceActivity:
     25:25:public int getIntFromResources(int)
     30:30:public boolean getBooleanFromResources(int)
     35:36:public void log(java.lang.Object)
-    40:40:public android.content.SharedPreferences getSP()
     45:46:public void showToast(java.lang.Object)
 com.nagopy.android.common.app.BaseService
 com.nagopy.android.common.app.DebugInterface
@@ -68,6 +67,8 @@ com.nagopy.android.disablemanager.R$string
 com.nagopy.android.disablemanager.R$style
 com.nagopy.android.disablemanager.R$styleable
 com.nagopy.android.disablemanager.R$xml
+com.nagopy.android.disablemanager.app.AppPreferenceActivity:
+    public static final java.lang.String KEY_RELOAD_FLAG
 com.nagopy.android.disablemanager.app.MainActivity$2$1$1:
     private static final long serialVersionUID
 com.nagopy.android.disablemanager.dialog.CommentEditDialog:
@@ -85,11 +86,13 @@ com.nagopy.android.disablemanager.dialog.ListDialogFragment:
     private static final java.lang.String KEY_ON_ITEM_CLICK_LISTENER
 com.nagopy.android.disablemanager.util.AppStatus:
     public static final int NULL_STATUS
-com.nagopy.android.disablemanager.util.AppsFilter:
+com.nagopy.android.disablemanager.util.CommentsUtils:
+    private static final java.lang.String PREFERENCE_FILE_NAME
+com.nagopy.android.disablemanager.util.filter.AppsFilter:
     public static final int DISABLED
     public static final int DISABLABLE_AND_ENABLED_SYSTEM
     public static final int UNDISABLABLE_SYSTEM
     public static final int USER_APPS
     public static final int HIDE_APPS
-com.nagopy.android.disablemanager.util.CommentsUtils:
-    private static final java.lang.String PREFERENCE_FILE_NAME
+com.nagopy.android.disablemanager.util.sort.AppsSorter:
+    18:18:private AppsSorter()
