@@ -52,11 +52,11 @@ import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDia
 import com.nagopy.android.disablemanager.dialog.ListDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ListDialogFragment.OnListDialogItemClickListener;
 import com.nagopy.android.disablemanager.util.AppStatus;
-import com.nagopy.android.disablemanager.util.AppsFilter;
 import com.nagopy.android.disablemanager.util.AppsLoader;
 import com.nagopy.android.disablemanager.util.CommentsUtils;
 import com.nagopy.android.disablemanager.util.CustomSpannableStringBuilder;
 import com.nagopy.android.disablemanager.util.HideUtils;
+import com.nagopy.android.disablemanager.util.filter.AppsFilter;
 import com.nagopy.android.disablemanager.util.share.ShareUtils;
 
 /**

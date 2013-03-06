@@ -14,18 +14,32 @@
  * limitations under the License.
  */
 
-package com.nagopy.android.disablemanager.util;
+package com.nagopy.android.disablemanager.util.filter;
+
+import java.util.Set;
+
+import com.nagopy.android.disablemanager.util.AppStatus;
 
 
 /**
  * フィルターかける条件を指定するためのインターフェース
  */
-interface AppsFilterCondition {
+abstract class AppsFilterCondition {
+
+	private Set<String> hideSet;
 
 	/**
 	 * @param appStatus
 	 *           判定するアプリのステータス
 	 * @return フィルターの条件に適していればtrue
 	 */
-	boolean valid(AppStatus appStatus);
+	public abstract boolean valid(AppStatus appStatus);
+
+	protected Set<String> getHideSet() {
+		return hideSet;
+	}
+
+	protected void setHideSet(Set<String> hideSet) {
+		this.hideSet = hideSet;
+	}
 }

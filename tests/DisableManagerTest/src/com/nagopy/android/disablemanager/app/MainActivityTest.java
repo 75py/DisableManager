@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.nagopy.android.disablemanager.R;
 import com.nagopy.android.disablemanager.app.MainActivity;
-import com.nagopy.android.disablemanager.util.AppsFilter;
+import com.nagopy.android.disablemanager.util.filter.AppsFilter;
 
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
 

@@ -14,12 +14,14 @@
  * limitations under the License.
  */
 
-package com.nagopy.android.disablemanager.util;
+package com.nagopy.android.disablemanager.util.filter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Set;
+
+import com.nagopy.android.disablemanager.util.AppStatus;
 
 /**
  * アプリ一覧を、条件を指定してフィルタリングするクラス
@@ -141,47 +143,15 @@ public class AppsFilter {
 	private AppsFilterCondition createFilterCondition(int key, final Set<String> hides) {
 		switch (key) {
 		case DISABLED:
-			return new AppsFilterCondition() {
-				@Override
-				public boolean valid(final AppStatus appStatus) {
-					// 無効化済み
-					return !appStatus.isEnabled() && !hides.contains(appStatus.getPackageName());
-				}
-			};
+			return DisabledFilter.getInstance(hides);
 		case DISABLABLE_AND_ENABLED_SYSTEM:
-			return new AppsFilterCondition() {
-				@Override
-				public boolean valid(final AppStatus appStatus) {
-					// システムで、無効化可能で、まだ有効なアプリ
-					return appStatus.isSystem() && appStatus.canDisable() && appStatus.isEnabled()
-							&& !hides.contains(appStatus.getPackageName());
-				}
-			};
+			return DisablableFilter.getInstance(hides);
 		case UNDISABLABLE_SYSTEM:
-			return new AppsFilterCondition() {
-				@Override
-				public boolean valid(final AppStatus appStatus) {
-					// 無効化できないシステムアプリ
-					return appStatus.isSystem() && !appStatus.canDisable()
-							&& !hides.contains(appStatus.getPackageName());
-				}
-			};
+			return UndisablableFilter.getInstance(hides);
 		case USER_APPS:
-			return new AppsFilterCondition() {
-				@Override
-				public boolean valid(final AppStatus appStatus) {
-					// 通常のアプリ
-					return !appStatus.isSystem() && !hides.contains(appStatus.getPackageName());
-				}
-			};
+			return UserAppsFilter.getInstance(hides);
 		case HIDE_APPS:
-			return new AppsFilterCondition() {
-				@Override
-				public boolean valid(AppStatus appStatus) {
-					return hides.contains(appStatus.getPackageName());
-				}
-			};
-
+			return HidedFilter.getInstance(hides);
 		default:
 			return null;
 		}
