@@ -2,6 +2,7 @@ package com.nagopy.android.disablemanager.util;
 
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.TextAppearanceSpan;
@@ -12,8 +13,6 @@ import com.nagopy.android.disablemanager.R;
  * 一覧画面のリストで、コメント・ステータス・パッケージ名を一つのTextViewで表示するために見た目を弄ってうまいことやるためのクラス
  */
 public class CustomSpannableStringBuilder {
-
-	// private SparseArray<TextAppearanceSpan> mTarray;
 
 	/**
 	 * プロセス表示で使うやつ
@@ -26,29 +25,25 @@ public class CustomSpannableStringBuilder {
 	private TextAppearanceSpan mTextAppearanceSpanComment;
 
 	/**
+	 * 変更日時表示で使うやつ
+	 */
+	private TextAppearanceSpan mTextAppearanceSpanDate;
+
+	private ChangedDateUtils mDateUtils;
+
+	private Context mContext;
+
+	/**
 	 * コンストラクタ
 	 * @param context
 	 *           アプリケーションのコンテキスト
 	 */
 	public CustomSpannableStringBuilder(Context context) {
-		// mTarray = new SparseArray<TextAppearanceSpan>();
-		// mTarray.append(RunningAppProcessInfo.IMPORTANCE_BACKGROUND, new
-		// TextAppearanceSpan(mContext,
-		// R.style.ProcessStatus_Background));
-		// mTarray.append(RunningAppProcessInfo.IMPORTANCE_EMPTY, new TextAppearanceSpan(mContext,
-		// R.style.ProcessStatus_Empty));
-		// mTarray.append(RunningAppProcessInfo.IMPORTANCE_FOREGROUND, new
-		// TextAppearanceSpan(mContext,
-		// R.style.ProcessStatus_Foreground));
-		// mTarray.append(RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE, new
-		// TextAppearanceSpan(mContext,
-		// R.style.ProcessStatus_Perceptible));
-		// mTarray.append(RunningAppProcessInfo.IMPORTANCE_SERVICE, new TextAppearanceSpan(mContext,
-		// R.style.ProcessStatus_Service));
-		// mTarray.append(RunningAppProcessInfo.IMPORTANCE_VISIBLE, new TextAppearanceSpan(mContext,
-		// R.style.ProcessStatus_Visible));
-		mTextAppearanceSpanProcess = new TextAppearanceSpan(context, R.style.ProcessStatus);
-		mTextAppearanceSpanComment = new TextAppearanceSpan(context, R.style.Comment);
+		mContext = context;
+		mDateUtils = new ChangedDateUtils(context);
+		mTextAppearanceSpanProcess = new TextAppearanceSpan(context, R.style.TextAppearance_ProcessStatus);
+		mTextAppearanceSpanComment = new TextAppearanceSpan(context, R.style.TextAppearance_Comment);
+		mTextAppearanceSpanDate = new TextAppearanceSpan(context, R.style.TextAppearance_Date);
 	}
 
 	/**
@@ -64,7 +59,13 @@ public class CustomSpannableStringBuilder {
 	 */
 	public CharSequence getLabelText(String packageName, String comment, int status) {
 		String statusText = getStatusText(status);
-		if (statusText == null && comment == null) {
+		String changedDate = null;
+		if (PreferenceManager.getDefaultSharedPreferences(mContext).getBoolean(
+				mContext.getString(R.string.pref_key_general_show_changed_date),
+				mContext.getResources().getBoolean(R.bool.pref_def_general_show_changed_date))) {
+			changedDate = mDateUtils.getString(packageName);
+		}
+		if (statusText == null && comment == null && changedDate == null) {
 			return packageName;
 		}
 
@@ -83,6 +84,15 @@ public class CustomSpannableStringBuilder {
 			mBuilder.append(statusText);
 			int end = mBuilder.length();
 			mBuilder.setSpan(mTextAppearanceSpanProcess, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+		}
+		if (changedDate != null) {
+			if (mBuilder.length() > 0) {
+				mBuilder.append("\n");
+			}
+			int start = mBuilder.length();
+			mBuilder.append(changedDate);
+			int end = mBuilder.length();
+			mBuilder.setSpan(mTextAppearanceSpanDate, start, end, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 		}
 		mBuilder.append("\n");
 		mBuilder.append(packageName);

@@ -188,8 +188,9 @@ public class AppsLoader {
 	 * パッケージ名を指定してステータスを更新する
 	 * @param packageName
 	 *           パッケージ名
+	 * @return パッケージの有効・無効が切り替わった場合はtrueを返す
 	 */
-	public void updateStatus(String packageName) {
+	public boolean updateStatus(String packageName) {
 		AppStatus appStatus = null;
 		for (AppStatus status : appsList) {
 			if (status.getPackageName().equals(packageName)) {
@@ -198,18 +199,19 @@ public class AppsLoader {
 			}
 		}
 		if (appStatus == null) {
-			return;
+			return false;
 		}
 
 		try {
 			PackageManager packageManager = getContext().getPackageManager();
 			PackageInfo packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
 			ApplicationInfo info = packageInfo.applicationInfo;
-			Disablable judgeDisablable = Disablable.getInstance(getContext());
-			appStatus.setEnabled(judgeDisablable.isDisablable(info));
+			boolean update = appStatus.isEnabled() != info.enabled;
+			appStatus.setEnabled(info.enabled);
+			return update;
 		} catch (PackageManager.NameNotFoundException e) {
 			appsList.remove(appStatus);
-			// e.printStackTrace();
+			return false;
 		}
 	}
 

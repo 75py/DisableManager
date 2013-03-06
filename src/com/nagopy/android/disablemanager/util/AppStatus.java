@@ -99,6 +99,15 @@ public class AppStatus {
 	}
 
 	/**
+	 * 有効・無効のステータスを設定する
+	 * @param enabled
+	 *           有効かどうか
+	 */
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	/**
 	 * @return システムアプリならtrue、そうでなければfalse
 	 */
 	public boolean isSystem() {

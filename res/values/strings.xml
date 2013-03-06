@@ -59,6 +59,20 @@
     <string name="pref_title_general_show_only_running_packages">Show only running process</string>
     <string name="pref_summary_general_show_only_running_packages">If checked, show only running packages, Otherwise show all packages.</string>
 
+    <!-- show changed date -->
+    <bool name="pref_def_general_show_changed_date">false</bool>
+
+    <string name="pref_key_general_show_changed_date">pref_key_show_changed_date</string>
+    <string name="pref_title_general_show_changed_date">Show changed date</string>
+    <string name="pref_summary_general_show_changed_date">if checked, shows dates that you enabled or disabled packages.</string>
+
+    <!-- sort by changed date -->
+    <bool name="pref_def_general_sort_by_changed_date">false</bool>
+
+    <string name="pref_key_general_sort_by_changed_date">pref_key_sort_by_changed_date</string>
+    <string name="pref_title_general_sort_by_changed_date">Sort by changed date</string>
+    <string name="pref_summary_general_sort_by_changed_date">If checked, disablable apps and disabled apps are sorted by changed date.</string>
+
     <!-- about -->
     <string name="pref_cat_about">About</string>
 

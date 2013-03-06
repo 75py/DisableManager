@@ -17,11 +17,10 @@
 package com.nagopy.android.disablemanager.util.filter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Set;
 
 import com.nagopy.android.disablemanager.util.AppStatus;
+import com.nagopy.android.disablemanager.util.sort.AppsSorter;
 
 /**
  * アプリ一覧を、条件を指定してフィルタリングするクラス
@@ -67,36 +66,6 @@ public class AppsFilter {
 	}
 
 	/**
-	 * ラベル名とパッケージ名でソートする<br>
-	 * 大文字小文字は区別しない
-	 * @param list
-	 *           ソートしたいリスト
-	 * @return ソート後のリスト
-	 */
-	public ArrayList<AppStatus> sortByLabelAndPackageName(ArrayList<AppStatus> list) {
-		Comparator<AppStatus> comparator = new Comparator<AppStatus>() {
-			@Override
-			public int compare(final AppStatus obj0, final AppStatus obj1) {
-				String label0 = ((AppStatus) obj0).getLabel();
-				String label1 = ((AppStatus) obj1).getLabel();
-
-				int ret = label0.compareToIgnoreCase(label1);
-				// ラベルで並び替え、同じラベルがあったらパッケージ名で
-				if (ret == 0) {
-					String pkgName0 = ((AppStatus) obj0).getPackageName();
-					String pkgName1 = ((AppStatus) obj1).getPackageName();
-					ret = pkgName0.compareToIgnoreCase(pkgName1);
-				}
-				return ret;
-			}
-		};
-
-		Collections.sort(list, comparator);
-
-		return list;
-	}
-
-	/**
 	 * すべてのアプリを登録しておく<br>
 	 * ソートする場合は {@link #sortByLabelAndPackageName(ArrayList)}
 	 * @param original
@@ -110,7 +79,7 @@ public class AppsFilter {
 	 * オリジナルをソートする
 	 */
 	public void sortOriginalAppList() {
-		sortByLabelAndPackageName(originalAppList);
+		AppsSorter.sort(originalAppList);
 	}
 
 	/**

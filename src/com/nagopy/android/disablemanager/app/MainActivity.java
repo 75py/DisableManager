@@ -55,9 +55,11 @@ import com.nagopy.android.disablemanager.util.AppStatus;
 import com.nagopy.android.disablemanager.util.AppsLoader;
 import com.nagopy.android.disablemanager.util.CommentsUtils;
 import com.nagopy.android.disablemanager.util.CustomSpannableStringBuilder;
+import com.nagopy.android.disablemanager.util.ChangedDateUtils;
 import com.nagopy.android.disablemanager.util.HideUtils;
 import com.nagopy.android.disablemanager.util.filter.AppsFilter;
 import com.nagopy.android.disablemanager.util.share.ShareUtils;
+import com.nagopy.android.disablemanager.util.sort.AppsSorter;
 
 /**
  * ランチャーから起動するアクティビティ<br>
@@ -128,6 +130,13 @@ public class MainActivity extends BaseActivity {
 
 	private SparseIntArray mListPositionHolder = new SparseIntArray(5);
 
+	private ChangedDateUtils mDateUtils;
+
+	/**
+	 * onRestartでtrueになっている場合は再読み込みする
+	 */
+	private boolean forceReload;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -135,7 +144,8 @@ public class MainActivity extends BaseActivity {
 
 		mAppFilter = new AppsFilter();
 		mIconCacheHashMap = new HashMap<String, Drawable>();
-		lastAppFilterCondition = AppsFilter.DISABLED;
+		mDateUtils = new ChangedDateUtils(getApplicationContext());
+		lastAppFilterCondition = AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM;
 		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.start_activity_listView);
 
@@ -226,10 +236,15 @@ public class MainActivity extends BaseActivity {
 		super.onRestart();
 		if (shouldReloadPackageNameString != null) {
 			// 読みこみ直すパッケージがあれば読みこんで反映する
-			mAppLoader.updateStatus(shouldReloadPackageNameString);
+			if (mAppLoader.updateStatus(shouldReloadPackageNameString)) {
+				mDateUtils.put(shouldReloadPackageNameString, System.currentTimeMillis());
+			}
 			mAppFilter.sortOriginalAppList();
 			updateAppList(-1);
 			shouldReloadPackageNameString = null;
+		} else if (forceReload) {
+			forceReload = false;
+			createReloadAsyncTask().execute();
 		}
 	}
 
@@ -375,7 +390,16 @@ public class MainActivity extends BaseActivity {
 		} else {
 			lastAppFilterCondition = key;
 		}
-		mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
+
+		if (getSP().getBoolean(getString(R.string.pref_key_general_sort_by_changed_date),
+				getResources().getBoolean(R.bool.pref_def_general_sort_by_changed_date))
+				&& (key == AppsFilter.DISABLED || key == AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM)) {
+			ArrayList<AppStatus> list = mAppFilter.execute(key, mAppHideUtils.getHideAppsList());
+			AppsSorter.sort(mDateUtils, list);
+			mAdapter.updateAppList(list);
+		} else {
+			mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
+		}
 		mAdapter.notifyDataSetChanged();
 
 		boolean isEmpty = mAdapter.getCount() < 1;
@@ -413,6 +437,7 @@ public class MainActivity extends BaseActivity {
 		case R.id.menu_preference:
 			Intent intent = new Intent(getApplicationContext(), AppPreferenceActivity.class);
 			startActivity(intent);
+			forceReload = true;
 			return true;
 
 		default:
@@ -579,8 +604,8 @@ public class MainActivity extends BaseActivity {
 				super.onPostExecute(result);
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
-					activity.mAppFilter.setOriginalAppList(activity.mAppFilter.sort(activity.mAppLoader
-							.getAppsList()));
+					activity.mAppFilter.setOriginalAppList(activity.mAppLoader.getAppsList());
+					activity.mAppFilter.sortOriginalAppList();
 					if (activity.mAdapter == null) {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(

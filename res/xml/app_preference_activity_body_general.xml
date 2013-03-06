@@ -6,5 +6,15 @@
         android:key="@string/pref_key_general_show_only_running_packages"
         android:summary="@string/pref_summary_general_show_only_running_packages"
         android:title="@string/pref_title_general_show_only_running_packages" />
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_def_general_show_changed_date"
+        android:key="@string/pref_key_general_show_changed_date"
+        android:summary="@string/pref_summary_general_show_changed_date"
+        android:title="@string/pref_title_general_show_changed_date" />
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_def_general_sort_by_changed_date"
+        android:key="@string/pref_key_general_sort_by_changed_date"
+        android:summary="@string/pref_summary_general_sort_by_changed_date"
+        android:title="@string/pref_title_general_sort_by_changed_date" />
 
 </PreferenceScreen>
