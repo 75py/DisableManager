@@ -202,18 +202,14 @@ public class AppsLoader {
 		}
 
 		try {
-			appsList.remove(appStatus);
 			PackageManager packageManager = getContext().getPackageManager();
 			PackageInfo packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_SIGNATURES);
 			ApplicationInfo info = packageInfo.applicationInfo;
 			Disablable judgeDisablable = Disablable.getInstance(getContext());
-
-			AppStatus newStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
-					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
-					judgeDisablable.isDisablable(info));
-			appsList.add(newStatus);
-		} catch (Exception e) {
-			e.printStackTrace();
+			appStatus.setEnabled(judgeDisablable.isDisablable(info));
+		} catch (PackageManager.NameNotFoundException e) {
+			appsList.remove(appStatus);
+			// e.printStackTrace();
 		}
 	}
 
