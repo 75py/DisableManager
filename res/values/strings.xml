@@ -86,4 +86,8 @@
         <item>Show this app</item>
     </string-array>
 
+    <!-- string -->
+    <string name="fod_back_to_default_path">Back to default directory</string>
+    <string name="fod_back_to_default_path_mes">Back to default directory(%1$s)?</string>
+
 </resources>
