@@ -62,4 +62,8 @@ public class HideUtils {
 		return returnHashSet;
 	}
 
+	public boolean setHideAppList(Set<String> set) {
+		return sp.edit().putStringSet("hides", set).commit();
+	}
+
 }
