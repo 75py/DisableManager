@@ -86,8 +86,11 @@
         <item>Show this app</item>
     </string-array>
 
-    <!-- string -->
+    <!-- fod -->
     <string name="fod_back_to_default_path">Back to default directory</string>
     <string name="fod_back_to_default_path_mes">Back to default directory(%1$s)?</string>
+    
+    <!-- confirm title -->
+    <string name="confirm_dialog_title">Confirm</string>
 
 </resources>

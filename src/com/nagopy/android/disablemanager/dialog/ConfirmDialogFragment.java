@@ -2,6 +2,8 @@ package com.nagopy.android.disablemanager.dialog;
 
 import java.io.Serializable;
 
+import com.nagopy.android.disablemanager.R;
+
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -27,7 +29,7 @@ public class ConfirmDialogFragment extends DialogFragment {
 		builder.setPositiveButton(android.R.string.ok,
 				(android.content.DialogInterface.OnClickListener) args.get("positiveButtonListner"));
 		builder.setNegativeButton(android.R.string.cancel, null);
-		builder.setTitle("Warning");
+		builder.setTitle(R.string.confirm_dialog_title);
 		return builder.create();
 	}
 
