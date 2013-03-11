@@ -222,6 +222,11 @@ public class AppsLoader {
 		appsList = null;
 	}
 
+	/**
+	 * アプリ一覧をセットする（インポート時に使用）
+	 * @param list
+	 *           AppStatusの一覧
+	 */
 	public void setAppsList(ArrayList<AppStatus> list) {
 		appsList = list;
 	}

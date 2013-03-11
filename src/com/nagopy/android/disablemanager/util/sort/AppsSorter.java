@@ -15,7 +15,7 @@ public final class AppsSorter {
 	/**
 	 * コンストラクタ
 	 */
-	private AppsSorter() {}
+	private AppsSorter() {} // CHECKSTYLE IGNORE THIS LINE
 
 	/**
 	 * ラベルとパッケージ名でソートする

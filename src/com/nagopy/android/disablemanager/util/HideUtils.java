@@ -62,6 +62,12 @@ public class HideUtils {
 		return returnHashSet;
 	}
 
+	/**
+	 * 除外リストをどかーんと指定する
+	 * @param set
+	 *           除外するパッケージ
+	 * @return 保存が成功すればtrueを返す
+	 */
 	public boolean setHideAppList(Set<String> set) {
 		return sp.edit().putStringSet("hides", set).commit();
 	}

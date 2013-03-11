@@ -89,7 +89,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 			@SuppressWarnings("serial")
 			@Override
 			public void onClick(View v) {
-				switch (v.getId()) {
+				switch (v.getId()) { // CHECKSTYLE IGNORE THIS LINE
 				case R.id.import_hidden_button:
 					chooser(REQUEST_HIDDEN, new OnOpenFileSelectedListner() {
 						@Override
@@ -98,7 +98,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 						}
 
 						@Override
-						public void onOpenFileCanceled() {}
+						public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
 					});
 
 					break;
@@ -118,7 +118,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 						}
 
 						@Override
-						public void onOpenFileCanceled() {}
+						public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
 					});
 					break;
 				case R.id.export_disabled_button:
@@ -190,6 +190,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	/**
 	 * XMLデータから除外リストを読み込んで保存する
 	 * @param xmlData
+	 *           読み込んだデータ
 	 */
 	private void importHiddenApps(XmlData xmlData) {
 		Map<String, String> map = xmlData.getComments();

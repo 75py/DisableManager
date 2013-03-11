@@ -7,8 +7,19 @@ import android.os.Environment;
 
 import com.nagopy.android.disablemanager.dialog.FileOpenDialog.OnOpenFileSelectedListner;
 
+/**
+ * ファイル選択ダイアログ
+ */
 public class FileChooserDialogFragment extends DialogFragment {
+
+	/**
+	 * 拡張子を保存する際のキー
+	 */
 	public static final String KEY_EXTENSIONS = "KEY_EXTENSIONS";
+
+	/**
+	 * リスナーを保存する際のキー
+	 */
 	public static final String KEY_LISTENER = "KEY_LISTENER";
 
 	@Override
@@ -30,6 +41,13 @@ public class FileChooserDialogFragment extends DialogFragment {
 				"tempDir");
 	}
 
+	/**
+	 * 初期設定
+	 * @param listner
+	 *           リスナー
+	 * @param extensions
+	 *           表示する拡張子たち
+	 */
 	public void init(OnOpenFileSelectedListner listner, String... extensions) {
 		Bundle args = new Bundle();
 		args.putSerializable(KEY_LISTENER, listner);

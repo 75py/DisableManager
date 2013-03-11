@@ -96,6 +96,7 @@ public class XmlData {
 	/**
 	 * パッケージ名とコメントのHashMapをセットする
 	 * @param map
+	 *           パッケージ名とコメントのHashMap
 	 */
 	public void setPackagesAndComments(HashMap<String, String> map) {
 		this.packageAndComment = map;

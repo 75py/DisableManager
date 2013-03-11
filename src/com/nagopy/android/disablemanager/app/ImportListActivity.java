@@ -39,7 +39,14 @@ import com.nagopy.android.disablemanager.util.filter.AppsFilter;
  */
 public class ImportListActivity extends MainActivity {
 
+	/**
+	 * アプリ一覧
+	 */
 	private ArrayList<AppStatus> apps = new ArrayList<AppStatus>();
+
+	/**
+	 * インポートしてきたパッケージ名の一覧
+	 */
 	private ArrayList<String> importedList;
 
 	@Override

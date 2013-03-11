@@ -109,8 +109,8 @@ public class XmlUtils {
 	 * アプリ一覧をXMLに書き出す
 	 * @param apps
 	 *           アプリ一覧
-	 * @param elementLabel
-	 *           パッケージ名の親ノード名
+	 * @param exportType
+	 *           タイプ
 	 * @return 保存したファイル名。エラーがあった場合はnullを返す
 	 */
 	public String export(ArrayList<AppStatus> apps, String exportType) {
@@ -125,8 +125,8 @@ public class XmlUtils {
 	 * アプリ一覧をXMLに書き出す
 	 * @param apps
 	 *           パッケージ名の一覧
-	 * @param elementLabel
-	 *           パッケージ名の親ノード名
+	 * @param exportType
+	 *           タイプ
 	 * @return 保存したファイル名。エラーがあった場合はnullを返す
 	 */
 	public String export(Collection<String> apps, String exportType) {
@@ -213,6 +213,7 @@ public class XmlUtils {
 	 * @return 日時をうまいこと文字列にしたやつ
 	 */
 	private String getTimeText() {
+		// CHECKSTYLE:OFF
 		Calendar cal = Calendar.getInstance();
 		StringBuffer sb = new StringBuffer();
 
@@ -248,6 +249,7 @@ public class XmlUtils {
 		sb.append(sec);
 
 		return sb.toString();
+		// CHECKSTYLE:ON
 	}
 
 	/**
@@ -285,7 +287,7 @@ public class XmlUtils {
 			int eventType = xmlPullParser.getEventType();
 			HashMap<String, String> map = new HashMap<String, String>();
 			while (eventType != XmlPullParser.END_DOCUMENT) {
-				switch (eventType) {
+				switch (eventType) { // CHECKSTYLE IGNORE THIS LINE
 				case XmlPullParser.START_TAG:
 					String tag = xmlPullParser.getName();
 					if (ELEMENT_ITEM.equals(tag)) {

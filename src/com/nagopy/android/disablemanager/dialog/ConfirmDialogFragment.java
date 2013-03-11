@@ -20,7 +20,7 @@ public class ConfirmDialogFragment extends DialogFragment {
 		AlertDialog.Builder builder = new Builder(getActivity());
 		TextView textView = new TextView(getActivity().getApplicationContext());
 		textView.setTextAppearance(getActivity(), android.R.style.TextAppearance_Medium);
-		textView.setPadding(10, 10, 10, 10);
+		textView.setPadding(10, 10, 10, 10); // CHECKSTYLE IGNORE THIS LINE
 		Bundle args = getArguments();
 		textView.setText(args.getCharSequence("message"));
 		builder.setView(textView);
