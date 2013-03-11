@@ -8,7 +8,9 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,32 +30,70 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
-import android.util.Log;
 import android.util.Xml;
 
+import com.nagopy.android.disablemanager.R;
 import com.nagopy.android.disablemanager.util.AppStatus;
+import com.nagopy.android.disablemanager.util.CommentsUtils;
 
+/**
+ * XMLの読み書きに関するクラス
+ */
 public class XmlUtils {
 
+	/**
+	 * 各パッケージの情報
+	 */
 	private static final String ELEMENT_ITEM = "item";
 
+	/**
+	 * パッケージ
+	 */
 	private static final String ELEMENT_PACKAGES = "packages";
 
+	/**
+	 * ビルド番号
+	 */
 	private static final String ELEMENT_BUILD = "build";
 
+	/**
+	 * 端末名
+	 */
 	private static final String ELEMENT_DEVICE = "device";
 
+	/**
+	 * 種類
+	 */
 	private static final String ELEMENT_TYPE = "type";
 
+	/**
+	 * root要素
+	 */
 	private static final String ELEMENT_ROOT = "root";
 
-	public static final int TYPE_DISABLED = 0x01;
+	/**
+	 * 無効化済みのエクスポート
+	 */
+	public static final String TYPE_DISABLED = "disabled";
 
-	public static final int TYPE_HIDDEN = 0x02;
+	/**
+	 * 除外アプリのエクスポート
+	 */
+	public static final String TYPE_HIDDEN = "hidden";
 
+	/**
+	 * 保存するディレクトリのパス
+	 */
 	private String path;
+
+	/**
+	 * アプリケーションのコンテキスト
+	 */
+	private Context mContext;
 
 	/**
 	 * コンストラクタ
@@ -61,6 +101,7 @@ public class XmlUtils {
 	 *           アプリケーションのコンテキスト
 	 */
 	public XmlUtils(Context context) {
+		mContext = context;
 		path = Environment.getExternalStorageDirectory().toString() + "/" + context.getPackageName() + "/";
 	}
 
@@ -72,12 +113,12 @@ public class XmlUtils {
 	 *           パッケージ名の親ノード名
 	 * @return 保存したファイル名。エラーがあった場合はnullを返す
 	 */
-	public String export(ArrayList<AppStatus> apps, int flags) {
+	public String export(ArrayList<AppStatus> apps, String exportType) {
 		HashSet<String> appsString = new HashSet<String>(apps.size());
 		for (AppStatus appStatus : apps) {
 			appsString.add(appStatus.getPackageName());
 		}
-		return export(appsString, flags);
+		return export(appsString, exportType);
 	}
 
 	/**
@@ -88,7 +129,7 @@ public class XmlUtils {
 	 *           パッケージ名の親ノード名
 	 * @return 保存したファイル名。エラーがあった場合はnullを返す
 	 */
-	public String export(Collection<String> apps, int flags) {
+	public String export(Collection<String> apps, String exportType) {
 		DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
 		try {
 			DocumentBuilder dbuilder = dbfactory.newDocumentBuilder();
@@ -96,7 +137,7 @@ public class XmlUtils {
 			Element root = document.createElement(ELEMENT_ROOT);
 
 			Element type = document.createElement(ELEMENT_TYPE);
-			type.appendChild(document.createTextNode(getTypeString(flags)));
+			type.appendChild(document.createTextNode(exportType));
 
 			Element device = document.createElement(ELEMENT_DEVICE);
 			device.appendChild(document.createTextNode(Build.MODEL));
@@ -105,9 +146,14 @@ public class XmlUtils {
 			build.appendChild(document.createTextNode(Build.DISPLAY));
 
 			Element packages = document.createElement(ELEMENT_PACKAGES);
+			CommentsUtils commentsUtils = new CommentsUtils(mContext);
 			for (String pkgName : apps) {
 				Element item = document.createElement(ELEMENT_ITEM);
-				item.appendChild(document.createTextNode(pkgName));
+				item.setAttribute("package_name", pkgName);
+				String comment = commentsUtils.restoreComment(pkgName);
+				if (comment != null) {
+					item.setAttribute("comment", comment);
+				}
 				packages.appendChild(item);
 			}
 
@@ -125,7 +171,7 @@ public class XmlUtils {
 			if (!dir.exists()) {
 				dir.mkdir();
 			}
-			File file = new File(createFileName(getTypeString(flags)));
+			File file = new File(createFileName(exportType));
 			if (!file.exists()) {
 				file.createNewFile();
 			}
@@ -141,17 +187,6 @@ public class XmlUtils {
 		} catch (TransformerException e) {
 			e.printStackTrace();
 			return null;
-		}
-	}
-
-	private String getTypeString(int flags) {
-		switch (flags) {
-		case TYPE_DISABLED:
-			return "disabled";
-		case TYPE_HIDDEN:
-			return "hidden";
-		default:
-			return String.valueOf(flags);
 		}
 	}
 
@@ -171,11 +206,12 @@ public class XmlUtils {
 		sb.append("_");
 		sb.append(getTimeText());
 		sb.append(".xml");
-
-		Log.d("XmlPullParserSample", sb.toString());
 		return sb.toString();
 	}
 
+	/**
+	 * @return 日時をうまいこと文字列にしたやつ
+	 */
 	private String getTimeText() {
 		Calendar cal = Calendar.getInstance();
 		StringBuffer sb = new StringBuffer();
@@ -200,7 +236,7 @@ public class XmlUtils {
 		sb.append(hour);
 
 		int min = cal.get(Calendar.MINUTE);
-		if (min < 0) {
+		if (min < 10) {
 			sb.append(0);
 		}
 		sb.append(min);
@@ -214,6 +250,12 @@ public class XmlUtils {
 		return sb.toString();
 	}
 
+	/**
+	 * XMLからデータを読み込む
+	 * @param filePath
+	 *           ファイルの絶対パス
+	 * @return 読み込んだデータ
+	 */
 	public XmlData importFromXml(String filePath) {
 		XmlData data = new XmlData();
 
@@ -225,7 +267,7 @@ public class XmlUtils {
 				xmlBuffer.append(line.trim());
 			}
 		} catch (IOException e) {
-			data.setErrorMessage("IOException: ファイルの読み込みでエラーが発生しました。\nファイル名：" + filePath);
+			data.setErrorMessage(mContext.getString(R.string.xml_error_cannot_open, filePath));
 			return data;
 		}
 
@@ -235,19 +277,20 @@ public class XmlUtils {
 			Matcher matcher = pattern.matcher(xmlBuffer);
 			xmlPullParser.setInput(new StringReader(matcher.replaceAll("><")));
 		} catch (XmlPullParserException e) {
-			data.setErrorMessage("XmlPullParserException: XMLの書式が正しくありません");
+			data.setErrorMessage(mContext.getString(R.string.xml_error_invalid_xml));
 			return data;
 		}
 
 		try {
 			int eventType = xmlPullParser.getEventType();
-			HashSet<String> packages = new HashSet<String>();
+			HashMap<String, String> map = new HashMap<String, String>();
 			while (eventType != XmlPullParser.END_DOCUMENT) {
 				switch (eventType) {
 				case XmlPullParser.START_TAG:
 					String tag = xmlPullParser.getName();
 					if (ELEMENT_ITEM.equals(tag)) {
-						packages.add(xmlPullParser.nextText());
+						map.put(xmlPullParser.getAttributeValue(null, "package_name"),
+								xmlPullParser.getAttributeValue(null, "comment"));
 					} else if (ELEMENT_DEVICE.equals(tag)) {
 						data.setDevice(xmlPullParser.nextText());
 					} else if (ELEMENT_BUILD.equals(tag)) {
@@ -259,23 +302,54 @@ public class XmlUtils {
 				}
 				eventType = xmlPullParser.next();
 			}
-			data.setPackages(packages);
+			data.setPackagesAndComments(map);
 		} catch (IOException e) {
 			e.printStackTrace();
-			data.setErrorMessage("IOException: XMLの読み込み中にエラーが発生しました。");
+			data.setErrorMessage(mContext.getString(R.string.xml_error_parser, "IOException"));
 		} catch (XmlPullParserException e) {
 			e.printStackTrace();
-			data.setErrorMessage("XmlPullParserException: XMLの読み込み中にエラーが発生しました。");
+			data.setErrorMessage(mContext.getString(R.string.xml_error_parser, "XmlPullParserException"));
 		}
 
 		return data;
 	}
 
+	/**
+	 * デバイス名が読み込んだものと同一かどうかを判定する
+	 * @param data
+	 *           読み込んだXMLデータ
+	 * @return デバイス名が等しければtrueを返す
+	 */
 	public static boolean isValidDevice(XmlData data) {
 		return Build.MODEL.equals(data.getDevice());
 	}
 
+	/**
+	 * ビルド番号が使用端末と同じものかを判定する
+	 * @param data
+	 *           読み込んだXMLのデータ
+	 * @return ビルド番号が等しければtrueを返す
+	 */
 	public static boolean isValidBuild(XmlData data) {
 		return Build.DISPLAY.equals(data.getBuild());
+	}
+
+	/**
+	 * 無効化したアプリの一覧をエクスポートする
+	 * @return 保存したファイルの絶対パス。失敗していたらnullを返す
+	 */
+	public String exportDisabledApps() {
+		PackageManager packageManager = mContext.getPackageManager();
+		List<ApplicationInfo> applicationInfo = packageManager
+				.getInstalledApplications(PackageManager.GET_META_DATA);
+
+		ArrayList<String> disabledApps = new ArrayList<String>();
+		for (ApplicationInfo info : applicationInfo) {
+			if (!info.enabled) {
+				disabledApps.add(info.packageName);
+			}
+		}
+
+		return export(disabledApps, TYPE_DISABLED);
 	}
 }

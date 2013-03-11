@@ -19,4 +19,21 @@
         android:layout_toRightOf="@+id/import_hidden_button"
         android:text="Export" />
 
+    <Button
+        android:id="@+id/import_disabled_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/import_hidden_button"
+        android:layout_marginTop="14dp"
+        android:text="Import di" />
+
+    <Button
+        android:id="@+id/export_disabled_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/import_disabled_button"
+        android:layout_toRightOf="@+id/import_disabled_button"
+        android:text="Export di" />
+
 </RelativeLayout>

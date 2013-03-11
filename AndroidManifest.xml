@@ -27,6 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.AppPreferenceActivity" />
+        <activity
+            android:name=".app.ImportListActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

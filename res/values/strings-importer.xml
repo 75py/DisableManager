@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="import_different_device">This XML is not for your device. OK?</string>
+    <string name="import_different_build">This XML is for other build number of your device. OK?</string>
+    <string name="import_success">Success!</string>
+    <string name="import_error_cannot_write_sp">Error: Cannot write database.</string>
+    <string name="export_error_cannot_save">Error: Cannot save file.</string>
+    <string name="export_success">Exported : %1$s</string>
+    <string name="xml_error_invalid_xml">XmlPullParserException: Invalid xml format.</string>
+    <string name="xml_error_cannot_open">IOException: Cannot open: %1$s</string>
+    <string name="xml_error_parser">%1$s: Exception in xml loading</string>
+
+</resources>

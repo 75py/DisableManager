@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -70,38 +71,38 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
-	private AppsLoader mAppLoader;
+	AppsLoader mAppLoader;
 
 	/**
 	 * リストビュー
 	 */
-	private ListView mListView;
+	ListView mListView;
 
 	/**
 	 * リストが空の時に表示するテキストビュー
 	 */
-	private TextView mEmptyView;
+	TextView mEmptyView;
 
 	/**
 	 * アプリを絞り込むクラス
 	 */
-	private AppsFilter mAppFilter;
+	AppsFilter mAppFilter;
 
 	/**
 	 * アプリ一覧を表示するためのアダプタ
 	 */
-	private AppsListAdapter mAdapter;
+	AppsListAdapter mAdapter;
 
 	/**
 	 * 前回使ったフィルタ条件の値を保持する
 	 */
-	private int lastAppFilterCondition;
+	int lastAppFilterCondition;
 
 	/**
 	 * アイコンをメモリキャッシュするためのハッシュマップ<br>
 	 * パッケージ名とアイコン（Drawable）を保存
 	 */
-	private HashMap<String, Drawable> mIconCacheHashMap;
+	HashMap<String, Drawable> mIconCacheHashMap;
 
 	/**
 	 * コメントを編集するダイアログ
@@ -111,7 +112,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * コメントを編集するためのクラス
 	 */
-	private CommentsUtils mCommentsUtils;
+	CommentsUtils mCommentsUtils;
 
 	/**
 	 * onResumeで読みこみ直すパッケージ名を保持するフィールド
@@ -126,7 +127,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 非表示アプリを管理するクラス
 	 */
-	private HideUtils mAppHideUtils;
+	HideUtils mAppHideUtils;
 
 	/**
 	 * リストの表示位置を記憶するためのホルダー
@@ -252,7 +253,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * タブを設定する
 	 */
-	private void initActionBarTabs() {
+	protected void initActionBarTabs() {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -320,16 +321,33 @@ public class MainActivity extends BaseActivity {
 
 		TabListener tabListener = new TabListener(this);
 
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disablable_and_enabled_apps)
+		ArrayList<Tab> tabs = createTabs(actionBar, tabListener);
+		for (Tab tab : tabs) {
+			actionBar.addTab(tab);
+		}
+	}
+
+	/**
+	 * タブの一覧を作成する
+	 * @param actionBar
+	 *           アクションバー
+	 * @param tabListener
+	 *           リスナー
+	 * @return タブ一覧
+	 */
+	protected ArrayList<Tab> createTabs(ActionBar actionBar, TabListener tabListener) {
+		ArrayList<Tab> tabs = new ArrayList<ActionBar.Tab>();
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_disablable_and_enabled_apps)
 				.setTag(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM).setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
 				.setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_undisablable_system)
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_undisablable_system)
 				.setTag(AppsFilter.UNDISABLABLE_SYSTEM).setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_user_apps)
-				.setTag(AppsFilter.USER_APPS).setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_hide).setTag(AppsFilter.HIDE_APPS)
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_user_apps).setTag(AppsFilter.USER_APPS)
 				.setTabListener(tabListener));
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_hide).setTag(AppsFilter.HIDE_APPS)
+				.setTabListener(tabListener));
+		return tabs;
 	}
 
 	@Override
@@ -385,7 +403,7 @@ public class MainActivity extends BaseActivity {
 	 *           表示するアプリを選ぶ条件<br>
 	 *           負の数を渡すと前回と同じフィルタを使う
 	 */
-	private void updateAppList(int key) {
+	protected void updateAppList(int key) {
 		if (key < 0) {
 			key = lastAppFilterCondition;
 		} else {
@@ -467,7 +485,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * アプリ一覧を表示するためのAdapter
 	 */
-	private class AppsListAdapter extends BaseAdapter {
+	class AppsListAdapter extends BaseAdapter {
 		/**
 		 * アプリ一覧を保持するリスト
 		 */
@@ -577,7 +595,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * @return アプリを読み込み直すAsyncTaskWithProgressDialogのインスタンス
 	 */
-	private AsyncTaskWithProgressDialog createReloadAsyncTask() {
+	protected AsyncTaskWithProgressDialog createReloadAsyncTask() {
 		return new AsyncTaskWithProgressDialog(getFragmentManager(), this) {
 
 			@Override

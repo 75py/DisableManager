@@ -221,4 +221,8 @@ public class AppsLoader {
 	public void deallocate() {
 		appsList = null;
 	}
+
+	public void setAppsList(ArrayList<AppStatus> list) {
+		appsList = list;
+	}
 }
