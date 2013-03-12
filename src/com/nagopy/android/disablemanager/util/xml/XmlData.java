@@ -35,6 +35,11 @@ public class XmlData {
 	private String errorMessage;
 
 	/**
+	 * 読み込んだXMLのファイルパス
+	 */
+	private String filePath;
+
+	/**
 	 * @return 端末名
 	 */
 	public String getDevice() {
@@ -131,5 +136,20 @@ public class XmlData {
 		sb.append("\nErrorMessage:");
 		sb.append(getErrorMessage());
 		return sb.toString();
+	}
+
+	/**
+	 * @return 読み込んだXMLのパス
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
+
+	/**
+	 * @param filePath
+	 *           読み込んだXMLのパス
+	 */
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 }

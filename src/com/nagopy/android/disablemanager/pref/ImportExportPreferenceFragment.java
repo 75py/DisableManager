@@ -17,7 +17,7 @@
 package com.nagopy.android.disablemanager.pref;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,15 +25,17 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
 import android.widget.Toast;
 
 import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.app.AppPreferenceActivity;
 import com.nagopy.android.disablemanager.app.ImportListActivity;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.AlertDialogListener;
@@ -48,6 +50,11 @@ import com.nagopy.android.disablemanager.util.xml.XmlUtils;
  * 一般設定を表示するフラグメント
  */
 public class ImportExportPreferenceFragment extends PreferenceFragment {
+
+	/**
+	 * ヘルプ記事のURL
+	 */
+	private static final String BLOG_URL = "http://blog.nagopy.com/2013/03/disablemanageraboutimport.html";
 
 	/**
 	 * 除外リストを選択する場合
@@ -80,17 +87,16 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 		mXmlUtils = new XmlUtils(getActivity().getApplicationContext());
 		mHideUtils = new HideUtils(getActivity().getApplicationContext());
 		mCommentsUtils = new CommentsUtils(getActivity().getApplicationContext());
-	}
+		addPreferencesFromResource(R.xml.app_preference_activity_body_import);
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = View.inflate(getActivity(), R.layout.import_export_fragment, null);
-		OnClickListener listener = new OnClickListener() {
+		PreferenceScreen preferenceScreen = getPreferenceScreen();
+		int count = preferenceScreen.getPreferenceCount();
+		OnPreferenceClickListener onPreferenceClickListener = new OnPreferenceClickListener() {
 			@SuppressWarnings("serial")
 			@Override
-			public void onClick(View v) {
-				switch (v.getId()) { // CHECKSTYLE IGNORE THIS LINE
-				case R.id.import_hidden_button:
+			public boolean onPreferenceClick(Preference preference) {
+				switch (preference.getTitleRes()) {
+				case R.string.pref_title_import_hidden_import:
 					chooser(REQUEST_HIDDEN, new OnOpenFileSelectedListner() {
 						@Override
 						public void onOpenFileSelected(File file) {
@@ -100,17 +106,16 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 						@Override
 						public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
 					});
-
-					break;
-				case R.id.export_hidden_button:
+					return true;
+				case R.string.pref_title_import_hidden_export:
 					String filename = mXmlUtils.export(mHideUtils.getHideAppsList(), XmlUtils.TYPE_HIDDEN);
 					if (filename == null) {
 						showToast(R.string.export_error_cannot_save);
 					} else {
 						showToast(getString(R.string.export_success, filename));
 					}
-					break;
-				case R.id.import_disabled_button:
+					return true;
+				case R.string.pref_title_import_disabled_import:
 					chooser(REQUEST_DISABLED, new OnOpenFileSelectedListner() {
 						@Override
 						public void onOpenFileSelected(File file) {
@@ -120,23 +125,29 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 						@Override
 						public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
 					});
-					break;
-				case R.id.export_disabled_button:
+					return true;
+				case R.string.pref_title_import_disabled_export:
 					String f = mXmlUtils.exportDisabledApps();
 					if (f == null) {
 						showToast(R.string.export_error_cannot_save);
 					} else {
 						showToast(getString(R.string.export_success, f));
 					}
-					break;
+					return true;
+				case R.string.pref_title_import_help:
+					Intent intent = new Intent(Intent.ACTION_VIEW);
+					intent.setData(Uri.parse(BLOG_URL));
+					startActivity(intent);
+					return true;
+				default:
+					return false;
 				}
 			}
 		};
-		view.findViewById(R.id.import_hidden_button).setOnClickListener(listener);
-		view.findViewById(R.id.export_hidden_button).setOnClickListener(listener);
-		view.findViewById(R.id.import_disabled_button).setOnClickListener(listener);
-		view.findViewById(R.id.export_disabled_button).setOnClickListener(listener);
-		return view;
+
+		for (int index = 0; index < count; index++) {
+			preferenceScreen.getPreference(index).setOnPreferenceClickListener(onPreferenceClickListener);
+		}
 	}
 
 	@Override
@@ -182,6 +193,14 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 					importHiddenApps(xmlData);
 				}
 			});
+		} else if (!XmlUtils.TYPE_HIDDEN.equals(xmlData.getType())) {
+			showAlertDialog(getString(R.string.import_different_type, xmlData.getType()),
+					new AlertDialogListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							importDisabledAppsAndLaunchActivity(xmlData);
+						}
+					});
 		} else {
 			importHiddenApps(xmlData);
 		}
@@ -205,6 +224,8 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 		}
 		if (mHideUtils.setHideAppList(xmlData.getPackages())) {
 			showToast(R.string.import_success);
+			PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext()).edit()
+					.putBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, true).apply();
 		} else {
 			showToast(R.string.import_error_cannot_write_sp);
 		}
@@ -232,7 +253,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	 */
 	private void chooser(int requestCode, OnOpenFileSelectedListner listner) {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-		intent.setType("text/xml");
+		intent.setType("file/*");
 		try {
 			startActivityForResult(intent, requestCode);
 		} catch (ActivityNotFoundException e) {
@@ -267,6 +288,14 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 					importDisabledAppsAndLaunchActivity(xmlData);
 				}
 			});
+		} else if (!XmlUtils.TYPE_DISABLED.equals(xmlData.getType())) {
+			showAlertDialog(getString(R.string.import_different_type, xmlData.getType()),
+					new AlertDialogListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							importDisabledAppsAndLaunchActivity(xmlData);
+						}
+					});
 		} else {
 			importDisabledAppsAndLaunchActivity(xmlData);
 		}
@@ -278,18 +307,10 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	 *           読み込んだデータ
 	 */
 	private void importDisabledAppsAndLaunchActivity(XmlData xmlData) {
-		Map<String, String> map = xmlData.getComments();
-		Set<String> packages = xmlData.getPackages();
-		if (!map.isEmpty()) {
-			for (String pkg : packages) {
-				String comment = map.get(pkg);
-				if (comment != null) {
-					mCommentsUtils.saveComment(pkg, comment);
-				}
-			}
-		}
+		HashMap<String, String> map = (HashMap<String, String>) xmlData.getComments();
 		Intent intent = new Intent(getActivity().getApplicationContext(), ImportListActivity.class);
-		intent.putStringArrayListExtra("disabledApps", new ArrayList<String>(packages));
+		intent.putExtra(ImportListActivity.EXTRA_PACKAGES_AND_COMMENTS, map);
+		intent.putExtra(ImportListActivity.EXTRA_FILE_NAME, xmlData.getFilePath());
 		startActivity(intent);
 	}
 

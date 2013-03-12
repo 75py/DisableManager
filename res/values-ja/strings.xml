@@ -72,4 +72,11 @@
         <item>除外リストから削除</item>
     </string-array>
 
+    <!-- fod -->
+    <string name="fod_back_to_default_path">デフォルトへ戻る</string>
+    <string name="fod_back_to_default_path_mes">デフォルトのディレクトリ（%1$s）に戻ります。よろしいですか？</string>
+
+    <!-- confirm title -->
+    <string name="confirm_dialog_title">確認</string>
+
 </resources>

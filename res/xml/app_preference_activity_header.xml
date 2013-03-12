@@ -9,7 +9,7 @@
         android:title="@string/pref_cat_share" />
     <header
         android:fragment="com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment"
-        android:title="Inport/Export" />
+        android:title="@string/pref_cat_import" />
     <header
         android:fragment="com.nagopy.android.disablemanager.pref.AboutPreferenceFragment"
         android:title="@string/pref_cat_about" />

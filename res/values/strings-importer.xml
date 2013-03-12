@@ -3,6 +3,7 @@
 
     <string name="import_different_device">This XML is not for your device. OK?</string>
     <string name="import_different_build">This XML is for other build number of your device. OK?</string>
+    <string name="import_different_type">This XML is %1$s apps list. OK?</string>
     <string name="import_success">Success!</string>
     <string name="import_error_cannot_write_sp">Error: Cannot write database.</string>
     <string name="export_error_cannot_save">Error: Cannot save file.</string>
@@ -10,5 +11,15 @@
     <string name="xml_error_invalid_xml">XmlPullParserException: Invalid xml format.</string>
     <string name="xml_error_cannot_open">IOException: Cannot open: %1$s</string>
     <string name="xml_error_parser">%1$s: Exception in xml loading</string>
+    <string name="pref_cat_import">Import / Export</string>
+    <string name="pref_title_import_hidden_import">Import hidden apps from XML</string>
+    <string name="pref_summary_import_hidden_import">Import a list of hidden apps from xml file.</string>
+    <string name="pref_title_import_hidden_export">Export hidden apps from XML</string>
+    <string name="pref_summary_import_hidden_export">Export a list of hidden apps in external storage. Its feature is for others who have the same device.</string>
+    <string name="pref_title_import_disabled_import">Import disabled apps from XML</string>
+    <string name="pref_summary_import_disabled_import">Import a list of disablalbe apps from xml file.</string>
+    <string name="pref_title_import_disabled_export">Export disabled apps from XML</string>
+    <string name="pref_summary_import_disabled_export">Export a list of apps that you disabled.</string>
+    <string name="pref_title_import_help">Help(in Japanese)</string>
 
 </resources>

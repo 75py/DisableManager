@@ -16,8 +16,11 @@
 
 package com.nagopy.android.disablemanager.app;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -32,27 +35,39 @@ import android.view.View;
 import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.common.image.ImageUtils;
 import com.nagopy.android.disablemanager.util.AppStatus;
+import com.nagopy.android.disablemanager.util.CommentsUtils;
+import com.nagopy.android.disablemanager.util.dpm.Disablable;
 import com.nagopy.android.disablemanager.util.filter.AppsFilter;
 
 /**
- * インポートしたリストを表示するアクティビティ
+ * インポートしたリストを表示するアクティビティ<br>
+ * MainActivityの流用。メニュー非表示、タブ削減、タイトルをファイル名にとかしたアクティビティ
  */
 public class ImportListActivity extends MainActivity {
+
+	/**
+	 * intentでファイル名を送る際のキー
+	 */
+	public static final String EXTRA_FILE_NAME = "com.nagopy.android.disablemanager.app.ImportListActivity.EXTRA_FILE_NAME";
+
+	/**
+	 * パッケージ名・コメントのマップをintentで送る際のキー
+	 */
+	public static final String EXTRA_PACKAGES_AND_COMMENTS = "com.nagopy.android.disablemanager.app.ImportListActivity.EXTRA_PACKAGES_AND_COMMENTS";
 
 	/**
 	 * アプリ一覧
 	 */
 	private ArrayList<AppStatus> apps = new ArrayList<AppStatus>();
 
-	/**
-	 * インポートしてきたパッケージ名の一覧
-	 */
-	private ArrayList<String> importedList;
+	private HashMap<String, String> importedMap;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		importedList = getIntent().getStringArrayListExtra("disabledApps");
+		importedMap = (HashMap<String, String>) getIntent().getSerializableExtra(EXTRA_PACKAGES_AND_COMMENTS);
 		super.onCreate(savedInstanceState);
+		setTitle(getIntent().getStringExtra(EXTRA_FILE_NAME));
 	}
 
 	@Override
@@ -88,14 +103,16 @@ public class ImportListActivity extends MainActivity {
 			protected Void doInBackground(Void... params) {
 				ImportListActivity activity = (ImportListActivity) getActivity();
 				if (activity != null) {
+					Disablable judgeDisablable = Disablable.getInstance(getActivity().getApplicationContext());
 					PackageManager packageManager = activity.getPackageManager();
 					List<ApplicationInfo> applicationInfo = packageManager
 							.getInstalledApplications(PackageManager.GET_META_DATA);
 					int iconSize = ImageUtils.getIconSize(activity.getApplicationContext());
 					for (ApplicationInfo info : applicationInfo) {
-						if (activity.importedList.contains(info.packageName)) {
+						if (activity.importedMap.containsKey(info.packageName)) {
 							AppStatus status = new AppStatus(info.loadLabel(packageManager).toString(),
-									info.packageName, info.enabled, true, true);
+									info.packageName, info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+									judgeDisablable.isDisablable(info));
 							activity.apps.add(status);
 							Drawable icon = info.loadIcon(packageManager);
 							icon.setBounds(0, 0, iconSize, iconSize);
@@ -118,7 +135,7 @@ public class ImportListActivity extends MainActivity {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
 								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
-								activity.mCommentsUtils, activity.getApplicationContext());
+								activity.getCommentsUtils(), activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);
@@ -131,5 +148,41 @@ public class ImportListActivity extends MainActivity {
 			}
 		};
 		return tasks;
+	}
+
+	@Override
+	protected CommentsUtils getCommentsUtils() {
+		if (mCommentsUtils == null) {
+			class ImportedCommentsUtils extends CommentsUtils {
+				private WeakReference<Map<String, String>> importedMap;
+
+				public ImportedCommentsUtils(ImportListActivity activity) {
+					super(activity.getApplicationContext());
+					importedMap = new WeakReference<Map<String, String>>(activity.importedMap);
+				}
+
+				@Override
+				public String restoreComment(String packageName) {
+					Map<String, String> map = importedMap.get();
+					if (map != null) {
+						return map.get(packageName);
+					} else {
+						return null;
+					}
+				}
+
+				@Override
+				public boolean saveComment(String packageName, String comment) {
+					Map<String, String> map = importedMap.get();
+					if (map != null) {
+						map.put(packageName, comment);
+					}
+					return true;
+				}
+
+			}
+			mCommentsUtils = new ImportedCommentsUtils(this);
+		}
+		return mCommentsUtils;
 	}
 }

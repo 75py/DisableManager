@@ -71,38 +71,38 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
-	AppsLoader mAppLoader;
+	protected AppsLoader mAppLoader;
 
 	/**
 	 * リストビュー
 	 */
-	ListView mListView;
+	protected ListView mListView;
 
 	/**
 	 * リストが空の時に表示するテキストビュー
 	 */
-	TextView mEmptyView;
+	protected TextView mEmptyView;
 
 	/**
 	 * アプリを絞り込むクラス
 	 */
-	AppsFilter mAppFilter;
+	protected AppsFilter mAppFilter;
 
 	/**
 	 * アプリ一覧を表示するためのアダプタ
 	 */
-	AppsListAdapter mAdapter;
+	protected AppsListAdapter mAdapter;
 
 	/**
 	 * 前回使ったフィルタ条件の値を保持する
 	 */
-	int lastAppFilterCondition;
+	protected int lastAppFilterCondition;
 
 	/**
 	 * アイコンをメモリキャッシュするためのハッシュマップ<br>
 	 * パッケージ名とアイコン（Drawable）を保存
 	 */
-	HashMap<String, Drawable> mIconCacheHashMap;
+	protected HashMap<String, Drawable> mIconCacheHashMap;
 
 	/**
 	 * コメントを編集するダイアログ
@@ -112,7 +112,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * コメントを編集するためのクラス
 	 */
-	CommentsUtils mCommentsUtils;
+	protected CommentsUtils mCommentsUtils;
 
 	/**
 	 * onResumeで読みこみ直すパッケージ名を保持するフィールド
@@ -127,7 +127,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 非表示アプリを管理するクラス
 	 */
-	HideUtils mAppHideUtils;
+	protected HideUtils mAppHideUtils;
 
 	/**
 	 * リストの表示位置を記憶するためのホルダー
@@ -168,7 +168,6 @@ public class MainActivity extends BaseActivity {
 			}
 		});
 
-		mCommentsUtils = new CommentsUtils(getApplicationContext());
 		mCommentEditDialog = new CommentEditDialog();
 		mListDialogFragment = new ListDialogFragment();
 		mAppHideUtils = new HideUtils(getApplicationContext());
@@ -192,13 +191,13 @@ public class MainActivity extends BaseActivity {
 						switch (pos) {
 						case 0:
 							mCommentEditDialog.setLabel(label);
-							mCommentEditDialog.setDefaultValue(mCommentsUtils.restoreComment(packageName));
+							mCommentEditDialog.setDefaultValue(getCommentsUtils().restoreComment(packageName));
 							mCommentEditDialog.setListener(new CommentEditDialogListener() {
 								private static final long serialVersionUID = 1L;
 
 								@Override
 								public void onPositiveButtonClicked(DialogInterface dialog, String text) {
-									mCommentsUtils.saveComment(packageName, text);
+									getCommentsUtils().saveComment(packageName, text);
 
 									updateAppList(-1);
 								}
@@ -371,6 +370,7 @@ public class MainActivity extends BaseActivity {
 
 		mCommentEditDialog.setListener(null);
 		mCommentEditDialog = null;
+
 		mCommentsUtils = null;
 
 		mCommonUtil = null;
@@ -628,7 +628,7 @@ public class MainActivity extends BaseActivity {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
 								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
-								activity.mCommentsUtils, activity.getApplicationContext());
+								activity.getCommentsUtils(), activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);
@@ -640,5 +640,15 @@ public class MainActivity extends BaseActivity {
 				}
 			}
 		};
+	}
+
+	/**
+	 * @return CommentsUtilsのインスタンス
+	 */
+	protected CommentsUtils getCommentsUtils() {
+		if (mCommentsUtils == null) {
+			mCommentsUtils = new CommentsUtils(getApplicationContext());
+		}
+		return mCommentsUtils;
 	}
 }

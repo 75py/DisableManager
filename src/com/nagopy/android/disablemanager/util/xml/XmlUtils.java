@@ -230,6 +230,8 @@ public class XmlUtils {
 		}
 		sb.append(day);
 
+		sb.append("_");
+
 		int hour = cal.get(Calendar.HOUR_OF_DAY);
 		if (hour < 10) {
 			sb.append(0);
@@ -253,6 +255,27 @@ public class XmlUtils {
 	}
 
 	/**
+	 * ファイルパスを指定してテキストを読み込む
+	 * @param filePath
+	 *           ファイルへの絶対パス
+	 * @return ファイルの中身。エラーがあった場合はnullを返す
+	 */
+	private String readTextFile(String filePath) {
+		try {
+			StringBuffer sb = new StringBuffer();
+			BufferedReader fReader = new BufferedReader(new FileReader(filePath));
+			String line;
+			while ((line = fReader.readLine()) != null) {
+				sb.append(line.trim());
+			}
+
+			return sb.toString();
+		} catch (IOException e) {
+			return null;
+		}
+	}
+
+	/**
 	 * XMLからデータを読み込む
 	 * @param filePath
 	 *           ファイルの絶対パス
@@ -260,15 +283,10 @@ public class XmlUtils {
 	 */
 	public XmlData importFromXml(String filePath) {
 		XmlData data = new XmlData();
+		data.setFilePath(filePath);
 
-		StringBuffer xmlBuffer = new StringBuffer();
-		try {
-			BufferedReader fReader = new BufferedReader(new FileReader(filePath));
-			String line;
-			while ((line = fReader.readLine()) != null) {
-				xmlBuffer.append(line.trim());
-			}
-		} catch (IOException e) {
+		String xmlText = readTextFile(filePath);
+		if (xmlText == null) {
 			data.setErrorMessage(mContext.getString(R.string.xml_error_cannot_open, filePath));
 			return data;
 		}
@@ -276,7 +294,7 @@ public class XmlUtils {
 		XmlPullParser xmlPullParser = Xml.newPullParser();
 		try {
 			Pattern pattern = Pattern.compile(">[ \t\n\f\r]*<");
-			Matcher matcher = pattern.matcher(xmlBuffer);
+			Matcher matcher = pattern.matcher(xmlText);
 			xmlPullParser.setInput(new StringReader(matcher.replaceAll("><")));
 		} catch (XmlPullParserException e) {
 			data.setErrorMessage(mContext.getString(R.string.xml_error_invalid_xml));
