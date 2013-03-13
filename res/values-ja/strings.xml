@@ -79,4 +79,7 @@
     <!-- confirm title -->
     <string name="confirm_dialog_title">確認</string>
 
+    <!-- at first -->
+    <string name="confirm_first_dialog_message">・このアプリは非rootユーザー向けです。アプリの無効化はAndroid（ICS以上）のOS標準機能です。\n・アプリの無効化は自己責任で行ってください。無効化可能アプリの中にも、無効化すべきでないアプリは存在します。\n・無効化が可能かどうかの判定は、公開されているAndroidのソースコードを参考にしています。\nそのため、端末によっては正常に動作しないかもしれません。予めご了承ください。</string>
+
 </resources>

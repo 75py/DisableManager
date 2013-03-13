@@ -92,5 +92,8 @@
     
     <!-- confirm title -->
     <string name="confirm_dialog_title">Confirm</string>
+    
+    <!-- at first -->
+    <string name="confirm_first_dialog_message">Please do at your own risk disable apps. Is it OK?</string>
 
 </resources>

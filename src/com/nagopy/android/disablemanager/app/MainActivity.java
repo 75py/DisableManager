@@ -50,6 +50,8 @@ import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disablemanager.R;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDialogListener;
+import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListener;
+import com.nagopy.android.disablemanager.dialog.FirstConfirmDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ListDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ListDialogFragment.OnListDialogItemClickListener;
 import com.nagopy.android.disablemanager.util.AppStatus;
@@ -139,6 +141,7 @@ public class MainActivity extends BaseActivity {
 	 */
 	private ChangedDateUtils mDateUtils;
 
+	@SuppressWarnings("serial")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -172,8 +175,6 @@ public class MainActivity extends BaseActivity {
 		mListDialogFragment = new ListDialogFragment();
 		mAppHideUtils = new HideUtils(getApplicationContext());
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-			@SuppressWarnings("serial")
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, final View view, int position, long arg3) {
 				AppStatus appStatus = mAdapter.getAppList().get(position);
@@ -223,13 +224,35 @@ public class MainActivity extends BaseActivity {
 				mListDialogFragment.show(getFragmentManager(), "list");
 				return false;
 			}
-
 		});
 
-		// テスト実行時はコメントアウト
-		createReloadAsyncTask().execute();
-
 		initActionBarTabs();
+
+		if (FirstConfirmDialogFragment.isFirst(getApplicationContext())) {
+			// 初回起動の場合
+			FirstConfirmDialogFragment firstConfirmDialogFragment = new FirstConfirmDialogFragment();
+			firstConfirmDialogFragment.init(getText(R.string.confirm_first_dialog_message),
+					new ConfirmDialogListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							switch (which) {
+							case DialogInterface.BUTTON_POSITIVE:
+								FirstConfirmDialogFragment.setFlagOff(getApplicationContext());
+								createReloadAsyncTask().execute();
+								break;
+							case DialogInterface.BUTTON_NEGATIVE:
+								finish();
+								break;
+							default:
+								break;
+							}
+						}
+					});
+			firstConfirmDialogFragment.show(getFragmentManager(), "first");
+		} else {
+			// テスト実行時はコメントアウト
+			createReloadAsyncTask().execute();
+		}
 	}
 
 	@Override
