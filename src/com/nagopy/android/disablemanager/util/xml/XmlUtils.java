@@ -255,23 +255,35 @@ public class XmlUtils {
 	}
 
 	/**
-	 * ファイルパスを指定してテキストを読み込む
-	 * @param filePath
-	 *           ファイルへの絶対パス
-	 * @return ファイルの中身。エラーがあった場合はnullを返す
+	 * XMLファイルを読み込む
+	 * @param xmlData
+	 *           保存するインスタンス。ファイルパス指定済みのもので
+	 * @return 読み込んだテキストをそのまま返す。エラーがあった場合はnullを返す（xmlDataにエラーメッセージをセットする）。
 	 */
-	private String readTextFile(String filePath) {
-		try {
-			StringBuffer sb = new StringBuffer();
-			BufferedReader fReader = new BufferedReader(new FileReader(filePath));
-			String line;
-			while ((line = fReader.readLine()) != null) {
-				sb.append(line.trim());
-			}
-
-			return sb.toString();
-		} catch (IOException e) {
+	private String readXmlFile(XmlData xmlData) {
+		File file = new File(xmlData.getFilePath());
+		if (!file.exists()) {
+			xmlData.setErrorMessage(mContext.getString(R.string.xml_error_cannot_open, xmlData.getFilePath()));
 			return null;
+		} else if (file.length() > 10240) {
+			xmlData.setErrorMessage(mContext.getString(R.string.import_error_too_large));
+			return null;
+		} else {
+			try {
+				StringBuffer sb = new StringBuffer();
+				BufferedReader fReader = new BufferedReader(new FileReader(xmlData.getFilePath()));
+				String line;
+				while ((line = fReader.readLine()) != null) {
+					sb.append(line.trim());
+				}
+
+				return sb.toString();
+			} catch (IOException e) {
+				// ファイルが読み込めなかった場合
+				xmlData
+						.setErrorMessage(mContext.getString(R.string.xml_error_cannot_open, xmlData.getFilePath()));
+				return null;
+			}
 		}
 	}
 
@@ -285,9 +297,8 @@ public class XmlUtils {
 		XmlData data = new XmlData();
 		data.setFilePath(filePath);
 
-		String xmlText = readTextFile(filePath);
+		String xmlText = readXmlFile(data);
 		if (xmlText == null) {
-			data.setErrorMessage(mContext.getString(R.string.xml_error_cannot_open, filePath));
 			return data;
 		}
 

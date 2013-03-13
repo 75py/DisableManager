@@ -5,12 +5,18 @@
     <string name="import_different_build">This XML is for other build number of your device. OK?</string>
     <string name="import_different_type">This XML is %1$s apps list. OK?</string>
     <string name="import_success">Success!</string>
-    <string name="import_error_cannot_write_sp">Error: Cannot write database.</string>
-    <string name="export_error_cannot_save">Error: Cannot save file.</string>
     <string name="export_success">Exported : %1$s</string>
+    
+    <!-- error -->
+    <string name="import_error_cannot_write_sp">Error: Cannot write database.</string>
+    <string name="import_error_not_found">Error: File not found: %1$s</string>
+    <string name="export_error_cannot_save">Error: Cannot save file.</string>
     <string name="xml_error_invalid_xml">XmlPullParserException: Invalid xml format.</string>
     <string name="xml_error_cannot_open">IOException: Cannot open: %1$s</string>
     <string name="xml_error_parser">%1$s: Exception in xml loading</string>
+    <string name="import_error_too_large">Error: Too large file. You can read less than 10KB.</string>
+    
+    <!-- pref -->
     <string name="pref_cat_import">Import / Export</string>
     <string name="pref_title_import_hidden_import">Import hidden apps from XML</string>
     <string name="pref_summary_import_hidden_import">Import a list of hidden apps from xml file.</string>
