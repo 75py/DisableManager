@@ -38,7 +38,7 @@ import com.nagopy.android.disablemanager.R;
 import com.nagopy.android.disablemanager.app.AppPreferenceActivity;
 import com.nagopy.android.disablemanager.app.ImportListActivity;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment;
-import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.AlertDialogListener;
+import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListener;
 import com.nagopy.android.disablemanager.dialog.FileChooserDialogFragment;
 import com.nagopy.android.disablemanager.dialog.FileOpenDialog.OnOpenFileSelectedListner;
 import com.nagopy.android.disablemanager.util.CommentsUtils;
@@ -177,30 +177,27 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	@SuppressWarnings("serial")
 	private void checkAndImportHiddenFromXml(String path) {
 		final XmlData xmlData = mXmlUtils.importFromXml(path);
+		final ConfirmDialogListener listener = new ConfirmDialogListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				switch (which) {
+				case DialogInterface.BUTTON_POSITIVE:
+					importHiddenApps(xmlData);
+					break;
+				default:
+					break;
+				}
+			}
+		};
 		if (xmlData.getErrorMessage() != null) {
 			showToast(xmlData.getErrorMessage());
 		} else if (!XmlUtils.isValidDevice(xmlData)) {
-			showAlertDialog(getString(R.string.import_different_device), new AlertDialogListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					importHiddenApps(xmlData);
-				}
-			});
+			showAlertDialog(getString(R.string.import_different_device), listener);
 		} else if (!XmlUtils.isValidBuild(xmlData)) {
-			showAlertDialog(getString(R.string.import_different_build), new AlertDialogListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					importHiddenApps(xmlData);
-				}
-			});
+
+			showAlertDialog(getString(R.string.import_different_build), listener);
 		} else if (!XmlUtils.TYPE_HIDDEN.equals(xmlData.getType())) {
-			showAlertDialog(getString(R.string.import_different_type, xmlData.getType()),
-					new AlertDialogListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							importDisabledAppsAndLaunchActivity(xmlData);
-						}
-					});
+			showAlertDialog(getString(R.string.import_different_type, xmlData.getType()), listener);
 		} else {
 			importHiddenApps(xmlData);
 		}
@@ -238,7 +235,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	 * @param positiveListener
 	 *           Okボタンが押されたときのリスナー
 	 */
-	private void showAlertDialog(String message, ConfirmDialogFragment.AlertDialogListener positiveListener) {
+	private void showAlertDialog(String message, ConfirmDialogFragment.ConfirmDialogListener positiveListener) {
 		ConfirmDialogFragment alertDialogFragment = new ConfirmDialogFragment();
 		alertDialogFragment.init(message, positiveListener);
 		alertDialogFragment.show(getFragmentManager(), "alert");
@@ -272,30 +269,20 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	@SuppressWarnings("serial")
 	private void checkAndImportDisabledApps(String path) {
 		final XmlData xmlData = mXmlUtils.importFromXml(path);
+		final ConfirmDialogListener listener = new ConfirmDialogListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				importDisabledAppsAndLaunchActivity(xmlData);
+			}
+		};
 		if (xmlData.getErrorMessage() != null) {
 			showToast(xmlData.getErrorMessage());
 		} else if (!XmlUtils.isValidDevice(xmlData)) {
-			showAlertDialog(getString(R.string.import_different_device), new AlertDialogListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					importDisabledAppsAndLaunchActivity(xmlData);
-				}
-			});
+			showAlertDialog(getString(R.string.import_different_device), listener);
 		} else if (!XmlUtils.isValidBuild(xmlData)) {
-			showAlertDialog(getString(R.string.import_different_build), new AlertDialogListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					importDisabledAppsAndLaunchActivity(xmlData);
-				}
-			});
+			showAlertDialog(getString(R.string.import_different_build), listener);
 		} else if (!XmlUtils.TYPE_DISABLED.equals(xmlData.getType())) {
-			showAlertDialog(getString(R.string.import_different_type, xmlData.getType()),
-					new AlertDialogListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							importDisabledAppsAndLaunchActivity(xmlData);
-						}
-					});
+			showAlertDialog(getString(R.string.import_different_type, xmlData.getType()), listener);
 		} else {
 			importDisabledAppsAndLaunchActivity(xmlData);
 		}

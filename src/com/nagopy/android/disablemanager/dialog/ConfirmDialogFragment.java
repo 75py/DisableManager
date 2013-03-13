@@ -17,6 +17,8 @@ import android.widget.TextView;
  */
 public class ConfirmDialogFragment extends DialogFragment {
 
+	private static final String KEY_LISTNER = "positiveButtonListner";
+
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		AlertDialog.Builder builder = new Builder(getActivity());
@@ -26,9 +28,9 @@ public class ConfirmDialogFragment extends DialogFragment {
 		Bundle args = getArguments();
 		textView.setText(args.getCharSequence("message"));
 		builder.setView(textView);
-		builder.setPositiveButton(android.R.string.ok,
-				(android.content.DialogInterface.OnClickListener) args.get("positiveButtonListner"));
-		builder.setNegativeButton(android.R.string.cancel, null);
+		ConfirmDialogListener listener = getListener();
+		builder.setPositiveButton(android.R.string.ok, listener);
+		builder.setNegativeButton(android.R.string.cancel, listener);
 		builder.setTitle(R.string.confirm_dialog_title);
 		return builder.create();
 	}
@@ -40,16 +42,35 @@ public class ConfirmDialogFragment extends DialogFragment {
 	 * @param positiveListener
 	 *           OKを押されたときのリスナー
 	 */
-	public void init(CharSequence message, AlertDialogListener positiveListener) {
+	public void init(CharSequence message, ConfirmDialogListener positiveListener) {
 		Bundle args = new Bundle();
 		args.putCharSequence("message", message);
-		args.putSerializable("positiveButtonListner", positiveListener);
+		args.putSerializable(KEY_LISTNER, positiveListener);
 		setArguments(args);
+	}
+
+	/**
+	 * 保存しておいたリスナーを取得する
+	 * @return リスナー
+	 */
+	private ConfirmDialogListener getListener() {
+		return (ConfirmDialogListener) getArguments().get(KEY_LISTNER);
 	}
 
 	/**
 	 * シリアライズ可能なDialogInterface.OnClickListener
 	 */
-	public static interface AlertDialogListener extends DialogInterface.OnClickListener, Serializable {
+	public static interface ConfirmDialogListener extends DialogInterface.OnClickListener, Serializable {
+
+		/**
+		 * whichの値によってどのボタンが押されたかを判定するとGood
+		 * <ul>
+		 * <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
+		 * <li>{@link DialogInterface#BUTTON_NEUTRAL}</li>
+		 * <li>{@link DialogInterface#BUTTON_NEGATIVE}</li>
+		 * </ul>
+		 */
+		@Override
+		public abstract void onClick(DialogInterface dialog, int which);
 	}
 }
