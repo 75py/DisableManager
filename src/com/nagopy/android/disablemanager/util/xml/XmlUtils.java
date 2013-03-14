@@ -196,7 +196,7 @@ public class XmlUtils {
 	 *           パッケージ名の親ノード名
 	 * @return ファイルパス
 	 */
-	private String createFileName(String elementLabel) {
+	String createFileName(String elementLabel) {
 		StringBuffer sb = new StringBuffer(path);
 		sb.append(elementLabel);
 		sb.append("_");
@@ -212,7 +212,7 @@ public class XmlUtils {
 	/**
 	 * @return 日時をうまいこと文字列にしたやつ
 	 */
-	private String getTimeText() {
+	String getTimeText() {
 		// CHECKSTYLE:OFF
 		Calendar cal = Calendar.getInstance();
 		StringBuffer sb = new StringBuffer();
@@ -260,10 +260,10 @@ public class XmlUtils {
 	 *           保存するインスタンス。ファイルパス指定済みのもので
 	 * @return 読み込んだテキストをそのまま返す。エラーがあった場合はnullを返す（xmlDataにエラーメッセージをセットする）。
 	 */
-	private String readXmlFile(XmlData xmlData) {
+	String readXmlFile(XmlData xmlData) {
 		File file = new File(xmlData.getFilePath());
 		if (!file.exists()) {
-			xmlData.setErrorMessage(mContext.getString(R.string.xml_error_cannot_open, xmlData.getFilePath()));
+			xmlData.setErrorMessage(mContext.getString(R.string.import_error_not_found, xmlData.getFilePath()));
 			return null;
 		} else if (file.length() > 10240) {
 			xmlData.setErrorMessage(mContext.getString(R.string.import_error_too_large));

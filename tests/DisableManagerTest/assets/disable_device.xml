@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><root>
+<device>Nexus 77</device>
+<build>JDQ39</build>
+<type>disabled</type>
+<packages>
+<item package_name="com.android.musicfx"/>
+<item package_name="com.android.providers.applications"/>
+<item package_name="com.android.providers.userdictionary"/>
+<item package_name="com.google.android.apps.plus"/>
+<item package_name="com.google.android.email"/>
+<item package_name="com.google.android.exchange"/>
+</packages>
+</root>

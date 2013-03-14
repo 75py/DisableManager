@@ -14,7 +14,7 @@ public class AppPreferenceActivityTest extends ActivityInstrumentationTestCase2<
 
 	public void test子ビューの数() throws Exception {
 		ListView listView = getActivity().getListView();
-		assertEquals(3, listView.getChildCount());
+		assertEquals(4, listView.getChildCount());
 	}
 
 	/**
@@ -32,15 +32,26 @@ public class AppPreferenceActivityTest extends ActivityInstrumentationTestCase2<
 		View view = listView.getChildAt(1);
 		TouchUtils.clickView(this, view);
 
-		ListView l = getActivity().getListView();
-		int child = l.getChildCount();
-		assertEquals(3, child);
+		// ListView l = getActivity().getListView();
+		// int child = l.getChildCount();
+		// assertEquals(3, child);
+		sendKeys(KeyEvent.KEYCODE_BACK);
+	}
+
+	public void testImportタップ() throws Exception {
+		ListView listView = getActivity().getListView();
+		View view = listView.getChildAt(2);
+		TouchUtils.clickView(this, view);
+
+		// ListView l = getActivity().getListView();
+		// int child = l.getChildCount();
+		// assertEquals(5, child);
 		sendKeys(KeyEvent.KEYCODE_BACK);
 	}
 
 	public void testAboutタップ() throws Exception {
 		ListView listView = getActivity().getListView();
-		View view = listView.getChildAt(2);
+		View view = listView.getChildAt(3);
 		TouchUtils.clickView(this, view);
 		sendKeys(KeyEvent.KEYCODE_BACK);
 	}
