@@ -30,6 +30,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.widget.Toast;
@@ -81,6 +82,63 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	 */
 	private CommentsUtils mCommentsUtils;
 
+	/**
+	 * Preferenceのリスナー。この画面のPreferenceのクリックはこれでどうにかする
+	 */
+	private OnPreferenceClickListener onPreferenceClickListener = new OnPreferenceClickListener() {
+		@SuppressWarnings("serial")
+		@Override
+		public boolean onPreferenceClick(Preference preference) {
+			switch (preference.getTitleRes()) {
+			case R.string.pref_title_import_hidden_import:
+				chooser(REQUEST_HIDDEN, new OnOpenFileSelectedListner() {
+					@Override
+					public void onOpenFileSelected(File file) {
+						checkAndImportHiddenFromXml(file.getAbsolutePath());
+					}
+
+					@Override
+					public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
+				});
+				return true;
+			case R.string.pref_title_import_hidden_export:
+				String filename = mXmlUtils.export(mHideUtils.getHideAppsList(), XmlUtils.TYPE_HIDDEN);
+				if (filename == null) {
+					showToast(R.string.export_error_cannot_save);
+				} else {
+					showToast(getString(R.string.export_success, filename));
+				}
+				return true;
+			case R.string.pref_title_import_disabled_import:
+				chooser(REQUEST_DISABLED, new OnOpenFileSelectedListner() {
+					@Override
+					public void onOpenFileSelected(File file) {
+						checkAndImportDisabledApps(file.getAbsolutePath());
+					}
+
+					@Override
+					public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
+				});
+				return true;
+			case R.string.pref_title_import_disabled_export:
+				String f = mXmlUtils.exportDisabledApps();
+				if (f == null) {
+					showToast(R.string.export_error_cannot_save);
+				} else {
+					showToast(getString(R.string.export_success, f));
+				}
+				return true;
+			case R.string.pref_title_import_help:
+				Intent intent = new Intent(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse(BLOG_URL));
+				startActivity(intent);
+				return true;
+			default:
+				return false;
+			}
+		}
+	};
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -90,63 +148,22 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 		addPreferencesFromResource(R.xml.app_preference_activity_body_import);
 
 		PreferenceScreen preferenceScreen = getPreferenceScreen();
-		int count = preferenceScreen.getPreferenceCount();
-		OnPreferenceClickListener onPreferenceClickListener = new OnPreferenceClickListener() {
-			@SuppressWarnings("serial")
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				switch (preference.getTitleRes()) {
-				case R.string.pref_title_import_hidden_import:
-					chooser(REQUEST_HIDDEN, new OnOpenFileSelectedListner() {
-						@Override
-						public void onOpenFileSelected(File file) {
-							checkAndImportHiddenFromXml(file.getAbsolutePath());
-						}
+		setListener(preferenceScreen);
+	}
 
-						@Override
-						public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
-					});
-					return true;
-				case R.string.pref_title_import_hidden_export:
-					String filename = mXmlUtils.export(mHideUtils.getHideAppsList(), XmlUtils.TYPE_HIDDEN);
-					if (filename == null) {
-						showToast(R.string.export_error_cannot_save);
-					} else {
-						showToast(getString(R.string.export_success, filename));
-					}
-					return true;
-				case R.string.pref_title_import_disabled_import:
-					chooser(REQUEST_DISABLED, new OnOpenFileSelectedListner() {
-						@Override
-						public void onOpenFileSelected(File file) {
-							checkAndImportDisabledApps(file.getAbsolutePath());
-						}
-
-						@Override
-						public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
-					});
-					return true;
-				case R.string.pref_title_import_disabled_export:
-					String f = mXmlUtils.exportDisabledApps();
-					if (f == null) {
-						showToast(R.string.export_error_cannot_save);
-					} else {
-						showToast(getString(R.string.export_success, f));
-					}
-					return true;
-				case R.string.pref_title_import_help:
-					Intent intent = new Intent(Intent.ACTION_VIEW);
-					intent.setData(Uri.parse(BLOG_URL));
-					startActivity(intent);
-					return true;
-				default:
-					return false;
-				}
+	/**
+	 * リスナーをセットする。グループの場合はchildを再度setListenerする
+	 * @param preference
+	 *           Preference
+	 */
+	private void setListener(Preference preference) {
+		if (preference instanceof PreferenceGroup) {
+			int count = ((PreferenceGroup) preference).getPreferenceCount();
+			for (int index = 0; index < count; index++) {
+				Preference childPreference = ((PreferenceGroup) preference).getPreference(index);
+				setListener(childPreference);
 			}
-		};
-
-		for (int index = 0; index < count; index++) {
-			final Preference preference = preferenceScreen.getPreference(index);
+		} else {
 			preference.setOnPreferenceClickListener(onPreferenceClickListener);
 			if (preference.getTitleRes() == R.string.pref_title_import_help) {
 				preference.setSummary(BLOG_URL);
