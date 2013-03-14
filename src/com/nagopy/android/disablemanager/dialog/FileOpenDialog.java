@@ -24,10 +24,14 @@ import android.widget.TextView;
 
 import com.nagopy.android.disablemanager.R;
 
+/**
+ * 以下のURLのものを流用
+ * http://bananawani-mc.blogspot.jp/2012/05/android-sara.html
+ */
 public class FileOpenDialog implements AdapterView.OnItemClickListener, AdapterView.OnKeyListener {
 	public static final String TEMP_DIR = "common_util_fileopendialog_tempdir";
 
-	protected OnOpenFileSelectedListner mOnOpenFileSelectedListner;
+	private OnOpenFileSelectedListner mOnOpenFileSelectedListner;
 
 	private Activity mActivity;
 	private AlertDialog mDialog;

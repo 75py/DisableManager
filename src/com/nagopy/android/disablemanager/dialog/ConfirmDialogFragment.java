@@ -10,6 +10,7 @@ import android.app.DialogFragment;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 /**
@@ -24,10 +25,12 @@ public class ConfirmDialogFragment extends DialogFragment {
 		AlertDialog.Builder builder = new Builder(getActivity());
 		TextView textView = new TextView(getActivity().getApplicationContext());
 		textView.setTextAppearance(getActivity(), android.R.style.TextAppearance_Medium);
-		textView.setPadding(10, 10, 10, 10); // CHECKSTYLE IGNORE THIS LINE
 		Bundle args = getArguments();
 		textView.setText(args.getCharSequence("message"));
-		builder.setView(textView);
+		ScrollView scrollView = new ScrollView(getActivity().getApplicationContext());
+		scrollView.addView(textView);
+		scrollView.setPadding(16, 16, 16, 16); // CHECKSTYLE IGNORE THIS LINE
+		builder.setView(scrollView);
 		ConfirmDialogListener listener = getListener();
 		builder.setPositiveButton(android.R.string.ok, listener);
 		builder.setNegativeButton(android.R.string.cancel, listener);
