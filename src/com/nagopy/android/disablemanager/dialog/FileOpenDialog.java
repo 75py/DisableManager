@@ -76,7 +76,8 @@ public class FileOpenDialog implements AdapterView.OnItemClickListener, AdapterV
 						Context.LAYOUT_INFLATER_SERVICE);
 				convertView = inflater.inflate(resourceId, null);
 			}
-			TextView tv = (TextView) convertView.findViewById(R.id.util_lib_fod_lo_label);
+			TextView tv = (TextView) convertView;
+			// TextView tv = (TextView) convertView.findViewById(R.id.util_lib_fod_lo_label);
 			// ImageView iv = (ImageView) convertView.findViewById(R.id.fod_lo_icon);
 
 			String name = file.getName();
