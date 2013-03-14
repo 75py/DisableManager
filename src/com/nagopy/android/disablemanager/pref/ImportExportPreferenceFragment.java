@@ -240,7 +240,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 				}
 			}
 		}
-		if (mHideUtils.setHideAppList(xmlData.getPackages())) {
+		if (mHideUtils.addHideAppList(xmlData.getPackages())) {
 			showToast(R.string.import_success);
 			PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext()).edit()
 					.putBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, true).apply();

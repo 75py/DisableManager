@@ -63,13 +63,15 @@ public class HideUtils {
 	}
 
 	/**
-	 * 除外リストをどかーんと指定する
+	 * 除外リストをどかーんと追加する
 	 * @param set
 	 *           除外するパッケージ
 	 * @return 保存が成功すればtrueを返す
 	 */
-	public boolean setHideAppList(Set<String> set) {
-		return sp.edit().putStringSet("hides", set).commit();
+	public boolean addHideAppList(Set<String> set) {
+		Set<String> savedSet = getHideAppsList();
+		savedSet.addAll(set);
+		return sp.edit().putStringSet("hides", savedSet).commit();
 	}
 
 }
