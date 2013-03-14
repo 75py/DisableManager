@@ -86,4 +86,14 @@
         <item>Show this app</item>
     </string-array>
 
+    <!-- fod -->
+    <string name="fod_back_to_default_path">Back to default directory</string>
+    <string name="fod_back_to_default_path_mes">Back to default directory(%1$s)?</string>
+    
+    <!-- confirm title -->
+    <string name="confirm_dialog_title">Confirm</string>
+    
+    <!-- at first -->
+    <string name="confirm_first_dialog_message">Please do at your own risk disable apps. Is it OK?</string>
+
 </resources>

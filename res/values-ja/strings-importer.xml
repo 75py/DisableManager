@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="import_different_device">XMLファイルに書かれているデバイス名がこのデバイスの名前と等しくありません。このまま続行しますか？</string>
+    <string name="import_different_build">XMLファイルに書かれているビルド番号と一致しません。このまま続行しますか？</string>
+    <string name="import_different_type">XMLファイルの種類が異なるようです（%1$s）。このまま続行しますか？</string>
+    <string name="import_success">インポートに成功しました。</string>
+    <string name="export_success">エクスポートしました：\n%1$s</string>
+
+    <!-- error -->
+    <string name="import_error_cannot_write_sp">エラー：データベースを更新できませんでした。</string>
+    <string name="import_error_not_found">エラー：ファイルが見つかりません。</string>
+    <string name="export_error_cannot_save">エラー：ファイルを保存できませんでした。</string>
+    <string name="xml_error_invalid_xml">XmlPullParserException: XMLのフォーマットに誤りがあるようです。</string>
+    <string name="xml_error_cannot_open">IOException: ファイルを開けませんでした。\n%1$s</string>
+    <string name="xml_error_parser">%1$s: XMLの読み込み中にエラーが発生しました。</string>
+    <string name="import_error_too_large">エラー：ファイルサイズが大きすぎます。10KB以上は同時に読み込めません。</string>
+
+    <!-- pref -->
+    <string name="pref_cat_import">インポート／エクスポート</string>
+    <string name="pref_cat_import_cat_hidden">除外リスト</string>
+    <string name="pref_cat_import_cat_disabled">無効化推奨リスト</string>
+    <string name="pref_title_import_hidden_import">インポート</string>
+    <string name="pref_summary_import_hidden_import">除外アプリのリストをXMLファイルからインポートします。</string>
+    <string name="pref_title_import_hidden_export">エクスポート</string>
+    <string name="pref_summary_import_hidden_export">除外したアプリのリストをXMLファイルにエクスポートします。</string>
+    <string name="pref_title_import_disabled_import">インポート</string>
+    <string name="pref_summary_import_disabled_import">XMLファイルから無効化推奨リストをインポートします。</string>
+    <string name="pref_title_import_disabled_export">エクスポート</string>
+    <string name="pref_summary_import_disabled_export">無効化済みアプリの一覧を、無効化推奨リストとしてXMLファイルにエクスポートします。</string>
+    <string name="pref_title_import_help">ヘルプ</string>
+
+</resources>

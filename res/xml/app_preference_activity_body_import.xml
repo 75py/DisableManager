@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/pref_cat_import_cat_hidden" >
+        <Preference
+            android:summary="@string/pref_summary_import_hidden_import"
+            android:title="@string/pref_title_import_hidden_import" />
+        <Preference
+            android:summary="@string/pref_summary_import_hidden_export"
+            android:title="@string/pref_title_import_hidden_export" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/pref_cat_import_cat_disabled" >
+        <Preference
+            android:summary="@string/pref_summary_import_disabled_import"
+            android:title="@string/pref_title_import_disabled_import" />
+        <Preference
+            android:summary="@string/pref_summary_import_disabled_export"
+            android:title="@string/pref_title_import_disabled_export" />
+    </PreferenceCategory>
+
+    <Preference android:title="@string/pref_title_import_help" />
+
+</PreferenceScreen>

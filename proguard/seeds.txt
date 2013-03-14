@@ -56,6 +56,7 @@ com.nagopy.android.disablemanager.R$id: int about_fragment_textview_app_name
 com.nagopy.android.disablemanager.R$id: int about_fragment_textview_version_name
 com.nagopy.android.disablemanager.R$id: int comment_edit_dialog_editText
 com.nagopy.android.disablemanager.R$id: int comment_edit_dialog_label_textView
+com.nagopy.android.disablemanager.R$id: int fod_lo_label
 com.nagopy.android.disablemanager.R$id: int format_edit_dialog_editText
 com.nagopy.android.disablemanager.R$id: int format_edit_dialog_sample_textview
 com.nagopy.android.disablemanager.R$id: int format_edit_dialog_summary_textview
@@ -79,6 +80,7 @@ com.nagopy.android.disablemanager.R$layout: int about_fragment
 com.nagopy.android.disablemanager.R$layout: int activity_main
 com.nagopy.android.disablemanager.R$layout: int app_list_row
 com.nagopy.android.disablemanager.R$layout: int comment_edit_dialog
+com.nagopy.android.disablemanager.R$layout: int fod_list_row
 com.nagopy.android.disablemanager.R$layout: int format_edit_dialog
 com.nagopy.android.disablemanager.R$layout: int support_library_base_scrollview
 com.nagopy.android.disablemanager.R$layout: int support_library_custom_seekbar_group
@@ -88,6 +90,19 @@ com.nagopy.android.disablemanager.R$raw: int about
 com.nagopy.android.disablemanager.R$string: int app_name
 com.nagopy.android.disablemanager.R$string: int comment_dialog_edittext_hint
 com.nagopy.android.disablemanager.R$string: int comment_dialog_title
+com.nagopy.android.disablemanager.R$string: int confirm_dialog_title
+com.nagopy.android.disablemanager.R$string: int confirm_first_dialog_message
+com.nagopy.android.disablemanager.R$string: int export_error_cannot_save
+com.nagopy.android.disablemanager.R$string: int export_success
+com.nagopy.android.disablemanager.R$string: int fod_back_to_default_path
+com.nagopy.android.disablemanager.R$string: int fod_back_to_default_path_mes
+com.nagopy.android.disablemanager.R$string: int import_different_build
+com.nagopy.android.disablemanager.R$string: int import_different_device
+com.nagopy.android.disablemanager.R$string: int import_different_type
+com.nagopy.android.disablemanager.R$string: int import_error_cannot_write_sp
+com.nagopy.android.disablemanager.R$string: int import_error_not_found
+com.nagopy.android.disablemanager.R$string: int import_error_too_large
+com.nagopy.android.disablemanager.R$string: int import_success
 com.nagopy.android.disablemanager.R$string: int menu_filter_disablable_and_enabled_apps
 com.nagopy.android.disablemanager.R$string: int menu_filter_disabled
 com.nagopy.android.disablemanager.R$string: int menu_filter_hide
@@ -104,6 +119,9 @@ com.nagopy.android.disablemanager.R$string: int message_empty_list
 com.nagopy.android.disablemanager.R$string: int message_share_no_app
 com.nagopy.android.disablemanager.R$string: int pref_cat_about
 com.nagopy.android.disablemanager.R$string: int pref_cat_general
+com.nagopy.android.disablemanager.R$string: int pref_cat_import
+com.nagopy.android.disablemanager.R$string: int pref_cat_import_cat_disabled
+com.nagopy.android.disablemanager.R$string: int pref_cat_import_cat_hidden
 com.nagopy.android.disablemanager.R$string: int pref_cat_share
 com.nagopy.android.disablemanager.R$string: int pref_def_share_customformat_with_comment
 com.nagopy.android.disablemanager.R$string: int pref_def_share_customformat_without_comment
@@ -116,18 +134,30 @@ com.nagopy.android.disablemanager.R$string: int pref_key_share_customformat_with
 com.nagopy.android.disablemanager.R$string: int pref_summary_general_show_changed_date
 com.nagopy.android.disablemanager.R$string: int pref_summary_general_show_only_running_packages
 com.nagopy.android.disablemanager.R$string: int pref_summary_general_sort_by_changed_date
+com.nagopy.android.disablemanager.R$string: int pref_summary_import_disabled_export
+com.nagopy.android.disablemanager.R$string: int pref_summary_import_disabled_import
+com.nagopy.android.disablemanager.R$string: int pref_summary_import_hidden_export
+com.nagopy.android.disablemanager.R$string: int pref_summary_import_hidden_import
 com.nagopy.android.disablemanager.R$string: int pref_summary_share_add_linebreak
 com.nagopy.android.disablemanager.R$string: int pref_summary_share_customformat_with_comment
 com.nagopy.android.disablemanager.R$string: int pref_summary_share_customformat_without_comment
 com.nagopy.android.disablemanager.R$string: int pref_title_general_show_changed_date
 com.nagopy.android.disablemanager.R$string: int pref_title_general_show_only_running_packages
 com.nagopy.android.disablemanager.R$string: int pref_title_general_sort_by_changed_date
+com.nagopy.android.disablemanager.R$string: int pref_title_import_disabled_export
+com.nagopy.android.disablemanager.R$string: int pref_title_import_disabled_import
+com.nagopy.android.disablemanager.R$string: int pref_title_import_help
+com.nagopy.android.disablemanager.R$string: int pref_title_import_hidden_export
+com.nagopy.android.disablemanager.R$string: int pref_title_import_hidden_import
 com.nagopy.android.disablemanager.R$string: int pref_title_share_add_linebreak
 com.nagopy.android.disablemanager.R$string: int pref_title_share_customformat_with_comment
 com.nagopy.android.disablemanager.R$string: int pref_title_share_customformat_without_comment
 com.nagopy.android.disablemanager.R$string: int support_library_contact_debug_information_descriptive_text
 com.nagopy.android.disablemanager.R$string: int support_library_file_open_dialog_back_to_default_path
 com.nagopy.android.disablemanager.R$string: int support_library_file_open_dialog_back_to_default_path_mes
+com.nagopy.android.disablemanager.R$string: int xml_error_cannot_open
+com.nagopy.android.disablemanager.R$string: int xml_error_invalid_xml
+com.nagopy.android.disablemanager.R$string: int xml_error_parser
 com.nagopy.android.disablemanager.R$style: int ProcessStatus_Background
 com.nagopy.android.disablemanager.R$style: int ProcessStatus_Empty
 com.nagopy.android.disablemanager.R$style: int ProcessStatus_Foreground
@@ -148,14 +178,18 @@ com.nagopy.android.disablemanager.R$styleable: int CustomSeekBarGroup_max
 com.nagopy.android.disablemanager.R$styleable: int CustomSeekBarGroup_min
 com.nagopy.android.disablemanager.R$styleable: int CustomSeekBarGroup_scale
 com.nagopy.android.disablemanager.R$xml: int app_preference_activity_body_general
+com.nagopy.android.disablemanager.R$xml: int app_preference_activity_body_import
 com.nagopy.android.disablemanager.R$xml: int app_preference_activity_body_share
 com.nagopy.android.disablemanager.R$xml: int app_preference_activity_header
 com.nagopy.android.disablemanager.app.AppPreferenceActivity
 com.nagopy.android.disablemanager.app.AppPreferenceActivity: AppPreferenceActivity()
 com.nagopy.android.disablemanager.app.FormatEditPreference
 com.nagopy.android.disablemanager.app.FormatEditPreference: FormatEditPreference(android.content.Context,android.util.AttributeSet)
+com.nagopy.android.disablemanager.app.ImportListActivity
+com.nagopy.android.disablemanager.app.ImportListActivity: ImportListActivity()
 com.nagopy.android.disablemanager.app.MainActivity
 com.nagopy.android.disablemanager.app.MainActivity: MainActivity()
 com.nagopy.android.disablemanager.pref.AboutPreferenceFragment
 com.nagopy.android.disablemanager.pref.GeneralPreferenceFragment
+com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment
 com.nagopy.android.disablemanager.pref.SharePreferenceFragment

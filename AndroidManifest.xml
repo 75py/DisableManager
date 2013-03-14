@@ -2,12 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nagopy.android.disablemanager"
     android:installLocation="auto"
-    android:versionCode="20130306"
-    android:versionName="1.1.0" >
+    android:versionCode="20130313"
+    android:versionName="1.2.0" >
 
     <uses-sdk
         android:minSdkVersion="15"
         android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,6 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".app.AppPreferenceActivity" />
+        <activity
+            android:name=".app.ImportListActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>

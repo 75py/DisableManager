@@ -23,7 +23,7 @@ final class AppComparatorWithDate implements Comparator<AppStatus> {
 	/**
 	 * コンストラクタ
 	 */
-	private AppComparatorWithDate() {}
+	private AppComparatorWithDate() {} // CHECKSTYLE IGNORE THIS LINE
 
 	/**
 	 * インスタンスを取得する
@@ -31,7 +31,7 @@ final class AppComparatorWithDate implements Comparator<AppStatus> {
 	 *           {@link ChangedDateUtils}
 	 * @return インスタンス
 	 */
-	public static final Comparator<AppStatus> getInstance(ChangedDateUtils dateUtils) {
+	public static Comparator<AppStatus> getInstance(ChangedDateUtils dateUtils) {
 		instance.mDateUtils = dateUtils;
 		return instance;
 	}

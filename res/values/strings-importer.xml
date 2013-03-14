@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="import_different_device">This XML is not for your device. OK?</string>
+    <string name="import_different_build">This XML is for other build number of your device. OK?</string>
+    <string name="import_different_type">This XML is %1$s apps list. OK?</string>
+    <string name="import_success">Success!</string>
+    <string name="export_success">Exported : %1$s</string>
+    
+    <!-- error -->
+    <string name="import_error_cannot_write_sp">Error: Cannot write database.</string>
+    <string name="import_error_not_found">Error: File not found: %1$s</string>
+    <string name="export_error_cannot_save">Error: Cannot save file.</string>
+    <string name="xml_error_invalid_xml">XmlPullParserException: Invalid xml format.</string>
+    <string name="xml_error_cannot_open">IOException: Cannot open: %1$s</string>
+    <string name="xml_error_parser">%1$s: Exception in xml loading</string>
+    <string name="import_error_too_large">Error: Too large file. You can read less than 10KB.</string>
+    
+    <!-- pref -->
+    <string name="pref_cat_import">Import / Export</string>
+    <string name="pref_cat_import_cat_hidden">Hidden apps</string>
+    <string name="pref_cat_import_cat_disabled">Disabled apps</string>
+    <string name="pref_title_import_hidden_import">Import</string>
+    <string name="pref_summary_import_hidden_import">Import a list of hidden apps from xml file.</string>
+    <string name="pref_title_import_hidden_export">Export</string>
+    <string name="pref_summary_import_hidden_export">Export a list of hidden apps in external storage. Its feature is for others who have the same device.</string>
+    <string name="pref_title_import_disabled_import">Import</string>
+    <string name="pref_summary_import_disabled_import">Import a list of recommended apps that you disable from xml file.</string>
+    <string name="pref_title_import_disabled_export">Export</string>
+    <string name="pref_summary_import_disabled_export">Export a list of apps that you disabled. The exported XML file is a list of recommended apps that you disable.</string>
+    <string name="pref_title_import_help">Help (in Japanese)</string>
+
+</resources>

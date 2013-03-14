@@ -22,6 +22,7 @@ import java.util.HashMap;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
+import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -49,6 +50,8 @@ import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disablemanager.R;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDialogListener;
+import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListener;
+import com.nagopy.android.disablemanager.dialog.FirstConfirmDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ListDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ListDialogFragment.OnListDialogItemClickListener;
 import com.nagopy.android.disablemanager.util.AppStatus;
@@ -70,38 +73,38 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
-	private AppsLoader mAppLoader;
+	protected AppsLoader mAppLoader;
 
 	/**
 	 * リストビュー
 	 */
-	private ListView mListView;
+	protected ListView mListView;
 
 	/**
 	 * リストが空の時に表示するテキストビュー
 	 */
-	private TextView mEmptyView;
+	protected TextView mEmptyView;
 
 	/**
 	 * アプリを絞り込むクラス
 	 */
-	private AppsFilter mAppFilter;
+	protected AppsFilter mAppFilter;
 
 	/**
 	 * アプリ一覧を表示するためのアダプタ
 	 */
-	private AppsListAdapter mAdapter;
+	protected AppsListAdapter mAdapter;
 
 	/**
 	 * 前回使ったフィルタ条件の値を保持する
 	 */
-	private int lastAppFilterCondition;
+	protected int lastAppFilterCondition;
 
 	/**
 	 * アイコンをメモリキャッシュするためのハッシュマップ<br>
 	 * パッケージ名とアイコン（Drawable）を保存
 	 */
-	private HashMap<String, Drawable> mIconCacheHashMap;
+	protected HashMap<String, Drawable> mIconCacheHashMap;
 
 	/**
 	 * コメントを編集するダイアログ
@@ -111,7 +114,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * コメントを編集するためのクラス
 	 */
-	private CommentsUtils mCommentsUtils;
+	protected CommentsUtils mCommentsUtils;
 
 	/**
 	 * onResumeで読みこみ直すパッケージ名を保持するフィールド
@@ -126,7 +129,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 非表示アプリを管理するクラス
 	 */
-	private HideUtils mAppHideUtils;
+	protected HideUtils mAppHideUtils;
 
 	/**
 	 * リストの表示位置を記憶するためのホルダー
@@ -138,6 +141,7 @@ public class MainActivity extends BaseActivity {
 	 */
 	private ChangedDateUtils mDateUtils;
 
+	@SuppressWarnings("serial")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -167,13 +171,10 @@ public class MainActivity extends BaseActivity {
 			}
 		});
 
-		mCommentsUtils = new CommentsUtils(getApplicationContext());
 		mCommentEditDialog = new CommentEditDialog();
 		mListDialogFragment = new ListDialogFragment();
 		mAppHideUtils = new HideUtils(getApplicationContext());
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
-
-			@SuppressWarnings("serial")
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, final View view, int position, long arg3) {
 				AppStatus appStatus = mAdapter.getAppList().get(position);
@@ -191,13 +192,13 @@ public class MainActivity extends BaseActivity {
 						switch (pos) {
 						case 0:
 							mCommentEditDialog.setLabel(label);
-							mCommentEditDialog.setDefaultValue(mCommentsUtils.restoreComment(packageName));
+							mCommentEditDialog.setDefaultValue(getCommentsUtils().restoreComment(packageName));
 							mCommentEditDialog.setListener(new CommentEditDialogListener() {
 								private static final long serialVersionUID = 1L;
 
 								@Override
 								public void onPositiveButtonClicked(DialogInterface dialog, String text) {
-									mCommentsUtils.saveComment(packageName, text);
+									getCommentsUtils().saveComment(packageName, text);
 
 									updateAppList(-1);
 								}
@@ -223,13 +224,35 @@ public class MainActivity extends BaseActivity {
 				mListDialogFragment.show(getFragmentManager(), "list");
 				return false;
 			}
-
 		});
 
-		// テスト実行時はコメントアウト
-		createReloadAsyncTask().execute();
-
 		initActionBarTabs();
+
+		if (FirstConfirmDialogFragment.isFirst(getApplicationContext())) {
+			// 初回起動の場合
+			FirstConfirmDialogFragment firstConfirmDialogFragment = new FirstConfirmDialogFragment();
+			firstConfirmDialogFragment.init(getText(R.string.confirm_first_dialog_message),
+					new ConfirmDialogListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							switch (which) {
+							case DialogInterface.BUTTON_POSITIVE:
+								FirstConfirmDialogFragment.setFlagOff(getApplicationContext());
+								createReloadAsyncTask().execute();
+								break;
+							case DialogInterface.BUTTON_NEGATIVE:
+								finish();
+								break;
+							default:
+								break;
+							}
+						}
+					});
+			firstConfirmDialogFragment.show(getFragmentManager(), "first");
+		} else {
+			// テスト実行時はコメントアウト
+			createReloadAsyncTask().execute();
+		}
 	}
 
 	@Override
@@ -252,7 +275,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * タブを設定する
 	 */
-	private void initActionBarTabs() {
+	protected void initActionBarTabs() {
 		ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
@@ -320,16 +343,33 @@ public class MainActivity extends BaseActivity {
 
 		TabListener tabListener = new TabListener(this);
 
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disablable_and_enabled_apps)
+		ArrayList<Tab> tabs = createTabs(actionBar, tabListener);
+		for (Tab tab : tabs) {
+			actionBar.addTab(tab);
+		}
+	}
+
+	/**
+	 * タブの一覧を作成する
+	 * @param actionBar
+	 *           アクションバー
+	 * @param tabListener
+	 *           リスナー
+	 * @return タブ一覧
+	 */
+	protected ArrayList<Tab> createTabs(ActionBar actionBar, TabListener tabListener) {
+		ArrayList<Tab> tabs = new ArrayList<ActionBar.Tab>();
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_disablable_and_enabled_apps)
 				.setTag(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM).setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
 				.setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_undisablable_system)
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_undisablable_system)
 				.setTag(AppsFilter.UNDISABLABLE_SYSTEM).setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_user_apps)
-				.setTag(AppsFilter.USER_APPS).setTabListener(tabListener));
-		actionBar.addTab(actionBar.newTab().setText(R.string.menu_filter_hide).setTag(AppsFilter.HIDE_APPS)
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_user_apps).setTag(AppsFilter.USER_APPS)
 				.setTabListener(tabListener));
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_hide).setTag(AppsFilter.HIDE_APPS)
+				.setTabListener(tabListener));
+		return tabs;
 	}
 
 	@Override
@@ -353,6 +393,7 @@ public class MainActivity extends BaseActivity {
 
 		mCommentEditDialog.setListener(null);
 		mCommentEditDialog = null;
+
 		mCommentsUtils = null;
 
 		mCommonUtil = null;
@@ -385,7 +426,7 @@ public class MainActivity extends BaseActivity {
 	 *           表示するアプリを選ぶ条件<br>
 	 *           負の数を渡すと前回と同じフィルタを使う
 	 */
-	private void updateAppList(int key) {
+	protected void updateAppList(int key) {
 		if (key < 0) {
 			key = lastAppFilterCondition;
 		} else {
@@ -467,7 +508,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * アプリ一覧を表示するためのAdapter
 	 */
-	private class AppsListAdapter extends BaseAdapter {
+	class AppsListAdapter extends BaseAdapter {
 		/**
 		 * アプリ一覧を保持するリスト
 		 */
@@ -577,7 +618,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * @return アプリを読み込み直すAsyncTaskWithProgressDialogのインスタンス
 	 */
-	private AsyncTaskWithProgressDialog createReloadAsyncTask() {
+	protected AsyncTaskWithProgressDialog createReloadAsyncTask() {
 		return new AsyncTaskWithProgressDialog(getFragmentManager(), this) {
 
 			@Override
@@ -610,7 +651,7 @@ public class MainActivity extends BaseActivity {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
 								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
-								activity.mCommentsUtils, activity.getApplicationContext());
+								activity.getCommentsUtils(), activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);
@@ -622,5 +663,15 @@ public class MainActivity extends BaseActivity {
 				}
 			}
 		};
+	}
+
+	/**
+	 * @return CommentsUtilsのインスタンス
+	 */
+	protected CommentsUtils getCommentsUtils() {
+		if (mCommentsUtils == null) {
+			mCommentsUtils = new CommentsUtils(getApplicationContext());
+		}
+		return mCommentsUtils;
 	}
 }
