@@ -146,7 +146,11 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 		};
 
 		for (int index = 0; index < count; index++) {
-			preferenceScreen.getPreference(index).setOnPreferenceClickListener(onPreferenceClickListener);
+			final Preference preference = preferenceScreen.getPreference(index);
+			preference.setOnPreferenceClickListener(onPreferenceClickListener);
+			if (preference.getTitleRes() == R.string.pref_title_import_help) {
+				preference.setSummary(BLOG_URL);
+			}
 		}
 	}
 

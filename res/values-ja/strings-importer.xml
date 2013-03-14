@@ -18,14 +18,16 @@
 
     <!-- pref -->
     <string name="pref_cat_import">インポート／エクスポート</string>
-    <string name="pref_title_import_hidden_import">除外リストをインポート</string>
+    <string name="pref_cat_import_cat_hidden">除外リスト</string>
+    <string name="pref_cat_import_cat_disabled">無効化推奨リスト</string>
+    <string name="pref_title_import_hidden_import">インポート</string>
     <string name="pref_summary_import_hidden_import">除外アプリのリストをXMLファイルからインポートします。</string>
-    <string name="pref_title_import_hidden_export">除外リストのエクスポート</string>
+    <string name="pref_title_import_hidden_export">エクスポート</string>
     <string name="pref_summary_import_hidden_export">除外したアプリのリストをXMLファイルにエクスポートします。</string>
-    <string name="pref_title_import_disabled_import">無効化推奨リストのインポート</string>
-    <string name="pref_summary_import_disabled_import">XMLファイルから無効化するアプリの一覧をインポートします。</string>
-    <string name="pref_title_import_disabled_export">無効化済みアプリをエクスポート</string>
+    <string name="pref_title_import_disabled_import">インポート</string>
+    <string name="pref_summary_import_disabled_import">XMLファイルから無効化推奨リストをインポートします。</string>
+    <string name="pref_title_import_disabled_export">エクスポート</string>
     <string name="pref_summary_import_disabled_export">無効化済みアプリの一覧を、無効化推奨リストとしてXMLファイルにエクスポートします。</string>
-    <string name="pref_title_import_help">ヘルプ（作者ブログへ）</string>
+    <string name="pref_title_import_help">ヘルプ</string>
 
 </resources>
