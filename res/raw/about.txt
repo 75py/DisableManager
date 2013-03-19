@@ -7,6 +7,11 @@ https://twitter.com/dev75py
 Other apps:
 https://play.google.com/store/apps/developer?id=75py
 
+Translate Disable Manager:
+Please help me to translate into your language.
+Original text is Japanese, so if you can read it, please translate from it.
+http://crowdin.net/project/disable-manager
+
 About status
 [Foreground]
 this process is running the foreground UI.

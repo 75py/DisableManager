@@ -5,6 +5,11 @@ https://twitter.com/dev75py
 ＜他のアプリ＞
 https://play.google.com/store/apps/developer?id=75py
 
+＜翻訳＞
+日本語以外の言語への翻訳にご協力お願いします。
+Source languageは一応Englishにしていますが非常にpoorなので、英訳の直しも大歓迎です。
+http://crowdin.net/project/disable-manager
+
 
 ＜諸注意＞
 ・このアプリは非rootユーザー向けです。アプリの無効化はAndroid（ICS以上）のOS標準機能です。

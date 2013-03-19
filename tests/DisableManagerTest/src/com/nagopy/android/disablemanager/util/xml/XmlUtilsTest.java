@@ -108,8 +108,10 @@ public class XmlUtilsTest extends AndroidTestCase {
 
 	public void test時刻の文字列化() throws Exception {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd_hhmmss");
-		assertEquals(format.format(new Date()), mXmlUtils.getTimeText(), getContext().getResources()
-				.getConfiguration().locale);
+		assertEquals(format.format(new Date()), mXmlUtils.getTimeText());
+		// assertEquals(format.format(new Date()), mXmlUtils.getTimeText(),
+		// getContext().getResources()
+		// .getConfiguration().locale);
 	}
 
 	public void testエクスポート() throws Exception {
