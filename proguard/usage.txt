@@ -114,7 +114,7 @@ com.nagopy.android.disablemanager.util.filter.AppsFilter:
     public static final int USER_APPS
     public static final int HIDE_APPS
 com.nagopy.android.disablemanager.util.sort.AppsSorter:
-    18:18:private AppsSorter()
+    34:34:private AppsSorter()
 com.nagopy.android.disablemanager.util.xml.XmlUtils:
     private static final java.lang.String ELEMENT_ITEM
     private static final java.lang.String ELEMENT_PACKAGES
@@ -124,4 +124,4 @@ com.nagopy.android.disablemanager.util.xml.XmlUtils:
     private static final java.lang.String ELEMENT_ROOT
     public static final java.lang.String TYPE_DISABLED
     public static final java.lang.String TYPE_HIDDEN
-    117:121:public java.lang.String export(java.util.ArrayList,java.lang.String)
+    133:137:public java.lang.String export(java.util.ArrayList,java.lang.String)
