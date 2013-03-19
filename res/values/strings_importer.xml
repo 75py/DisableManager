@@ -13,7 +13,7 @@
   <string name="xml_error_cannot_open">"IOException: Cannot open: %1$s"</string>
   <string name="xml_error_parser">"%1$s: Exception in xml loading"</string>
   <string name="import_error_too_large">"Error: Too large file. You can read less than 10KB."</string>
-  <string name="pref_cat_import">"Error: Too large file. You can read less than 10KB."</string>
+  <string name="pref_cat_import">"Import / Export"</string>
   <string name="pref_cat_import_cat_hidden">"Hidden apps"</string>
   <string name="pref_cat_import_cat_disabled">"Disabled apps"</string>
   <string name="pref_title_import_hidden_import">"Import"</string>
