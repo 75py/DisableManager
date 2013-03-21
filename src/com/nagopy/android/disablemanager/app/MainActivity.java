@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 非表示アプリを管理するクラス
 	 */
-	protected HideUtils mAppHideUtils;
+	protected HideUtils mHideUtils;
 
 	/**
 	 * リストの表示位置を記憶するためのホルダー
@@ -139,7 +139,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * @see ChangedDateUtils
 	 */
-	private ChangedDateUtils mDateUtils;
+	private ChangedDateUtils mChangedDateUtils;
 
 	@SuppressWarnings("serial")
 	@Override
@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity {
 
 		mAppFilter = new AppsFilter();
 		mIconCacheHashMap = new HashMap<String, Drawable>();
-		mDateUtils = new ChangedDateUtils(getApplicationContext());
+		mChangedDateUtils = new ChangedDateUtils(getApplicationContext());
 		lastAppFilterCondition = AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM;
 		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.start_activity_listView);
@@ -173,7 +173,7 @@ public class MainActivity extends BaseActivity {
 
 		mCommentEditDialog = new CommentEditDialog();
 		mListDialogFragment = new ListDialogFragment();
-		mAppHideUtils = new HideUtils(getApplicationContext());
+		mHideUtils = new HideUtils(getApplicationContext());
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, final View view, int position, long arg3) {
@@ -211,7 +211,7 @@ public class MainActivity extends BaseActivity {
 							mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
 							break;
 						case 1:
-							if (mAppHideUtils.updateHideList(packageName)) {
+							if (mHideUtils.updateHideList(packageName)) {
 								updateAppList(-1);
 							}
 							break;
@@ -261,7 +261,7 @@ public class MainActivity extends BaseActivity {
 		if (shouldReloadPackageNameString != null) {
 			// 読みこみ直すパッケージがあれば読みこんで反映する
 			if (mAppLoader.updateStatus(shouldReloadPackageNameString)) {
-				mDateUtils.put(shouldReloadPackageNameString, System.currentTimeMillis());
+				mChangedDateUtils.put(shouldReloadPackageNameString, System.currentTimeMillis());
 			}
 			mAppFilter.sortOriginalAppList();
 			updateAppList(-1);
@@ -396,16 +396,20 @@ public class MainActivity extends BaseActivity {
 
 		mCommentsUtils = null;
 
-		mCommonUtil = null;
-
-		// Set<String> keyset = mIconCacheHashMap.keySet();
-		// for (Iterator<String> iterator = keyset.iterator(); iterator.hasNext();) {
-		// String packageName = (String) iterator.next();
-		// Drawable icon = mIconCacheHashMap.get(packageName);
-		// }
-		mIconCacheHashMap.clear();
 		mIconCacheHashMap = null;
-		mIconCacheHashMap = new HashMap<String, Drawable>();
+
+		ActionBar actionBar = getActionBar();
+		int tabcount = actionBar.getTabCount();
+		for (int index = 0; index < tabcount; index++) {
+			Tab tab = actionBar.getTabAt(index);
+			tab.setTabListener(null);
+		}
+		mListDialogFragment = null;
+		mHideUtils = null;
+		mChangedDateUtils = null;
+		shouldReloadPackageNameString = null;
+		mListPositionHolder = null;
+		mCommonUtil = null;
 	}
 
 	@Override
@@ -436,11 +440,11 @@ public class MainActivity extends BaseActivity {
 		if (getSP().getBoolean(getString(R.string.pref_key_general_sort_by_changed_date),
 				getResources().getBoolean(R.bool.pref_def_general_sort_by_changed_date))
 				&& (key == AppsFilter.DISABLED || key == AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM)) {
-			ArrayList<AppStatus> list = mAppFilter.execute(key, mAppHideUtils.getHideAppsList());
-			AppsSorter.sort(mDateUtils, list);
+			ArrayList<AppStatus> list = mAppFilter.execute(key, mHideUtils.getHideAppsList());
+			AppsSorter.sort(mChangedDateUtils, list);
 			mAdapter.updateAppList(list);
 		} else {
-			mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
+			mAdapter.updateAppList(mAppFilter.execute(key, mHideUtils.getHideAppsList()));
 		}
 		mAdapter.notifyDataSetChanged();
 
@@ -650,7 +654,7 @@ public class MainActivity extends BaseActivity {
 					if (activity.mAdapter == null) {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
-								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
+								activity.lastAppFilterCondition, activity.mHideUtils.getHideAppsList()),
 								activity.getCommentsUtils(), activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {

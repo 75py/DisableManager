@@ -134,7 +134,7 @@ public class ImportListActivity extends MainActivity {
 					if (activity.mAdapter == null) {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
-								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
+								activity.lastAppFilterCondition, activity.mHideUtils.getHideAppsList()),
 								activity.getCommentsUtils(), activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {

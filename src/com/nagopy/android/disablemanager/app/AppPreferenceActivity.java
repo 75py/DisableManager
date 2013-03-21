@@ -99,4 +99,10 @@ public class AppPreferenceActivity extends BasePreferenceActivity {
 		}
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		sp = null;
+		keySet = null;
+	}
 }
