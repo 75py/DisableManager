@@ -59,8 +59,8 @@ final class AppComparatorWithDate implements Comparator<AppStatus> {
 
 		long date0 = mChangedDateUtils.get(pkgName0);
 		long date1 = mChangedDateUtils.get(pkgName1);
-		if (date0 != date1) {
-			return (int) (date1 - date0);
+		if (date0 != 0 || date1 != 0) {
+			return date0 > date1 ? -1 : 1;
 		}
 
 		String label0 = obj0.getLabel();

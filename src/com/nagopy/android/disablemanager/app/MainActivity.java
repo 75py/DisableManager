@@ -139,7 +139,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * @see ChangedDateUtils
 	 */
-	private ChangedDateUtils mChangedDateUtils;
+	protected ChangedDateUtils mChangedDateUtils;
 
 	@SuppressWarnings("serial")
 	@Override
@@ -263,7 +263,7 @@ public class MainActivity extends BaseActivity {
 			if (mAppLoader.updateStatus(shouldReloadPackageNameString)) {
 				mChangedDateUtils.put(shouldReloadPackageNameString, System.currentTimeMillis());
 			}
-			mAppFilter.sortOriginalAppList();
+			mAppFilter.sortOriginalAppList(mChangedDateUtils);
 			updateAppList(-1);
 			shouldReloadPackageNameString = null;
 		} else if (getSP().getBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, false)) {
@@ -650,7 +650,7 @@ public class MainActivity extends BaseActivity {
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
 					activity.mAppFilter.setOriginalAppList(activity.mAppLoader.getAppsList());
-					activity.mAppFilter.sortOriginalAppList();
+					activity.mAppFilter.sortOriginalAppList(activity.mChangedDateUtils);
 					if (activity.mAdapter == null) {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(

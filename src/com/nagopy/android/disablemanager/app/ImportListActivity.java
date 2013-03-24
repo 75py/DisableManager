@@ -130,7 +130,7 @@ public class ImportListActivity extends MainActivity {
 				if (activity != null) {
 					activity.mAppLoader.setAppsList(activity.apps);
 					activity.mAppFilter.setOriginalAppList(activity.mAppLoader.getAppsList());
-					activity.mAppFilter.sortOriginalAppList();
+					activity.mAppFilter.sortOriginalAppList(activity.mChangedDateUtils);
 					if (activity.mAdapter == null) {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
