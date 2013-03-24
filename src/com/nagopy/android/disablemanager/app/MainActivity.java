@@ -597,7 +597,7 @@ public class MainActivity extends BaseActivity {
 
 				String comment = this.mCommentsUtils.restoreComment(appStatus.getPackageName());
 				holder.pkgNameTextView.setText(mBuilder.getLabelText(appStatus.getPackageName(), comment,
-						appStatus.getRunningStatus()));
+						appStatus.getProcessStrings()));
 			}
 			return convertView;
 		}

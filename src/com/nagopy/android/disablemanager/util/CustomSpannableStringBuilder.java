@@ -16,7 +16,6 @@
 
 package com.nagopy.android.disablemanager.util;
 
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.preference.PreferenceManager;
 import android.text.SpannableStringBuilder;
@@ -75,12 +74,12 @@ public class CustomSpannableStringBuilder {
 	 * @param comment
 	 *           コメント<br>
 	 *           ない場合はnull
-	 * @param status
-	 *           ステータス
+	 * @param statusText
+	 *           プロセス情報
 	 * @return うまいことやった結果。setTextでおｋ
 	 */
-	public CharSequence getLabelText(String packageName, String comment, int status) {
-		String statusText = getStatusText(status);
+	public CharSequence getLabelText(String packageName, String comment, String statusText) {
+		// String statusText = getStatusText(status);
 		String changedDate = null;
 		if (PreferenceManager.getDefaultSharedPreferences(mContext).getBoolean(
 				mContext.getString(R.string.pref_key_general_show_changed_date),
@@ -120,42 +119,5 @@ public class CustomSpannableStringBuilder {
 		mBuilder.append(packageName);
 
 		return mBuilder;
-	}
-
-	/**
-	 * ステータスのintをもとに文字列に変換
-	 * @param status
-	 *           {@link AppStatus#getRunningStatus()}
-	 * @return 文字列（Foregroundとか）
-	 */
-	private String getStatusText(int status) {
-		String packageStatusText;
-		switch (status) {
-		case AppStatus.NULL_STATUS:
-			packageStatusText = null;
-			break;
-		case RunningAppProcessInfo.IMPORTANCE_BACKGROUND:
-			packageStatusText = "Background";
-			break;
-		case RunningAppProcessInfo.IMPORTANCE_FOREGROUND:
-			packageStatusText = "Foreground";
-			break;
-		case RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE:
-			packageStatusText = "Perceptible";
-			break;
-		case RunningAppProcessInfo.IMPORTANCE_SERVICE:
-			packageStatusText = "Service";
-			break;
-		case RunningAppProcessInfo.IMPORTANCE_VISIBLE:
-			packageStatusText = "Visible";
-			break;
-		case RunningAppProcessInfo.IMPORTANCE_EMPTY:
-			packageStatusText = "Empty";
-			break;
-		default:
-			packageStatusText = null;
-			break;
-		}
-		return packageStatusText;
 	}
 }

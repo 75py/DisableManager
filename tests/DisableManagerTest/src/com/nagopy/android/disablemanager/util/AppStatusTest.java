@@ -37,8 +37,8 @@ public class AppStatusTest extends AndroidTestCase {
 	}
 
 	public void testステータスのget_set() throws Exception {
-		mAppStatus.setRunningStatus(1);
-		assertEquals(1, mAppStatus.getRunningStatus());
+		mAppStatus.setProcessStrings("aa");
+		assertEquals("aa", mAppStatus.getProcessStrings());
 	}
 
 	public void testToString() throws Exception {
