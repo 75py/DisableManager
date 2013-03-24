@@ -68,7 +68,7 @@ import com.nagopy.android.disablemanager.util.sort.AppsSorter;
  * ランチャーから起動するアクティビティ<br>
  * リスト表示など
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements OnListDialogItemClickListener {
 
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
@@ -141,6 +141,11 @@ public class MainActivity extends BaseActivity {
 	 */
 	protected ChangedDateUtils mChangedDateUtils;
 
+	/**
+	 * 長押しメニューのリスナー
+	 */
+	private OnItemClickListener mOnItemClickListener;
+
 	@SuppressWarnings("serial")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -186,7 +191,9 @@ public class MainActivity extends BaseActivity {
 				} else {
 					resId = R.array.main_atcitity_long_tap_menu;
 				}
-				mListDialogFragment.init(label, resId, new OnListDialogItemClickListener() {
+				mListDialogFragment.init(label, resId);
+
+				mOnItemClickListener = new AdapterView.OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 						switch (pos) {
@@ -220,7 +227,7 @@ public class MainActivity extends BaseActivity {
 						}
 						mListDialogFragment.dismiss();
 					}
-				});
+				};
 				mListDialogFragment.show(getFragmentManager(), "list");
 				return false;
 			}
@@ -677,5 +684,12 @@ public class MainActivity extends BaseActivity {
 			mCommentsUtils = new CommentsUtils(getApplicationContext());
 		}
 		return mCommentsUtils;
+	}
+
+	@Override
+	public void onItemClick(int fragmentId, AdapterView<?> parent, View view, int position, long id) {
+		if (mListDialogFragment.getId() == fragmentId) {
+			mOnItemClickListener.onItemClick(parent, view, position, id);
+		}
 	}
 }
