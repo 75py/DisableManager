@@ -69,7 +69,6 @@ import com.nagopy.android.disablemanager.util.sort.AppsSorter;
  * リスト表示など
  */
 public class MainActivity extends BaseActivity implements OnListDialogItemClickListener {
-
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
@@ -599,9 +598,10 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 			if (appStatus != null) {
 				holder.labelTextView.setText(appStatus.getLabel());
 				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
-				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
-				icon.setCallback(null);
-
+				if (icon != null) {
+					holder.labelTextView.setCompoundDrawables(icon, null, null, null);
+					icon.setCallback(null);
+				}
 				String comment = this.mCommentsUtils.restoreComment(appStatus.getPackageName());
 				holder.pkgNameTextView.setText(mBuilder.getLabelText(appStatus.getPackageName(), comment,
 						appStatus.getProcessStrings()));

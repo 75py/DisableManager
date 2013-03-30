@@ -31,6 +31,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.nagopy.android.common.image.ImageUtils;
 import com.nagopy.android.disablemanager.R;
@@ -101,9 +102,6 @@ public class AppsLoader {
 		RunningProcessStatusMap runnings = getRunningProcesses();
 
 		for (ApplicationInfo info : applicationInfo) {
-			Drawable icon = info.loadIcon(packageManager);
-			icon.setBounds(0, 0, iconSize, iconSize);
-
 			AppStatus appStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
 					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
 					judgeDisablable.isDisablable(info));
@@ -112,6 +110,15 @@ public class AppsLoader {
 			setProcessStrings(appStatus, runnings);
 
 			appsList.add(appStatus);
+
+			// アイコン読み込み
+			Drawable icon = null;
+			try {
+				icon = info.loadIcon(packageManager);
+				icon.setBounds(0, 0, iconSize, iconSize);
+			} catch (OutOfMemoryError e) {
+				Log.d(getContext().getPackageName(), "OutOfMemoryError: loadIcon, " + info.packageName);
+			}
 			iconCache.put(info.packageName, icon);
 		}
 
@@ -141,8 +148,8 @@ public class AppsLoader {
 				e.printStackTrace();
 				continue;
 			}
-			Drawable icon = appInfo.loadIcon(packageManager);
-			icon.setBounds(0, 0, iconSize, iconSize);
+			// Drawable icon = appInfo.loadIcon(packageManager);
+			// icon.setBounds(0, 0, iconSize, iconSize);
 
 			AppStatus appStatus = new AppStatus(appInfo.loadLabel(packageManager).toString(), packageName,
 					appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
@@ -150,6 +157,15 @@ public class AppsLoader {
 			setProcessStrings(appStatus, runningProcessStatusMap);
 
 			appsList.add(appStatus);
+
+			// アイコン読み込み
+			Drawable icon = null;
+			try {
+				icon = appInfo.loadIcon(packageManager);
+				icon.setBounds(0, 0, iconSize, iconSize);
+			} catch (OutOfMemoryError e) {
+				Log.d(getContext().getPackageName(), "OutOfMemoryError: loadIcon, " + packageName);
+			}
 			iconCache.put(packageName, icon);
 		}
 
