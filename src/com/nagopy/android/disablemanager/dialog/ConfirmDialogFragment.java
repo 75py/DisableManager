@@ -35,6 +35,10 @@ import com.nagopy.android.disablemanager.R;
  */
 public class ConfirmDialogFragment extends DialogFragment {
 
+	/**
+	 * リスナーを保存するキー
+	 * @deprecated
+	 */
 	private static final String KEY_LISTNER = "positiveButtonListner";
 
 	@Override
@@ -109,14 +113,20 @@ public class ConfirmDialogFragment extends DialogFragment {
 
 		/**
 		 * whichの値によってどのボタンが押されたかを判定するとGood
-		 * <ul>
-		 * <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
-		 * <li>{@link DialogInterface#BUTTON_NEUTRAL}</li>
-		 * <li>{@link DialogInterface#BUTTON_NEGATIVE}</li>
-		 * </ul>
+		 * 
+		 * @param dialog
+		 *           ダイアログ
+		 * @param which
+		 *           <ul>
+		 *           <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEUTRAL}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEGATIVE}</li>
+		 *           </ul>
 		 */
 		@Override
-		public abstract void onClick(DialogInterface dialog, int which);
+		void onClick(DialogInterface dialog, int which);
 	}
 
 	/**
@@ -126,13 +136,20 @@ public class ConfirmDialogFragment extends DialogFragment {
 
 		/**
 		 * whichの値によってどのボタンが押されたかを判定するとGood
-		 * <ul>
-		 * <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
-		 * <li>{@link DialogInterface#BUTTON_NEUTRAL}</li>
-		 * <li>{@link DialogInterface#BUTTON_NEGATIVE}</li>
-		 * </ul>
+		 * @param fragmentId
+		 *           フラグメントのid
+		 * @param dialog
+		 *           ダイアログ
+		 * @param which
+		 *           <ul>
+		 *           <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEUTRAL}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEGATIVE}</li>
+		 *           </ul>
 		 */
-		public abstract void onClick(int fragmentId, DialogInterface dialog, int which);
+		void onClick(int fragmentId, DialogInterface dialog, int which);
 	}
 
 }

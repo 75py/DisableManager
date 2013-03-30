@@ -130,15 +130,18 @@ public class CommentEditDialog extends DialogFragment {
 		 * @param text
 		 *           入力されたテキスト
 		 */
-		public abstract void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog,
+		void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog,
 				String packageName, String text);
 
 		/**
 		 * コメント編集ダイアログでキャンセルボタンが押されたとき
+		 * @param fragmentId
+		 *           フラグメントのid
 		 * @param dialog
 		 *           ダイアログ
+		 * @param packageName
+		 *           パッケージ名
 		 */
-		public abstract void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog,
-				String packageName);
+		void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog, String packageName);
 	}
 }

@@ -48,7 +48,7 @@ public class ListDialogFragment extends DialogFragment {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, array);
 		listView.setAdapter(adapter);
-		if (getActivity() instanceof OnListDialogItemClickListener)
+		if (getActivity() instanceof OnListDialogItemClickListener) {
 			listView.setOnItemClickListener(new OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -56,6 +56,7 @@ public class ListDialogFragment extends DialogFragment {
 							id);
 				}
 			});
+		}
 
 		return new AlertDialog.Builder(getActivity()).setView(listView).setTitle(getDialogTitle()).create();
 	}
@@ -81,8 +82,6 @@ public class ListDialogFragment extends DialogFragment {
 	 *           ダイアログのタイトル
 	 * @param arrayResId
 	 *           配列のリソースID
-	 * @param listener
-	 *           リスナー
 	 */
 	public void init(String title, int arrayResId) {
 		Bundle bundle = new Bundle();
@@ -91,6 +90,9 @@ public class ListDialogFragment extends DialogFragment {
 		setArguments(bundle);
 	}
 
+	/**
+	 * ListDialogFragmentで使うリスナー。Activityで実装する
+	 */
 	public static interface OnListDialogItemClickListener {
 		/**
 		 * Callback method to be invoked when an item in this AdapterView has been clicked.
@@ -108,7 +110,10 @@ public class ListDialogFragment extends DialogFragment {
 		 *           The position of the view in the adapter.
 		 * @param id
 		 *           The row id of the item that was clicked.
+		 * 
+		 * @param fragmentId
+		 *           フラグメントのid
 		 */
-		public abstract void onItemClick(int fragmentId, AdapterView<?> parent, View view, int position, long id);
+		void onItemClick(int fragmentId, AdapterView<?> parent, View view, int position, long id);
 	}
 }
