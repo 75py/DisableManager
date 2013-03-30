@@ -68,7 +68,8 @@ import com.nagopy.android.disablemanager.util.sort.AppsSorter;
  * ランチャーから起動するアクティビティ<br>
  * リスト表示など
  */
-public class MainActivity extends BaseActivity implements OnListDialogItemClickListener {
+public class MainActivity extends BaseActivity implements OnListDialogItemClickListener,
+		ConfirmDialogListener {
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
@@ -145,7 +146,6 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	 */
 	private OnItemClickListener mOnItemClickListener;
 
-	@SuppressWarnings("serial")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -237,23 +237,7 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 		if (FirstConfirmDialogFragment.isFirst(getApplicationContext())) {
 			// 初回起動の場合
 			FirstConfirmDialogFragment firstConfirmDialogFragment = new FirstConfirmDialogFragment();
-			firstConfirmDialogFragment.init(getText(R.string.confirm_first_dialog_message),
-					new ConfirmDialogListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							switch (which) {
-							case DialogInterface.BUTTON_POSITIVE:
-								FirstConfirmDialogFragment.setFlagOff(getApplicationContext());
-								createReloadAsyncTask().execute();
-								break;
-							case DialogInterface.BUTTON_NEGATIVE:
-								finish();
-								break;
-							default:
-								break;
-							}
-						}
-					});
+			firstConfirmDialogFragment.init(getText(R.string.confirm_first_dialog_message));
 			firstConfirmDialogFragment.show(getFragmentManager(), "first");
 		} else {
 			// テスト実行時はコメントアウト
@@ -690,6 +674,22 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	public void onItemClick(int fragmentId, AdapterView<?> parent, View view, int position, long id) {
 		if (mListDialogFragment.getId() == fragmentId) {
 			mOnItemClickListener.onItemClick(parent, view, position, id);
+		}
+	}
+
+	@Override
+	public void onClick(int fragmentId, DialogInterface dialog, int which) {
+		// ほんとはdialogfragmentをメンバにしてid確認するけどとりあえず一つだけだから保留
+		switch (which) {
+		case DialogInterface.BUTTON_POSITIVE:
+			FirstConfirmDialogFragment.setFlagOff(getApplicationContext());
+			createReloadAsyncTask().execute();
+			break;
+		case DialogInterface.BUTTON_NEGATIVE:
+			finish();
+			break;
+		default:
+			break;
 		}
 	}
 }

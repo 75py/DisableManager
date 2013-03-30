@@ -86,17 +86,13 @@ public class AppPreferenceActivity extends BasePreferenceActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		if (!sp.getBoolean(KEY_RELOAD_FLAG, false)) {
-			getSP().registerOnSharedPreferenceChangeListener(listener);
-		}
+		sp.registerOnSharedPreferenceChangeListener(listener);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		if (!sp.getBoolean(KEY_RELOAD_FLAG, false)) {
-			getSP().unregisterOnSharedPreferenceChangeListener(listener);
-		}
+		sp.unregisterOnSharedPreferenceChangeListener(listener);
 	}
 
 	@Override
