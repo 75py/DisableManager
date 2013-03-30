@@ -69,7 +69,7 @@ import com.nagopy.android.disablemanager.util.sort.AppsSorter;
  * リスト表示など
  */
 public class MainActivity extends BaseActivity implements OnListDialogItemClickListener,
-		ConfirmDialogListener {
+		ConfirmDialogListener, CommentEditDialogListener {
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
@@ -197,23 +197,8 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 					public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 						switch (pos) {
 						case 0:
-							mCommentEditDialog.setLabel(label);
-							mCommentEditDialog.setDefaultValue(getCommentsUtils().restoreComment(packageName));
-							mCommentEditDialog.setListener(new CommentEditDialogListener() {
-								private static final long serialVersionUID = 1L;
-
-								@Override
-								public void onPositiveButtonClicked(DialogInterface dialog, String text) {
-									getCommentsUtils().saveComment(packageName, text);
-
-									updateAppList(-1);
-								}
-
-								@Override
-								// CHECKSTYLE:OFF
-								public void onNegativeButtonClicked(DialogInterface dialog) {}
-								// CHECKSTYLE:ON
-							});
+							mCommentEditDialog.init(label, packageName,
+									getCommentsUtils().restoreComment(packageName));
 							mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
 							break;
 						case 1:
@@ -381,7 +366,6 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 		mAppLoader.deallocate();
 		mAppLoader = null;
 
-		mCommentEditDialog.setListener(null);
 		mCommentEditDialog = null;
 
 		mCommentsUtils = null;
@@ -692,4 +676,13 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 			break;
 		}
 	}
+
+	@Override
+	public void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog, String packageName, String text) {
+		getCommentsUtils().saveComment(packageName, text);
+		updateAppList(-1);
+	}
+
+	@Override
+	public void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog, String packageName) {}
 }
