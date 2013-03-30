@@ -98,13 +98,10 @@ com.nagopy.android.disablemanager.dialog.FormatEditDialog:
 com.nagopy.android.disablemanager.dialog.ListDialogFragment:
     private static final java.lang.String KEY_ARRAYSTRING_RES_ID
     private static final java.lang.String KEY_DIALOG_TITLE
-    private static final java.lang.String KEY_ON_ITEM_CLICK_LISTENER
 com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment:
     private static final java.lang.String BLOG_URL
     private static final int REQUEST_HIDDEN
     private static final int REQUEST_DISABLED
-com.nagopy.android.disablemanager.util.AppStatus:
-    public static final int NULL_STATUS
 com.nagopy.android.disablemanager.util.CommentsUtils:
     private static final java.lang.String PREFERENCE_FILE_NAME
 com.nagopy.android.disablemanager.util.filter.AppsFilter:
