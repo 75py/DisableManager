@@ -34,7 +34,7 @@ final class AppComparatorWithDate implements Comparator<AppStatus> {
 	/**
 	 * @see ChangedDateUtils
 	 */
-	private ChangedDateUtils mDateUtils;
+	private ChangedDateUtils mChangedDateUtils;
 
 	/**
 	 * コンストラクタ
@@ -48,7 +48,7 @@ final class AppComparatorWithDate implements Comparator<AppStatus> {
 	 * @return インスタンス
 	 */
 	public static Comparator<AppStatus> getInstance(ChangedDateUtils dateUtils) {
-		instance.mDateUtils = dateUtils;
+		instance.mChangedDateUtils = dateUtils;
 		return instance;
 	}
 
@@ -57,10 +57,10 @@ final class AppComparatorWithDate implements Comparator<AppStatus> {
 		String pkgName0 = obj0.getPackageName();
 		String pkgName1 = obj1.getPackageName();
 
-		long date0 = mDateUtils.get(pkgName0);
-		long date1 = mDateUtils.get(pkgName1);
-		if (date0 != date1) {
-			return (int) (date1 - date0);
+		long date0 = mChangedDateUtils.get(pkgName0);
+		long date1 = mChangedDateUtils.get(pkgName1);
+		if (date0 != 0 || date1 != 0) {
+			return date0 > date1 ? -1 : 1;
 		}
 
 		String label0 = obj0.getLabel();

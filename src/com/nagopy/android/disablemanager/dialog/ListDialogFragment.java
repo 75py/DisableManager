@@ -16,12 +16,12 @@
 
 package com.nagopy.android.disablemanager.dialog;
 
-import java.io.Serializable;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -41,11 +41,6 @@ public class ListDialogFragment extends DialogFragment {
 	 */
 	private static final String KEY_DIALOG_TITLE = "KEY_DIALOG_TITLE";
 
-	/**
-	 * リスナーを保存するためのキー
-	 */
-	private static final String KEY_ON_ITEM_CLICK_LISTENER = "KEY_ON_ITEM_CLICK_LISTENER";
-
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		ListView listView = new ListView(getActivity().getApplicationContext());
@@ -53,7 +48,15 @@ public class ListDialogFragment extends DialogFragment {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
 				android.R.layout.simple_list_item_1, array);
 		listView.setAdapter(adapter);
-		listView.setOnItemClickListener(getOnItemClickListener());
+		if (getActivity() instanceof OnListDialogItemClickListener) {
+			listView.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					((OnListDialogItemClickListener) getActivity()).onListDialogFragmentItemClicked(getId(), parent, view, position,
+							id);
+				}
+			});
+		}
 
 		return new AlertDialog.Builder(getActivity()).setView(listView).setTitle(getDialogTitle()).create();
 	}
@@ -64,14 +67,6 @@ public class ListDialogFragment extends DialogFragment {
 	 */
 	private int getArrayResId() {
 		return getArguments().getInt(KEY_ARRAYSTRING_RES_ID);
-	}
-
-	/**
-	 * 保存したリスナーを取得する
-	 * @return 保存しておいたリスナー
-	 */
-	private OnItemClickListener getOnItemClickListener() {
-		return (OnItemClickListener) getArguments().get(KEY_ON_ITEM_CLICK_LISTENER);
 	}
 
 	/**
@@ -87,21 +82,38 @@ public class ListDialogFragment extends DialogFragment {
 	 *           ダイアログのタイトル
 	 * @param arrayResId
 	 *           配列のリソースID
-	 * @param listener
-	 *           リスナー
 	 */
-	public void init(String title, int arrayResId, OnListDialogItemClickListener listener) {
+	public void init(String title, int arrayResId) {
 		Bundle bundle = new Bundle();
 		bundle.putString(KEY_DIALOG_TITLE, title);
 		bundle.putInt(KEY_ARRAYSTRING_RES_ID, arrayResId);
-		bundle.putSerializable(KEY_ON_ITEM_CLICK_LISTENER, listener);
 		setArguments(bundle);
 	}
 
 	/**
-	 * このフラグメントで使うリスナー。Listのアイテムが選ばれたときに呼ばれる
+	 * ListDialogFragmentで使うリスナー。Activityで実装する
 	 */
-	@SuppressWarnings("serial")
-	public abstract static class OnListDialogItemClickListener implements OnItemClickListener, Serializable {
+	public interface OnListDialogItemClickListener {
+		/**
+		 * Callback method to be invoked when an item in this AdapterView has been clicked.
+		 * 
+		 * Implementers can call getItemAtPosition(position) if they need to access the data
+		 * associated with the selected item.
+		 * 
+		 * @param parent
+		 *           The AdapterView where the click happened.
+		 * @param view
+		 *           The view within the AdapterView that was clicked (this will be a view
+		 *           provided by the
+		 *           adapter)
+		 * @param position
+		 *           The position of the view in the adapter.
+		 * @param id
+		 *           The row id of the item that was clicked.
+		 * 
+		 * @param fragmentId
+		 *           フラグメントのid
+		 */
+		void onListDialogFragmentItemClicked(int fragmentId, AdapterView<?> parent, View view, int position, long id);
 	}
 }

@@ -47,14 +47,9 @@ public class AppStatus {
 	private boolean canDisable;
 
 	/**
-	 * タスク情報が未設定時の値
+	 * 実行中のプロセスの情報
 	 */
-	public static final int NULL_STATUS = -7575;
-
-	/**
-	 * タスクの状態
-	 */
-	private int runningStatus = NULL_STATUS;
+	private String process;
 
 	/**
 	 * コンストラクタ
@@ -128,19 +123,19 @@ public class AppStatus {
 	}
 
 	/**
-	 * ステータスを取得
-	 * @return ステータス
+	 * 実行中のプロセスの情報を整形済みの文字列で取得する
+	 * @return 実行中のプロセスの情報
 	 */
-	public int getRunningStatus() {
-		return runningStatus;
+	public String getProcessStrings() {
+		return process;
 	}
 
 	/**
-	 * ステータスを設定
-	 * @param runningStatus
-	 *           ステータス
+	 * 実行中のプロセスの情報を整形済みの文字列で設定
+	 * @param processNames
+	 *           実行中のプロセスの情報
 	 */
-	public void setRunningStatus(int runningStatus) {
-		this.runningStatus = runningStatus;
+	public void setProcessStrings(String processNames) {
+		this.process = processNames;
 	}
 }

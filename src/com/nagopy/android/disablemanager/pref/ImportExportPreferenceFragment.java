@@ -39,7 +39,7 @@ import com.nagopy.android.disablemanager.R;
 import com.nagopy.android.disablemanager.app.AppPreferenceActivity;
 import com.nagopy.android.disablemanager.app.ImportListActivity;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment;
-import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListener;
+import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListenerCompat;
 import com.nagopy.android.disablemanager.dialog.FileChooserDialogFragment;
 import com.nagopy.android.disablemanager.dialog.FileOpenDialog.OnOpenFileSelectedListner;
 import com.nagopy.android.disablemanager.util.CommentsUtils;
@@ -50,6 +50,7 @@ import com.nagopy.android.disablemanager.util.xml.XmlUtils;
 /**
  * 一般設定を表示するフラグメント
  */
+@SuppressWarnings("deprecation")
 public class ImportExportPreferenceFragment extends PreferenceFragment {
 
 	/**
@@ -198,7 +199,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	@SuppressWarnings("serial")
 	private void checkAndImportHiddenFromXml(String path) {
 		final XmlData xmlData = mXmlUtils.importFromXml(path);
-		final ConfirmDialogListener listener = new ConfirmDialogListener() {
+		final ConfirmDialogListenerCompat listener = new ConfirmDialogListenerCompat() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				switch (which) {
@@ -256,7 +257,8 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	 * @param positiveListener
 	 *           Okボタンが押されたときのリスナー
 	 */
-	private void showAlertDialog(String message, ConfirmDialogFragment.ConfirmDialogListener positiveListener) {
+	private void showAlertDialog(String message,
+			ConfirmDialogFragment.ConfirmDialogListenerCompat positiveListener) {
 		ConfirmDialogFragment alertDialogFragment = new ConfirmDialogFragment();
 		alertDialogFragment.init(message, positiveListener);
 		alertDialogFragment.show(getFragmentManager(), "alert");
@@ -290,7 +292,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	@SuppressWarnings("serial")
 	private void checkAndImportDisabledApps(String path) {
 		final XmlData xmlData = mXmlUtils.importFromXml(path);
-		final ConfirmDialogListener listener = new ConfirmDialogListener() {
+		final ConfirmDialogListenerCompat listener = new ConfirmDialogListenerCompat() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				importDisabledAppsAndLaunchActivity(xmlData);

@@ -34,24 +34,19 @@ public final class AppsSorter {
 	private AppsSorter() {} // CHECKSTYLE IGNORE THIS LINE
 
 	/**
-	 * ラベルとパッケージ名でソートする
-	 * @param list
-	 *           ソートしたいリスト
-	 */
-	public static void sort(List<AppStatus> list) {
-		Comparator<AppStatus> comparator = AppComparator.getInstance();
-		Collections.sort(list, comparator);
-	}
-
-	/**
 	 * 変更日時があればそれでソートし、それ以外はラベル・パッケージ名でソートする
 	 * @param dateUtils
-	 *           {@link ChangedDateUtils}
+	 *           {@link ChangedDateUtils} 変更日を考慮しない場合はnullでおｋ
 	 * @param list
 	 *           ソートしたいリスト
 	 */
 	public static void sort(ChangedDateUtils dateUtils, List<AppStatus> list) {
-		Comparator<AppStatus> comparator = AppComparatorWithDate.getInstance(dateUtils);
+		Comparator<AppStatus> comparator;
+		if (dateUtils == null) {
+			comparator = AppComparator.getInstance();
+		} else {
+			comparator = AppComparatorWithDate.getInstance(dateUtils);
+		}
 		Collections.sort(list, comparator);
 	}
 

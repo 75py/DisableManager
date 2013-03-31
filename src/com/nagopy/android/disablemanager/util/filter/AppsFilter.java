@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import com.nagopy.android.disablemanager.util.AppStatus;
+import com.nagopy.android.disablemanager.util.ChangedDateUtils;
 import com.nagopy.android.disablemanager.util.sort.AppsSorter;
 
 /**
@@ -78,8 +79,9 @@ public class AppsFilter {
 	/**
 	 * オリジナルをソートする
 	 */
-	public void sortOriginalAppList() {
-		AppsSorter.sort(originalAppList);
+	public void sortOriginalAppList(ChangedDateUtils changedDateUtils) {
+		// ひづけこうりょ
+		AppsSorter.sort(changedDateUtils, originalAppList);
 	}
 
 	/**

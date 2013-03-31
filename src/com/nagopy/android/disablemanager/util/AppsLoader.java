@@ -19,6 +19,7 @@ package com.nagopy.android.disablemanager.util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -30,6 +31,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import com.nagopy.android.common.image.ImageUtils;
 import com.nagopy.android.disablemanager.R;
@@ -97,34 +99,26 @@ public class AppsLoader {
 
 		Disablable judgeDisablable = Disablable.getInstance(getContext());
 		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
-
-		// 現在動いてるプロセスを読みこんで、パッケージ名とフラグをHashmapに入れる
-		ActivityManager activityManager = (ActivityManager) getContext().getSystemService(
-				Context.ACTIVITY_SERVICE);
-		List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos = activityManager
-				.getRunningAppProcesses();
-		HashMap<String, Integer> runningPackages = new HashMap<String, Integer>();
-		for (RunningAppProcessInfo runningAppProcessInfo : runningAppProcessInfos) {
-			String[] pkgList = runningAppProcessInfo.pkgList;
-			for (String pkg : pkgList) {
-				runningPackages.put(pkg, runningAppProcessInfo.importance);
-			}
-		}
+		RunningProcessStatusMap runnings = getRunningProcesses();
 
 		for (ApplicationInfo info : applicationInfo) {
-			Drawable icon = info.loadIcon(packageManager);
-			icon.setBounds(0, 0, iconSize, iconSize);
-
 			AppStatus appStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
 					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
 					judgeDisablable.isDisablable(info));
 
 			// 動いている場合はその情報も追加する
-			if (runningPackages.containsKey(info.packageName)) {
-				appStatus.setRunningStatus(runningPackages.get(info.packageName));
-			}
+			setProcessStrings(appStatus, runnings);
 
 			appsList.add(appStatus);
+
+			// アイコン読み込み
+			Drawable icon = null;
+			try {
+				icon = info.loadIcon(packageManager);
+				icon.setBounds(0, 0, iconSize, iconSize);
+			} catch (OutOfMemoryError e) {
+				Log.d(getContext().getPackageName(), "OutOfMemoryError: loadIcon, " + info.packageName);
+			}
 			iconCache.put(info.packageName, icon);
 		}
 
@@ -139,40 +133,42 @@ public class AppsLoader {
 	private HashMap<String, Drawable> loadRunningApps() {
 		appsList.clear();
 
-		ActivityManager activityManager = (ActivityManager) getContext().getSystemService(
-				Context.ACTIVITY_SERVICE);
-		PackageManager packageManager = getContext().getPackageManager();
-		List<ActivityManager.RunningAppProcessInfo> applicationInfo = activityManager.getRunningAppProcesses();
 		int iconSize = ImageUtils.getIconSize(getContext());
-
 		Disablable judgeDisablable = Disablable.getInstance(getContext());
 		HashMap<String, Drawable> iconCache = new HashMap<String, Drawable>();
+		PackageManager packageManager = getContext().getPackageManager();
 
-		for (RunningAppProcessInfo info : applicationInfo) {
-			String[] pkgList = info.pkgList;
-			for (String pkg : pkgList) {
-				ApplicationInfo appInfo;
-				try {
-					appInfo = packageManager.getApplicationInfo(pkg, PackageManager.GET_META_DATA);
-				} catch (NameNotFoundException e) {
-					e.printStackTrace();
-					continue;
-				}
-				Drawable icon = appInfo.loadIcon(packageManager);
-				icon.setBounds(0, 0, iconSize, iconSize);
-
-				AppStatus appStatus = new AppStatus(appInfo.loadLabel(packageManager).toString(),
-				// info.processName, appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
-						pkg, appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
-						judgeDisablable.isDisablable(appInfo));
-				appStatus.setRunningStatus(info.importance);
-
-				appsList.add(appStatus);
-				// iconCache.put(info.processName, icon);
-				iconCache.put(pkg, icon);
+		RunningProcessStatusMap runningProcessStatusMap = getRunningProcesses();
+		Set<String> runningPackages = runningProcessStatusMap.keySet();
+		for (String packageName : runningPackages) {
+			ApplicationInfo appInfo;
+			try {
+				appInfo = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA);
+			} catch (NameNotFoundException e) {
+				e.printStackTrace();
+				continue;
 			}
+			// Drawable icon = appInfo.loadIcon(packageManager);
+			// icon.setBounds(0, 0, iconSize, iconSize);
 
+			AppStatus appStatus = new AppStatus(appInfo.loadLabel(packageManager).toString(), packageName,
+					appInfo.enabled, (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+					judgeDisablable.isDisablable(appInfo));
+			setProcessStrings(appStatus, runningProcessStatusMap);
+
+			appsList.add(appStatus);
+
+			// アイコン読み込み
+			Drawable icon = null;
+			try {
+				icon = appInfo.loadIcon(packageManager);
+				icon.setBounds(0, 0, iconSize, iconSize);
+			} catch (OutOfMemoryError e) {
+				Log.d(getContext().getPackageName(), "OutOfMemoryError: loadIcon, " + packageName);
+			}
+			iconCache.put(packageName, icon);
 		}
+
 		return iconCache;
 	}
 
@@ -230,4 +226,175 @@ public class AppsLoader {
 	public void setAppsList(ArrayList<AppStatus> list) {
 		appsList = list;
 	}
+
+	/**
+	 * 実行中のアプリのパッケージ名・プロセス名とステータスのマップを返す
+	 * @return @see {@link RunningProcessStatusMap}
+	 */
+	private RunningProcessStatusMap getRunningProcesses() {
+		ActivityManager activityManager = (ActivityManager) getContext().getSystemService(
+				Context.ACTIVITY_SERVICE);
+
+		List<ActivityManager.RunningAppProcessInfo> runningAppProcessInfos = activityManager
+				.getRunningAppProcesses();
+
+		RunningProcessStatusMap runningProcessStatusMap = new RunningProcessStatusMap();
+		for (RunningAppProcessInfo runningAppProcessInfo : runningAppProcessInfos) {
+			String[] pkgList = runningAppProcessInfo.pkgList;
+			for (String pkg : pkgList) {
+				runningProcessStatusMap.add(pkg, runningAppProcessInfo.processName,
+						runningAppProcessInfo.importance);
+			}
+		}
+
+		return runningProcessStatusMap;
+	}
+
+	/**
+	 * ステータスのintをもとに文字列に変換
+	 * @param status
+	 *           {@link AppStatus#getRunningStatus()}
+	 * @return 文字列（Foregroundとか）
+	 */
+	private String getStatusText(int status) {
+		String packageStatusText;
+		switch (status) {
+		case RunningAppProcessInfo.IMPORTANCE_BACKGROUND:
+			packageStatusText = "Background";
+			break;
+		case RunningAppProcessInfo.IMPORTANCE_FOREGROUND:
+			packageStatusText = "Foreground";
+			break;
+		case RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE:
+			packageStatusText = "Perceptible";
+			break;
+		case RunningAppProcessInfo.IMPORTANCE_SERVICE:
+			packageStatusText = "Service";
+			break;
+		case RunningAppProcessInfo.IMPORTANCE_VISIBLE:
+			packageStatusText = "Visible";
+			break;
+		case RunningAppProcessInfo.IMPORTANCE_EMPTY:
+			packageStatusText = "Empty";
+			break;
+		default:
+			packageStatusText = null;
+			break;
+		}
+		return packageStatusText;
+	}
+
+	/**
+	 * プロセス情報をセットする
+	 * @param appStatus
+	 *           アプリ
+	 * @param runningProcessStatusMap
+	 *           {@link RunningProcessStatusMap}
+	 * 
+	 */
+	private void setProcessStrings(AppStatus appStatus, RunningProcessStatusMap runningProcessStatusMap) {
+		if (runningProcessStatusMap.containsKey(appStatus.getPackageName())) {
+			String processNameValue = null;
+			HashMap<String, Integer> statusMap = runningProcessStatusMap.getProcessStatusMap(appStatus
+					.getPackageName());
+			Set<String> processNamesSet = statusMap.keySet();
+
+			if (processNamesSet.size() == 1) {
+				for (String processName : processNamesSet) {
+					if (processName.equals(appStatus.getPackageName())) {
+						int status = statusMap.get(processName);
+						processNameValue = "[" + getStatusText(status) + "]";
+					} else {
+						StringBuilder sb = new StringBuilder(processName);
+						int status = statusMap.get(processName);
+						sb.append(" [");
+						sb.append(getStatusText(status));
+						sb.append("]");
+						processNameValue = sb.toString();
+					}
+				}
+			} else {
+				StringBuilder sb = new StringBuilder();
+				for (String processName : processNamesSet) {
+					int status = statusMap.get(processName);
+					if (sb.length() > 0) {
+						sb.append("\n");
+					}
+					sb.append(processName);
+					sb.append(" [");
+					sb.append(getStatusText(status));
+					sb.append("]");
+				}
+				processNameValue = sb.toString();
+			}
+
+			appStatus.setProcessStrings(processNameValue);
+		}
+	}
+
+	/**
+	 * HashMap<String, HashMap<String, Integer>><br>
+	 * キーは実行中のパッケージ名<br>
+	 * 値はプロセス名とステータスのMap
+	 */
+	private static class RunningProcessStatusMap {
+		/**
+		 * 実行中のプロセスを持つパッケージ名をキーに、プロセス名とステータスのMapを値として持つマップ
+		 */
+		private HashMap<String, HashMap<String, Integer>> map;
+
+		/**
+		 * コンストラクタ
+		 */
+		public RunningProcessStatusMap() {
+			map = new HashMap<String, HashMap<String, Integer>>();
+		}
+
+		/**
+		 * @param packageName
+		 *           パッケージ名
+		 * @return 実行中に含まれていればtrueを返す
+		 */
+		public boolean containsKey(String packageName) {
+			return map.containsKey(packageName);
+		}
+
+		/**
+		 * 実行中のパッケージ名一覧を取得
+		 * @return 実行中アプリのパッケージ名
+		 */
+		public Set<String> keySet() {
+			return map.keySet();
+		}
+
+		/**
+		 * 追加する
+		 * @param packageName
+		 *           パッケージ名
+		 * @param processName
+		 *           プロセス名
+		 * @param status
+		 *           プロセスのステータス
+		 */
+		public void add(String packageName, String processName, int status) {
+			HashMap<String, Integer> statusMap = map.get(packageName);
+			if (statusMap == null) {
+				statusMap = new HashMap<String, Integer>();
+				map.put(packageName, statusMap);
+			}
+			statusMap.put(processName, status);
+		}
+
+		/**
+		 * パッケージ名から実行中のプロセスとステータスのMapを取得する
+		 * @param packageName
+		 *           パッケージ名
+		 * @return プロセス名とステータス
+		 */
+		public HashMap<String, Integer> getProcessStatusMap(String packageName) {
+			return map.get(packageName);
+		}
+
+	}
+
 }

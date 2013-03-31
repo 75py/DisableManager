@@ -5,8 +5,11 @@ import java.util.List;
 
 import android.test.AndroidTestCase;
 
+import com.google.android.testing.mocking.AndroidMock;
+import com.google.android.testing.mocking.UsesMocks;
 import com.nagopy.android.disablemanager.util.AppStatus;
 import com.nagopy.android.disablemanager.util.AppStatusTest;
+import com.nagopy.android.disablemanager.util.ChangedDateUtils;
 
 public class AppsSorterTest extends AndroidTestCase {
 
@@ -28,12 +31,32 @@ public class AppsSorterTest extends AndroidTestCase {
 
 	public void test普通のソート() throws Exception {
 		List<AppStatus> list = createTestList();
-		AppsSorter.sort(list);
+		AppsSorter.sort(null, list);
 		assertEquals(list.get(0), status0);
 		assertEquals(list.get(1), status1);
 		assertEquals(list.get(2), status2);
 		assertEquals(list.get(3), status3);
 		assertEquals(list.get(4), status4);
+	}
+
+	@UsesMocks(ChangedDateUtils.class)
+	public void test日付考慮ソート() throws Exception {
+		List<AppStatus> list = createTestList();
+		ChangedDateUtils changedDateUtils = AndroidMock.createMock(ChangedDateUtils.class, getContext());
+
+		AndroidMock.expect(changedDateUtils.get(status0.getPackageName())).andStubReturn(1000L);
+		AndroidMock.expect(changedDateUtils.get(status1.getPackageName())).andStubReturn(0L);
+		AndroidMock.expect(changedDateUtils.get(status2.getPackageName())).andStubReturn(0L);
+		AndroidMock.expect(changedDateUtils.get(status3.getPackageName())).andStubReturn(100L);
+		AndroidMock.expect(changedDateUtils.get(status4.getPackageName())).andStubReturn(100000L);
+		AndroidMock.replay(changedDateUtils);
+		
+		AppsSorter.sort(changedDateUtils, list);
+		assertEquals(list.get(0), status4);
+		assertEquals(list.get(1), status0);
+		assertEquals(list.get(2), status3);
+		assertEquals(list.get(3), status1);
+		assertEquals(list.get(4), status2);
 	}
 
 	private ArrayList<AppStatus> createTestList() {

@@ -3,15 +3,12 @@ package com.nagopy.android.disablemanager.util;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.test.AndroidTestCase;
 
 import com.nagopy.android.disablemanager.R;
-import com.nagopy.android.disablemanager.util.AppStatus;
-import com.nagopy.android.disablemanager.util.AppsLoader;
 
 public class AppsLoaderTest extends AndroidTestCase {
 
@@ -73,8 +70,7 @@ public class AppsLoaderTest extends AndroidTestCase {
 			}
 		}
 		assertNotNull("実行中一覧にこのアプリが含まれているか", appStatusThisApp);
-		assertEquals("このアプリのステータスがフォアグラウンドになっているか", RunningAppProcessInfo.IMPORTANCE_FOREGROUND,
-				appStatusThisApp.getRunningStatus());
+		assertEquals("このアプリのステータスがフォアグラウンドになっているか", "[Foreground]", appStatusThisApp.getProcessStrings());
 		assertTrue("このアプリのアイコンがキャッシュされている", runningAppsIcon.containsKey(getContext().getPackageName()));
 	}
 
@@ -88,8 +84,8 @@ public class AppsLoaderTest extends AndroidTestCase {
 			}
 		}
 		assertNotNull("Bashful Clockが実行中に含まれているか", appStatusBC);
-		assertEquals("Bashful Clockのステータスがperceptibleか", RunningAppProcessInfo.IMPORTANCE_PERCEPTIBLE,
-				appStatusBC.getRunningStatus());
+		assertEquals("Bashful Clockのステータスがperceptibleか", pkgName + " [Perceptible]",
+				appStatusBC.getProcessStrings());
 		assertTrue("このアプリのアイコンがキャッシュされている", runningAppsIcon.containsKey(pkgName));
 	}
 
@@ -103,8 +99,8 @@ public class AppsLoaderTest extends AndroidTestCase {
 			}
 		}
 		assertNotNull("Googleサービスフレームワークが含まれているか", appStatusGSF);
-		assertEquals("GoogleサービスフレームワークがVisibleになっているか", RunningAppProcessInfo.IMPORTANCE_VISIBLE,
-				appStatusGSF.getRunningStatus());
+		assertEquals("GoogleサービスフレームワークがVisibleになっているか", pkgName + " [Visible]",
+				appStatusGSF.getProcessStrings());
 		assertTrue("このアプリのアイコンがキャッシュされている", runningAppsIcon.containsKey(pkgName));
 	}
 
@@ -118,8 +114,7 @@ public class AppsLoaderTest extends AndroidTestCase {
 			}
 		}
 		assertNotNull("メディアストレージが含まれているか", appStatusMedia);
-		assertEquals("メディアストレージがserviceになっているか", RunningAppProcessInfo.IMPORTANCE_SERVICE,
-				appStatusMedia.getRunningStatus());
+		assertEquals("メディアストレージがserviceになっているか", pkgName + " [Service]", appStatusMedia.getProcessStrings());
 		assertTrue("このアプリのアイコンがキャッシュされている", runningAppsIcon.containsKey(pkgName));
 	}
 
@@ -133,8 +128,8 @@ public class AppsLoaderTest extends AndroidTestCase {
 			}
 		}
 		assertNotNull("Google Playが含まれているか", appStatusGooglePlay);
-		assertEquals("Google PlayがBackgroundになっているか", RunningAppProcessInfo.IMPORTANCE_BACKGROUND,
-				appStatusGooglePlay.getRunningStatus());
+		assertEquals("Google PlayがBackgroundになっているか", pkgName + " [Background]",
+				appStatusGooglePlay.getProcessStrings());
 		assertTrue("このアプリのアイコンがキャッシュされている", runningAppsIcon.containsKey(pkgName));
 	}
 

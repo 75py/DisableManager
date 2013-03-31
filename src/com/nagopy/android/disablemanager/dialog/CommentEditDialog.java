@@ -16,8 +16,6 @@
 
 package com.nagopy.android.disablemanager.dialog;
 
-import java.io.Serializable;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -39,16 +37,15 @@ public class CommentEditDialog extends DialogFragment {
 	 * ラベル名を保存するためのキー
 	 */
 	private static final String KEY_LABEL = "KEY_LABEL";
+	/**
+	 * ラベル名を保存するためのキー
+	 */
+	private static final String KEY_PACKAGE_NAME = "KEY_PACKAGE_NAME";
 
 	/**
 	 * 元の値を保存するためのキー
 	 */
 	private static final String KEY_DEFAULT_VALUE = "KEY_DEFAULT_VALUE";
-
-	/**
-	 * リスナーを保存するためのキー
-	 */
-	private static final String KEY_LISTENER = "KEY_LISTENER";
 
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -59,18 +56,19 @@ public class CommentEditDialog extends DialogFragment {
 		final EditText editText = (EditText) rootView.findViewById(R.id.comment_edit_dialog_editText);
 		editText.setText(getDefaultValue());
 
-		final CommentEditDialogListener listener = getListener();
 		builder.setPositiveButton(android.R.string.ok, new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				String text = editText.getText().toString();
-				listener.onPositiveButtonClicked(dialog, text);
+				((CommentEditDialogListener) getActivity()).onCommentEditDialogPositiveButtonClicked(getId(),
+						dialog, getPackageName(), text);
 			}
 		});
 		builder.setNegativeButton(android.R.string.cancel, new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				listener.onNegativeButtonClicked(dialog);
+				((CommentEditDialogListener) getActivity()).onCommentEditDialogNegativeButtonClicked(getId(),
+						dialog, getPackageName());
 			}
 		});
 
@@ -78,16 +76,19 @@ public class CommentEditDialog extends DialogFragment {
 	}
 
 	/**
-	 * ラベルを設定する
+	 * 初期設定
 	 * @param label
 	 *           ラベル名
+	 * @param packageName
+	 *           パッケージ名
+	 * @param defaultValue
+	 *           デフォルトの値
 	 */
-	public void setLabel(String label) {
-		Bundle bundle = getArguments();
-		if (bundle == null) {
-			bundle = new Bundle();
-		}
+	public void init(String label, String packageName, String defaultValue) {
+		Bundle bundle = new Bundle();
 		bundle.putString(KEY_LABEL, label);
+		bundle.putString(KEY_PACKAGE_NAME, packageName);
+		bundle.putString(KEY_DEFAULT_VALUE, defaultValue);
 		setArguments(bundle);
 	}
 
@@ -100,39 +101,10 @@ public class CommentEditDialog extends DialogFragment {
 	}
 
 	/**
-	 * リスナーを保存する
-	 * @param listener
-	 *           保存するリスナー
+	 * @return パッケージ名
 	 */
-	public void setListener(CommentEditDialogListener listener) {
-		Bundle bundle = getArguments();
-		if (bundle == null) {
-			bundle = new Bundle();
-		}
-		bundle.putSerializable(KEY_LISTENER, listener);
-		setArguments(bundle);
-	}
-
-	/**
-	 * 保存しておいたリスナーを取得する
-	 * @return リスナー
-	 */
-	private CommentEditDialogListener getListener() {
-		return (CommentEditDialogListener) getArguments().getSerializable(KEY_LISTENER);
-	}
-
-	/**
-	 * 入力欄のデフォルト値をセットする
-	 * @param value
-	 *           デフォルト値
-	 */
-	public void setDefaultValue(String value) {
-		Bundle bundle = getArguments();
-		if (bundle == null) {
-			bundle = new Bundle();
-		}
-		bundle.putString(KEY_DEFAULT_VALUE, value);
-		setArguments(bundle);
+	private String getPackageName() {
+		return getArguments().getString(KEY_PACKAGE_NAME);
 	}
 
 	/**
@@ -143,25 +115,33 @@ public class CommentEditDialog extends DialogFragment {
 	}
 
 	/**
-	 * ダイアログのボタンを押したときの動作を指定するリスナー
+	 * コメント編集ダイアログのボタンを押したときの動作を指定するリスナー
 	 */
-	@SuppressWarnings("serial")
-	public abstract static class CommentEditDialogListener implements Serializable {
+	public interface CommentEditDialogListener {
 
 		/**
-		 * OKボタンがおされたとき
+		 * コメント編集ダイアログでOKボタンがおされたとき
+		 * @param fragmentId
+		 *           フラグメントのid
 		 * @param dialog
 		 *           ダイアログ
+		 * @param packageName
+		 *           パッケージ名
 		 * @param text
 		 *           入力されたテキスト
 		 */
-		public abstract void onPositiveButtonClicked(DialogInterface dialog, String text);
+		void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog,
+				String packageName, String text);
 
 		/**
-		 * キャンセルボタンが押されたとき
+		 * コメント編集ダイアログでキャンセルボタンが押されたとき
+		 * @param fragmentId
+		 *           フラグメントのid
 		 * @param dialog
 		 *           ダイアログ
+		 * @param packageName
+		 *           パッケージ名
 		 */
-		public abstract void onNegativeButtonClicked(DialogInterface dialog);
+		void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog, String packageName);
 	}
 }

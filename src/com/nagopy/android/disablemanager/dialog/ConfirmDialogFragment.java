@@ -18,22 +18,27 @@ package com.nagopy.android.disablemanager.dialog;
 
 import java.io.Serializable;
 
-import com.nagopy.android.disablemanager.R;
-
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.nagopy.android.disablemanager.R;
 
 /**
  * 確認ダイアログ
  */
 public class ConfirmDialogFragment extends DialogFragment {
 
+	/**
+	 * リスナーを保存するキー
+	 * @deprecated
+	 */
 	private static final String KEY_LISTNER = "positiveButtonListner";
 
 	@Override
@@ -47,9 +52,21 @@ public class ConfirmDialogFragment extends DialogFragment {
 		scrollView.addView(textView);
 		scrollView.setPadding(16, 16, 16, 16); // CHECKSTYLE IGNORE THIS LINE
 		builder.setView(scrollView);
-		ConfirmDialogListener listener = getListener();
+
+		OnClickListener listener;
+		if (getActivity() instanceof ConfirmDialogListener) {
+			listener = new OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					((ConfirmDialogListener) getActivity()).onConfirmDialogListenerButtonClicked(getId(), dialog, which);
+				}
+			};
+		} else {
+			listener = getListener();
+		}
 		builder.setPositiveButton(android.R.string.ok, listener);
 		builder.setNegativeButton(android.R.string.cancel, listener);
+
 		builder.setTitle(R.string.confirm_dialog_title);
 		return builder.create();
 	}
@@ -58,10 +75,22 @@ public class ConfirmDialogFragment extends DialogFragment {
 	 * 色々初期設定
 	 * @param message
 	 *           メッセージ
+	 */
+	public void init(CharSequence message) {
+		Bundle args = new Bundle();
+		args.putCharSequence("message", message);
+		setArguments(args);
+	}
+
+	/**
+	 * 色々初期設定
+	 * @param message
+	 *           メッセージ
 	 * @param positiveListener
 	 *           OKを押されたときのリスナー
+	 * @deprecated
 	 */
-	public void init(CharSequence message, ConfirmDialogListener positiveListener) {
+	public void init(CharSequence message, ConfirmDialogListenerCompat positiveListener) {
 		Bundle args = new Bundle();
 		args.putCharSequence("message", message);
 		args.putSerializable(KEY_LISTNER, positiveListener);
@@ -72,24 +101,55 @@ public class ConfirmDialogFragment extends DialogFragment {
 	 * 保存しておいたリスナーを取得する
 	 * @return リスナー
 	 */
-	private ConfirmDialogListener getListener() {
-		return (ConfirmDialogListener) getArguments().get(KEY_LISTNER);
+	private ConfirmDialogListenerCompat getListener() {
+		return (ConfirmDialogListenerCompat) getArguments().get(KEY_LISTNER);
 	}
 
 	/**
 	 * シリアライズ可能なDialogInterface.OnClickListener
+	 * @deprecated
 	 */
-	public static interface ConfirmDialogListener extends DialogInterface.OnClickListener, Serializable {
+	public static interface ConfirmDialogListenerCompat extends DialogInterface.OnClickListener, Serializable {
 
 		/**
 		 * whichの値によってどのボタンが押されたかを判定するとGood
-		 * <ul>
-		 * <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
-		 * <li>{@link DialogInterface#BUTTON_NEUTRAL}</li>
-		 * <li>{@link DialogInterface#BUTTON_NEGATIVE}</li>
-		 * </ul>
+		 * 
+		 * @param dialog
+		 *           ダイアログ
+		 * @param which
+		 *           <ul>
+		 *           <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEUTRAL}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEGATIVE}</li>
+		 *           </ul>
 		 */
 		@Override
-		public abstract void onClick(DialogInterface dialog, int which);
+		void onClick(DialogInterface dialog, int which);
 	}
+
+	/**
+	 * Activityに設定する場合のリスナー
+	 */
+	public interface ConfirmDialogListener {
+
+		/**
+		 * whichの値によってどのボタンが押されたかを判定するとGood
+		 * @param fragmentId
+		 *           フラグメントのid
+		 * @param dialog
+		 *           ダイアログ
+		 * @param which
+		 *           <ul>
+		 *           <li>{@link DialogInterface#BUTTON_POSITIVE}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEUTRAL}</li>
+		 *           <li>
+		 *           {@link DialogInterface#BUTTON_NEGATIVE}</li>
+		 *           </ul>
+		 */
+		void onConfirmDialogListenerButtonClicked(int fragmentId, DialogInterface dialog, int which);
+	}
+
 }

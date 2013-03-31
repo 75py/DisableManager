@@ -72,15 +72,13 @@ com.nagopy.android.disablemanager.app.AppPreferenceActivity:
 com.nagopy.android.disablemanager.app.ImportListActivity:
     public static final java.lang.String EXTRA_FILE_NAME
     public static final java.lang.String EXTRA_PACKAGES_AND_COMMENTS
-com.nagopy.android.disablemanager.app.MainActivity$2$1$1:
-    private static final long serialVersionUID
 com.nagopy.android.disablemanager.dialog.CommentEditDialog:
     private static final java.lang.String KEY_LABEL
+    private static final java.lang.String KEY_PACKAGE_NAME
     private static final java.lang.String KEY_DEFAULT_VALUE
-    private static final java.lang.String KEY_LISTENER
 com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment:
     private static final java.lang.String KEY_LISTNER
-com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment$ConfirmDialogListener:
+com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment$ConfirmDialogListenerCompat:
     public abstract void onClick(android.content.DialogInterface,int)
 com.nagopy.android.disablemanager.dialog.FileChooserDialogFragment:
     public static final java.lang.String KEY_EXTENSIONS
@@ -98,13 +96,10 @@ com.nagopy.android.disablemanager.dialog.FormatEditDialog:
 com.nagopy.android.disablemanager.dialog.ListDialogFragment:
     private static final java.lang.String KEY_ARRAYSTRING_RES_ID
     private static final java.lang.String KEY_DIALOG_TITLE
-    private static final java.lang.String KEY_ON_ITEM_CLICK_LISTENER
 com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment:
     private static final java.lang.String BLOG_URL
     private static final int REQUEST_HIDDEN
     private static final int REQUEST_DISABLED
-com.nagopy.android.disablemanager.util.AppStatus:
-    public static final int NULL_STATUS
 com.nagopy.android.disablemanager.util.CommentsUtils:
     private static final java.lang.String PREFERENCE_FILE_NAME
 com.nagopy.android.disablemanager.util.filter.AppsFilter:

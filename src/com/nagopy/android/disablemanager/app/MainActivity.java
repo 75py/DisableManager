@@ -68,8 +68,8 @@ import com.nagopy.android.disablemanager.util.sort.AppsSorter;
  * ランチャーから起動するアクティビティ<br>
  * リスト表示など
  */
-public class MainActivity extends BaseActivity {
-
+public class MainActivity extends BaseActivity implements OnListDialogItemClickListener,
+		ConfirmDialogListener, CommentEditDialogListener {
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * 非表示アプリを管理するクラス
 	 */
-	protected HideUtils mAppHideUtils;
+	protected HideUtils mHideUtils;
 
 	/**
 	 * リストの表示位置を記憶するためのホルダー
@@ -139,9 +139,13 @@ public class MainActivity extends BaseActivity {
 	/**
 	 * @see ChangedDateUtils
 	 */
-	private ChangedDateUtils mDateUtils;
+	protected ChangedDateUtils mChangedDateUtils;
 
-	@SuppressWarnings("serial")
+	/**
+	 * 長押しメニューのリスナー
+	 */
+	private OnItemClickListener mOnItemClickListener;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -149,7 +153,7 @@ public class MainActivity extends BaseActivity {
 
 		mAppFilter = new AppsFilter();
 		mIconCacheHashMap = new HashMap<String, Drawable>();
-		mDateUtils = new ChangedDateUtils(getApplicationContext());
+		mChangedDateUtils = new ChangedDateUtils(getApplicationContext());
 		lastAppFilterCondition = AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM;
 		mAppLoader = new AppsLoader(getApplicationContext());
 		mListView = (ListView) findViewById(R.id.start_activity_listView);
@@ -173,7 +177,7 @@ public class MainActivity extends BaseActivity {
 
 		mCommentEditDialog = new CommentEditDialog();
 		mListDialogFragment = new ListDialogFragment();
-		mAppHideUtils = new HideUtils(getApplicationContext());
+		mHideUtils = new HideUtils(getApplicationContext());
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, final View view, int position, long arg3) {
@@ -186,32 +190,19 @@ public class MainActivity extends BaseActivity {
 				} else {
 					resId = R.array.main_atcitity_long_tap_menu;
 				}
-				mListDialogFragment.init(label, resId, new OnListDialogItemClickListener() {
+				mListDialogFragment.init(label, resId);
+
+				mOnItemClickListener = new AdapterView.OnItemClickListener() {
 					@Override
 					public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 						switch (pos) {
 						case 0:
-							mCommentEditDialog.setLabel(label);
-							mCommentEditDialog.setDefaultValue(getCommentsUtils().restoreComment(packageName));
-							mCommentEditDialog.setListener(new CommentEditDialogListener() {
-								private static final long serialVersionUID = 1L;
-
-								@Override
-								public void onPositiveButtonClicked(DialogInterface dialog, String text) {
-									getCommentsUtils().saveComment(packageName, text);
-
-									updateAppList(-1);
-								}
-
-								@Override
-								// CHECKSTYLE:OFF
-								public void onNegativeButtonClicked(DialogInterface dialog) {}
-								// CHECKSTYLE:ON
-							});
+							mCommentEditDialog.init(label, packageName,
+									getCommentsUtils().restoreComment(packageName));
 							mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
 							break;
 						case 1:
-							if (mAppHideUtils.updateHideList(packageName)) {
+							if (mHideUtils.updateHideList(packageName)) {
 								updateAppList(-1);
 							}
 							break;
@@ -220,7 +211,7 @@ public class MainActivity extends BaseActivity {
 						}
 						mListDialogFragment.dismiss();
 					}
-				});
+				};
 				mListDialogFragment.show(getFragmentManager(), "list");
 				return false;
 			}
@@ -231,23 +222,7 @@ public class MainActivity extends BaseActivity {
 		if (FirstConfirmDialogFragment.isFirst(getApplicationContext())) {
 			// 初回起動の場合
 			FirstConfirmDialogFragment firstConfirmDialogFragment = new FirstConfirmDialogFragment();
-			firstConfirmDialogFragment.init(getText(R.string.confirm_first_dialog_message),
-					new ConfirmDialogListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							switch (which) {
-							case DialogInterface.BUTTON_POSITIVE:
-								FirstConfirmDialogFragment.setFlagOff(getApplicationContext());
-								createReloadAsyncTask().execute();
-								break;
-							case DialogInterface.BUTTON_NEGATIVE:
-								finish();
-								break;
-							default:
-								break;
-							}
-						}
-					});
+			firstConfirmDialogFragment.init(getText(R.string.confirm_first_dialog_message));
 			firstConfirmDialogFragment.show(getFragmentManager(), "first");
 		} else {
 			// テスト実行時はコメントアウト
@@ -261,9 +236,9 @@ public class MainActivity extends BaseActivity {
 		if (shouldReloadPackageNameString != null) {
 			// 読みこみ直すパッケージがあれば読みこんで反映する
 			if (mAppLoader.updateStatus(shouldReloadPackageNameString)) {
-				mDateUtils.put(shouldReloadPackageNameString, System.currentTimeMillis());
+				mChangedDateUtils.put(shouldReloadPackageNameString, System.currentTimeMillis());
 			}
-			mAppFilter.sortOriginalAppList();
+			mAppFilter.sortOriginalAppList(mChangedDateUtils);
 			updateAppList(-1);
 			shouldReloadPackageNameString = null;
 		} else if (getSP().getBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, false)) {
@@ -391,21 +366,24 @@ public class MainActivity extends BaseActivity {
 		mAppLoader.deallocate();
 		mAppLoader = null;
 
-		mCommentEditDialog.setListener(null);
 		mCommentEditDialog = null;
 
 		mCommentsUtils = null;
 
-		mCommonUtil = null;
-
-		// Set<String> keyset = mIconCacheHashMap.keySet();
-		// for (Iterator<String> iterator = keyset.iterator(); iterator.hasNext();) {
-		// String packageName = (String) iterator.next();
-		// Drawable icon = mIconCacheHashMap.get(packageName);
-		// }
-		mIconCacheHashMap.clear();
 		mIconCacheHashMap = null;
-		mIconCacheHashMap = new HashMap<String, Drawable>();
+
+		ActionBar actionBar = getActionBar();
+		int tabcount = actionBar.getTabCount();
+		for (int index = 0; index < tabcount; index++) {
+			Tab tab = actionBar.getTabAt(index);
+			tab.setTabListener(null);
+		}
+		mListDialogFragment = null;
+		mHideUtils = null;
+		mChangedDateUtils = null;
+		shouldReloadPackageNameString = null;
+		mListPositionHolder = null;
+		mCommonUtil = null;
 	}
 
 	@Override
@@ -436,11 +414,11 @@ public class MainActivity extends BaseActivity {
 		if (getSP().getBoolean(getString(R.string.pref_key_general_sort_by_changed_date),
 				getResources().getBoolean(R.bool.pref_def_general_sort_by_changed_date))
 				&& (key == AppsFilter.DISABLED || key == AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM)) {
-			ArrayList<AppStatus> list = mAppFilter.execute(key, mAppHideUtils.getHideAppsList());
-			AppsSorter.sort(mDateUtils, list);
+			ArrayList<AppStatus> list = mAppFilter.execute(key, mHideUtils.getHideAppsList());
+			AppsSorter.sort(mChangedDateUtils, list);
 			mAdapter.updateAppList(list);
 		} else {
-			mAdapter.updateAppList(mAppFilter.execute(key, mAppHideUtils.getHideAppsList()));
+			mAdapter.updateAppList(mAppFilter.execute(key, mHideUtils.getHideAppsList()));
 		}
 		mAdapter.notifyDataSetChanged();
 
@@ -588,12 +566,13 @@ public class MainActivity extends BaseActivity {
 			if (appStatus != null) {
 				holder.labelTextView.setText(appStatus.getLabel());
 				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
-				holder.labelTextView.setCompoundDrawables(icon, null, null, null);
-				icon.setCallback(null);
-
+				if (icon != null) {
+					holder.labelTextView.setCompoundDrawables(icon, null, null, null);
+					icon.setCallback(null);
+				}
 				String comment = this.mCommentsUtils.restoreComment(appStatus.getPackageName());
 				holder.pkgNameTextView.setText(mBuilder.getLabelText(appStatus.getPackageName(), comment,
-						appStatus.getRunningStatus()));
+						appStatus.getProcessStrings()));
 			}
 			return convertView;
 		}
@@ -646,11 +625,11 @@ public class MainActivity extends BaseActivity {
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
 					activity.mAppFilter.setOriginalAppList(activity.mAppLoader.getAppsList());
-					activity.mAppFilter.sortOriginalAppList();
+					activity.mAppFilter.sortOriginalAppList(activity.mChangedDateUtils);
 					if (activity.mAdapter == null) {
 						// 初回なら
 						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
-								activity.lastAppFilterCondition, activity.mAppHideUtils.getHideAppsList()),
+								activity.lastAppFilterCondition, activity.mHideUtils.getHideAppsList()),
 								activity.getCommentsUtils(), activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
@@ -674,4 +653,36 @@ public class MainActivity extends BaseActivity {
 		}
 		return mCommentsUtils;
 	}
+
+	@Override
+	public void onListDialogFragmentItemClicked(int fragmentId, AdapterView<?> parent, View view, int position, long id) {
+		if (mListDialogFragment.getId() == fragmentId) {
+			mOnItemClickListener.onItemClick(parent, view, position, id);
+		}
+	}
+
+	@Override
+	public void onConfirmDialogListenerButtonClicked(int fragmentId, DialogInterface dialog, int which) {
+		// ほんとはdialogfragmentをメンバにしてid確認するけどとりあえず一つだけだから保留
+		switch (which) {
+		case DialogInterface.BUTTON_POSITIVE:
+			FirstConfirmDialogFragment.setFlagOff(getApplicationContext());
+			createReloadAsyncTask().execute();
+			break;
+		case DialogInterface.BUTTON_NEGATIVE:
+			finish();
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog, String packageName, String text) {
+		getCommentsUtils().saveComment(packageName, text);
+		updateAppList(-1);
+	}
+
+	@Override
+	public void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog, String packageName) {}
 }
