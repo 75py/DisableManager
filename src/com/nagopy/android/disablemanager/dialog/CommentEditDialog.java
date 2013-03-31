@@ -117,7 +117,7 @@ public class CommentEditDialog extends DialogFragment {
 	/**
 	 * コメント編集ダイアログのボタンを押したときの動作を指定するリスナー
 	 */
-	public static interface CommentEditDialogListener {
+	public interface CommentEditDialogListener {
 
 		/**
 		 * コメント編集ダイアログでOKボタンがおされたとき

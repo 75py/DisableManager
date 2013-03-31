@@ -52,7 +52,7 @@ public class ListDialogFragment extends DialogFragment {
 			listView.setOnItemClickListener(new OnItemClickListener() {
 				@Override
 				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					((OnListDialogItemClickListener) getActivity()).onItemClick(getId(), parent, view, position,
+					((OnListDialogItemClickListener) getActivity()).onListDialogFragmentItemClicked(getId(), parent, view, position,
 							id);
 				}
 			});
@@ -93,7 +93,7 @@ public class ListDialogFragment extends DialogFragment {
 	/**
 	 * ListDialogFragmentで使うリスナー。Activityで実装する
 	 */
-	public static interface OnListDialogItemClickListener {
+	public interface OnListDialogItemClickListener {
 		/**
 		 * Callback method to be invoked when an item in this AdapterView has been clicked.
 		 * 
@@ -114,6 +114,6 @@ public class ListDialogFragment extends DialogFragment {
 		 * @param fragmentId
 		 *           フラグメントのid
 		 */
-		void onItemClick(int fragmentId, AdapterView<?> parent, View view, int position, long id);
+		void onListDialogFragmentItemClicked(int fragmentId, AdapterView<?> parent, View view, int position, long id);
 	}
 }

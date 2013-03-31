@@ -58,7 +58,7 @@ public class ConfirmDialogFragment extends DialogFragment {
 			listener = new OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
-					((ConfirmDialogListener) getActivity()).onClick(getId(), dialog, which);
+					((ConfirmDialogListener) getActivity()).onConfirmDialogListenerButtonClicked(getId(), dialog, which);
 				}
 			};
 		} else {
@@ -132,7 +132,7 @@ public class ConfirmDialogFragment extends DialogFragment {
 	/**
 	 * Activityに設定する場合のリスナー
 	 */
-	public static interface ConfirmDialogListener {
+	public interface ConfirmDialogListener {
 
 		/**
 		 * whichの値によってどのボタンが押されたかを判定するとGood
@@ -149,7 +149,7 @@ public class ConfirmDialogFragment extends DialogFragment {
 		 *           {@link DialogInterface#BUTTON_NEGATIVE}</li>
 		 *           </ul>
 		 */
-		void onClick(int fragmentId, DialogInterface dialog, int which);
+		void onConfirmDialogListenerButtonClicked(int fragmentId, DialogInterface dialog, int which);
 	}
 
 }
