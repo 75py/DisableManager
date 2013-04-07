@@ -45,4 +45,7 @@
     <item>"Edit comment"</item>
     <item>"Show this app"</item>
   </string-array>
+  
+  <!-- v1.2.3 -->
+  <string name="history_title">History</string>
 </resources>

@@ -48,6 +48,7 @@ import android.widget.TextView;
 import com.nagopy.android.common.app.BaseActivity;
 import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.dialog.ChangedHistoryDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListener;
@@ -150,6 +151,10 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		if(ChangedHistoryDialog.isUpdated(this)){
+			ChangedHistoryDialog changedHistoryDialog = new ChangedHistoryDialog();
+			changedHistoryDialog.show(getFragmentManager(), "changed");
+		}
 
 		mAppFilter = new AppsFilter();
 		mIconCacheHashMap = new HashMap<String, Drawable>();
@@ -655,7 +660,8 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	}
 
 	@Override
-	public void onListDialogFragmentItemClicked(int fragmentId, AdapterView<?> parent, View view, int position, long id) {
+	public void onListDialogFragmentItemClicked(int fragmentId, AdapterView<?> parent, View view,
+			int position, long id) {
 		if (mListDialogFragment.getId() == fragmentId) {
 			mOnItemClickListener.onItemClick(parent, view, position, id);
 		}
@@ -678,11 +684,13 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	}
 
 	@Override
-	public void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog, String packageName, String text) {
+	public void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog,
+			String packageName, String text) {
 		getCommentsUtils().saveComment(packageName, text);
 		updateAppList(-1);
 	}
 
 	@Override
-	public void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog, String packageName) {}
+	public void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog,
+			String packageName) {}
 }
