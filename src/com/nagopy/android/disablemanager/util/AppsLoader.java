@@ -169,6 +169,31 @@ public class AppsLoader {
 			iconCache.put(packageName, icon);
 		}
 
+		// 無効化済みを実行中の有無に関わらず読み込む
+		List<ApplicationInfo> applicationInfo = packageManager
+				.getInstalledApplications(PackageManager.GET_META_DATA);
+		for (ApplicationInfo info : applicationInfo) {
+			if (info.enabled) {
+				// 無効でないもの（＝有効なもの）は読み込む必要ないので飛ばす
+				continue;
+			}
+			AppStatus appStatus = new AppStatus(info.loadLabel(packageManager).toString(), info.packageName,
+					info.enabled, (info.flags & ApplicationInfo.FLAG_SYSTEM) > 0,
+					judgeDisablable.isDisablable(info));
+
+			appsList.add(appStatus);
+
+			// アイコン読み込み
+			Drawable icon = null;
+			try {
+				icon = info.loadIcon(packageManager);
+				icon.setBounds(0, 0, iconSize, iconSize);
+			} catch (OutOfMemoryError e) {
+				Log.d(getContext().getPackageName(), "OutOfMemoryError: loadIcon, " + info.packageName);
+			}
+			iconCache.put(info.packageName, icon);
+		}
+
 		return iconCache;
 	}
 
