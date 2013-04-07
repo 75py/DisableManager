@@ -48,6 +48,7 @@ import android.widget.TextView;
 import com.nagopy.android.common.app.BaseActivity;
 import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.dialog.ChangedHistoryDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListener;
@@ -150,6 +151,10 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		if(ChangedHistoryDialog.isUpdated(this)){
+			ChangedHistoryDialog changedHistoryDialog = new ChangedHistoryDialog();
+			changedHistoryDialog.show(getFragmentManager(), "changed");
+		}
 
 		mAppFilter = new AppsFilter();
 		mIconCacheHashMap = new HashMap<String, Drawable>();

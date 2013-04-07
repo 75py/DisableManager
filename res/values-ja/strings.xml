@@ -45,4 +45,7 @@
     <item>"コメント編集"</item>
     <item>"除外リストから削除"</item>
   </string-array>
+
+  <!-- v1.2.3 -->
+  <string name="history_title">更新履歴</string>
 </resources>
