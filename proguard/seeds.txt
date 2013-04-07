@@ -87,6 +87,7 @@ com.nagopy.android.disablemanager.R$layout: int support_library_custom_seekbar_g
 com.nagopy.android.disablemanager.R$layout: int support_library_fod_list_row
 com.nagopy.android.disablemanager.R$menu: int activity_main
 com.nagopy.android.disablemanager.R$raw: int about
+com.nagopy.android.disablemanager.R$raw: int history
 com.nagopy.android.disablemanager.R$string: int app_name
 com.nagopy.android.disablemanager.R$string: int comment_dialog_edittext_hint
 com.nagopy.android.disablemanager.R$string: int comment_dialog_title
@@ -96,6 +97,7 @@ com.nagopy.android.disablemanager.R$string: int export_error_cannot_save
 com.nagopy.android.disablemanager.R$string: int export_success
 com.nagopy.android.disablemanager.R$string: int fod_back_to_default_path
 com.nagopy.android.disablemanager.R$string: int fod_back_to_default_path_mes
+com.nagopy.android.disablemanager.R$string: int history_title
 com.nagopy.android.disablemanager.R$string: int import_different_build
 com.nagopy.android.disablemanager.R$string: int import_different_device
 com.nagopy.android.disablemanager.R$string: int import_different_type
