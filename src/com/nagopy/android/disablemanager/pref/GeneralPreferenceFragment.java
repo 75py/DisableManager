@@ -19,7 +19,7 @@ package com.nagopy.android.disablemanager.pref;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 /**
  * 一般設定を表示するフラグメント

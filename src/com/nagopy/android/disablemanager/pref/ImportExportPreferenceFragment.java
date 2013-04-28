@@ -35,9 +35,9 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.widget.Toast;
 
-import com.nagopy.android.disablemanager.R;
 import com.nagopy.android.disablemanager.app.AppPreferenceActivity;
 import com.nagopy.android.disablemanager.app.ImportListActivity;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListenerCompat;
 import com.nagopy.android.disablemanager.dialog.FileChooserDialogFragment;
@@ -90,8 +90,8 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 		@SuppressWarnings("serial")
 		@Override
 		public boolean onPreferenceClick(Preference preference) {
-			switch (preference.getTitleRes()) {
-			case R.string.pref_title_import_hidden_import:
+			int titleResId = preference.getTitleRes();
+			if (titleResId == R.string.pref_title_import_hidden_import) {
 				chooser(REQUEST_HIDDEN, new OnOpenFileSelectedListner() {
 					@Override
 					public void onOpenFileSelected(File file) {
@@ -102,7 +102,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 					public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
 				});
 				return true;
-			case R.string.pref_title_import_hidden_export:
+			} else if (titleResId == R.string.pref_title_import_hidden_export) {
 				String filename = mXmlUtils.export(mHideUtils.getHideAppsList(), XmlUtils.TYPE_HIDDEN);
 				if (filename == null) {
 					showToast(R.string.export_error_cannot_save);
@@ -110,7 +110,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 					showToast(getString(R.string.export_success, filename));
 				}
 				return true;
-			case R.string.pref_title_import_disabled_import:
+			} else if (titleResId == R.string.pref_title_import_disabled_import) {
 				chooser(REQUEST_DISABLED, new OnOpenFileSelectedListner() {
 					@Override
 					public void onOpenFileSelected(File file) {
@@ -121,7 +121,7 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 					public void onOpenFileCanceled() {} // CHECKSTYLE IGNORE THIS LINE
 				});
 				return true;
-			case R.string.pref_title_import_disabled_export:
+			} else if (titleResId == R.string.pref_title_import_disabled_export) {
 				String f = mXmlUtils.exportDisabledApps();
 				if (f == null) {
 					showToast(R.string.export_error_cannot_save);
@@ -129,12 +129,12 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 					showToast(getString(R.string.export_success, f));
 				}
 				return true;
-			case R.string.pref_title_import_help:
+			} else if (titleResId == R.string.pref_title_import_help) {
 				Intent intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse(BLOG_URL));
 				startActivity(intent);
 				return true;
-			default:
+			} else {
 				return false;
 			}
 		}

@@ -52,7 +52,7 @@ import android.os.Build;
 import android.os.Environment;
 import android.util.Xml;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.util.AppStatus;
 import com.nagopy.android.disablemanager.util.CommentsUtils;
 

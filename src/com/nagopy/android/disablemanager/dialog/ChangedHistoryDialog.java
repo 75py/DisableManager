@@ -16,7 +16,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 /**
  * 変更履歴を表示するダイアログ

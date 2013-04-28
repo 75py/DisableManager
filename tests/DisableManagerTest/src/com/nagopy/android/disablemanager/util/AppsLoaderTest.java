@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.test.AndroidTestCase;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 public class AppsLoaderTest extends AndroidTestCase {
 

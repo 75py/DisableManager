@@ -25,7 +25,7 @@ import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 
 import com.nagopy.android.common.util.CommonUtil;
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.dialog.FormatEditDialog;
 import com.nagopy.android.disablemanager.dialog.FormatEditDialog.FormatEditDialogListener;
 

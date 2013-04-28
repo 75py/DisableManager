@@ -8,7 +8,7 @@ import android.test.AndroidTestCase;
 
 import com.google.android.testing.mocking.AndroidMock;
 import com.google.android.testing.mocking.UsesMocks;
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.util.AppStatus;
 import com.nagopy.android.disablemanager.util.AppStatusTest;
 

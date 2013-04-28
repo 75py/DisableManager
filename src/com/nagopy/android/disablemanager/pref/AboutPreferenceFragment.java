@@ -31,7 +31,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 /**
  * About画面を表示するフラグメント

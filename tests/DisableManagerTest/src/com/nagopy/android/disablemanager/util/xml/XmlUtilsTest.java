@@ -21,7 +21,7 @@ import android.util.Log;
 
 import com.google.android.testing.mocking.AndroidMock;
 import com.google.android.testing.mocking.UsesMocks;
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 public class XmlUtilsTest extends AndroidTestCase {
 

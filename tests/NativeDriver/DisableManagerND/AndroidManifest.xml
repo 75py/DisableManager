@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nagopy.android.disablemanager.core"
+    package="com.nagopy.android.disablemanager"
     android:installLocation="auto"
     android:versionCode="20130407"
     android:versionName="1.2.3" >
@@ -31,5 +31,13 @@
             android:name=".app.ImportListActivity"
             android:configChanges="orientation|screenSize" />
     </application>
+
+    <instrumentation
+        android:name="com.google.android.testing.nativedriver.server.ServerInstrumentation"
+        android:targetPackage="com.nagopy.android.disablemanager" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
 </manifest>

@@ -24,7 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.preference.PreferenceManager;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.util.AppStatus;
 
 /**
@@ -113,17 +113,19 @@ public class ShareUtils {
 	 * @return 適切なShareTextMakerクラス
 	 */
 	private ShareTextMaker getShareTextMaker(int type) {
-		switch (type) {
-		case R.id.menu_share_label:
+		if (type == R.id.menu_share_label) {
 			return new ShareLabel();
-		case R.id.menu_share_package:
+		}
+		if (type == R.id.menu_share_package) {
 			return new SharePackage();
-		case R.id.menu_share_label_and_package:
+		}
+		if (type == R.id.menu_share_label_and_package) {
 			return new ShareLabelAndPackage();
-		case R.id.menu_share_customformat:
+		}
+		if (type == R.id.menu_share_customformat) {
 			Activity activity = getActivity();
 			return new ShareCustom(activity.getApplicationContext());
-		default:
+		} else {
 			return new ShareLabel();
 		}
 	}

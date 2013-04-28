@@ -47,7 +47,7 @@ import android.widget.TextView;
 
 import com.nagopy.android.common.app.BaseActivity;
 import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.dialog.ChangedHistoryDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDialogListener;
@@ -151,7 +151,7 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		if(ChangedHistoryDialog.isUpdated(this)){
+		if (ChangedHistoryDialog.isUpdated(this)) {
 			ChangedHistoryDialog changedHistoryDialog = new ChangedHistoryDialog();
 			changedHistoryDialog.show(getFragmentManager(), "changed");
 		}
@@ -437,15 +437,12 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.menu_share_label:
-		case R.id.menu_share_package:
-		case R.id.menu_share_label_and_package:
-		case R.id.menu_share_customformat:
-			sendShareIntent(item.getItemId());
+		int id = item.getItemId();
+		if (id == R.id.menu_share_label || id == R.id.menu_share_package
+				|| id == R.id.menu_share_label_and_package || id == R.id.menu_share_customformat) {
+			sendShareIntent(id);
 			return true;
-
-		case R.id.menu_pref_general_show_only_running_packages:
+		} else if (id == R.id.menu_pref_general_show_only_running_packages) {
 			boolean newValue = !item.isChecked();
 			item.setChecked(newValue);
 			if (getSP().edit()
@@ -454,17 +451,14 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 				createReloadAsyncTask().execute();
 			}
 			return true;
-
-		case R.id.menu_reload:
+		} else if (id == R.id.menu_reload) {
 			createReloadAsyncTask().execute();
 			return true;
-
-		case R.id.menu_preference:
+		} else if (id == R.id.menu_preference) {
 			Intent intent = new Intent(getApplicationContext(), AppPreferenceActivity.class);
 			startActivity(intent);
 			return true;
-
-		default:
+		} else {
 			return super.onOptionsItemSelected(item);
 		}
 	}
