@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_def_google_search_app_name"
+        android:key="@string/pref_key_google_search_app_name"
+        android:summary="@string/pref_summary_google_search_app_name"
+        android:title="@string/pref_title_google_search_app_name" />
+    <CheckBoxPreference
+        android:defaultValue="@bool/pref_def_google_search_package_name"
+        android:key="@string/pref_key_google_search_package_name"
+        android:title="@string/pref_title_google_search_package_name" />
+
+    <EditTextPreference
+        android:key="@string/pref_key_google_search_keywords"
+        android:summary="@string/pref_summary_google_search_keywords"
+        android:title="@string/pref_title_google_search_keywords" />
+
+</PreferenceScreen>
