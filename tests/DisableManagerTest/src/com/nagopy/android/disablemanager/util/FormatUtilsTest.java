@@ -4,8 +4,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.test.AndroidTestCase;
 
-import com.nagopy.android.disablemanager.R;
-import com.nagopy.android.disablemanager.util.FormatUtils;
+import com.nagopy.android.disablemanager.core.R;
 
 public class FormatUtilsTest extends AndroidTestCase {
 

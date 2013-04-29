@@ -24,7 +24,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 
 import com.nagopy.android.common.app.BasePreferenceActivity;
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 /**
  * 設定画面を表示するアクティビティ

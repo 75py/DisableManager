@@ -34,7 +34,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.nagopy.android.common.image.ImageUtils;
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.util.dpm.Disablable;
 
 /**

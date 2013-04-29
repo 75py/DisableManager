@@ -9,8 +9,7 @@ import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.TextView;
 
-import com.nagopy.android.disablemanager.R;
-import com.nagopy.android.disablemanager.app.MainActivity;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.util.filter.AppsFilter;
 
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {

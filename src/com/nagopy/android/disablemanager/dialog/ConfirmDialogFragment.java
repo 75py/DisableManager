@@ -28,7 +28,7 @@ import android.os.Bundle;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 /**
  * 確認ダイアログ

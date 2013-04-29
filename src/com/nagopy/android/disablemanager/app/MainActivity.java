@@ -24,15 +24,19 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.FragmentTransaction;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.preference.PreferenceManager;
 import android.util.SparseIntArray;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -47,7 +51,7 @@ import android.widget.TextView;
 
 import com.nagopy.android.common.app.BaseActivity;
 import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.dialog.ChangedHistoryDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDialogListener;
@@ -151,7 +155,7 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		if(ChangedHistoryDialog.isUpdated(this)){
+		if (ChangedHistoryDialog.isUpdated(this)) {
 			ChangedHistoryDialog changedHistoryDialog = new ChangedHistoryDialog();
 			changedHistoryDialog.show(getFragmentManager(), "changed");
 		}
@@ -209,6 +213,40 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 						case 1:
 							if (mHideUtils.updateHideList(packageName)) {
 								updateAppList(-1);
+							}
+							break;
+						case 2:
+							StringBuilder sb = new StringBuilder();
+							SharedPreferences sp = PreferenceManager
+									.getDefaultSharedPreferences(getApplicationContext());
+							if (sp.getBoolean(getString(R.string.pref_key_google_search_app_name), getResources()
+									.getBoolean(R.bool.pref_def_google_search_app_name))) {
+								sb.append(label);
+								sb.append(" ");
+							}
+							if (sp.getBoolean(getString(R.string.pref_key_google_search_package_name),
+									getResources().getBoolean(R.bool.pref_def_google_search_package_name))) {
+								sb.append(packageName);
+								sb.append(" ");
+							}
+							String keywords = sp.getString(getString(R.string.pref_key_google_search_keywords), "");
+							if (keywords != null) {
+								sb.append(keywords);
+							}
+							if (sb.length() > 1) {
+								Intent search = new Intent(Intent.ACTION_WEB_SEARCH);
+								if (getPackageManager().queryIntentActivities(search,
+										PackageManager.MATCH_DEFAULT_ONLY).isEmpty()) {
+									Intent intent = new Intent(Intent.ACTION_VIEW);
+									intent.setData(Uri.parse("http://www.google.com/search?q="
+											+ sb.toString().replace(" ", "+")));
+									startActivity(intent);
+								} else {
+									search.putExtra(SearchManager.QUERY, sb.toString());
+									startActivity(search);
+								}
+							} else {
+								showToast(getString(R.string.message_no_keywords));
 							}
 							break;
 						default:
@@ -437,15 +475,12 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-		case R.id.menu_share_label:
-		case R.id.menu_share_package:
-		case R.id.menu_share_label_and_package:
-		case R.id.menu_share_customformat:
-			sendShareIntent(item.getItemId());
+		int id = item.getItemId();
+		if (id == R.id.menu_share_label || id == R.id.menu_share_package
+				|| id == R.id.menu_share_label_and_package || id == R.id.menu_share_customformat) {
+			sendShareIntent(id);
 			return true;
-
-		case R.id.menu_pref_general_show_only_running_packages:
+		} else if (id == R.id.menu_pref_general_show_only_running_packages) {
 			boolean newValue = !item.isChecked();
 			item.setChecked(newValue);
 			if (getSP().edit()
@@ -454,17 +489,14 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 				createReloadAsyncTask().execute();
 			}
 			return true;
-
-		case R.id.menu_reload:
+		} else if (id == R.id.menu_reload) {
 			createReloadAsyncTask().execute();
 			return true;
-
-		case R.id.menu_preference:
+		} else if (id == R.id.menu_preference) {
 			Intent intent = new Intent(getApplicationContext(), AppPreferenceActivity.class);
 			startActivity(intent);
 			return true;
-
-		default:
+		} else {
 			return super.onOptionsItemSelected(item);
 		}
 	}

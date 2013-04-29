@@ -22,7 +22,7 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.style.TextAppearanceSpan;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 
 /**
  * 一覧画面のリストで、コメント・ステータス・パッケージ名を一つのTextViewで表示するために見た目を弄ってうまいことやるためのクラス

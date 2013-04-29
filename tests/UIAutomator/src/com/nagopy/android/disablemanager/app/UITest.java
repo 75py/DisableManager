@@ -10,7 +10,9 @@ import com.android.uiautomator.core.UiSelector;
 import com.android.uiautomator.testrunner.UiAutomatorTestCase;
 
 public class UITest extends UiAutomatorTestCase {
-	public void testPostByTwicca() throws UiObjectNotFoundException {
+	
+	
+	public void testDisableAndReenable() throws UiObjectNotFoundException {
 		// Homeボタンをタップ
 		getUiDevice().pressHome();
 
@@ -22,6 +24,30 @@ public class UITest extends UiAutomatorTestCase {
 		UiObject validation = new UiObject(new UiSelector().packageName("com.nagopy.android.disablemanager"));
 		assertTrue("Unable to detect app", validation.exists());
 
+		pressDisableButton("メッセージ");
+
+		getUiDevice().pressBack();
+
+		UiObject disabledTab = new UiObject(new UiSelector().text("無効化済みのアプリ"));
+		disabledTab.clickAndWaitForNewWindow();
+
+		pressEnableButton("メッセージ");
+		getUiDevice().pressBack();
+
+		assertTrue(new UiObject(new UiSelector().text("該当するアプリはありません。")).exists());
+
+		UiObject disablableTab = new UiObject(new UiSelector().text("無効化可能、有効なシステムアプリ"));
+		assertTrue("無効化可能、有効なアプリタブが存在するか", disablableTab.exists());
+		disablableTab.clickAndWaitForNewWindow();
+
+		UiScrollable appViews = new UiScrollable(new UiSelector().className(ListView.class).scrollable(true));
+		appViews.setAsVerticalList();
+		UiObject targetApp = appViews.getChildByText(new UiSelector().className(TextView.class.getName()),
+				"メッセージ");
+		assertTrue("無効化可能の一覧に戻っているかどうか", targetApp.exists());
+	}
+
+	private void pressDisableButton(String targetLabel) throws UiObjectNotFoundException {
 		// スワイプしながらアイテムを検索できるUiScrollableインスタンスを作成
 		UiScrollable appViews = new UiScrollable(new UiSelector().className(ListView.class).scrollable(true));
 		// スワイプ時のスクロール方向を水平方向に設定
@@ -29,15 +55,21 @@ public class UITest extends UiAutomatorTestCase {
 
 		// アプリランチャーの子ビューから以下の条件を満たすUIオブジェクトを取得
 		UiObject targetApp = appViews.getChildByText(new UiSelector().className(TextView.class.getName()),
-				"Earth");
+				targetLabel);
 		targetApp.clickAndWaitForNewWindow();
 
-		UiObject buttonClear = new UiObject(new UiSelector().text("無効にする"));
-		buttonClear.clickAndWaitForNewWindow();
+		UiObject disableButton = new UiObject(new UiSelector().text("無効にする"));
+		disableButton.clickAndWaitForNewWindow();
 
 		UiObject okButton = new UiObject(new UiSelector().text("OK"));
 		okButton.clickAndWaitForNewWindow();
+	}
 
-		getUiDevice().pressBack();
+	private void pressEnableButton(String targetLabel) throws UiObjectNotFoundException {
+		UiObject targetApp = new UiObject(new UiSelector().text(targetLabel));
+		targetApp.clickAndWaitForNewWindow();
+
+		UiObject enableButton = new UiObject(new UiSelector().text("有効にする"));
+		enableButton.clickAndWaitForNewWindow();
 	}
 }

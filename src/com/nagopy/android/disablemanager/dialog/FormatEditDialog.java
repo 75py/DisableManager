@@ -30,7 +30,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.nagopy.android.disablemanager.R;
+import com.nagopy.android.disablemanager.core.R;
 import com.nagopy.android.disablemanager.util.FormatUtils;
 
 /**

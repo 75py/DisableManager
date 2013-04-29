@@ -9,10 +9,15 @@
     <string name="pref_key_share_add_linebreak">pref_key_share_add_linebreak</string>
     <string name="pref_def_share_customformat_without_comment">%1$s(%2$s)</string>
     <string name="pref_def_share_customformat_with_comment">%1$s\n%2$s\n%3$s</string>
+    <string name="pref_key_google_search_app_name">pref_key_google_search_app_name</string>
+    <string name="pref_key_google_search_package_name">pref_key_google_search_package_name</string>
+    <string name="pref_key_google_search_keywords">pref_key_google_search_keywords</string>
 
     <bool name="pref_def_share_add_linebreak">false</bool>
     <bool name="pref_def_general_sort_by_changed_date">false</bool>
     <bool name="pref_def_general_show_changed_date">false</bool>
     <bool name="pref_def_general_show_only_running_packages">false</bool>
+    <bool name="pref_def_google_search_app_name">true</bool>
+    <bool name="pref_def_google_search_package_name">true</bool>
 
 </resources>
