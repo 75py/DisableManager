@@ -18,13 +18,15 @@ package com.nagopy.android.disablemanager.pref;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -265,7 +267,8 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	}
 
 	/**
-	 * ファイル選択を開始する。ファイラーがあればそっち、なければダイアログ表示
+	 * ファイル選択を開始する。ファイラーがあればそっち、なければダイアログ表示<br>
+	 * v1.3.1で候補がexported=false一つの場合はダイアログが出るように修正
 	 * @param requestCode
 	 *           リクエストコード。ファイラー使用でonActivityResultで使う
 	 * @param listner
@@ -274,9 +277,13 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 	private void chooser(int requestCode, OnOpenFileSelectedListner listner) {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
 		intent.setType("file/*");
-		try {
+		List<ResolveInfo> list = getActivity().getPackageManager().queryIntentActivities(intent,
+				PackageManager.GET_ACTIVITIES);
+		if (list.size() >= 2 || (list.size() == 1 && list.get(0).activityInfo.exported)) {
+			// 候補が2つ以上ある場合、または、候補は一つだけどexported=trueの場合
 			startActivityForResult(intent, requestCode);
-		} catch (ActivityNotFoundException e) {
+		} else {
+			// 候補がない場合、または、候補が一つでexported=falseの場合
 			FileChooserDialogFragment fragment = new FileChooserDialogFragment();
 			fragment.init(listner, "xml");
 			fragment.show(getFragmentManager(), "fod");

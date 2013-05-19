@@ -22,6 +22,8 @@ com.nagopy.android.common.app.BasePreferenceActivity:
 com.nagopy.android.common.app.BaseService
 com.nagopy.android.common.app.DebugInterface
 com.nagopy.android.common.app.UtilInterface
+com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog:
+    private static final java.lang.String DIALOG_FRAGMENT_TAG
 com.nagopy.android.common.fragment.dialog.ProgressDialogFragment:
     private static final java.lang.String KEY_PROGRESS_DIALOG_MESSAGE
     private static final java.lang.String DEFAULT_PROGRESS_DIALOG_MESSAGE
