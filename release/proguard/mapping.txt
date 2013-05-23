@@ -12,8 +12,8 @@ com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog -> b.a:
     android.app.FragmentManager mFragmentManager -> b
     java.lang.ref.WeakReference mWeakReferenceActivityReference -> a
     26:28:void onPreExecute() -> onPreExecute
-    32:38:void onPostExecute(java.lang.Void) -> a
-    41:41:android.app.Activity getActivity() -> a
+    32:42:void onPostExecute(java.lang.Void) -> a
+    45:45:android.app.Activity getActivity() -> a
     1:1:void onPostExecute(java.lang.Object) -> onPostExecute
 com.nagopy.android.common.fragment.dialog.ProgressDialogFragment -> b.b:
     21:25:android.app.Dialog onCreateDialog(android.os.Bundle) -> onCreateDialog
@@ -470,20 +470,20 @@ com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment -> com.nag
     203:228:void checkAndImportHiddenFromXml(java.lang.String) -> a
     236:253:void importHiddenApps(com.nagopy.android.disablemanager.util.xml.XmlData) -> a
     264:267:void showAlertDialog(java.lang.String,com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment$ConfirmDialogListenerCompat) -> a
-    278:291:void chooser(int,com.nagopy.android.disablemanager.dialog.FileOpenDialog$OnOpenFileSelectedListner) -> a
-    301:319:void checkAndImportDisabledApps(java.lang.String) -> b
-    327:332:void importDisabledAppsAndLaunchActivity(com.nagopy.android.disablemanager.util.xml.XmlData) -> b
-    340:341:void showToast(int) -> a
-    349:350:void showToast(java.lang.Object) -> a
+    278:299:void chooser(int,com.nagopy.android.disablemanager.dialog.FileOpenDialog$OnOpenFileSelectedListner) -> a
+    309:327:void checkAndImportDisabledApps(java.lang.String) -> b
+    335:340:void importDisabledAppsAndLaunchActivity(com.nagopy.android.disablemanager.util.xml.XmlData) -> b
+    348:349:void showToast(int) -> a
+    357:358:void showToast(java.lang.Object) -> a
     202:202:void access$0(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.String) -> a
     277:277:void access$1(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,int,com.nagopy.android.disablemanager.dialog.FileOpenDialog$OnOpenFileSelectedListner) -> a
     76:76:com.nagopy.android.disablemanager.util.xml.XmlUtils access$2(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment) -> a
     81:81:com.nagopy.android.disablemanager.util.HideUtils access$3(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment) -> b
-    339:339:void access$4(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,int) -> a
-    348:348:void access$5(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.Object) -> a
-    300:300:void access$6(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.String) -> b
+    347:347:void access$4(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,int) -> a
+    356:356:void access$5(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.Object) -> a
+    308:308:void access$6(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.String) -> b
     235:235:void access$7(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,com.nagopy.android.disablemanager.util.xml.XmlData) -> a
-    326:326:void access$8(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,com.nagopy.android.disablemanager.util.xml.XmlData) -> b
+    334:334:void access$8(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,com.nagopy.android.disablemanager.util.xml.XmlData) -> b
 com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment$1 -> com.nagopy.android.disablemanager.pref.a:
     com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment this$0 -> a
     95:140:boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
@@ -503,7 +503,7 @@ com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment$2 -> com.n
 com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment$3 -> com.nagopy.android.disablemanager.pref.e:
     com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment this$0 -> a
     com.nagopy.android.disablemanager.util.xml.XmlData val$xmlData -> b
-    305:306:void onClick(android.content.DialogInterface,int) -> onClick
+    313:314:void onClick(android.content.DialogInterface,int) -> onClick
 com.nagopy.android.disablemanager.pref.SharePreferenceFragment -> com.nagopy.android.disablemanager.pref.SharePreferenceFragment:
     31:33:void onCreate(android.os.Bundle) -> onCreate
 com.nagopy.android.disablemanager.util.AppStatus -> g.a:

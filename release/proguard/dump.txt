@@ -268,7 +268,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 66):
+Constant Pool (count = 68):
   + String [progress]
   + Class [android/app/Activity]
   + Class [android/app/DialogFragment]
@@ -276,6 +276,7 @@ Constant Pool (count = 66):
   + Class [android/os/AsyncTask]
   + Class [b/a]
   + Class [b/b]
+  + Class [java/lang/Exception]
   + Class [java/lang/Void]
   + Class [java/lang/ref/WeakReference]
   + Fieldref [b/a.a Ljava/lang/ref/WeakReference;]
@@ -328,6 +329,7 @@ Constant Pool (count = 66):
   + Utf8 [dismiss]
   + Utf8 [findFragmentByTag]
   + Utf8 [get]
+  + Utf8 [java/lang/Exception]
   + Utf8 [java/lang/Void]
   + Utf8 [java/lang/ref/WeakReference]
   + Utf8 [onPostExecute]
@@ -350,20 +352,20 @@ Methods (count = 5):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 22, locals = 3, stack = 4):
       [0] aload_0 v0
-      [1] invokespecial #14
+      [1] invokespecial #15
         + Methodref [android/os/AsyncTask.<init> ()V]
       [4] aload_0 v0
       [5] aload_1 v1
-      [6] putfield #11
+      [6] putfield #12
         + Fieldref [b/a.b Landroid/app/FragmentManager;]
       [9] aload_0 v0
-      [10] new #9
+      [10] new #10
         + Class [java/lang/ref/WeakReference]
       [13] dup
       [14] aload_2 v2
-      [15] invokespecial #20
+      [15] invokespecial #21
         + Methodref [java/lang/ref/WeakReference.<init> (Ljava/lang/Object;)V]
-      [18] putfield #10
+      [18] putfield #11
         + Fieldref [b/a.a Ljava/lang/ref/WeakReference;]
       [21] return
       Code attribute exceptions (count = 0):
@@ -379,19 +381,19 @@ Methods (count = 5):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 21, locals = 1, stack = 3):
       [0] aload_0 v0
-      [1] invokespecial #16
+      [1] invokespecial #17
         + Methodref [android/os/AsyncTask.onPreExecute ()V]
       [4] new #7
         + Class [b/b]
       [7] dup
-      [8] invokespecial #18
+      [8] invokespecial #19
         + Methodref [b/b.<init> ()V]
       [11] aload_0 v0
-      [12] getfield #11
+      [12] getfield #12
         + Fieldref [b/a.b Landroid/app/FragmentManager;]
       [15] ldc #1
         + String [progress]
-      [17] invokevirtual #19
+      [17] invokevirtual #20
         + Methodref [b/b.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
       [20] return
       Code attribute exceptions (count = 0):
@@ -404,48 +406,55 @@ Methods (count = 5):
     Access flags: 0x4
       = protected void a(java.lang.Void)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 27, locals = 3, stack = 2):
+    + Code attribute instructions (code length = 31, locals = 3, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #15
+      [2] invokespecial #16
         + Methodref [android/os/AsyncTask.onPostExecute (Ljava/lang/Object;)V]
       [5] aload_0 v0
-      [6] getfield #11
+      [6] getfield #12
         + Fieldref [b/a.b Landroid/app/FragmentManager;]
       [9] ldc #1
         + String [progress]
-      [11] invokevirtual #13
+      [11] invokevirtual #14
         + Methodref [android/app/FragmentManager.findFragmentByTag (Ljava/lang/String;)Landroid/app/Fragment;]
       [14] checkcast #3
         + Class [android/app/DialogFragment]
       [17] astore_2 v2
       [18] aload_2 v2
-      [19] ifnull +7 (target=26)
+      [19] ifnull +11 (target=30)
       [22] aload_2 v2
-      [23] invokevirtual #12
+      [23] invokevirtual #13
         + Methodref [android/app/DialogFragment.dismiss ()V]
-      [26] return
-      Code attribute exceptions (count = 0):
+      [26] goto +4 (target=30)
+      [29] astore_2 v2
+      [30] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (5 -> 26: 29):
+      + Class [java/lang/Exception]
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 7)
+      + Line number table attribute (count = 8)
         [0] -> line 32
-        [5] -> line 33
-        [9] -> line 34
-        [14] -> line 33
-        [18] -> line 35
-        [22] -> line 36
-        [26] -> line 38
-      + Stack map table attribute (count = 1):
+        [5] -> line 34
+        [9] -> line 35
+        [14] -> line 34
+        [18] -> line 36
+        [22] -> line 37
+        [29] -> line 39
+        [30] -> line 42
+      + Stack map table attribute (count = 3):
         - [26] Var: ...[a:android/app/DialogFragment], Stack: (empty)
+        - [29] Var: [a:b/a][a:java/lang/Void], Stack: [a:java/lang/Exception]
+        - [30] Var: ..., Stack: (empty)
   + Method:       a()Landroid/app/Activity;
     Access flags: 0x4
       = protected android.app.Activity a()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 11, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #10
+      [1] getfield #11
         + Fieldref [b/a.a Ljava/lang/ref/WeakReference;]
-      [4] invokevirtual #21
+      [4] invokevirtual #22
         + Methodref [java/lang/ref/WeakReference.get ()Ljava/lang/Object;]
       [7] checkcast #2
         + Class [android/app/Activity]
@@ -453,7 +462,7 @@ Methods (count = 5):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 41
+        [0] -> line 45
   + Method:       onPostExecute(Ljava/lang/Object;)V
     Access flags: 0x1004
       = protected synthetic void onPostExecute(java.lang.Object)
@@ -461,9 +470,9 @@ Methods (count = 5):
     + Code attribute instructions (code length = 9, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] checkcast #8
+      [2] checkcast #9
         + Class [java/lang/Void]
-      [5] invokevirtual #17
+      [5] invokevirtual #18
         + Methodref [b/a.a (Ljava/lang/Void;)V]
       [8] return
       Code attribute exceptions (count = 0):
@@ -15763,7 +15772,7 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 375):
+Constant Pool (count = 377):
   + String [alert]
   + String [android.intent.action.GET_CONTENT]
   + String [com.nagopy.android.disablemanager.app.AppPreferenceActivity.KEY_RELOAD_FLAG]
@@ -15801,6 +15810,7 @@ Constant Pool (count = 375):
   + Class [g/e]
   + Class [g/h]
   + Class [java/lang/Object]
+  + Class [java/lang/SecurityException]
   + Class [java/lang/String]
   + Class [java/util/HashMap]
   + Class [java/util/Iterator]
@@ -16113,6 +16123,7 @@ Constant Pool (count = 375):
   + Utf8 [isEmpty]
   + Utf8 [iterator]
   + Utf8 [java/lang/Object]
+  + Utf8 [java/lang/SecurityException]
   + Utf8 [java/lang/String]
   + Utf8 [java/util/HashMap]
   + Utf8 [java/util/Iterator]
@@ -16160,16 +16171,16 @@ Methods (count = 21):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 17, locals = 1, stack = 4):
       [0] aload_0 v0
-      [1] invokespecial #72
+      [1] invokespecial #73
         + Methodref [android/preference/PreferenceFragment.<init> ()V]
       [4] aload_0 v0
       [5] new #27
         + Class [com/nagopy/android/disablemanager/pref/a]
       [8] dup
       [9] aload_0 v0
-      [10] invokespecial #96
+      [10] invokespecial #97
         + Methodref [com/nagopy/android/disablemanager/pref/a.<init> (Lcom/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment;)V]
-      [13] putfield #51
+      [13] putfield #52
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.d Landroid/preference/Preference$OnPreferenceClickListener;]
       [16] return
       Code attribute exceptions (count = 0):
@@ -16185,59 +16196,59 @@ Methods (count = 21):
     + Code attribute instructions (code length = 77, locals = 3, stack = 4):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #73
+      [2] invokespecial #74
         + Methodref [android/preference/PreferenceFragment.onCreate (Landroid/os/Bundle;)V]
       [5] aload_0 v0
-      [6] new #45
+      [6] new #46
         + Class [l/b]
       [9] dup
       [10] aload_0 v0
-      [11] invokevirtual #89
+      [11] invokevirtual #90
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [14] invokevirtual #59
+      [14] invokevirtual #60
         + Methodref [android/app/Activity.getApplicationContext ()Landroid/content/Context;]
-      [17] invokespecial #116
+      [17] invokespecial #117
         + Methodref [l/b.<init> (Landroid/content/Context;)V]
-      [20] putfield #48
+      [20] putfield #49
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a Ll/b;]
       [23] aload_0 v0
       [24] new #36
         + Class [g/h]
       [27] dup
       [28] aload_0 v0
-      [29] invokevirtual #89
+      [29] invokevirtual #90
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [32] invokevirtual #59
+      [32] invokevirtual #60
         + Methodref [android/app/Activity.getApplicationContext ()Landroid/content/Context;]
-      [35] invokespecial #107
+      [35] invokespecial #108
         + Methodref [g/h.<init> (Landroid/content/Context;)V]
-      [38] putfield #49
+      [38] putfield #50
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.b Lg/h;]
       [41] aload_0 v0
       [42] new #35
         + Class [g/e]
       [45] dup
       [46] aload_0 v0
-      [47] invokevirtual #89
+      [47] invokevirtual #90
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [50] invokevirtual #59
+      [50] invokevirtual #60
         + Methodref [android/app/Activity.getApplicationContext ()Landroid/content/Context;]
-      [53] invokespecial #105
+      [53] invokespecial #106
         + Methodref [g/e.<init> (Landroid/content/Context;)V]
-      [56] putfield #50
+      [56] putfield #51
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.c Lg/e;]
       [59] aload_0 v0
-      [60] getstatic #58
+      [60] getstatic #59
         + Fieldref [e/k.app_preference_activity_body_import I]
-      [63] invokevirtual #86
+      [63] invokevirtual #87
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.addPreferencesFromResource (I)V]
       [66] aload_0 v0
-      [67] invokevirtual #91
+      [67] invokevirtual #92
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getPreferenceScreen ()Landroid/preference/PreferenceScreen;]
       [70] astore_2 v2
       [71] aload_0 v0
       [72] aload_2 v2
-      [73] invokespecial #81
+      [73] invokespecial #82
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Landroid/preference/Preference;)V]
       [76] return
       Code attribute exceptions (count = 0):
@@ -16263,7 +16274,7 @@ Methods (count = 21):
       [7] aload_1 v1
       [8] checkcast #22
         + Class [android/preference/PreferenceGroup]
-      [11] invokevirtual #75
+      [11] invokevirtual #76
         + Methodref [android/preference/PreferenceGroup.getPreferenceCount ()I]
       [14] istore_2 v2
       [15] iconst_0
@@ -16273,12 +16284,12 @@ Methods (count = 21):
       [21] checkcast #22
         + Class [android/preference/PreferenceGroup]
       [24] iload_3 v3
-      [25] invokevirtual #74
+      [25] invokevirtual #75
         + Methodref [android/preference/PreferenceGroup.getPreference (I)Landroid/preference/Preference;]
       [28] astore v4
       [30] aload_0 v0
       [31] aload v4
-      [33] invokespecial #81
+      [33] invokespecial #82
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Landroid/preference/Preference;)V]
       [36] iinc v3, 1
       [39] iload_3 v3
@@ -16287,20 +16298,20 @@ Methods (count = 21):
       [44] goto +27 (target=71)
       [47] aload_1 v1
       [48] aload_0 v0
-      [49] getfield #51
+      [49] getfield #52
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.d Landroid/preference/Preference$OnPreferenceClickListener;]
-      [52] invokevirtual #70
+      [52] invokevirtual #71
         + Methodref [android/preference/Preference.setOnPreferenceClickListener (Landroid/preference/Preference$OnPreferenceClickListener;)V]
       [55] aload_1 v1
-      [56] invokevirtual #69
+      [56] invokevirtual #70
         + Methodref [android/preference/Preference.getTitleRes ()I]
-      [59] getstatic #57
+      [59] getstatic #58
         + Fieldref [e/i.pref_title_import_help I]
       [62] ificmpne +9 (target=71)
       [65] aload_1 v1
       [66] ldc #10
         + String [http://blog.nagopy.com/2013/03/disablemanageraboutimport.html]
-      [68] invokevirtual #71
+      [68] invokevirtual #72
         + Methodref [android/preference/Preference.setSummary (Ljava/lang/CharSequence;)V]
       [71] return
       Code attribute exceptions (count = 0):
@@ -16335,25 +16346,25 @@ Methods (count = 21):
         2: offset = 40, target = 46
         default: offset = 58, target = 64
       [28] aload_3 v3
-      [29] invokevirtual #63
+      [29] invokevirtual #64
         + Methodref [android/content/Intent.getData ()Landroid/net/Uri;]
-      [32] invokevirtual #68
+      [32] invokevirtual #69
         + Methodref [android/net/Uri.getPath ()Ljava/lang/String;]
       [35] astore v4
       [37] aload_0 v0
       [38] aload v4
-      [40] invokespecial #83
+      [40] invokespecial #84
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;)V]
       [43] goto +21 (target=64)
       [46] aload_3 v3
-      [47] invokevirtual #63
+      [47] invokevirtual #64
         + Methodref [android/content/Intent.getData ()Landroid/net/Uri;]
-      [50] invokevirtual #68
+      [50] invokevirtual #69
         + Methodref [android/net/Uri.getPath ()Ljava/lang/String;]
       [53] astore v5
       [55] aload_0 v0
       [56] aload v5
-      [58] invokespecial #87
+      [58] invokespecial #88
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.b (Ljava/lang/String;)V]
       [61] goto +3 (target=64)
       [64] return
@@ -16379,10 +16390,10 @@ Methods (count = 21):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 125, locals = 4, stack = 7):
       [0] aload_0 v0
-      [1] getfield #48
+      [1] getfield #49
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a Ll/b;]
       [4] aload_1 v1
-      [5] invokevirtual #117
+      [5] invokevirtual #118
         + Methodref [l/b.b (Ljava/lang/String;)Ll/a;]
       [8] astore_2 v2
       [9] new #28
@@ -16390,59 +16401,59 @@ Methods (count = 21):
       [12] dup
       [13] aload_0 v0
       [14] aload_2 v2
-      [15] invokespecial #97
+      [15] invokespecial #98
         + Methodref [com/nagopy/android/disablemanager/pref/d.<init> (Lcom/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment;Ll/a;)V]
       [18] astore_3 v3
       [19] aload_2 v2
-      [20] invokevirtual #114
+      [20] invokevirtual #115
         + Methodref [l/a.f ()Ljava/lang/String;]
       [23] ifnull +14 (target=37)
       [26] aload_0 v0
       [27] aload_2 v2
-      [28] invokevirtual #114
+      [28] invokevirtual #115
         + Methodref [l/a.f ()Ljava/lang/String;]
-      [31] invokespecial #82
+      [31] invokespecial #83
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/Object;)V]
       [34] goto +90 (target=124)
       [37] aload_2 v2
-      [38] invokestatic #118
+      [38] invokestatic #119
         + Methodref [l/b.b (Ll/a;)Z]
       [41] ifne +18 (target=59)
       [44] aload_0 v0
       [45] aload_0 v0
-      [46] getstatic #53
+      [46] getstatic #54
         + Fieldref [e/i.import_different_device I]
-      [49] invokevirtual #92
+      [49] invokevirtual #93
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getString (I)Ljava/lang/String;]
       [52] aload_3 v3
-      [53] invokespecial #84
+      [53] invokespecial #85
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;Lf/i;)V]
       [56] goto +68 (target=124)
       [59] aload_2 v2
-      [60] invokestatic #119
+      [60] invokestatic #120
         + Methodref [l/b.c (Ll/a;)Z]
       [63] ifne +18 (target=81)
       [66] aload_0 v0
       [67] aload_0 v0
-      [68] getstatic #52
+      [68] getstatic #53
         + Fieldref [e/i.import_different_build I]
-      [71] invokevirtual #92
+      [71] invokevirtual #93
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getString (I)Ljava/lang/String;]
       [74] aload_3 v3
-      [75] invokespecial #84
+      [75] invokespecial #85
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;Lf/i;)V]
       [78] goto +46 (target=124)
       [81] ldc #9
         + String [hidden]
       [83] aload_2 v2
-      [84] invokevirtual #111
+      [84] invokevirtual #112
         + Methodref [l/a.c ()Ljava/lang/String;]
-      [87] invokevirtual #110
+      [87] invokevirtual #111
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [90] ifne +29 (target=119)
       [93] aload_0 v0
       [94] aload_0 v0
-      [95] getstatic #54
+      [95] getstatic #55
         + Fieldref [e/i.import_different_type I]
       [98] iconst_1
       [99] anewarray #37
@@ -16450,18 +16461,18 @@ Methods (count = 21):
       [102] dup
       [103] iconst_0
       [104] aload_2 v2
-      [105] invokevirtual #111
+      [105] invokevirtual #112
         + Methodref [l/a.c ()Ljava/lang/String;]
       [108] aastore
-      [109] invokevirtual #93
+      [109] invokevirtual #94
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getString (I[Ljava/lang/Object;)Ljava/lang/String;]
       [112] aload_3 v3
-      [113] invokespecial #84
+      [113] invokespecial #85
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;Lf/i;)V]
       [116] goto +8 (target=124)
       [119] aload_0 v0
       [120] aload_2 v2
-      [121] invokespecial #85
+      [121] invokespecial #86
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ll/a;)V]
       [124] return
       Code attribute exceptions (count = 0):
@@ -16491,84 +16502,84 @@ Methods (count = 21):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 142, locals = 7, stack = 3):
       [0] aload_1 v1
-      [1] invokevirtual #113
+      [1] invokevirtual #114
         + Methodref [l/a.e ()Ljava/util/Map;]
       [4] astore_2 v2
       [5] aload_1 v1
-      [6] invokevirtual #112
+      [6] invokevirtual #113
         + Methodref [l/a.d ()Ljava/util/Set;]
       [9] astore_3 v3
       [10] aload_2 v2
-      [11] invokeinterface #128
+      [11] invokeinterface #129
         + InterfaceMethodref [java/util/Map.isEmpty ()Z]
       [16] ifne +66 (target=82)
       [19] aload_3 v3
-      [20] invokeinterface #129
+      [20] invokeinterface #130
         + InterfaceMethodref [java/util/Set.iterator ()Ljava/util/Iterator;]
       [25] astore v5
       [27] goto +45 (target=72)
       [30] aload v5
-      [32] invokeinterface #124
+      [32] invokeinterface #125
         + InterfaceMethodref [java/util/Iterator.next ()Ljava/lang/Object;]
-      [37] checkcast #38
+      [37] checkcast #39
         + Class [java/lang/String]
       [40] astore v4
       [42] aload_2 v2
       [43] aload v4
-      [45] invokeinterface #127
+      [45] invokeinterface #128
         + InterfaceMethodref [java/util/Map.get (Ljava/lang/Object;)Ljava/lang/Object;]
-      [50] checkcast #38
+      [50] checkcast #39
         + Class [java/lang/String]
       [53] astore v6
       [55] aload v6
       [57] ifnull +15 (target=72)
       [60] aload_0 v0
-      [61] getfield #50
+      [61] getfield #51
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.c Lg/e;]
       [64] aload v4
       [66] aload v6
-      [68] invokevirtual #106
+      [68] invokevirtual #107
         + Methodref [g/e.a (Ljava/lang/String;Ljava/lang/String;)Z]
       [71] pop
       [72] aload v5
-      [74] invokeinterface #123
+      [74] invokeinterface #124
         + InterfaceMethodref [java/util/Iterator.hasNext ()Z]
       [79] ifne -49 (target=30)
       [82] aload_0 v0
-      [83] getfield #49
+      [83] getfield #50
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.b Lg/h;]
       [86] aload_1 v1
-      [87] invokevirtual #112
+      [87] invokevirtual #113
         + Methodref [l/a.d ()Ljava/util/Set;]
-      [90] invokevirtual #108
+      [90] invokevirtual #109
         + Methodref [g/h.a (Ljava/util/Set;)Z]
       [93] ifeq +41 (target=134)
       [96] aload_0 v0
-      [97] getstatic #56
+      [97] getstatic #57
         + Fieldref [e/i.import_success I]
-      [100] invokespecial #79
+      [100] invokespecial #80
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (I)V]
       [103] aload_0 v0
-      [104] invokevirtual #89
+      [104] invokevirtual #90
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [107] invokevirtual #59
+      [107] invokevirtual #60
         + Methodref [android/app/Activity.getApplicationContext ()Landroid/content/Context;]
-      [110] invokestatic #76
+      [110] invokestatic #77
         + Methodref [android/preference/PreferenceManager.getDefaultSharedPreferences (Landroid/content/Context;)Landroid/content/SharedPreferences;]
-      [113] invokeinterface #120
+      [113] invokeinterface #121
         + InterfaceMethodref [android/content/SharedPreferences.edit ()Landroid/content/SharedPreferences$Editor;]
       [118] ldc #3
         + String [com.nagopy.android.disablemanager.app.AppPreferenceActivity.KEY_RELOAD_FLAG]
       [120] iconst_1
-      [121] invokeinterface #122
+      [121] invokeinterface #123
         + InterfaceMethodref [android/content/SharedPreferences$Editor.putBoolean (Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;]
-      [126] invokeinterface #121
+      [126] invokeinterface #122
         + InterfaceMethodref [android/content/SharedPreferences$Editor.apply ()V]
       [131] goto +10 (target=141)
       [134] aload_0 v0
-      [135] getstatic #55
+      [135] getstatic #56
         + Fieldref [e/i.import_error_cannot_write_sp I]
-      [138] invokespecial #79
+      [138] invokespecial #80
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (I)V]
       [141] return
       Code attribute exceptions (count = 0):
@@ -16602,21 +16613,21 @@ Methods (count = 21):
       [0] new #32
         + Class [f/f]
       [3] dup
-      [4] invokespecial #99
+      [4] invokespecial #100
         + Methodref [f/f.<init> ()V]
       [7] astore_3 v3
       [8] aload_3 v3
       [9] aload_1 v1
       [10] aload_2 v2
-      [11] invokevirtual #100
+      [11] invokevirtual #101
         + Methodref [f/f.a (Ljava/lang/CharSequence;Lf/i;)V]
       [14] aload_3 v3
       [15] aload_0 v0
-      [16] invokevirtual #90
+      [16] invokevirtual #91
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getFragmentManager ()Landroid/app/FragmentManager;]
       [19] ldc #1
         + String [alert]
-      [21] invokevirtual #101
+      [21] invokevirtual #102
         + Methodref [f/f.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
       [24] return
       Code attribute exceptions (count = 0):
@@ -16630,113 +16641,149 @@ Methods (count = 21):
     Access flags: 0x2
       = private void a(int,f.p)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 118, locals = 6, stack = 6):
+    + Code attribute instructions (code length = 158, locals = 7, stack = 6):
       [0] new #13
         + Class [android/content/Intent]
       [3] dup
       [4] ldc #2
         + String [android.intent.action.GET_CONTENT]
-      [6] invokespecial #62
+      [6] invokespecial #63
         + Methodref [android/content/Intent.<init> (Ljava/lang/String;)V]
       [9] astore_3 v3
       [10] aload_3 v3
       [11] ldc #7
         + String [file/*]
-      [13] invokevirtual #66
+      [13] invokevirtual #67
         + Methodref [android/content/Intent.setType (Ljava/lang/String;)Landroid/content/Intent;]
       [16] pop
       [17] aload_0 v0
-      [18] invokevirtual #89
+      [18] invokevirtual #90
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [21] invokevirtual #60
+      [21] invokevirtual #61
         + Methodref [android/app/Activity.getPackageManager ()Landroid/content/pm/PackageManager;]
       [24] aload_3 v3
       [25] iconst_1
-      [26] invokevirtual #67
+      [26] invokevirtual #68
         + Methodref [android/content/pm/PackageManager.queryIntentActivities (Landroid/content/Intent;I)Ljava/util/List;]
       [29] astore v4
       [31] aload v4
-      [33] invokeinterface #126
+      [33] invokeinterface #127
         + InterfaceMethodref [java/util/List.size ()I]
       [38] iconst_2
       [39] ificmpge +34 (target=73)
       [42] aload v4
-      [44] invokeinterface #126
+      [44] invokeinterface #127
         + InterfaceMethodref [java/util/List.size ()I]
       [49] iconst_1
-      [50] ificmpne +32 (target=82)
+      [50] ificmpne +72 (target=122)
       [53] aload v4
       [55] iconst_0
-      [56] invokeinterface #125
+      [56] invokeinterface #126
         + InterfaceMethodref [java/util/List.get (I)Ljava/lang/Object;]
       [61] checkcast #18
         + Class [android/content/pm/ResolveInfo]
-      [64] getfield #47
+      [64] getfield #48
         + Fieldref [android/content/pm/ResolveInfo.activityInfo Landroid/content/pm/ActivityInfo;]
-      [67] getfield #46
+      [67] getfield #47
         + Fieldref [android/content/pm/ActivityInfo.exported Z]
-      [70] ifeq +12 (target=82)
+      [70] ifeq +52 (target=122)
       [73] aload_0 v0
       [74] aload_3 v3
       [75] iload_1 v1
-      [76] invokevirtual #95
+      [76] invokevirtual #96
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.startActivityForResult (Landroid/content/Intent;I)V]
-      [79] goto +38 (target=117)
-      [82] new #34
+      [79] goto +78 (target=157)
+      [82] astore v5
+      [84] new #34
         + Class [f/j]
-      [85] dup
-      [86] invokespecial #102
+      [87] dup
+      [88] invokespecial #103
         + Methodref [f/j.<init> ()V]
-      [89] astore v5
-      [91] aload v5
-      [93] aload_2 v2
-      [94] iconst_1
-      [95] anewarray #38
+      [91] astore v6
+      [93] aload v6
+      [95] aload_2 v2
+      [96] iconst_1
+      [97] anewarray #39
         + Class [java/lang/String]
-      [98] dup
-      [99] iconst_0
-      [100] ldc #11
+      [100] dup
+      [101] iconst_0
+      [102] ldc #11
         + String [xml]
-      [102] aastore
-      [103] invokevirtual #103
+      [104] aastore
+      [105] invokevirtual #104
         + Methodref [f/j.a (Lf/p;[Ljava/lang/String;)V]
-      [106] aload v5
-      [108] aload_0 v0
-      [109] invokevirtual #90
+      [108] aload v6
+      [110] aload_0 v0
+      [111] invokevirtual #91
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getFragmentManager ()Landroid/app/FragmentManager;]
-      [112] ldc #8
+      [114] ldc #8
         + String [fod]
-      [114] invokevirtual #104
+      [116] invokevirtual #105
         + Methodref [f/j.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
-      [117] return
-      Code attribute exceptions (count = 0):
+      [119] goto +38 (target=157)
+      [122] new #34
+        + Class [f/j]
+      [125] dup
+      [126] invokespecial #103
+        + Methodref [f/j.<init> ()V]
+      [129] astore v5
+      [131] aload v5
+      [133] aload_2 v2
+      [134] iconst_1
+      [135] anewarray #39
+        + Class [java/lang/String]
+      [138] dup
+      [139] iconst_0
+      [140] ldc #11
+        + String [xml]
+      [142] aastore
+      [143] invokevirtual #104
+        + Methodref [f/j.a (Lf/p;[Ljava/lang/String;)V]
+      [146] aload v5
+      [148] aload_0 v0
+      [149] invokevirtual #91
+        + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getFragmentManager ()Landroid/app/FragmentManager;]
+      [152] ldc #8
+        + String [fod]
+      [154] invokevirtual #105
+        + Methodref [f/j.show (Landroid/app/FragmentManager;Ljava/lang/String;)V]
+      [157] return
+      Code attribute exceptions (count = 1):
+      - ExceptionInfo (73 -> 79: 82):
+      + Class [java/lang/SecurityException]
       Code attribute attributes (attribute count = 2):
-      + Line number table attribute (count = 11)
+      + Line number table attribute (count = 15)
         [0] -> line 278
         [10] -> line 279
         [17] -> line 280
         [25] -> line 281
         [26] -> line 280
         [31] -> line 282
-        [73] -> line 284
-        [82] -> line 287
-        [91] -> line 288
-        [106] -> line 289
-        [117] -> line 291
-      + Stack map table attribute (count = 3):
+        [73] -> line 285
+        [82] -> line 286
+        [84] -> line 289
+        [93] -> line 290
+        [108] -> line 291
+        [122] -> line 295
+        [131] -> line 296
+        [146] -> line 297
+        [157] -> line 299
+      + Stack map table attribute (count = 5):
         - [73] Var: ...[a:android/content/Intent][a:java/util/List], Stack: (empty)
-        - [82] Var: ..., Stack: (empty)
-        - [117] Var: ..., Stack: (empty)
+        - [82] Var: ..., Stack: [a:java/lang/SecurityException]
+        - [119] Var: ..., Stack: (empty)
+        - [122] Var: ..., Stack: (empty)
+        - [157] Var: ..., Stack: (empty)
   + Method:       b(Ljava/lang/String;)V
     Access flags: 0x2
       = private void b(java.lang.String)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 125, locals = 4, stack = 7):
       [0] aload_0 v0
-      [1] getfield #48
+      [1] getfield #49
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a Ll/b;]
       [4] aload_1 v1
-      [5] invokevirtual #117
+      [5] invokevirtual #118
         + Methodref [l/b.b (Ljava/lang/String;)Ll/a;]
       [8] astore_2 v2
       [9] new #29
@@ -16744,59 +16791,59 @@ Methods (count = 21):
       [12] dup
       [13] aload_0 v0
       [14] aload_2 v2
-      [15] invokespecial #98
+      [15] invokespecial #99
         + Methodref [com/nagopy/android/disablemanager/pref/e.<init> (Lcom/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment;Ll/a;)V]
       [18] astore_3 v3
       [19] aload_2 v2
-      [20] invokevirtual #114
+      [20] invokevirtual #115
         + Methodref [l/a.f ()Ljava/lang/String;]
       [23] ifnull +14 (target=37)
       [26] aload_0 v0
       [27] aload_2 v2
-      [28] invokevirtual #114
+      [28] invokevirtual #115
         + Methodref [l/a.f ()Ljava/lang/String;]
-      [31] invokespecial #82
+      [31] invokespecial #83
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/Object;)V]
       [34] goto +90 (target=124)
       [37] aload_2 v2
-      [38] invokestatic #118
+      [38] invokestatic #119
         + Methodref [l/b.b (Ll/a;)Z]
       [41] ifne +18 (target=59)
       [44] aload_0 v0
       [45] aload_0 v0
-      [46] getstatic #53
+      [46] getstatic #54
         + Fieldref [e/i.import_different_device I]
-      [49] invokevirtual #92
+      [49] invokevirtual #93
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getString (I)Ljava/lang/String;]
       [52] aload_3 v3
-      [53] invokespecial #84
+      [53] invokespecial #85
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;Lf/i;)V]
       [56] goto +68 (target=124)
       [59] aload_2 v2
-      [60] invokestatic #119
+      [60] invokestatic #120
         + Methodref [l/b.c (Ll/a;)Z]
       [63] ifne +18 (target=81)
       [66] aload_0 v0
       [67] aload_0 v0
-      [68] getstatic #52
+      [68] getstatic #53
         + Fieldref [e/i.import_different_build I]
-      [71] invokevirtual #92
+      [71] invokevirtual #93
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getString (I)Ljava/lang/String;]
       [74] aload_3 v3
-      [75] invokespecial #84
+      [75] invokespecial #85
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;Lf/i;)V]
       [78] goto +46 (target=124)
       [81] ldc #6
         + String [disabled]
       [83] aload_2 v2
-      [84] invokevirtual #111
+      [84] invokevirtual #112
         + Methodref [l/a.c ()Ljava/lang/String;]
-      [87] invokevirtual #110
+      [87] invokevirtual #111
         + Methodref [java/lang/String.equals (Ljava/lang/Object;)Z]
       [90] ifne +29 (target=119)
       [93] aload_0 v0
       [94] aload_0 v0
-      [95] getstatic #54
+      [95] getstatic #55
         + Fieldref [e/i.import_different_type I]
       [98] iconst_1
       [99] anewarray #37
@@ -16804,35 +16851,35 @@ Methods (count = 21):
       [102] dup
       [103] iconst_0
       [104] aload_2 v2
-      [105] invokevirtual #111
+      [105] invokevirtual #112
         + Methodref [l/a.c ()Ljava/lang/String;]
       [108] aastore
-      [109] invokevirtual #93
+      [109] invokevirtual #94
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getString (I[Ljava/lang/Object;)Ljava/lang/String;]
       [112] aload_3 v3
-      [113] invokespecial #84
+      [113] invokespecial #85
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;Lf/i;)V]
       [116] goto +8 (target=124)
       [119] aload_0 v0
       [120] aload_2 v2
-      [121] invokespecial #88
+      [121] invokespecial #89
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.b (Ll/a;)V]
       [124] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 2):
       + Line number table attribute (count = 12)
-        [0] -> line 301
-        [9] -> line 302
-        [19] -> line 308
-        [26] -> line 309
-        [37] -> line 310
-        [44] -> line 311
-        [59] -> line 312
-        [66] -> line 313
-        [81] -> line 314
-        [93] -> line 315
-        [119] -> line 317
-        [124] -> line 319
+        [0] -> line 309
+        [9] -> line 310
+        [19] -> line 316
+        [26] -> line 317
+        [37] -> line 318
+        [44] -> line 319
+        [59] -> line 320
+        [66] -> line 321
+        [81] -> line 322
+        [93] -> line 323
+        [119] -> line 325
+        [124] -> line 327
       + Stack map table attribute (count = 5):
         - [37] Var: ...[a:l/a][a:f/i], Stack: (empty)
         - [59] Var: ..., Stack: (empty)
@@ -16845,54 +16892,54 @@ Methods (count = 21):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 50, locals = 4, stack = 4):
       [0] aload_1 v1
-      [1] invokevirtual #113
+      [1] invokevirtual #114
         + Methodref [l/a.e ()Ljava/util/Map;]
-      [4] checkcast #39
+      [4] checkcast #40
         + Class [java/util/HashMap]
       [7] astore_2 v2
       [8] new #13
         + Class [android/content/Intent]
       [11] dup
       [12] aload_0 v0
-      [13] invokevirtual #89
+      [13] invokevirtual #90
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [16] invokevirtual #59
+      [16] invokevirtual #60
         + Methodref [android/app/Activity.getApplicationContext ()Landroid/content/Context;]
       [19] ldc #25
         + Class [com/nagopy/android/disablemanager/app/ImportListActivity]
-      [21] invokespecial #61
+      [21] invokespecial #62
         + Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
       [24] astore_3 v3
       [25] aload_3 v3
       [26] ldc #5
         + String [com.nagopy.android.disablemanager.app.ImportListActivity.EXTRA_PACKAGES_AND_COMMENTS]
       [28] aload_2 v2
-      [29] invokevirtual #64
+      [29] invokevirtual #65
         + Methodref [android/content/Intent.putExtra (Ljava/lang/String;Ljava/io/Serializable;)Landroid/content/Intent;]
       [32] pop
       [33] aload_3 v3
       [34] ldc #4
         + String [com.nagopy.android.disablemanager.app.ImportListActivity.EXTRA_FILE_NAME]
       [36] aload_1 v1
-      [37] invokevirtual #115
+      [37] invokevirtual #116
         + Methodref [l/a.g ()Ljava/lang/String;]
-      [40] invokevirtual #65
+      [40] invokevirtual #66
         + Methodref [android/content/Intent.putExtra (Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;]
       [43] pop
       [44] aload_0 v0
       [45] aload_3 v3
-      [46] invokevirtual #94
+      [46] invokevirtual #95
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.startActivity (Landroid/content/Intent;)V]
       [49] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 6)
-        [0] -> line 327
-        [8] -> line 328
-        [25] -> line 329
-        [33] -> line 330
-        [44] -> line 331
-        [49] -> line 332
+        [0] -> line 335
+        [8] -> line 336
+        [25] -> line 337
+        [33] -> line 338
+        [44] -> line 339
+        [49] -> line 340
   + Method:       a(I)V
     Access flags: 0x2
       = private void a(int)
@@ -16901,40 +16948,40 @@ Methods (count = 21):
       [0] aload_0 v0
       [1] aload_0 v0
       [2] iload_1 v1
-      [3] invokevirtual #92
+      [3] invokevirtual #93
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getString (I)Ljava/lang/String;]
-      [6] invokespecial #82
+      [6] invokespecial #83
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/Object;)V]
       [9] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 340
-        [9] -> line 341
+        [0] -> line 348
+        [9] -> line 349
   + Method:       a(Ljava/lang/Object;)V
     Access flags: 0x2
       = private void a(java.lang.Object)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 19, locals = 2, stack = 3):
       [0] aload_0 v0
-      [1] invokevirtual #89
+      [1] invokevirtual #90
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.getActivity ()Landroid/app/Activity;]
-      [4] invokevirtual #59
+      [4] invokevirtual #60
         + Methodref [android/app/Activity.getApplicationContext ()Landroid/content/Context;]
       [7] aload_1 v1
-      [8] invokevirtual #109
+      [8] invokevirtual #110
         + Methodref [java/lang/Object.toString ()Ljava/lang/String;]
       [11] iconst_1
-      [12] invokestatic #77
+      [12] invokestatic #78
         + Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
-      [15] invokevirtual #78
+      [15] invokevirtual #79
         + Methodref [android/widget/Toast.show ()V]
       [18] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 349
-        [18] -> line 350
+        [0] -> line 357
+        [18] -> line 358
   + Method:       a(Lcom/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment;Ljava/lang/String;)V
     Access flags: 0x1008
       = static synthetic void a(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.String)
@@ -16942,7 +16989,7 @@ Methods (count = 21):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #83
+      [2] invokespecial #84
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/String;)V]
       [5] return
       Code attribute exceptions (count = 0):
@@ -16957,7 +17004,7 @@ Methods (count = 21):
       [0] aload_0 v0
       [1] iload_1 v1
       [2] aload_2 v2
-      [3] invokespecial #80
+      [3] invokespecial #81
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (ILf/p;)V]
       [6] return
       Code attribute exceptions (count = 0):
@@ -16970,7 +17017,7 @@ Methods (count = 21):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #48
+      [1] getfield #49
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a Ll/b;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -16983,7 +17030,7 @@ Methods (count = 21):
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] getfield #49
+      [1] getfield #50
         + Fieldref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.b Lg/h;]
       [4] areturn
       Code attribute exceptions (count = 0):
@@ -16997,13 +17044,13 @@ Methods (count = 21):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] iload_1 v1
-      [2] invokespecial #79
+      [2] invokespecial #80
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (I)V]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 339
+        [0] -> line 347
   + Method:       a(Lcom/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment;Ljava/lang/Object;)V
     Access flags: 0x1008
       = static synthetic void a(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.Object)
@@ -17011,13 +17058,13 @@ Methods (count = 21):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #82
+      [2] invokespecial #83
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ljava/lang/Object;)V]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 348
+        [0] -> line 356
   + Method:       b(Lcom/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment;Ljava/lang/String;)V
     Access flags: 0x1008
       = static synthetic void b(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,java.lang.String)
@@ -17025,13 +17072,13 @@ Methods (count = 21):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #87
+      [2] invokespecial #88
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.b (Ljava/lang/String;)V]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 300
+        [0] -> line 308
   + Method:       a(Lcom/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment;Ll/a;)V
     Access flags: 0x1008
       = static synthetic void a(com.nagopy.android.disablemanager.pref.ImportExportPreferenceFragment,l.a)
@@ -17039,7 +17086,7 @@ Methods (count = 21):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #85
+      [2] invokespecial #86
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.a (Ll/a;)V]
       [5] return
       Code attribute exceptions (count = 0):
@@ -17053,13 +17100,13 @@ Methods (count = 21):
     + Code attribute instructions (code length = 6, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #88
+      [2] invokespecial #89
         + Methodref [com/nagopy/android/disablemanager/pref/ImportExportPreferenceFragment.b (Ll/a;)V]
       [5] return
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 1)
-        [0] -> line 326
+        [0] -> line 334
 
 Class file attributes (count = 1):
   + Source file attribute:
@@ -17850,7 +17897,7 @@ Methods (count = 2):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
         [0] -> line 1
-        [10] -> line 302
+        [10] -> line 310
   + Method:       onClick(Landroid/content/DialogInterface;I)V
     Access flags: 0x1
       = public void onClick(android.content.DialogInterface,int)
@@ -17868,8 +17915,8 @@ Methods (count = 2):
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 1):
       + Line number table attribute (count = 2)
-        [0] -> line 305
-        [11] -> line 306
+        [0] -> line 313
+        [11] -> line 314
 
 Class file attributes (count = 1):
   + Source file attribute:
