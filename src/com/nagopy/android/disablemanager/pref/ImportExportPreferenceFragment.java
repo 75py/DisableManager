@@ -281,7 +281,15 @@ public class ImportExportPreferenceFragment extends PreferenceFragment {
 				PackageManager.GET_ACTIVITIES);
 		if (list.size() >= 2 || (list.size() == 1 && list.get(0).activityInfo.exported)) {
 			// 候補が2つ以上ある場合、または、候補は一つだけどexported=trueの場合
-			startActivityForResult(intent, requestCode);
+			try {
+				startActivityForResult(intent, requestCode);
+			} catch (SecurityException e) {
+				// とりあえず対策
+				// TODO もうちょっとまともな対策をする
+				FileChooserDialogFragment fragment = new FileChooserDialogFragment();
+				fragment.init(listner, "xml");
+				fragment.show(getFragmentManager(), "fod");
+			}
 		} else {
 			// 候補がない場合、または、候補が一つでexported=falseの場合
 			FileChooserDialogFragment fragment = new FileChooserDialogFragment();
