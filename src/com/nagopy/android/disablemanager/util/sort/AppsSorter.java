@@ -42,7 +42,7 @@ public final class AppsSorter {
 	 */
 	public static void sort(ChangedDateUtils dateUtils, List<AppStatus> list) {
 		Comparator<AppStatus> comparator;
-		if (dateUtils == null) {
+		if (dateUtils == null || !dateUtils.isEnabled()) {
 			comparator = AppComparator.getInstance();
 		} else {
 			comparator = AppComparatorWithDate.getInstance(dateUtils);
