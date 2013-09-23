@@ -52,7 +52,6 @@ import android.widget.TextView;
 import com.nagopy.android.common.app.BaseActivity;
 import com.nagopy.android.common.fragment.dialog.AsyncTaskWithProgressDialog;
 import com.nagopy.android.disablemanager.core.R;
-import com.nagopy.android.disablemanager.dialog.ChangedHistoryDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog;
 import com.nagopy.android.disablemanager.dialog.CommentEditDialog.CommentEditDialogListener;
 import com.nagopy.android.disablemanager.dialog.ConfirmDialogFragment.ConfirmDialogListener;
@@ -73,8 +72,9 @@ import com.nagopy.android.disablemanager.util.sort.AppsSorter;
  * ランチャーから起動するアクティビティ<br>
  * リスト表示など
  */
-public class MainActivity extends BaseActivity implements OnListDialogItemClickListener,
-		ConfirmDialogListener, CommentEditDialogListener {
+public class MainActivity extends BaseActivity implements
+		OnListDialogItemClickListener, ConfirmDialogListener,
+		CommentEditDialogListener {
 	/**
 	 * アプリ一覧を読み込むためのオブジェクト
 	 */
@@ -155,10 +155,11 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		if (ChangedHistoryDialog.isUpdated(this)) {
-			ChangedHistoryDialog changedHistoryDialog = new ChangedHistoryDialog();
-			changedHistoryDialog.show(getFragmentManager(), "changed");
-		}
+		// if (ChangedHistoryDialog.isUpdated(this)) {
+		// ChangedHistoryDialog changedHistoryDialog = new
+		// ChangedHistoryDialog();
+		// changedHistoryDialog.show(getFragmentManager(), "changed");
+		// }
 
 		mAppFilter = new AppsFilter();
 		mIconCacheHashMap = new HashMap<String, Drawable>();
@@ -171,10 +172,13 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long arg3) {
-				String[] packageName = mAdapter.getAppList().get(position).getPackageName().split(":");
-				Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri
-						.parse("package:" + packageName[0]));
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long arg3) {
+				String[] packageName = mAdapter.getAppList().get(position)
+						.getPackageName().split(":");
+				Intent intent = new Intent(
+						android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+						Uri.parse("package:" + packageName[0]));
 				shouldReloadPackageNameString = packageName[0];
 				try {
 					startActivity(intent);
@@ -189,12 +193,14 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 		mHideUtils = new HideUtils(getApplicationContext());
 		mListView.setOnItemLongClickListener(new OnItemLongClickListener() {
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, final View view, int position, long arg3) {
+			public boolean onItemLongClick(AdapterView<?> arg0,
+					final View view, int position, long arg3) {
 				AppStatus appStatus = mAdapter.getAppList().get(position);
 				final String packageName = appStatus.getPackageName();
 				final String label = appStatus.getLabel();
 				int resId;
-				if (getActionBar().getSelectedTab().getTag().equals(AppsFilter.HIDE_APPS)) {
+				if (getActionBar().getSelectedTab().getTag()
+						.equals(AppsFilter.HIDE_APPS)) {
 					resId = R.array.main_atcitity_hided_long_tap_menu;
 				} else {
 					resId = R.array.main_atcitity_long_tap_menu;
@@ -203,12 +209,17 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 				mOnItemClickListener = new AdapterView.OnItemClickListener() {
 					@Override
-					public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
+					public void onItemClick(AdapterView<?> arg0, View arg1,
+							int pos, long arg3) {
 						switch (pos) {
 						case 0:
-							mCommentEditDialog.init(label, packageName,
-									getCommentsUtils().restoreComment(packageName));
-							mCommentEditDialog.show(getFragmentManager(), "CommentEditDialog");
+							mCommentEditDialog.init(
+									label,
+									packageName,
+									getCommentsUtils().restoreComment(
+											packageName));
+							mCommentEditDialog.show(getFragmentManager(),
+									"CommentEditDialog");
 							break;
 						case 1:
 							if (mHideUtils.updateHideList(packageName)) {
@@ -219,30 +230,46 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 							StringBuilder sb = new StringBuilder();
 							SharedPreferences sp = PreferenceManager
 									.getDefaultSharedPreferences(getApplicationContext());
-							if (sp.getBoolean(getString(R.string.pref_key_google_search_app_name), getResources()
-									.getBoolean(R.bool.pref_def_google_search_app_name))) {
+							if (sp.getBoolean(
+									getString(R.string.pref_key_google_search_app_name),
+									getResources()
+											.getBoolean(
+													R.bool.pref_def_google_search_app_name))) {
 								sb.append(label);
 								sb.append(" ");
 							}
-							if (sp.getBoolean(getString(R.string.pref_key_google_search_package_name),
-									getResources().getBoolean(R.bool.pref_def_google_search_package_name))) {
+							if (sp.getBoolean(
+									getString(R.string.pref_key_google_search_package_name),
+									getResources()
+											.getBoolean(
+													R.bool.pref_def_google_search_package_name))) {
 								sb.append(packageName);
 								sb.append(" ");
 							}
-							String keywords = sp.getString(getString(R.string.pref_key_google_search_keywords), "");
+							String keywords = sp
+									.getString(
+											getString(R.string.pref_key_google_search_keywords),
+											"");
 							if (keywords != null) {
 								sb.append(keywords);
 							}
 							if (sb.length() > 1) {
-								Intent search = new Intent(Intent.ACTION_WEB_SEARCH);
-								if (getPackageManager().queryIntentActivities(search,
-										PackageManager.MATCH_DEFAULT_ONLY).isEmpty()) {
-									Intent intent = new Intent(Intent.ACTION_VIEW);
-									intent.setData(Uri.parse("http://www.google.com/search?q="
-											+ sb.toString().replace(" ", "+")));
+								Intent search = new Intent(
+										Intent.ACTION_WEB_SEARCH);
+								if (getPackageManager().queryIntentActivities(
+										search,
+										PackageManager.MATCH_DEFAULT_ONLY)
+										.isEmpty()) {
+									Intent intent = new Intent(
+											Intent.ACTION_VIEW);
+									intent.setData(Uri
+											.parse("http://www.google.com/search?q="
+													+ sb.toString().replace(
+															" ", "+")));
 									startActivity(intent);
 								} else {
-									search.putExtra(SearchManager.QUERY, sb.toString());
+									search.putExtra(SearchManager.QUERY,
+											sb.toString());
 									startActivity(search);
 								}
 							} else {
@@ -265,7 +292,8 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 		if (FirstConfirmDialogFragment.isFirst(getApplicationContext())) {
 			// 初回起動の場合
 			FirstConfirmDialogFragment firstConfirmDialogFragment = new FirstConfirmDialogFragment();
-			firstConfirmDialogFragment.init(getText(R.string.confirm_first_dialog_message));
+			firstConfirmDialogFragment
+					.init(getText(R.string.confirm_first_dialog_message));
 			firstConfirmDialogFragment.show(getFragmentManager(), "first");
 		} else {
 			// テスト実行時はコメントアウト
@@ -279,13 +307,17 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 		if (shouldReloadPackageNameString != null) {
 			// 読みこみ直すパッケージがあれば読みこんで反映する
 			if (mAppLoader.updateStatus(shouldReloadPackageNameString)) {
-				mChangedDateUtils.put(shouldReloadPackageNameString, System.currentTimeMillis());
+				mChangedDateUtils.put(shouldReloadPackageNameString,
+						System.currentTimeMillis());
 			}
 			mAppFilter.sortOriginalAppList(mChangedDateUtils);
 			updateAppList(-1);
 			shouldReloadPackageNameString = null;
-		} else if (getSP().getBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, false)) {
-			getSP().edit().putBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, false).apply();
+		} else if (getSP().getBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG,
+				false)) {
+			getSP().edit()
+					.putBoolean(AppPreferenceActivity.KEY_RELOAD_FLAG, false)
+					.apply();
 			createReloadAsyncTask().execute();
 		}
 	}
@@ -310,7 +342,8 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 				MainActivity activity = weakReference.get();
 				if (activity != null) {
-					activity.mListPositionHolder.put(((Integer) tab.getTag()).intValue(),
+					activity.mListPositionHolder.put(
+							((Integer) tab.getTag()).intValue(),
 							activity.mListView.getFirstVisiblePosition());
 				}
 			}
@@ -345,8 +378,10 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 						handler.post(new Runnable() {
 							@Override
 							public void run() {
-								activity.mListView.setSelection(activity.mListPositionHolder.get(((Integer) tab
-										.getTag()).intValue()));
+								activity.mListView
+										.setSelection(activity.mListPositionHolder
+												.get(((Integer) tab.getTag())
+														.intValue()));
 							}
 						});
 					}
@@ -355,7 +390,8 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 			}
 
 			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {}
+			public void onTabReselected(Tab tab, FragmentTransaction ft) {
+			}
 		}
 		// CHECKSTYLE:ON
 
@@ -369,24 +405,30 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 	/**
 	 * タブの一覧を作成する
+	 * 
 	 * @param actionBar
-	 *           アクションバー
+	 *            アクションバー
 	 * @param tabListener
-	 *           リスナー
+	 *            リスナー
 	 * @return タブ一覧
 	 */
-	protected ArrayList<Tab> createTabs(ActionBar actionBar, TabListener tabListener) {
+	protected ArrayList<Tab> createTabs(ActionBar actionBar,
+			TabListener tabListener) {
 		ArrayList<Tab> tabs = new ArrayList<ActionBar.Tab>();
-		tabs.add(actionBar.newTab().setText(R.string.menu_filter_disablable_and_enabled_apps)
-				.setTag(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM).setTabListener(tabListener));
-		tabs.add(actionBar.newTab().setText(R.string.menu_filter_disabled).setTag(AppsFilter.DISABLED)
+		tabs.add(actionBar.newTab()
+				.setText(R.string.menu_filter_disablable_and_enabled_apps)
+				.setTag(AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM)
 				.setTabListener(tabListener));
-		tabs.add(actionBar.newTab().setText(R.string.menu_filter_undisablable_system)
-				.setTag(AppsFilter.UNDISABLABLE_SYSTEM).setTabListener(tabListener));
-		tabs.add(actionBar.newTab().setText(R.string.menu_filter_user_apps).setTag(AppsFilter.USER_APPS)
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_disabled)
+				.setTag(AppsFilter.DISABLED).setTabListener(tabListener));
+		tabs.add(actionBar.newTab()
+				.setText(R.string.menu_filter_undisablable_system)
+				.setTag(AppsFilter.UNDISABLABLE_SYSTEM)
 				.setTabListener(tabListener));
-		tabs.add(actionBar.newTab().setText(R.string.menu_filter_hide).setTag(AppsFilter.HIDE_APPS)
-				.setTabListener(tabListener));
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_user_apps)
+				.setTag(AppsFilter.USER_APPS).setTabListener(tabListener));
+		tabs.add(actionBar.newTab().setText(R.string.menu_filter_hide)
+				.setTag(AppsFilter.HIDE_APPS).setTabListener(tabListener));
 		return tabs;
 	}
 
@@ -435,17 +477,20 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 		MenuItem menuCheckboxShorOnlyRunnings = menu
 				.findItem(R.id.menu_pref_general_show_only_running_packages);
-		menuCheckboxShorOnlyRunnings.setChecked(getSP().getBoolean(
-				getString(R.string.pref_key_general_show_only_running_packages),
-				getBooleanFromResources(R.bool.pref_def_general_show_only_running_packages)));
+		menuCheckboxShorOnlyRunnings
+				.setChecked(getSP()
+						.getBoolean(
+								getString(R.string.pref_key_general_show_only_running_packages),
+								getBooleanFromResources(R.bool.pref_def_general_show_only_running_packages)));
 		return true;
 	}
 
 	/**
 	 * 表示するアプリを更新する
+	 * 
 	 * @param key
-	 *           表示するアプリを選ぶ条件<br>
-	 *           負の数を渡すと前回と同じフィルタを使う
+	 *            表示するアプリを選ぶ条件<br>
+	 *            負の数を渡すと前回と同じフィルタを使う
 	 */
 	protected void updateAppList(int key) {
 		if (key < 0) {
@@ -454,14 +499,18 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 			lastAppFilterCondition = key;
 		}
 
-		if (getSP().getBoolean(getString(R.string.pref_key_general_sort_by_changed_date),
-				getResources().getBoolean(R.bool.pref_def_general_sort_by_changed_date))
+		if (getSP().getBoolean(
+				getString(R.string.pref_key_general_sort_by_changed_date),
+				getResources().getBoolean(
+						R.bool.pref_def_general_sort_by_changed_date))
 				&& (key == AppsFilter.DISABLED || key == AppsFilter.DISABLABLE_AND_ENABLED_SYSTEM)) {
-			ArrayList<AppStatus> list = mAppFilter.execute(key, mHideUtils.getHideAppsList());
+			ArrayList<AppStatus> list = mAppFilter.execute(key,
+					mHideUtils.getHideAppsList());
 			AppsSorter.sort(mChangedDateUtils, list);
 			mAdapter.updateAppList(list);
 		} else {
-			mAdapter.updateAppList(mAppFilter.execute(key, mHideUtils.getHideAppsList()));
+			mAdapter.updateAppList(mAppFilter.execute(key,
+					mHideUtils.getHideAppsList()));
 		}
 		mAdapter.notifyDataSetChanged();
 
@@ -477,15 +526,18 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
 		if (id == R.id.menu_share_label || id == R.id.menu_share_package
-				|| id == R.id.menu_share_label_and_package || id == R.id.menu_share_customformat) {
+				|| id == R.id.menu_share_label_and_package
+				|| id == R.id.menu_share_customformat) {
 			sendShareIntent(id);
 			return true;
 		} else if (id == R.id.menu_pref_general_show_only_running_packages) {
 			boolean newValue = !item.isChecked();
 			item.setChecked(newValue);
-			if (getSP().edit()
-					.putBoolean(getString(R.string.pref_key_general_show_only_running_packages), newValue)
-					.commit()) {
+			if (getSP()
+					.edit()
+					.putBoolean(
+							getString(R.string.pref_key_general_show_only_running_packages),
+							newValue).commit()) {
 				createReloadAsyncTask().execute();
 			}
 			return true;
@@ -493,7 +545,8 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 			createReloadAsyncTask().execute();
 			return true;
 		} else if (id == R.id.menu_preference) {
-			Intent intent = new Intent(getApplicationContext(), AppPreferenceActivity.class);
+			Intent intent = new Intent(getApplicationContext(),
+					AppPreferenceActivity.class);
 			startActivity(intent);
 			return true;
 		} else {
@@ -504,9 +557,10 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	/**
 	 * アプリ一覧をメーラーなどに共有<br>
 	 * 共有するアプリがない場合はトーストを表示して終了する
+	 * 
 	 * @param id
-	 *           メニューのID<br>
-	 *           これによって共有項目を分ける
+	 *            メニューのID<br>
+	 *            これによって共有項目を分ける
 	 */
 	private void sendShareIntent(int id) {
 		ArrayList<AppStatus> appsList = mAdapter.getAppList();
@@ -517,7 +571,8 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 		}
 
 		String text = shareUtils.createShareString(id, appsList);
-		shareUtils.sendIntent(text, getActionBar().getSelectedTab().getText().toString());
+		shareUtils.sendIntent(text, getActionBar().getSelectedTab().getText()
+				.toString());
 	}
 
 	/**
@@ -541,14 +596,16 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 		/**
 		 * コンストラクタ
+		 * 
 		 * @param apps
-		 *           アプリ一覧
+		 *            アプリ一覧
 		 * @param commentsUtils
-		 *           CommentsUtilsを渡す
+		 *            CommentsUtilsを渡す
 		 * @param context
-		 *           アプリケーションのコンテキスト
+		 *            アプリケーションのコンテキスト
 		 */
-		public AppsListAdapter(ArrayList<AppStatus> apps, CommentsUtils commentsUtils, Context context) {
+		public AppsListAdapter(ArrayList<AppStatus> apps,
+				CommentsUtils commentsUtils, Context context) {
 			super();
 			appsList = apps;
 			this.mCommentsUtils = commentsUtils;
@@ -564,8 +621,9 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 
 		/**
 		 * 表示するアプリの一覧を変更するメソッド
+		 * 
 		 * @param newAppsList
-		 *           変更するリスト
+		 *            変更するリスト
 		 */
 		public void updateAppList(ArrayList<AppStatus> newAppsList) {
 			appsList = newAppsList;
@@ -590,10 +648,13 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder holder;
 			if (convertView == null) {
-				convertView = View.inflate(getApplicationContext(), R.layout.app_list_row, null);
+				convertView = View.inflate(getApplicationContext(),
+						R.layout.app_list_row, null);
 				holder = new ViewHolder();
-				holder.labelTextView = (TextView) convertView.findViewById(R.id.list_textview_label);
-				holder.pkgNameTextView = (TextView) convertView.findViewById(R.id.list_textview_package_name);
+				holder.labelTextView = (TextView) convertView
+						.findViewById(R.id.list_textview_label);
+				holder.pkgNameTextView = (TextView) convertView
+						.findViewById(R.id.list_textview_package_name);
 				convertView.setTag(R.string.app_name, holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag(R.string.app_name);
@@ -602,13 +663,17 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 			AppStatus appStatus = (AppStatus) getItem(position);
 			if (appStatus != null) {
 				holder.labelTextView.setText(appStatus.getLabel());
-				Drawable icon = mIconCacheHashMap.get(appStatus.getPackageName());
+				Drawable icon = mIconCacheHashMap.get(appStatus
+						.getPackageName());
 				if (icon != null) {
-					holder.labelTextView.setCompoundDrawables(icon, null, null, null);
+					holder.labelTextView.setCompoundDrawables(icon, null, null,
+							null);
 					icon.setCallback(null);
 				}
-				String comment = this.mCommentsUtils.restoreComment(appStatus.getPackageName());
-				holder.pkgNameTextView.setText(mBuilder.getLabelText(appStatus.getPackageName(), comment,
+				String comment = this.mCommentsUtils.restoreComment(appStatus
+						.getPackageName());
+				holder.pkgNameTextView.setText(mBuilder.getLabelText(
+						appStatus.getPackageName(), comment,
 						appStatus.getProcessStrings()));
 			}
 			return convertView;
@@ -661,13 +726,18 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 				super.onPostExecute(result);
 				MainActivity activity = (MainActivity) getActivity();
 				if (activity != null) {
-					activity.mAppFilter.setOriginalAppList(activity.mAppLoader.getAppsList());
-					activity.mAppFilter.sortOriginalAppList(activity.mChangedDateUtils);
+					activity.mAppFilter.setOriginalAppList(activity.mAppLoader
+							.getAppsList());
+					activity.mAppFilter
+							.sortOriginalAppList(activity.mChangedDateUtils);
 					if (activity.mAdapter == null) {
 						// 初回なら
-						activity.mAdapter = new AppsListAdapter(activity.mAppFilter.execute(
-								activity.lastAppFilterCondition, activity.mHideUtils.getHideAppsList()),
-								activity.getCommentsUtils(), activity.getApplicationContext());
+						activity.mAdapter = new AppsListAdapter(
+								activity.mAppFilter.execute(
+										activity.lastAppFilterCondition,
+										activity.mHideUtils.getHideAppsList()),
+								activity.getCommentsUtils(),
+								activity.getApplicationContext());
 						activity.mListView.setAdapter(activity.mAdapter);
 						if (activity.mAdapter.getCount() < 1) {
 							activity.mEmptyView.setVisibility(View.VISIBLE);
@@ -692,15 +762,16 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	}
 
 	@Override
-	public void onListDialogFragmentItemClicked(int fragmentId, AdapterView<?> parent, View view,
-			int position, long id) {
+	public void onListDialogFragmentItemClicked(int fragmentId,
+			AdapterView<?> parent, View view, int position, long id) {
 		if (mListDialogFragment.getId() == fragmentId) {
 			mOnItemClickListener.onItemClick(parent, view, position, id);
 		}
 	}
 
 	@Override
-	public void onConfirmDialogListenerButtonClicked(int fragmentId, DialogInterface dialog, int which) {
+	public void onConfirmDialogListenerButtonClicked(int fragmentId,
+			DialogInterface dialog, int which) {
 		// ほんとはdialogfragmentをメンバにしてid確認するけどとりあえず一つだけだから保留
 		switch (which) {
 		case DialogInterface.BUTTON_POSITIVE:
@@ -716,13 +787,14 @@ public class MainActivity extends BaseActivity implements OnListDialogItemClickL
 	}
 
 	@Override
-	public void onCommentEditDialogPositiveButtonClicked(int fragmentId, DialogInterface dialog,
-			String packageName, String text) {
+	public void onCommentEditDialogPositiveButtonClicked(int fragmentId,
+			DialogInterface dialog, String packageName, String text) {
 		getCommentsUtils().saveComment(packageName, text);
 		updateAppList(-1);
 	}
 
 	@Override
-	public void onCommentEditDialogNegativeButtonClicked(int fragmentId, DialogInterface dialog,
-			String packageName) {}
+	public void onCommentEditDialogNegativeButtonClicked(int fragmentId,
+			DialogInterface dialog, String packageName) {
+	}
 }
