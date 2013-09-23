@@ -16,8 +16,11 @@
 
 package com.nagopy.android.disablemanager.util;
 
+import com.nagopy.android.disablemanager.core.R;
+
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 /**
  * 無効化した・有効に戻したときの日時を管理するクラス
@@ -41,15 +44,25 @@ public class ChangedDateUtils {
 	 */
 	public ChangedDateUtils(Context context) {
 		mContext = context;
-		mSharedPreferences = context.getSharedPreferences("date", Context.MODE_PRIVATE);
+		mSharedPreferences = context.getSharedPreferences("date",
+				Context.MODE_PRIVATE);
+	}
+
+	public Boolean isEnabled() {
+		boolean boolean1 = PreferenceManager.getDefaultSharedPreferences(mContext)
+				.getBoolean(
+						mContext.getString(R.string.pref_key_general_sort_by_changed_date),
+						mContext.getResources().getBoolean(
+								R.bool.pref_def_general_sort_by_changed_date));
+		return boolean1;
 	}
 
 	/**
 	 * パッケージ名をキーに、変更時間を保存する
 	 * @param packageName
-	 *           パッケージ名
+	 *            パッケージ名
 	 * @param time
-	 *           時刻（ms）
+	 *            時刻（ms）
 	 * @return 保存が成功すればtrueを返す
 	 */
 	public boolean put(String packageName, long time) {
@@ -59,7 +72,7 @@ public class ChangedDateUtils {
 	/**
 	 * 変更時間を取得
 	 * @param packageName
-	 *           パッケージ名
+	 *            パッケージ名
 	 * @return 最後に変更された時刻をミリ秒で返す。保存されていない場合は0を返す。
 	 */
 	public long get(String packageName) {
@@ -69,7 +82,7 @@ public class ChangedDateUtils {
 	/**
 	 * 変更時刻を文字列で取得
 	 * @param packageName
-	 *           パッケージ名
+	 *            パッケージ名
 	 * @return 変更時刻の文字列（年月日と時刻）。保存されていない場合はnullを返す
 	 */
 	public String getString(String packageName) {

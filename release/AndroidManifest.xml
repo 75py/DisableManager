@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nagopy.android.disablemanager"
     android:installLocation="auto"
-    android:versionCode="20130523"
-    android:versionName="1.3.2" >
+    android:versionCode="20130923"
+    android:versionName="1.3.3" >
 
     <uses-sdk
         android:minSdkVersion="15"
