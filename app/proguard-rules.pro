@@ -1,3 +1,9 @@
+-dontskipnonpubliclibraryclasses
+-optimizationpasses 3
+-flattenpackagehierarchy
+-keepattributes SourceFile,LineNumberTable
+-printmapping map.txt
+
 -assumenosideeffects public class android.util.Log {
     public static *** v(...);
     public static *** d(...);

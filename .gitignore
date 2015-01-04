@@ -36,3 +36,4 @@ proguard/
 out/
 /app/manifest-merger-release-report.txt
 *.iml
+app/map.txt
