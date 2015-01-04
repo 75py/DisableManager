@@ -1,1 +1,2 @@
-include ':app', ':uiautomator'
+//include ':app', ':uiautomator'
+include ':app'
