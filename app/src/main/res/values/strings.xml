@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Disable Manager</string>
+    <string name="action_share">Share</string>
+    <string name="action_search">Search</string>
+    <string name="keyword_disable">disable</string>
+    <string name="not_installed">Not installed</string>
+    <string name="description_application_name" translatable="false">application name</string>
+    <string name="description_package_name" translatable="false">package name</string>
+    <string name="description_application_icon" translatable="false">application icon</string>
+    <string name="action_more">More</string>
+    <string name="open_source_license">Open source license</string>
+    <string name="about">About</string>
+
+</resources>

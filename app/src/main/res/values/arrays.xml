@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_disabled">"Disabled"</string>
+    <string name="title_disablable">"Disablable"</string>
+    <string name="title_undisablable">"Undisablable"</string>
+    <string name="title_user">"User"</string>
+    <string-array name="categories">
+        <item>@string/title_disablable</item>
+        <item>@string/title_undisablable</item>
+        <item>@string/title_disabled</item>
+        <item>@string/title_user</item>
+    </string-array>
+</resources>

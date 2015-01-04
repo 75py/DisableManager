@@ -1,0 +1,108 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        applicationId "com.nagopy.android.downloadconfirm.uiautomator"
+        minSdkVersion 16
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+}
+
+dependencies {
+    compile 'junit:junit:4.11'
+    compile fileTree(
+            include: ['android.jar', 'uiautomator.jar'],
+            dir: android.getSdkDirectory().getAbsolutePath() + '/platforms/android-21'
+    )
+}
+
+public static void exec(File directory, String... cmd) {
+    for (String c : cmd) {
+        exec(directory, c);
+    }
+}
+
+public static void exec(File directory, String cmd) {
+    System.out.println("START[" + cmd + "]");
+    Process process = new ProcessBuilder()
+            .command("cmd", "/c", cmd)
+            .directory(directory)
+            .redirectErrorStream(true) //デフォルトはfalse：マージしない（標準出力と標準エラーは別々）
+            .start();
+    printInputStream(process.getInputStream());
+    process.waitFor();
+    System.out.println("============================================================");
+}
+
+public static void printInputStream(InputStream is) throws IOException {
+    BufferedReader br = new BufferedReader(new InputStreamReader(is));
+    try {
+        for (; ;) {
+            String line = br.readLine();
+            if (line == null) break;
+            System.out.println(line);
+        }
+    } finally {
+        br.close();
+    }
+}
+
+public static String getStringByCommand(String command) throws IOException {
+    Process process = Runtime.getRuntime().exec("cmd /c " + command);
+    BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
+    StringBuilder result = new StringBuilder();
+    try {
+        int value = 0;
+        while ((value = br.read()) != -1) {
+            char c = (char) value;
+            result.append(c);
+        }
+    } finally {
+        br.close();
+    }
+    process.waitFor();
+    return result.toString().trim();
+}
+
+public static String withDoubleQuote(String val) {
+    return '"' + val + '"';
+}
+
+task runTest << {
+    String startDate = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+    String sdkVersion = getStringByCommand("adb shell getprop ro.build.version.sdk");
+    String brand = getStringByCommand("adb shell getprop ro.product.model");
+    System.out.println("ro.build.version.sdk=" + sdkVersion);
+    System.out.println("getprop ro.product.model=" + brand);
+    String core = "api" + sdkVersion + "/" + brand + "/" + startDate + "/";
+    String deviceDir = "/data/local/tmp/uiautomator/" + core.replace(" ", "");
+    String logPath = deviceDir + "result.txt";
+    exec(getProjectDir()
+            // ビルド
+            , "ant build -Dbuild.compiler=javac1.7"
+            // ディレクトリ作成
+            , "adb shell mkdir -p " + withDoubleQuote(deviceDir)
+            // 転送
+            , "adb push ./bin/DisableManager2Uiautomator.jar /data/local/tmp/"
+            // テスト実行
+            // ここでは標準出力・エラー出力をいったんファイルに保存しているが、Windows以外であれば\r\r\n問題は起こらないため、
+            // 普通にコンソールに出すなり、直接 adb shell ～ > output.txt でいい
+            , "adb shell "
+            + withDoubleQuote("uiautomator runtest DisableManager2Uiautomator.jar"
+            + " -c com.nagopy.android.disablemanager2.MainActivityTestCase"
+            + " -e baseDir " + deviceDir
+            + " &> " + logPath)
+            // 保存したファイルをコピー、端末側は削除
+            , "mkdir " + withDoubleQuote("./output/" + core)
+            , "adb pull " + deviceDir + " " + withDoubleQuote("./output/" + core)
+            , "adb shell rm -rf " + deviceDir
+    );
+}
+

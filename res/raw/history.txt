@@ -1,2 +1,0 @@
-v1.3.0(2013/04/29)
- - add "Google search" in long-tap menu.

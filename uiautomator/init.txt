@@ -1,0 +1,1 @@
+android create uitest-project -n DisableManager2Uiautomator -t 9 -p .

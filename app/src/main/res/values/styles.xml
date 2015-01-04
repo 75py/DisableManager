@@ -1,0 +1,65 @@
+<resources>
+
+    <color name="primary_1">#B9DFB9</color>
+    <color name="primary_2">#8AC78A</color>
+    <color name="primary_3">#5BA75B</color>
+    <color name="primary_4">#358935</color>
+    <color name="primary_5">#1A6C1A</color>
+    <color name="primary_1_translucent">#7FB9DFB9</color>
+    <color name="primary_2_translucent">#7F8AC78A</color>
+    <color name="primary_3_translucent">#7F5BA75B</color>
+    <color name="primary_4_translucent">#7F358935</color>
+    <color name="primary_5_translucent">#7F1A6C1A</color>
+
+    <color name="backgroundColor">@color/background_material_light</color>
+    <color name="textColor">@color/primary_text_default_material_light</color>
+    <color name="textColorSecondary">@color/secondary_text_default_material_light</color>
+
+    <style name="AppTheme" parent="AppTheme.Base" />
+
+    <!-- Base application theme. -->
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorBackground">@color/backgroundColor</item>
+        <item name="colorPrimaryDark">@color/primary_5</item>
+        <item name="colorPrimary">@color/primary_4</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionModeBackground">@color/primary_4</item>
+
+        <item name="vpiTitlePageIndicatorStyle">@style/CustomTitlePageIndicator</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/fast_scroll_thumb</item>
+        <item name="android:fastScrollTrackDrawable">@drawable/fast_scroll_track_drawable</item>
+        <item name="android:scrollbarThumbVertical">@drawable/fast_scroll_thumb</item>
+        <item name="android:scrollbarTrackVertical">@drawable/fast_scroll_track_drawable</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.Large" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.Medium" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.Small" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@color/textColor</item>
+    </style>
+
+
+    <style name="AppTheme.ListView" />
+
+    <style name="CustomTitlePageIndicator">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="footerColor">@color/primary_3</item>
+        <item name="footerLineHeight">@dimen/unit_1</item>
+        <item name="footerIndicatorHeight">@dimen/unit_1</item>
+        <item name="footerIndicatorStyle">underline</item>
+        <item name="android:textSize">@dimen/abc_text_size_subtitle_material_toolbar</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="selectedColor">@color/textColor</item>
+        <item name="selectedBold">true</item>
+    </style>
+
+</resources>
