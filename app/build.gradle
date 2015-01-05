@@ -38,7 +38,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:support-annotations:21.0.3'
-    compile 'com.viewpagerindicator:library:2.4.1@aar'
+    compile project(':ViewPagerIndicator')
 
     androidTestCompile 'com.android.support:support-annotations:21.0.3'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
