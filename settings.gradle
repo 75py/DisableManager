@@ -1,2 +1,3 @@
-//include ':app', ':uiautomator'
 include ':app'
+include ':ViewPagerIndicator'
+include ':uiautomator'
