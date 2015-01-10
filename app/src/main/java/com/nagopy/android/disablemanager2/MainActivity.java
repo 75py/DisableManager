@@ -101,6 +101,11 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionMode != null) {
+            // 非表示になっているメニューは何もしない
+            return true;
+        }
+
         switch (item.getItemId()) {
             case R.id.action_share:
                 PagerAdapter adapter = mViewPager.getAdapter();
@@ -434,11 +439,11 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
                     holder.process.setVisibility(View.GONE);
                 } else {
                     StringBuilder sb = new StringBuilder();
-                    for(String str : appData.process){
+                    for (String str : appData.process) {
                         sb.append(str);
                         sb.append(Constants.LINE_SEPARATOR);
                     }
-                    sb.setLength(sb.length() -1);
+                    sb.setLength(sb.length() - 1);
                     holder.process.setText(sb.toString());
                     holder.process.setVisibility(View.VISIBLE);
                 }
