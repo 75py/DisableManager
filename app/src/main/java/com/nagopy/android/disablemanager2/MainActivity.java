@@ -49,7 +49,6 @@ import com.nagopy.android.disablemanager2.support.DebugUtil;
 import com.nagopy.android.disablemanager2.support.Logic;
 import com.viewpagerindicator.TitlePageIndicator;
 
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -205,7 +204,7 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
-        DebugUtil.debugLog("onDestroyActionMode");
+        DebugUtil.verboseLog("onDestroyActionMode");
         actionMode = null;
     }
     // AbsListView.MultiChoiceModeListener
@@ -228,16 +227,16 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
         @Override
         public Fragment getItem(int position) {
-            DebugUtil.debugLog("SectionsPagerAdapter#getItem(" + position + ")");
+            DebugUtil.verboseLog("SectionsPagerAdapter#getItem(" + position + ")");
             FilterType filterType = FilterType.indexOf(position);
             WeakReference<ApplicationListFragment> weakReference = cache.get(filterType);
             if (weakReference == null || weakReference.get() == null) {
-                DebugUtil.debugLog("create new instance");
+                DebugUtil.verboseLog("create new instance");
                 ApplicationListFragment fragment = ApplicationListFragment.newInstance(filterType);
                 cache.put(filterType, new WeakReference<>(fragment));
                 return fragment;
             } else {
-                DebugUtil.debugLog("return from cache");
+                DebugUtil.verboseLog("return from cache");
                 return weakReference.get();
             }
         }
@@ -434,7 +433,6 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
                 if (appData.process == null) {
                     holder.process.setVisibility(View.GONE);
                 } else {
-                    DebugUtil.debugLog(appData.process.toString());
                     StringBuilder sb = new StringBuilder();
                     for(String str : appData.process){
                         sb.append(str);
