@@ -19,7 +19,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -142,20 +142,20 @@ public class Logic {
     }
 
     /**
-     * アプリがインストールされているかどうか
+     * ApplicationInfoを取得する.
      *
      * @param packageManager PackageManager
      * @param packageName    パッケージ名
-     * @return PackageInfo.<br>インストールされていない場合はnull
+     * @return ApplicationInfo.<br>見つからない場合はnull
      */
-    public static PackageInfo getPackageInfo(PackageManager packageManager, String packageName) {
-        List<PackageInfo> installed = packageManager.getInstalledPackages(getRetrieveFlags());
-        for (PackageInfo packageInfo : installed) {
-            if (packageInfo.packageName.equals(packageName)) {
-                return packageInfo;
+    public static ApplicationInfo getApplicationInfo(PackageManager packageManager, String packageName) {
+        List<ApplicationInfo> installedAppList = packageManager.getInstalledApplications(getRetrieveFlags());
+        for (ApplicationInfo info : installedAppList) {
+            if (info.packageName.equals(packageName)) {
+                return info;
             }
         }
-        return null;
+        return null; // NOT_FOUND
     }
 
     /**

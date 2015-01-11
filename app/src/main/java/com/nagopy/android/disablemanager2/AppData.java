@@ -16,7 +16,6 @@
 package com.nagopy.android.disablemanager2;
 
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -68,17 +67,27 @@ public class AppData {
      */
     public boolean isInstalled = true;
 
-    public AppData(PackageManager packageManager, DisableableFilter filter, PackageInfo packageInfo) {
-        this.label = packageInfo.applicationInfo.loadLabel(packageManager).toString();
-        this.packageName = packageInfo.applicationInfo.packageName;
-        this.isEnabled = packageInfo.applicationInfo.enabled;
-        this.isSystem = (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0
-                || (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
-        this.isDisableable = filter.isDisableable(packageInfo);
+    public AppData(PackageManager packageManager, DisableableFilter filter, ApplicationInfo applicationInfo) {
+        this.label = applicationInfo.loadLabel(packageManager).toString();
+        this.packageName = applicationInfo.packageName;
+        this.isEnabled = applicationInfo.enabled;
+        this.isSystem = (applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0
+                || (applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
+        this.isDisableable = filter.isDisableable(applicationInfo.packageName);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // 4.2以上。4.1以下は無条件でtrue
-            this.isInstalled = (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_INSTALLED) > 0;
+            this.isInstalled = (applicationInfo.flags & ApplicationInfo.FLAG_INSTALLED) > 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        return packageName
+                + ", label=" + label
+                + ", enabled=" + isEnabled
+                + ", system=" + isSystem
+                + ", disableable=" + isDisableable
+                + ", installed=" + isInstalled;
     }
 }

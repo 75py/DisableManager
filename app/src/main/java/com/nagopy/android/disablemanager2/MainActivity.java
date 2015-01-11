@@ -19,6 +19,7 @@ import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
@@ -103,12 +104,12 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
             String packageName = reloadAppData.packageName.split(":")[0];
             PackageManager packageManager = getPackageManager();
-            PackageInfo packageInfo = Logic.getPackageInfo(packageManager, packageName);
+            ApplicationInfo packageInfo = Logic.getApplicationInfo(packageManager, packageName);
             if (packageInfo == null) {
                 // パッケージが存在しない場合
                 applicationListAdapter.removeApplication(reloadAppData);
             } else {
-                reloadAppData.isEnabled = packageInfo.applicationInfo.enabled;
+                reloadAppData.isEnabled = packageInfo.enabled;
             }
             applicationListAdapter.doFilter();
 

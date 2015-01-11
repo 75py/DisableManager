@@ -19,7 +19,6 @@ import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -106,12 +105,12 @@ public class ApplicationList {
 
             DisableableFilter disableableFilter = new DisableableFilter(context);
             PackageManager packageManager = context.getPackageManager();
-            List<PackageInfo> applicationInfo = packageManager.getInstalledPackages(mRetrieveFlags);
+            List<ApplicationInfo> applicationInfo = packageManager.getInstalledApplications(mRetrieveFlags);
             List<AppData> appList = new ArrayList<>(applicationInfo.size());
-            for (PackageInfo info : applicationInfo) {
-                if (!info.applicationInfo.enabled) {
+            for (ApplicationInfo info : applicationInfo) {
+                if (!info.enabled) {
                     // 無効になっていて、かつenabledSettingが3でないアプリは除外する
-                    int enabledSetting = enabledSettingField.getInt(info.applicationInfo);
+                    int enabledSetting = enabledSettingField.getInt(info);
                     if (enabledSetting
                             != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER) {
                         DebugUtil.verboseLog("skip " + info.packageName);

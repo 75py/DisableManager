@@ -25,6 +25,8 @@ public class DisableableFilter {
     private DevicePolicyManagerWrapper devicePolicyManagerWrapper;
     private PackageManager packageManager;
     private List<String> homePackages;
+    private static final int FLAGS = PackageManager.GET_DISABLED_COMPONENTS | PackageManager.GET_UNINSTALLED_PACKAGES
+            | PackageManager.GET_SIGNATURES;
 
     public DisableableFilter(Context context) {
         packageManager = context.getPackageManager();
@@ -105,11 +107,19 @@ public class DisableableFilter {
     /**
      * 無効化可能かを判定する.
      *
-     * @param packageInfo PackageInfo（シグネチャ情報は必ず取得すること）
+     * @param packageName パッケージ名
      * @return 無効化可能ならtrue
      */
-    public boolean isDisableable(PackageInfo packageInfo) {
-        DebugUtil.infoLog(packageInfo.packageName);
+    public boolean isDisableable(String packageName) {
+        PackageInfo packageInfo;
+        try {
+            packageInfo = packageManager.getPackageInfo(packageName, FLAGS);
+        } catch (PackageManager.NameNotFoundException e) {
+            DebugUtil.errorLog("Package not found:" + packageName);
+            return false;
+        }
+
+        DebugUtil.verboseLog(packageInfo.packageName);
         if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
             // 非システムアプリは無効化不可
             return false;
@@ -120,13 +130,13 @@ public class DisableableFilter {
             return false;
         }
 
-        DebugUtil.infoLog(devicePolicyManagerWrapper.isThisASystemPackage(packageInfo) + "");
+        DebugUtil.verboseLog(devicePolicyManagerWrapper.isThisASystemPackage(packageInfo) + "");
         if (devicePolicyManagerWrapper.isThisASystemPackage(packageInfo)) {
             // Coreなシステムアプリの場合は無効化不可
             return false;
         }
 
-        DebugUtil.infoLog(devicePolicyManagerWrapper.packageHasActiveAdmins(packageInfo.packageName) + "");
+        DebugUtil.verboseLog(devicePolicyManagerWrapper.packageHasActiveAdmins(packageInfo.packageName) + "");
         if (devicePolicyManagerWrapper.packageHasActiveAdmins(packageInfo.packageName)) {
             // 停止・アンインストール不可アプリの場合は無効化不可
             return false;
