@@ -19,13 +19,14 @@ import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 
-import com.nagopy.android.disablemanager2.judger.Judge;
 import com.nagopy.android.disablemanager2.support.AppDataComparator;
 import com.nagopy.android.disablemanager2.support.DebugUtil;
+import com.nagopy.android.disablemanager2.support.DisableableFilter;
 import com.nagopy.android.disablemanager2.support.FieldReflectWrapper;
 import com.nagopy.android.disablemanager2.support.Logic;
 
@@ -96,19 +97,21 @@ public class ApplicationList {
 
             Map<String, List<String>> runningProcessMap = applicationList.getRunningStatusMap(context);
 
-            int mRetrieveFlags = Logic.getRetrieveFlags();
+            // 取得する際のフラグ
+            // 設定画面のフラグ＋無効化可能判定用にシグネチャ
+            int mRetrieveFlags = Logic.getRetrieveFlags() | PackageManager.GET_SIGNATURES;
 
             // ApplicationInfo.enabledSettingをリフレクションで取得する準備
             FieldReflectWrapper enabledSettingField = new FieldReflectWrapper(ApplicationInfo.class, "enabledSetting");
 
-            Judge judge = Judge.getInstance(context);
+            DisableableFilter disableableFilter = new DisableableFilter(context);
             PackageManager packageManager = context.getPackageManager();
-            List<ApplicationInfo> applicationInfo = packageManager.getInstalledApplications(mRetrieveFlags);
+            List<PackageInfo> applicationInfo = packageManager.getInstalledPackages(mRetrieveFlags);
             List<AppData> appList = new ArrayList<>(applicationInfo.size());
-            for (ApplicationInfo info : applicationInfo) {
-                if (!info.enabled) {
+            for (PackageInfo info : applicationInfo) {
+                if (!info.applicationInfo.enabled) {
                     // 無効になっていて、かつenabledSettingが3でないアプリは除外する
-                    int enabledSetting = enabledSettingField.getInt(info);
+                    int enabledSetting = enabledSettingField.getInt(info.applicationInfo);
                     if (enabledSetting
                             != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER) {
                         DebugUtil.verboseLog("skip " + info.packageName);
@@ -116,7 +119,7 @@ public class ApplicationList {
                     }
                 }
 
-                AppData appData = new AppData(packageManager, judge, info);
+                AppData appData = new AppData(packageManager, disableableFilter, info);
                 List<String> processList = runningProcessMap.get(info.packageName);
                 if (processList != null) {
                     Collections.sort(processList);
