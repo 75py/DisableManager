@@ -25,6 +25,8 @@
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="windowActionModeOverlay">true</item>
         <item name="android:actionModeBackground">@color/primary_4</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
+        <item name="android:actionMenuTextColor">@android:color/white</item>
 
         <item name="vpiTitlePageIndicatorStyle">@style/CustomTitlePageIndicator</item>
         <item name="android:textColor">@color/textColor</item>
