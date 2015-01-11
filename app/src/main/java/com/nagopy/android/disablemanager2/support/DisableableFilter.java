@@ -119,7 +119,6 @@ public class DisableableFilter {
             return false;
         }
 
-        DebugUtil.verboseLog(packageInfo.packageName);
         if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
             // 非システムアプリは無効化不可
             return false;
@@ -130,13 +129,11 @@ public class DisableableFilter {
             return false;
         }
 
-        DebugUtil.verboseLog(devicePolicyManagerWrapper.isThisASystemPackage(packageInfo) + "");
         if (devicePolicyManagerWrapper.isThisASystemPackage(packageInfo)) {
             // Coreなシステムアプリの場合は無効化不可
             return false;
         }
 
-        DebugUtil.verboseLog(devicePolicyManagerWrapper.packageHasActiveAdmins(packageInfo.packageName) + "");
         if (devicePolicyManagerWrapper.packageHasActiveAdmins(packageInfo.packageName)) {
             // 停止・アンインストール不可アプリの場合は無効化不可
             return false;

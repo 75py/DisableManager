@@ -20,7 +20,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -456,11 +455,11 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
                 Drawable icon = appData.icon == null ? null : appData.icon.get();
                 if (icon == null) {
-                    DebugUtil.verboseLog("create loader");
+                    DebugUtil.verboseLog("create loader :" + appData.packageName);
                     Logic.setIcon(holder.title, R.drawable.icon_transparent);
                     new ApplicationIconLoader(appData.packageName, packageManager, iconSize, holder.title).execute(appData);
                 } else {
-                    DebugUtil.verboseLog("use cache onCreateView()");
+                    DebugUtil.verboseLog("use cache onCreateView() :" + appData.packageName);
                     Logic.setIcon(holder.title, icon, iconSize);
                 }
 

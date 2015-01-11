@@ -66,18 +66,18 @@ public class ApplicationIconLoader extends AsyncTask<AppData, Void, AppData> {
         if (textView == null || packageManager == null) {
             return null;
         }
-        DebugUtil.verboseLog("doInBackground " + appData.packageName);
+        DebugUtil.verboseLog("doInBackground :" + appData.packageName);
 
         if (appData.icon != null && appData.icon.get() != null) {
-            DebugUtil.verboseLog("use cache icon:" + appData.packageName);
+            DebugUtil.verboseLog("use cache icon :" + appData.packageName);
             return appData;
         }
 
         try {
-            DebugUtil.verboseLog("load icon:" + appData.packageName);
             ApplicationInfo applicationInfo = packageManager.getApplicationInfo(appData.packageName, RETRIEVE_FLAGS);
             Drawable icon = applicationInfo.loadIcon(packageManager);
             appData.icon = new WeakReference<>(icon);
+            DebugUtil.verboseLog("load icon complete :" + appData.packageName);
             return appData;
         } catch (PackageManager.NameNotFoundException e) {
             throw new RuntimeException("ApplicationInfoの取得に失敗 packageName=" + appData.packageName, e);
@@ -102,9 +102,9 @@ public class ApplicationIconLoader extends AsyncTask<AppData, Void, AppData> {
         if (icon == null) {
             return;
         }
-        DebugUtil.verboseLog("onPostExecute " + packageName);
         synchronized (textView.getTag()) {
             if (packageName.equals(textView.getTag(R.id.tag_package_name))) {
+                DebugUtil.verboseLog("onPostExecute updateIcon :" + packageName);
                 Logic.setIcon(textView, icon, iconSize);
             }
         }
