@@ -19,8 +19,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.os.Handler;
 import android.widget.TextView;
 
 import com.nagopy.android.disablemanager2.support.DebugUtil;
@@ -36,7 +34,6 @@ public class ApplicationIconLoader extends AsyncTask<AppData, Void, AppData> {
     private final WeakReference<TextView> textViewWeakReference;
     private final int iconSize;
     private static final int RETRIEVE_FLAGS = Logic.getRetrieveFlags();
-    private final Handler handler;
     private final String packageName;
 
     /**
@@ -52,22 +49,6 @@ public class ApplicationIconLoader extends AsyncTask<AppData, Void, AppData> {
         this.packageManagerWeakReference = new WeakReference<>(packageManager);
         this.iconSize = iconSize;
         this.textViewWeakReference = new WeakReference<>(textView);
-        this.handler = new Handler();
-    }
-
-    /**
-     * 前処理.<br>
-     * TextViewのアイコンを読み込み中のものに変更する。<br>
-     * TextViewの変更時は、対象TextViewの操作をロックする。
-     */
-    @Override
-    protected void onPreExecute() {
-        TextView textView = textViewWeakReference.get();
-        if (textView == null) {
-            return;
-        }
-        DebugUtil.verboseLog("onPreExecute " + textView.getText());
-        setIcon(textView, R.drawable.icon_transparent, packageName);
     }
 
     /**
@@ -122,53 +103,10 @@ public class ApplicationIconLoader extends AsyncTask<AppData, Void, AppData> {
             return;
         }
         DebugUtil.verboseLog("onPostExecute " + packageName);
-        setIcon(textView, icon, packageName);
-    }
-
-    private void setIcon(final TextView textView, final int resId, final String packageName) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (textView.getTag()) {
-                    if (packageName.equals(textView.getTag(R.id.tag_package_name))) {
-                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                            textView.setCompoundDrawablesWithIntrinsicBounds(resId, 0, 0, 0);
-                        } else {
-                            textView.setCompoundDrawablesRelativeWithIntrinsicBounds(resId, 0, 0, 0);
-                        }
-                    }
-                }
+        synchronized (textView.getTag()) {
+            if (packageName.equals(textView.getTag(R.id.tag_package_name))) {
+                Logic.setIcon(textView, icon, iconSize);
             }
-        });
-    }
-
-    private void setIcon(final TextView textView, final Drawable drawable, final String packageName) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                synchronized (textView.getTag()) {
-                    if (packageName.equals(textView.getTag(R.id.tag_package_name))) {
-                        setIcon(textView, drawable, iconSize);
-                    }
-                }
-            }
-        });
-    }
-
-    /**
-     * TextViewの左側（START側）に画像を表示する。
-     *
-     * @param textView     対象View
-     * @param drawable     画像
-     * @param drawableSize 画像サイズ
-     */
-    public static void setIcon(TextView textView, Drawable drawable, int drawableSize) {
-        drawable.setBounds(0, 0, drawableSize, drawableSize);
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            textView.setCompoundDrawables(drawable, null, null, null);
-        } else {
-            textView.setCompoundDrawablesRelative(drawable, null, null, null);
         }
-        drawable.setCallback(null);
     }
 }

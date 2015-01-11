@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -452,12 +453,14 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
                 holder.title.setText(appData.label);
                 holder.title.setTag(R.id.tag_package_name, appData.packageName);
 
-                if (appData.icon == null || appData.icon.get() == null) {
+                Drawable icon = appData.icon == null ? null : appData.icon.get();
+                if (icon == null) {
                     DebugUtil.verboseLog("create loader");
+                    Logic.setIcon(holder.title, R.drawable.icon_transparent);
                     new ApplicationIconLoader(appData.packageName, packageManager, iconSize, holder.title).execute(appData);
                 } else {
                     DebugUtil.verboseLog("use cache onCreateView()");
-                    ApplicationIconLoader.setIcon(holder.title, appData.icon.get(), iconSize);
+                    Logic.setIcon(holder.title, icon, iconSize);
                 }
 
                 if (appData.process == null) {
