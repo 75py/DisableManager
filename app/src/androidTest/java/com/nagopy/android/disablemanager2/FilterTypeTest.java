@@ -25,7 +25,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = false;
             appData.isSystem = false;
-            appData.canDisable = false;
+            appData.isDisableable = false;
 
             assertFalse(FilterType.DISABLABLE.isTarget(appData));
             assertFalse(FilterType.DISABLED.isTarget(appData));
@@ -37,7 +37,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = true;
             appData.isSystem = false;
-            appData.canDisable = false;
+            appData.isDisableable = false;
 
             assertFalse(FilterType.DISABLABLE.isTarget(appData));
             assertFalse(FilterType.DISABLED.isTarget(appData));
@@ -49,7 +49,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = false;
             appData.isSystem = true;
-            appData.canDisable = false;
+            appData.isDisableable = false;
 
             assertFalse(FilterType.DISABLABLE.isTarget(appData));
             assertTrue(FilterType.DISABLED.isTarget(appData));
@@ -61,7 +61,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = false;
             appData.isSystem = false;
-            appData.canDisable = true;
+            appData.isDisableable = true;
 
             assertFalse(FilterType.DISABLABLE.isTarget(appData));
             assertFalse(FilterType.DISABLED.isTarget(appData));
@@ -73,7 +73,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = true;
             appData.isSystem = true;
-            appData.canDisable = false;
+            appData.isDisableable = false;
 
             assertFalse(FilterType.DISABLABLE.isTarget(appData));
             assertFalse(FilterType.DISABLED.isTarget(appData));
@@ -85,7 +85,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = true;
             appData.isSystem = false;
-            appData.canDisable = true;
+            appData.isDisableable = true;
 
             assertFalse(FilterType.DISABLABLE.isTarget(appData));
             assertFalse(FilterType.DISABLED.isTarget(appData));
@@ -97,7 +97,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = false;
             appData.isSystem = true;
-            appData.canDisable = true;
+            appData.isDisableable = true;
 
             assertFalse(FilterType.DISABLABLE.isTarget(appData));
             assertTrue(FilterType.DISABLED.isTarget(appData));
@@ -109,7 +109,7 @@ public class FilterTypeTest {
             AppData appData = Mockito.mock(AppData.class);
             appData.isEnabled = true;
             appData.isSystem = true;
-            appData.canDisable = true;
+            appData.isDisableable = true;
 
             assertTrue(FilterType.DISABLABLE.isTarget(appData));
             assertFalse(FilterType.DISABLED.isTarget(appData));

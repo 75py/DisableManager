@@ -20,7 +20,6 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
 
     private String screenshotOutputPath;
 
-
     @Override
     protected void setUp() throws Exception {
         super.setUp();

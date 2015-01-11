@@ -50,7 +50,7 @@ public class AppData {
     /**
      * 無効化が可能かどうか
      */
-    public boolean canDisable;
+    public boolean isDisableable;
 
     /**
      * アプリアイコン
@@ -74,7 +74,7 @@ public class AppData {
         this.isEnabled = packageInfo.applicationInfo.enabled;
         this.isSystem = (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0
                 || (packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
-        this.canDisable = filter.isDisableable(packageInfo);
+        this.isDisableable = filter.isDisableable(packageInfo);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // 4.2以上。4.1以下は無条件でtrue
