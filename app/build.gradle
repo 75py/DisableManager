@@ -2,10 +2,6 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
 
-// バージョン名
-// versionCodeに使用するため、「{0-99}.{0-99}.{0-99}」で指定すること。
-def verName = "2.0.2"
-
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
@@ -14,9 +10,11 @@ android {
         applicationId "com.nagopy.android.disablemanager2"
         minSdkVersion 15
         targetSdkVersion 21
-        versionName verName
-        versionCode Integer.parseInt(verName.split("\\.")[0]) * 10000 + Integer.parseInt(verName.split("\\.")[1]) * 100 + Integer.parseInt(verName.split("\\.")[2])
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        // F-Droidの自動更新のため、AndroidManifest.xmlにも同じ値を書いている。更新時は、両方を修正すること。
+        // TODO Gradleで、マージ後のAndroidManifest.xmlをコピーしてsrc下に上書きする
+        versionName "2.0.3"
+        versionCode 20003
     }
     buildTypes {
         release {
