@@ -46,4 +46,24 @@ public class DebugUtil {
     public static void debugLog(String msg) {
         Log.d("Disable Manager", msg);
     }
+
+    /**
+     * 情報ログ出力.<br>
+     * リリースビルドではProguardで削除する。
+     *
+     * @param msg メッセージ
+     */
+    public static void infoLog(String msg) {
+        Log.i("Disable Manager", msg);
+    }
+
+    /**
+     * エラーログ出力.<br>
+     * リリースビルドではProguardで削除する。
+     *
+     * @param msg メッセージ
+     */
+    public static void errorLog(String msg) {
+        Log.e("Disable Manager", msg);
+    }
 }

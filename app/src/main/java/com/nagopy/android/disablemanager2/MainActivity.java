@@ -19,8 +19,9 @@ import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -39,6 +40,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -49,7 +51,6 @@ import com.nagopy.android.disablemanager2.support.DebugUtil;
 import com.nagopy.android.disablemanager2.support.Logic;
 import com.viewpagerindicator.TitlePageIndicator;
 
-
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -58,12 +59,13 @@ import java.util.List;
 import java.util.Map;
 
 
-public class MainActivity extends ActionBarActivity implements ViewPager.OnPageChangeListener, AbsListView.MultiChoiceModeListener {
+public class MainActivity extends ActionBarActivity implements ViewPager.OnPageChangeListener, AbsListView.MultiChoiceModeListener, AdapterView.OnItemClickListener {
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     TitlePageIndicator titleIndicator;
     ActionMode actionMode;
+    AppData reloadAppData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,27 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
         super.onPause();
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (reloadAppData != null) {
+            ApplicationListAdapter applicationListAdapter = getApplicationListAdapter();
+
+            String packageName = reloadAppData.packageName.split(":")[0];
+            PackageManager packageManager = getPackageManager();
+            ApplicationInfo packageInfo = Logic.getApplicationInfo(packageManager, packageName);
+            if (packageInfo == null) {
+                // パッケージが存在しない場合
+                applicationListAdapter.removeApplication(reloadAppData);
+            } else {
+                reloadAppData.isEnabled = packageInfo.enabled;
+            }
+            applicationListAdapter.doFilter();
+
+            reloadAppData = null;
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -102,11 +125,14 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionMode != null) {
+            // 非表示になっているメニューは何もしない
+            return true;
+        }
+
         switch (item.getItemId()) {
             case R.id.action_share:
-                PagerAdapter adapter = mViewPager.getAdapter();
-                ApplicationListFragment listFragment = (ApplicationListFragment) adapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
-                ApplicationListAdapter listAdapter = (ApplicationListAdapter) listFragment.getListAdapter();
+                ApplicationListAdapter listAdapter = getApplicationListAdapter();
                 Logic.sendIntent(this, getString(listAdapter.filterType.titleId), Logic.makeShareString(listAdapter.filteredData));
                 break;
             case R.id.action_about:
@@ -115,6 +141,38 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * ViewPagerで表示中のFragmentを取得する.
+     *
+     * @return ApplicationListFragment
+     */
+    private ApplicationListFragment getApplicationListFragment() {
+        PagerAdapter adapter = mViewPager.getAdapter();
+        return (ApplicationListFragment) adapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
+    }
+
+    /**
+     * ViewPagerで表示中のListFragmentのアダプターを取得する.
+     *
+     * @return ApplicationListAdapter
+     */
+    private ApplicationListAdapter getApplicationListAdapter() {
+        ApplicationListFragment listFragment = getApplicationListFragment();
+        return (ApplicationListAdapter) listFragment.getListAdapter();
+    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ApplicationListFragment listFragment = getApplicationListFragment();
+        AppData appData = (AppData) listFragment.getListAdapter().getItem(position);
+        String packageName = appData.packageName.split(":")[0];
+        Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.parse("package:" + packageName));
+        reloadAppData = appData;
+        startActivityForResult(intent, 1);
     }
 
     // =============================================================================================================
@@ -163,8 +221,7 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
     @Override
     public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
         // 検索は一つだけ選択されている場合のみ表示
-        PagerAdapter adapter = mViewPager.getAdapter();
-        ApplicationListFragment listFragment = (ApplicationListFragment) adapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
+        ApplicationListFragment listFragment = getApplicationListFragment();
         int checkedItemCount = listFragment.getListView().getCheckedItemCount();
         mode.getMenu().findItem(R.id.action_search).setVisible(checkedItemCount == 1);
     }
@@ -176,8 +233,7 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        PagerAdapter adapter = mViewPager.getAdapter();
-        ApplicationListFragment listFragment = (ApplicationListFragment) adapter.instantiateItem(mViewPager, mViewPager.getCurrentItem());
+        ApplicationListFragment listFragment = getApplicationListFragment();
         // 選択されたリストアイテム取得
         List<AppData> checkedItemList = Logic.getCheckedItemList(listFragment.getListView());
         switch (item.getItemId()) {
@@ -205,9 +261,10 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
-        DebugUtil.debugLog("onDestroyActionMode");
+        DebugUtil.verboseLog("onDestroyActionMode");
         actionMode = null;
     }
+
     // AbsListView.MultiChoiceModeListener
     // ここまで
     // =============================================================================================================
@@ -228,16 +285,16 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
         @Override
         public Fragment getItem(int position) {
-            DebugUtil.debugLog("SectionsPagerAdapter#getItem(" + position + ")");
+            DebugUtil.verboseLog("SectionsPagerAdapter#getItem(" + position + ")");
             FilterType filterType = FilterType.indexOf(position);
             WeakReference<ApplicationListFragment> weakReference = cache.get(filterType);
             if (weakReference == null || weakReference.get() == null) {
-                DebugUtil.debugLog("create new instance");
+                DebugUtil.verboseLog("create new instance");
                 ApplicationListFragment fragment = ApplicationListFragment.newInstance(filterType);
                 cache.put(filterType, new WeakReference<>(fragment));
                 return fragment;
             } else {
-                DebugUtil.debugLog("return from cache");
+                DebugUtil.verboseLog("return from cache");
                 return weakReference.get();
             }
         }
@@ -257,8 +314,6 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
     public static class ApplicationListFragment extends ListFragment {
 
         private static final String ARG_FILTER_TYPE = "filter_type";
-
-        private AppData reloadAppData;
 
         public static ApplicationListFragment newInstance(FilterType filterType) {
             ApplicationListFragment fragment = new ApplicationListFragment();
@@ -310,32 +365,7 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
         @Override
         public void onListItemClick(ListView l, View v, int position, long id) {
-            AppData appData = (AppData) getListAdapter().getItem(position);
-            String packageName = appData.packageName.split(":")[0];
-            Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + packageName));
-            reloadAppData = appData;
-            startActivityForResult(intent, 1);
-        }
-
-        @Override
-        public void onActivityResult(int requestCode, int resultCode, Intent data) {
-            if (reloadAppData != null) {
-                ApplicationListAdapter adapter = (ApplicationListAdapter) getListAdapter();
-
-                String packageName = reloadAppData.packageName.split(":")[0];
-                PackageManager packageManager = getActivity().getPackageManager();
-                PackageInfo packageInfo = Logic.getPackageInfo(packageManager, packageName);
-                if (packageInfo == null) {
-                    // パッケージが存在しない場合
-                    adapter.removeApplication(reloadAppData);
-                } else {
-                    reloadAppData.isEnabled = packageInfo.applicationInfo.enabled;
-                }
-                adapter.doFilter();
-
-                reloadAppData = null;
-            }
+            ((AdapterView.OnItemClickListener) getActivity()).onItemClick(l, v, position, id);
         }
 
         public void hideProgressBar() {
@@ -423,24 +453,25 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
                 holder.title.setText(appData.label);
                 holder.title.setTag(R.id.tag_package_name, appData.packageName);
 
-                if (appData.icon == null || appData.icon.get() == null) {
-                    DebugUtil.verboseLog("create loader");
+                Drawable icon = appData.icon == null ? null : appData.icon.get();
+                if (icon == null) {
+                    DebugUtil.verboseLog("create loader :" + appData.packageName);
+                    Logic.setIcon(holder.title, R.drawable.icon_transparent);
                     new ApplicationIconLoader(appData.packageName, packageManager, iconSize, holder.title).execute(appData);
                 } else {
-                    DebugUtil.verboseLog("use cache onCreateView()");
-                    ApplicationIconLoader.setIcon(holder.title, appData.icon.get(), iconSize);
+                    DebugUtil.verboseLog("use cache onCreateView() :" + appData.packageName);
+                    Logic.setIcon(holder.title, icon, iconSize);
                 }
 
                 if (appData.process == null) {
                     holder.process.setVisibility(View.GONE);
                 } else {
-                    DebugUtil.debugLog(appData.process.toString());
                     StringBuilder sb = new StringBuilder();
-                    for(String str : appData.process){
+                    for (String str : appData.process) {
                         sb.append(str);
                         sb.append(Constants.LINE_SEPARATOR);
                     }
-                    sb.setLength(sb.length() -1);
+                    sb.setLength(sb.length() - 1);
                     holder.process.setText(sb.toString());
                     holder.process.setVisibility(View.VISIBLE);
                 }

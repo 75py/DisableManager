@@ -20,7 +20,7 @@ import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 
-import com.nagopy.android.disablemanager2.judger.Judge;
+import com.nagopy.android.disablemanager2.support.DisableableFilter;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -49,7 +49,7 @@ public class AppData {
     /**
      * 無効化が可能かどうか
      */
-    public boolean canDisable;
+    public boolean isDisableable;
 
     /**
      * アプリアイコン
@@ -67,17 +67,27 @@ public class AppData {
      */
     public boolean isInstalled = true;
 
-    public AppData(PackageManager packageManager, Judge judge, ApplicationInfo applicationInfo) {
+    public AppData(PackageManager packageManager, DisableableFilter filter, ApplicationInfo applicationInfo) {
         this.label = applicationInfo.loadLabel(packageManager).toString();
         this.packageName = applicationInfo.packageName;
         this.isEnabled = applicationInfo.enabled;
         this.isSystem = (applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) > 0
                 || (applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0;
-        this.canDisable = judge.isDisablable(applicationInfo);
+        this.isDisableable = filter.isDisableable(applicationInfo.packageName);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             // 4.2以上。4.1以下は無条件でtrue
             this.isInstalled = (applicationInfo.flags & ApplicationInfo.FLAG_INSTALLED) > 0;
         }
+    }
+
+    @Override
+    public String toString() {
+        return packageName
+                + ", label=" + label
+                + ", enabled=" + isEnabled
+                + ", system=" + isSystem
+                + ", disableable=" + isDisableable
+                + ", installed=" + isInstalled;
     }
 }

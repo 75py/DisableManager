@@ -23,9 +23,9 @@ import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Build;
 
-import com.nagopy.android.disablemanager2.judger.Judge;
 import com.nagopy.android.disablemanager2.support.AppDataComparator;
 import com.nagopy.android.disablemanager2.support.DebugUtil;
+import com.nagopy.android.disablemanager2.support.DisableableFilter;
 import com.nagopy.android.disablemanager2.support.FieldReflectWrapper;
 import com.nagopy.android.disablemanager2.support.Logic;
 
@@ -88,46 +88,45 @@ public class ApplicationList {
             if (applicationList == null) {
                 return null;
             }
-
             DebugUtil.verboseLog("doInBackground start");
-//            synchronized (applicationList.lockObject) {
-//                verboseLog("doInBackground lockObject start");
-            final Context context = params[0];
-
-            Map<String, List<String>> runningProcessMap = applicationList.getRunningStatusMap(context);
-
-            int mRetrieveFlags = Logic.getRetrieveFlags();
-
-            // ApplicationInfo.enabledSettingをリフレクションで取得する準備
-            FieldReflectWrapper enabledSettingField = new FieldReflectWrapper(ApplicationInfo.class, "enabledSetting");
-
-            Judge judge = Judge.getInstance(context);
-            PackageManager packageManager = context.getPackageManager();
-            List<ApplicationInfo> applicationInfo = packageManager.getInstalledApplications(mRetrieveFlags);
-            List<AppData> appList = new ArrayList<>(applicationInfo.size());
-            for (ApplicationInfo info : applicationInfo) {
-                if (!info.enabled) {
-                    // 無効になっていて、かつenabledSettingが3でないアプリは除外する
-                    int enabledSetting = enabledSettingField.getInt(info);
-                    if (enabledSetting
-                            != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER) {
-                        DebugUtil.verboseLog("skip " + info.packageName);
-                        continue;
-                    }
-                }
-
-                AppData appData = new AppData(packageManager, judge, info);
-                List<String> processList = runningProcessMap.get(info.packageName);
-                if (processList != null) {
-                    Collections.sort(processList);
-                    appData.process = processList;
-                }
-                appList.add(appData);
-            }
-            Collections.sort(appList, AppDataComparator.getInstance());
-
             synchronized (applicationList.lockObject) {
                 DebugUtil.verboseLog("doInBackground lockObject start");
+                final Context context = params[0];
+
+                Map<String, List<String>> runningProcessMap = applicationList.getRunningStatusMap(context);
+
+                // 取得する際のフラグ
+                // 設定画面のフラグ＋無効化可能判定用にシグネチャ
+                int mRetrieveFlags = Logic.getRetrieveFlags() | PackageManager.GET_SIGNATURES;
+
+                // ApplicationInfo.enabledSettingをリフレクションで取得する準備
+                FieldReflectWrapper enabledSettingField = new FieldReflectWrapper(ApplicationInfo.class, "enabledSetting");
+
+                DisableableFilter disableableFilter = new DisableableFilter(context);
+                PackageManager packageManager = context.getPackageManager();
+                List<ApplicationInfo> applicationInfo = packageManager.getInstalledApplications(mRetrieveFlags);
+                List<AppData> appList = new ArrayList<>(applicationInfo.size());
+                for (ApplicationInfo info : applicationInfo) {
+                    if (!info.enabled) {
+                        // 無効になっていて、かつenabledSettingが3でないアプリは除外する
+                        int enabledSetting = enabledSettingField.getInt(info);
+                        if (enabledSetting
+                                != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER) {
+                            DebugUtil.verboseLog("skip " + info.packageName);
+                            continue;
+                        }
+                    }
+
+                    AppData appData = new AppData(packageManager, disableableFilter, info);
+                    List<String> processList = runningProcessMap.get(info.packageName);
+                    if (processList != null) {
+                        Collections.sort(processList);
+                        appData.process = processList;
+                    }
+                    appList.add(appData);
+                }
+                Collections.sort(appList, AppDataComparator.getInstance());
+
                 applicationList.appList = appList;
                 for (ApplicationLoadListener listener : applicationList.listeners) {
                     listener.onLoaded(appList);

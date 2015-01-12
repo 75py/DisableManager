@@ -19,14 +19,15 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.UserHandle;
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.nagopy.android.disablemanager2.AppData;
 import com.nagopy.android.disablemanager2.Constants;
@@ -141,20 +142,20 @@ public class Logic {
     }
 
     /**
-     * アプリがインストールされているかどうか
+     * ApplicationInfoを取得する.
      *
      * @param packageManager PackageManager
      * @param packageName    パッケージ名
-     * @return PackageInfo.<br>インストールされていない場合はnull
+     * @return ApplicationInfo.<br>見つからない場合はnull
      */
-    public static PackageInfo getPackageInfo(PackageManager packageManager, String packageName) {
-        List<PackageInfo> installed = packageManager.getInstalledPackages(getRetrieveFlags());
-        for (PackageInfo packageInfo : installed) {
-            if (packageInfo.packageName.equals(packageName)) {
-                return packageInfo;
+    public static ApplicationInfo getApplicationInfo(PackageManager packageManager, String packageName) {
+        List<ApplicationInfo> installedAppList = packageManager.getInstalledApplications(getRetrieveFlags());
+        for (ApplicationInfo info : installedAppList) {
+            if (info.packageName.equals(packageName)) {
+                return info;
             }
         }
-        return null;
+        return null; // NOT_FOUND
     }
 
     /**
@@ -197,4 +198,34 @@ public class Logic {
         }
     }
 
+    /**
+     * TextViewの上下左右に画像を配置する.
+     *
+     * @param textView TextView
+     * @param resId    リソースID
+     */
+    public static void setIcon(final TextView textView, final int resId) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            textView.setCompoundDrawablesWithIntrinsicBounds(resId, 0, 0, 0);
+        } else {
+            textView.setCompoundDrawablesRelativeWithIntrinsicBounds(resId, 0, 0, 0);
+        }
+    }
+
+    /**
+     * TextViewの左側（START側）に画像を表示する。
+     *
+     * @param textView     対象View
+     * @param drawable     画像
+     * @param drawableSize 画像サイズ
+     */
+    public static void setIcon(TextView textView, Drawable drawable, int drawableSize) {
+        drawable.setBounds(0, 0, drawableSize, drawableSize);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            textView.setCompoundDrawables(drawable, null, null, null);
+        } else {
+            textView.setCompoundDrawablesRelative(drawable, null, null, null);
+        }
+        drawable.setCallback(null);
+    }
 }

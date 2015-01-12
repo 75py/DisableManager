@@ -18,8 +18,8 @@ import java.util.Set;
 
 public class MainActivityTestCase extends UiAutomatorTestCase {
 
+    public static final String COM_ANDROID_CALCULATOR2 = "com.android.calculator2";
     private String screenshotOutputPath;
-
 
     @Override
     protected void setUp() throws Exception {
@@ -53,8 +53,96 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
         super.tearDown();
     }
 
+    public void testDisableButtonClick() throws Exception {
+        startApp();
+        validateCurrentPageTitle("無効化可能");
+        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
+        UiObject calculator = listView.getChildByText(
+                new UiSelectorBuilder()
+                        .resourceId("com.nagopy.android.disablemanager2:id/list_package_name")
+                        .className(TextView.class)
+                        .description("package name").build(),
+                COM_ANDROID_CALCULATOR2);
+        calculator.clickAndWaitForNewWindow();
+
+        UiObject disableButton = new UiObject(
+                new UiSelectorBuilder()
+                        .className(Button.class)
+                        .resourceId("com.android.settings:id/right_button")
+                        .text("無効にする").build()
+        );
+        disableButton.clickAndWaitForNewWindow();
+
+        UiObject okButton = new UiObject(
+                new UiSelectorBuilder()
+                        .text("OK").build()
+        );
+        okButton.clickAndWaitForNewWindow();
+
+        getUiDevice().pressBack();
+        boolean found = false;
+        try {
+            listView.getChildByText(
+                    new UiSelectorBuilder()
+                            .resourceId("com.nagopy.android.disablemanager2:id/list_package_name")
+                            .className(TextView.class)
+                            .description("package name").build(),
+                    COM_ANDROID_CALCULATOR2);
+            found = true;
+        } catch (UiObjectNotFoundException e) {
+            // OK
+        }
+        assertFalse("無効化可能一覧から消えていることを確認", found);
+
+        // 無効化済みへ移動
+        swipeLeft();
+        validateCurrentPageTitle("無効化済み");
+        calculator = listView.getChildByText(
+                new UiSelectorBuilder()
+                        .resourceId("com.nagopy.android.disablemanager2:id/list_package_name")
+                        .className(TextView.class)
+                        .description("package name").build(),
+                COM_ANDROID_CALCULATOR2);
+        assertTrue("電卓が無効化済みで表示されている", calculator.exists());
+        calculator.clickAndWaitForNewWindow();
+        UiObject enableButton = new UiObject(
+                new UiSelectorBuilder()
+                        .className(Button.class)
+                        .resourceId("com.android.settings:id/right_button")
+                        .text("有効にする").build()
+        );
+        assertTrue("有効にするボタンが表示されている", enableButton.exists());
+        enableButton.clickAndWaitForNewWindow();
+        getUiDevice().pressBack();
+
+        found = false;
+        try {
+            listView.getChildByText(
+                    new UiSelectorBuilder()
+                            .resourceId("com.nagopy.android.disablemanager2:id/list_package_name")
+                            .className(TextView.class)
+                            .description("package name").build(),
+                    COM_ANDROID_CALCULATOR2);
+            found = true;
+        } catch (UiObjectNotFoundException e) {
+            // OK
+        }
+        assertFalse("無効化済み一覧から消えていることを確認", found);
+
+        swipeRight();
+        validateCurrentPageTitle("無効化可能");
+        calculator = listView.getChildByText(
+                new UiSelectorBuilder()
+                        .resourceId("com.nagopy.android.disablemanager2:id/list_package_name")
+                        .className(TextView.class)
+                        .description("package name").build(),
+                COM_ANDROID_CALCULATOR2);
+        assertTrue("電卓が無効化可能で表示されている", calculator.exists());
+    }
+
     public void testDisableable() throws Exception {
         startApp();
+        validateCurrentPageTitle("無効化可能");
 
         UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
         listView.scrollToBeginning(10);
@@ -115,6 +203,7 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
         startApp();
 
         swipeLeft();
+        validateCurrentPageTitle("無効化済み");
 
         UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
         listView.scrollToBeginning(10);
@@ -146,6 +235,7 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
 
         swipeLeft();
         swipeLeft();
+        validateCurrentPageTitle("無効化不可");
 
         UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
         listView.scrollToBeginning(10);
@@ -175,10 +265,10 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
 
     public void testUser() throws Exception {
         startApp();
-
         swipeLeft();
         swipeLeft();
         swipeLeft();
+        validateCurrentPageTitle("ユーザー");
 
         UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
         listView.scrollToBeginning(10);
@@ -216,6 +306,16 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
      */
     private boolean swipeLeft() throws UiObjectNotFoundException {
         return new UiScrollable((new UiSelectorBuilder().className("android.support.v4.view.ViewPager").build())).swipeLeft(10);
+    }
+
+    /**
+     * ViewPagerを右スワイプ（＝左から右へスワイプ＝右の画面へ移動）する.
+     *
+     * @return {@link com.android.uiautomator.core.UiScrollable#swipeLeft(int)}の戻り値
+     * @throws UiObjectNotFoundException
+     */
+    private boolean swipeRight() throws UiObjectNotFoundException {
+        return new UiScrollable((new UiSelectorBuilder().className("android.support.v4.view.ViewPager").build())).swipeRight(10);
     }
 
     /**
@@ -340,6 +440,14 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
             listView.scrollForward();
         } while (hasNext);
         return errorAppList;
+    }
+
+    private void validateCurrentPageTitle(String title) throws UiObjectNotFoundException {
+        UiObject titlePageIndicator = new UiObject(
+                new UiSelectorBuilder()
+                        .className("com.viewpagerindicator.TitlePageIndicator").build()
+        );
+        assertEquals("TitlePageIndicatorが【" + title + "】であることを確認", title, titlePageIndicator.getText());
     }
 
 }

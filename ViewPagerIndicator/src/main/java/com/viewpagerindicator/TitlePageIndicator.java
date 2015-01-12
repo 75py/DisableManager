@@ -35,6 +35,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.accessibility.AccessibilityNodeInfo;
 
 import java.util.ArrayList;
 
@@ -866,5 +867,13 @@ public class TitlePageIndicator extends View implements PageIndicator {
             title = EMPTY_TITLE;
         }
         return title;
+    }
+
+    @Override
+    public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
+        super.onInitializeAccessibilityNodeInfo(info);
+        info.setPackageName(getContext().getPackageName());
+        info.setClassName(getClass().getName());
+        info.setText(getTitle(mViewPager.getCurrentItem()));
     }
 }
