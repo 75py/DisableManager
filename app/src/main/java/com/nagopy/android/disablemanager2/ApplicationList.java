@@ -122,6 +122,8 @@ public class ApplicationList {
                     if (processList != null) {
                         Collections.sort(processList);
                         appData.process = processList;
+                    } else {
+                        appData.process = Collections.emptyList();
                     }
                     appList.add(appData);
                 }

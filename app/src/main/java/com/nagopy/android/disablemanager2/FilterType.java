@@ -20,7 +20,12 @@ public enum FilterType {
     DISABLABLE(R.string.title_disablable) {
         @Override
         public boolean isTarget(AppData appData) {
-            return appData.isSystem && appData.isEnabled && appData.isDisableable;
+            return appData.isSystem && appData.isEnabled && appData.isDisableable && appData.process.isEmpty();
+        }
+    }, DISABLABLE_RUNNING(R.string.title_disablable_running) {
+        @Override
+        public boolean isTarget(AppData appData) {
+            return appData.isSystem && appData.isEnabled && appData.isDisableable && !appData.process.isEmpty();
         }
     }, DISABLED(R.string.title_disabled) {
         @Override

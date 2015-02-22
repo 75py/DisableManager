@@ -14,6 +14,7 @@
     <color name="backgroundColor">@color/background_material_light</color>
     <color name="textColor">@color/primary_text_default_material_light</color>
     <color name="textColorSecondary">@color/secondary_text_default_material_light</color>
+    <color name="textColorTertiary">#60000000</color>
 
     <style name="AppTheme" parent="AppTheme.Base" />
 
@@ -28,13 +29,14 @@
         <item name="actionMenuTextColor">@android:color/white</item>
         <item name="android:actionMenuTextColor">@android:color/white</item>
 
-        <item name="vpiTitlePageIndicatorStyle">@style/CustomTitlePageIndicator</item>
         <item name="android:textColor">@color/textColor</item>
         <item name="android:textColorSecondary">@color/textColorSecondary</item>
         <item name="android:fastScrollThumbDrawable">@drawable/fast_scroll_thumb</item>
         <item name="android:fastScrollTrackDrawable">@drawable/fast_scroll_track_drawable</item>
         <item name="android:scrollbarThumbVertical">@drawable/fast_scroll_thumb</item>
         <item name="android:scrollbarTrackVertical">@drawable/fast_scroll_track_drawable</item>
+
+        <item name="vpiTabPageIndicatorStyle">@style/CustomTabPageIndicator</item>
     </style>
 
     <style name="TextAppearance.AppTheme.Large" parent="TextAppearance.AppCompat.Large">
@@ -49,19 +51,19 @@
         <item name="android:textColor">@color/textColor</item>
     </style>
 
-
     <style name="AppTheme.ListView" />
 
-    <style name="CustomTitlePageIndicator">
-        <item name="android:background">@android:color/transparent</item>
-        <item name="footerColor">@color/primary_3</item>
-        <item name="footerLineHeight">@dimen/unit_1</item>
-        <item name="footerIndicatorHeight">@dimen/unit_1</item>
-        <item name="footerIndicatorStyle">underline</item>
+    <style name="CustomTabPageIndicator" parent="Widget.TabPageIndicator">
+        <item name="android:background">@drawable/tab_indicator</item>
+        <item name="android:textColor">@color/tab_indicator_text_color</item>
         <item name="android:textSize">@dimen/abc_text_size_subtitle_material_toolbar</item>
-        <item name="android:textColor">@color/textColorSecondary</item>
-        <item name="selectedColor">@color/textColor</item>
-        <item name="selectedBold">true</item>
+        <item name="android:divider">@android:drawable/divider_horizontal_bright</item>
+        <item name="android:dividerPadding">@dimen/unit_4</item>
+        <item name="android:showDividers">none</item>
+        <item name="android:paddingLeft">@dimen/unit_4</item>
+        <item name="android:paddingRight">@dimen/unit_4</item>
+        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:fadingEdgeLength">@dimen/unit_4</item>
     </style>
 
 </resources>
