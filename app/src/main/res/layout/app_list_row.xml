@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_parent"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/activatedBackgroundIndicator"
+    android:contentDescription="@string/description_list_parent"
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:paddingBottom="@dimen/list_item_vertical_margin"

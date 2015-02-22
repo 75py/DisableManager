@@ -26,6 +26,7 @@ public class TestUtils {
 
 
     public static final String PACKAGE_NAME = "com.nagopy.android.disablemanager2";
+    public static final String TAG = "nagopy_uiautomator";
 
     /**
      * コンストラクタ.
@@ -51,14 +52,14 @@ public class TestUtils {
      * デバッグログ出力.
      */
     public static void debugLog(Object obj) {
-        Log.d("Disable Manager[uiautomator]", obj == null ? "null" : obj.toString());
+        Log.d(TAG, obj == null ? "null" : obj.toString());
     }
 
     /**
      * INFOログ出力＋標準出力.
      */
     public static void infoLog(Object obj) {
-        Log.i("Disable Manager[uiautomator]", obj == null ? "null" : obj.toString());
+        Log.i(TAG, obj == null ? "null" : obj.toString());
         out(obj);
     }
 
@@ -66,7 +67,7 @@ public class TestUtils {
      * 警告ログ出力＋標準出力.
      */
     public static void warningLog(Object obj) {
-        Log.w("Disable Manager[uiautomator]", obj == null ? "null" : obj.toString());
+        Log.w(TAG, obj == null ? "null" : obj.toString());
         out(obj);
     }
 
@@ -74,7 +75,7 @@ public class TestUtils {
      * エラーログ出力＋エラー出力.
      */
     public static void errorLog(Throwable t) {
-        Log.e("Disable Manager[uiautomator]", t.getMessage());
+        Log.e(TAG, t.getMessage());
         err(t);
     }
 

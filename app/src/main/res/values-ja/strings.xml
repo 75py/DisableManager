@@ -13,5 +13,6 @@
     <string name="action_more">その他</string>
     <string name="open_source_license">オープンソースライセンス</string>
     <string name="about">このアプリについて</string>
+    <string name="title_disablable_running">無効化可能（実行中）</string>
 
 </resources>

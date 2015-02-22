@@ -23,6 +23,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -83,7 +84,7 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
         setHorizontalScrollBarEnabled(false);
 
         mTabLayout = new IcsLinearLayout(context, R.attr.vpiTabPageIndicatorStyle);
-        addView(mTabLayout, new ViewGroup.LayoutParams(WRAP_CONTENT, MATCH_PARENT));
+        addView(mTabLayout, new ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT));
     }
 
     public void setOnTabReselectedListener(OnTabReselectedListener listener) {
@@ -160,7 +161,7 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
             tabView.setCompoundDrawablesWithIntrinsicBounds(iconResId, 0, 0, 0);
         }
 
-        mTabLayout.addView(tabView, new LinearLayout.LayoutParams(0, MATCH_PARENT, 1));
+        mTabLayout.addView(tabView, new LinearLayout.LayoutParams(WRAP_CONTENT, MATCH_PARENT, 1));
     }
 
     @Override
@@ -270,14 +271,22 @@ public class TabPageIndicator extends HorizontalScrollView implements PageIndica
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
             // Re-measure if we went beyond our maximum size.
-            if (mMaxTabWidth > 0 && getMeasuredWidth() > mMaxTabWidth) {
-                super.onMeasure(MeasureSpec.makeMeasureSpec(mMaxTabWidth, MeasureSpec.EXACTLY),
-                        heightMeasureSpec);
-            }
+//            if (mMaxTabWidth > 0 && getMeasuredWidth() > mMaxTabWidth) {
+//                super.onMeasure(MeasureSpec.makeMeasureSpec(mMaxTabWidth, MeasureSpec.EXACTLY),
+//                        heightMeasureSpec);
+//            }
         }
 
         public int getIndex() {
             return mIndex;
         }
+    }
+
+    @Override
+    public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo info) {
+        super.onInitializeAccessibilityNodeInfo(info);
+        info.setPackageName(getContext().getPackageName());
+        info.setClassName(getClass().getName());
+        info.setText(mViewPager.getAdapter().getPageTitle(mViewPager.getCurrentItem()));
     }
 }

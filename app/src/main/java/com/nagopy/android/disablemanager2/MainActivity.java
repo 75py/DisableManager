@@ -49,7 +49,7 @@ import android.widget.TextView;
 
 import com.nagopy.android.disablemanager2.support.DebugUtil;
 import com.nagopy.android.disablemanager2.support.Logic;
-import com.viewpagerindicator.TitlePageIndicator;
+import com.viewpagerindicator.PageIndicator;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -63,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
-    TitlePageIndicator titleIndicator;
+    PageIndicator pageIndicator;
     ActionMode actionMode;
     AppData reloadAppData;
 
@@ -79,19 +79,19 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        titleIndicator = (TitlePageIndicator) findViewById(R.id.indicator);
-        titleIndicator.setViewPager(mViewPager);
+        pageIndicator = (PageIndicator) findViewById(R.id.indicator);
+        pageIndicator.setViewPager(mViewPager);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        titleIndicator.setOnPageChangeListener(this);
+        pageIndicator.setOnPageChangeListener(this);
     }
 
     @Override
     protected void onPause() {
-        titleIndicator.setOnPageChangeListener(null);
+        pageIndicator.setOnPageChangeListener(null);
         super.onPause();
     }
 
@@ -463,7 +463,7 @@ public class MainActivity extends ActionBarActivity implements ViewPager.OnPageC
                     Logic.setIcon(holder.title, icon, iconSize);
                 }
 
-                if (appData.process == null) {
+                if (appData.process.isEmpty()) {
                     holder.process.setVisibility(View.GONE);
                 } else {
                     StringBuilder sb = new StringBuilder();

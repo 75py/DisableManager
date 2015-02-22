@@ -3,6 +3,7 @@ package com.nagopy.android.disablemanager2;
 import android.os.Build;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.android.uiautomator.core.UiObject;
@@ -56,7 +57,7 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
     public void testDisableButtonClick() throws Exception {
         startApp();
         validateCurrentPageTitle("無効化可能");
-        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
+        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().className(ListView.class).scrollable(true).build());
         UiObject calculator = listView.getChildByText(
                 new UiSelectorBuilder()
                         .resourceId("com.nagopy.android.disablemanager2:id/list_package_name")
@@ -96,6 +97,7 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
 
         // 無効化済みへ移動
         swipeLeft();
+        swipeLeft();
         validateCurrentPageTitle("無効化済み");
         calculator = listView.getChildByText(
                 new UiSelectorBuilder()
@@ -130,6 +132,7 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
         assertFalse("無効化済み一覧から消えていることを確認", found);
 
         swipeRight();
+        swipeRight();
         validateCurrentPageTitle("無効化可能");
         calculator = listView.getChildByText(
                 new UiSelectorBuilder()
@@ -144,7 +147,7 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
         startApp();
         validateCurrentPageTitle("無効化可能");
 
-        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
+        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().className(ListView.class).scrollable(true).build());
         listView.scrollToBeginning(10);
 
         // リストの一つ一つをチェックする前に、現状のスクリーンショットを撮っておく
@@ -199,13 +202,74 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
         assertTrue("「無効化可能」に表示されている無効化不可アプリ " + errorAppList.toString(), errorAppList.isEmpty());
     }
 
+    public void testDisableableRunning() throws Exception {
+        startApp();
+        swipeLeft();
+        validateCurrentPageTitle("無効化可能（実行中）");
+
+        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().className(ListView.class).scrollable(true).build());
+        listView.scrollToBeginning(10);
+
+        // リストの一つ一つをチェックする前に、現状のスクリーンショットを撮っておく
+        // （目的のタブが表示されているかを目視確認するため）
+        // （ViewPagerIndicatorはTextViewを使っていないためuiautomatorでは文字列を取得できない）
+        TestUtils.takeScreenshot(getUiDevice(), screenshotOutputPath, "LIST.jpg");
+
+        List<String> errorAppList = validateAllItems(listView, new InstalledAppDetailValidator() {
+                    @Override
+                    public boolean validate(String packageName) throws UiObjectNotFoundException {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                            // 4.2以上
+                            UiObject disableButton = new UiObject(
+                                    new UiSelectorBuilder()
+                                            .className(Button.class)
+                                            .resourceId("com.android.settings:id/right_button")
+                                            .text("無効にする").build()
+                            );
+                            return disableButton.exists() && disableButton.isEnabled();
+                        } else {
+                            // 4.2未満は「アップデートのアンインストール」と「無効にする」のボタンが分離していないため、
+                            // 「無効にする」がない場合もエラーにはしない
+                            UiObject disableButton = new UiObject(
+                                    new UiSelectorBuilder()
+                                            .className(Button.class)
+                                            .resourceId("com.android.settings:id/right_button")
+                                            .text("無効にする").build()
+                            );
+                            if (disableButton.exists() && disableButton.isEnabled()) {
+                                return true;
+                            } else {
+                                UiObject updateUninstallButton = new UiObject(
+                                        new UiSelectorBuilder()
+                                                .resourceId("com.android.settings:id/right_button")
+                                                .className(Button.class)
+                                                .textContains("アップデートのアンインストール").build()
+                                );
+                                boolean result = updateUninstallButton.exists() && updateUninstallButton.isEnabled();
+                                if (result) {
+                                    // 「アップデートのアンインストール」が存在する場合は検証は問題なしとするが、
+                                    // 本当に無効化できるかはこれ以上判定できないため、警告として出力する
+                                    TestUtils.warningLog("[Warning] Updated System App:" + packageName);
+                                }
+                                return result;
+                            }
+                        }
+                    }
+                }
+        );
+
+        TestUtils.debugLog(errorAppList);
+        assertTrue("「無効化可能（実行中）」に表示されている無効化不可アプリ " + errorAppList.toString(), errorAppList.isEmpty());
+    }
+
     public void testDisabled() throws Exception {
         startApp();
 
         swipeLeft();
+        swipeLeft();
         validateCurrentPageTitle("無効化済み");
 
-        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
+        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().className(ListView.class).scrollable(true).build());
         listView.scrollToBeginning(10);
 
         // リストの一つ一つをチェックする前に、現状のスクリーンショットを撮っておく
@@ -235,9 +299,10 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
 
         swipeLeft();
         swipeLeft();
+        swipeLeft();
         validateCurrentPageTitle("無効化不可");
 
-        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
+        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().className(ListView.class).scrollable(true).build());
         listView.scrollToBeginning(10);
 
         // リストの一つ一つをチェックする前に、現状のスクリーンショットを撮っておく
@@ -268,9 +333,10 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
         swipeLeft();
         swipeLeft();
         swipeLeft();
+        swipeLeft();
         validateCurrentPageTitle("ユーザー");
 
-        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().scrollable(true).build());
+        UiScrollable listView = new UiScrollable(new UiSelectorBuilder().className(ListView.class).scrollable(true).build());
         listView.scrollToBeginning(10);
 
         // リストの一つ一つをチェックする前に、現状のスクリーンショットを撮っておく
@@ -385,20 +451,35 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
             hasNext = false;
             for (int i = 0; ; i++) { // ListViewに今表示されている要素を一つ一つ見ていくforループ
                 try {
-                    UiObject clickable = listView.getChild(
+                    UiObject clickable = new UiObject(
                             new UiSelectorBuilder()
-                                    .clickable(true)
-                                    .index(i).build()
+                                    .resourceId("com.nagopy.android.disablemanager2:id/list_parent")
+                                    .description("listItem")
+                                    .index(i)
+                                    .build()
                     );
-                    UiObject titleTextView =
-                            clickable.getChild(
-                                    new UiSelectorBuilder()
-                                            .resourceId("com.nagopy.android.disablemanager2:id/list_title")
-                                            .className(TextView.class)
-                                            .description("application name")
-                                            .build()
-                            );
-                    String label = titleTextView.getText();
+                    if (!clickable.exists()) {
+                        // i番目の要素が見つからない場合
+                        break;
+                    }
+
+                    UiObject titleTextView;
+                    String label;
+                    try {
+                        titleTextView =
+                                clickable.getChild(
+                                        new UiSelectorBuilder()
+                                                .resourceId("com.nagopy.android.disablemanager2:id/list_title")
+                                                .className(TextView.class)
+                                                .description("application name")
+                                                .build()
+                                );
+                        label = titleTextView.getText();
+                    } catch (UiObjectNotFoundException e) {
+                        // タイトルが取得できない場合
+                        TestUtils.debugLog("continue (title not found)");
+                        continue;
+                    }
                     UiObject packageNameTextView =
                             clickable.getChild(
                                     new UiSelectorBuilder()
@@ -409,6 +490,7 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
                             );
                     String packageName = packageNameTextView.getText();
                     if (TextUtils.isEmpty(packageName) || testedPackages.contains(packageName)) {
+                        TestUtils.debugLog("continue " + packageName);
                         continue;
                     }
                     TestUtils.infoLog(label + " [" + packageName + "]");
@@ -431,10 +513,14 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
 
                     getUiDevice().pressBack();
                 } catch (UiObjectNotFoundException e) {
-                    // 画面に表示されているListViewの要素のi番目が見つからない
+                    // 画面に表示されているListViewの要素のi番目が見つからない OR パッケージ名が見つからない
                     // ＝ 今表示されている分は全部見た
                     // ＝ forループは抜け、次へ進む
+//                    TestUtils.debugLog("continue? " + i);
+//                    if(i > 5) {
+                    TestUtils.debugLog(i + ", continue(e) " + e.getMessage());
                     break;
+//                    }
                 }
             }
             listView.scrollForward();
@@ -445,9 +531,9 @@ public class MainActivityTestCase extends UiAutomatorTestCase {
     private void validateCurrentPageTitle(String title) throws UiObjectNotFoundException {
         UiObject titlePageIndicator = new UiObject(
                 new UiSelectorBuilder()
-                        .className("com.viewpagerindicator.TitlePageIndicator").build()
+                        .className("com.viewpagerindicator.TabPageIndicator").build()
         );
-        assertEquals("TitlePageIndicatorが【" + title + "】であることを確認", title, titlePageIndicator.getText());
+        assertEquals("TabPageIndicatorが【" + title + "】であることを確認", title, titlePageIndicator.getText());
     }
 
 }
