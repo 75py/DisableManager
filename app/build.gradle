@@ -13,8 +13,8 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         // F-Droidの自動更新のため、AndroidManifest.xmlにも同じ値を書いている。更新時は、両方を修正すること。
         // TODO Gradleで、マージ後のAndroidManifest.xmlをコピーしてsrc下に上書きする
-        versionName "2.0.3"
-        versionCode 20003
+        versionName "2.0.4"
+        versionCode 20004
     }
     buildTypes {
         release {
